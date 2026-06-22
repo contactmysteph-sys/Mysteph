@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Aquarium Notes | Healing Spaces</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Inter', sans-serif;
+      background:linear-gradient(180deg,#eef4f6 0%, #dfe9ec 45%, #f3efe8 100%);
+      color:#2f3b4a;
+      line-height:1.8;
+      min-height:100vh;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    /* TOP NAV */
+    .top-nav{
+      width:min(1100px,90%);
+      margin:28px auto 0;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      font-size:13px;
+      letter-spacing:1.5px;
+      text-transform:uppercase;
+      color:#647381;
+    }
+
+    .top-nav a:hover{
+      color:#2f3b4a;
+    }
+
+    /* HEADER */
+    .page-header{
+      width:min(1000px,90%);
+      margin:60px auto 48px;
+      text-align:center;
+    }
+
+    .page-header span{
+      display:block;
+      font-size:11px;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      color:#7d8d98;
+      margin-bottom:10px;
+    }
+
+    .page-header h1{
+      font-family:'Cormorant Garamond', serif;
+      font-size:52px;
+      font-weight:600;
+      color:#2f3b4a;
+    }
+
+    .page-header p{
+      margin:14px auto 0;
+      max-width:620px;
+      font-size:15px;
+      color:#5f6f76;
+    }
+
+    /* WRAPPER */
+    .aquarium-wrapper{
+      width:min(1080px,90%);
+      margin:0 auto 90px;
+      display:flex;
+      flex-direction:column;
+      gap:42px;
+    }
+
+    /* INTRO */
+    .intro-box{
+      background:rgba(255,255,255,0.6);
+      border:1px solid rgba(47,59,74,0.1);
+      box-shadow:0 18px 45px rgba(47,59,74,0.07);
+      padding:38px 48px;
+      text-align:center;
+    }
+
+    .intro-box p{
+      max-width:720px;
+      margin:0 auto 14px;
+      font-size:15px;
+      color:#4f5f66;
+    }
+
+    /* SECTION */
+    .place-section{
+      background:rgba(255,255,255,0.72);
+      border:1px solid rgba(47,59,74,0.12);
+      box-shadow:0 18px 45px rgba(47,59,74,0.08);
+      padding:40px 42px 44px;
+    }
+
+    .place-title{
+      text-align:center;
+      margin-bottom:26px;
+    }
+
+    .place-title span{
+      display:block;
+      font-size:10px;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      color:#81919a;
+      margin-bottom:6px;
+    }
+
+    .place-title h2{
+      font-family:'Cormorant Garamond', serif;
+      font-size:38px;
+      font-weight:500;
+      color:#344154;
+    }
+
+    .place-title p{
+      margin-top:8px;
+      font-family:'Cormorant Garamond', serif;
+      font-size:20px;
+      font-style:italic;
+      color:#6f8188;
+    }
+
+    /* PHOTO GRID */
+    .photo-grid{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:12px;
+      margin-bottom:30px;
+    }
+
+    .photo-card{
+      background:#fff;
+      border:1px solid rgba(47,59,74,0.13);
+      padding:7px;
+      height:130px;
+      cursor:pointer;
+      transition:0.3s ease;
+    }
+
+    .photo-card:hover{
+      transform:translateY(-5px);
+      box-shadow:0 12px 28px rgba(47,59,74,0.12);
+    }
+
+    .photo-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    /* TEXT */
+    .place-note{
+      width:min(760px,92%);
+      margin:0 auto;
+      text-align:center;
+    }
+
+    .place-note p{
+      font-size:15px;
+      color:#4f5b55;
+      margin-bottom:14px;
+    }
+
+    .small-location{
+      margin-top:20px;
+      font-size:12px;
+      letter-spacing:1.5px;
+      text-transform:uppercase;
+      color:#81919a;
+    }
+
+    /* IMAGE MODAL */
+    .modal{
+      display:none;
+      position:fixed;
+      z-index:999;
+      inset:0;
+      background:rgba(20,30,38,0.82);
+      justify-content:center;
+      align-items:center;
+      padding:30px;
+    }
+
+    .modal img{
+      max-width:90%;
+      max-height:86vh;
+      background:#fff;
+      padding:10px;
+      box-shadow:0 18px 60px rgba(0,0,0,0.35);
+    }
+
+    .modal.active{
+      display:flex;
+    }
+
+    .close-btn{
+      position:absolute;
+      top:24px;
+      right:34px;
+      font-size:34px;
+      color:#fff;
+      cursor:pointer;
+      font-weight:300;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:768px){
+      .page-header h1{
+        font-size:40px;
+      }
+
+      .intro-box{
+        padding:30px 24px;
+      }
+
+      .place-section{
+        padding:32px 22px 36px;
+      }
+
+      .place-title h2{
+        font-size:32px;
+      }
+
+      .photo-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .photo-card{
+        height:135px;
+      }
+
+      .place-note{
+        text-align:left;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="top-nav">
+    <a href="healing.html">← Back to Healing Spaces</a>
+    <a href="index.html">Home</a>
+  </nav>
+
+  <header class="page-header">
+    <span>Healing Spaces</span>
+    <h1>Aquarium Notes</h1>
+    <p>
+      A quiet collection of blue light, slow movement,
+      and the peaceful feeling aquariums always leave with me.
+    </p>
+  </header>
+
+  <main class="aquarium-wrapper">
+
+    <section class="intro-box">
+      <p>
+        수족관에 가면 시간이 조금 느려지는 것 같다.
+        물빛, 유리 너머의 움직임, 조용히 떠다니는 생명들.
+      </p>
+      <p>
+        여행기에서는 장소의 이야기를 쓰고,
+        이곳에는 수족관이 나에게 주는 편안함만 작게 남겨두고 싶다.
+      </p>
+    </section>
+
+    <!-- SEATTLE -->
+    <section class="place-section">
+      <div class="place-title">
+        <span>Blue Memory 01</span>
+        <h2>Seattle Aquarium</h2>
+        <p>The city felt softer behind the water.</p>
+      </div>
+
+      <div class="photo-grid">
+        <div class="photo-card"><img src="Images/aquarium/seattle1.jpg" alt=""></div>
+        <div class="photo-card"><img src="Images/aquarium/seattle2.jpg" alt=""></div>
+        <div class="photo-card"><img src="Images/aquarium/seattle3.jpg" alt=""></div>
+        <div class="photo-card"><img src="Images/aquarium/seattle4.jpg" alt=""></div>
+        <div class="photo-card"><img src="Images/aquarium/seattle5.jpg" alt=""></div>
+      </div>
+
+      <div class="place-note">
+        <p>
+          시애틀의 수족관은 바깥의 도시와 바다가 자연스럽게 이어지는 느낌이었다.
+          차갑고 맑은 공기, 물빛, 그리고 조용한 움직임이 오래 기억에 남았다.
+        </p>
+        <p class="small-location">Seattle · USA</p>
+      </div>
+    </section>
+
+    <!-- LONDON -->
+    <section class="place-section">
+      <div class="place-title">
+        <span>Blue Memory 02</span>
+        <h2>London Aquarium</h2>
+        <p>A quiet pause in the middle of the city.</p>
+      </div>
+
+      <div class="photo-grid">
+        <div class="photo-card"><img src="Images/aquarium/london1.jpg" alt=""></div>
+        <div class="photo-card"><img src="Images/aquarium/london2.jpg" alt=""></div>
+        <div class="photo-card"><img src="Images/aquarium/london3.jpg" alt=""></div>
+        <div class="photo-card"><img src="Images/aquarium/london4.jpg" alt=""></div>
+        <div class="photo-card"><img src="Images/aquarium/london5.jpg" alt=""></div>
+      </div>
+
+      <div class="place-note">
+        <p>
+          런던의 복잡한 거리에서 잠시 벗어나,
+          어두운 물빛 안에 들어가 있는 시간이 좋았다.
+          수족관 안에서는 도시의 소리가 조금 멀어지는 것 같았다.
+        </p>
+        <p class="small-location">London · United Kingdom</p>
+      </div>
+    </section>
+
+    <!-- JAPAN -->
+    <section class="place-section japan-section">
+      <div class="place-title">
+        <span>Blue Memory 03</span>
+        <h2>Japan Aquariums</h2>
+        <p>Quietness moved like water.</p>
+      </div>
+
+      <div class="place-note intro-note">
+       <p>
+         일본의 수족관들은 도시마다 분위기가 조금씩 다르게 남아 있다.
+         어떤 곳은 바다 가까이에 있어서 더 넓게 느껴졌고,
+         어떤 곳은 조용한 전시실처럼 차분했다.
+       </p>
+      </div>
+
+      <!-- OGA -->
+      <div class="japan-aqua-block">
+         <h3>Oga Aquarium</h3>
+         <p class="mini-location">Oga · Akita</p>
+
+         <div class="photo-grid">
+           <div class="photo-card"><img src="Images/aquarium/oga1.jpg" alt=""></div>
+           <div class="photo-card"><img src="Images/aquarium/oga2.jpg" alt=""></div>
+           <div class="photo-card"><img src="Images/aquarium/oga3.jpg" alt=""></div>
+           <div class="photo-card"><img src="Images/aquarium/oga4.jpg" alt=""></div>
+           <div class="photo-card"><img src="Images/aquarium/oga5.jpg" alt=""></div>
+         </div>
+      </div>
+
+      <!-- SAGA -->
+      <div class="japan-aqua-block">
+        <h3>Saga Aquarium</h3>
+        <p class="mini-location">Saga · Japan</p>
+
+        <div class="photo-grid">
+         <div class="photo-card"><img src="Images/aquarium/saga1.jpg" alt=""></div>
+         <div class="photo-card"><img src="Images/aquarium/saga2.jpg" alt=""></div>
+         <div class="photo-card"><img src="Images/aquarium/saga3.jpg" alt=""></div>
+         <div class="photo-card"><img src="Images/aquarium/saga4.jpg" alt=""></div>
+         <div class="photo-card"><img src="Images/aquarium/saga5.jpg" alt=""></div>
+       </div>
+     </div>
+
+      <!-- OKINAWA -->
+      <div class="japan-aqua-block">
+         <h3>Okinawa Aquarium</h3>
+         <p class="mini-location">Okinawa · Japan</p>
+
+         <div class="photo-grid">
+          <div class="photo-card"><img src="Images/aquarium/okinawa1.jpg" alt=""></div>
+          <div class="photo-card"><img src="Images/aquarium/okinawa2.jpg" alt=""></div>
+          <div class="photo-card"><img src="Images/aquarium/okinawa3.jpg" alt=""></div>
+          <div class="photo-card"><img src="Images/aquarium/okinawa4.jpg" alt=""></div>
+          <div class="photo-card"><img src="Images/aquarium/okinawa5.jpg" alt=""></div>
+         </div>
+      </div>
+
+      <div class="place-note">
+          <p>
+            일본의 수족관들은 이상하게 더 조용하게 느껴진다.
+            빛도, 동선도, 사람들의 움직임도 차분해서
+            물속을 천천히 걷는 듯한 기분이 든다.
+          </p>
+          <p class="small-location">Japan · Oga · Saga · Okinawa</p>
+      </div>
+    </section>
+
+    <!-- MALAYSIA -->
+    <section class="place-section">
+      <div class="place-title">
+        <span>Blue Memory 04</span>
+        <h2>Malaysia Aquariums</h2>
+        <p>Familiar blue, close to everyday life.</p>
+      </div>
+
+      <div class="photo-grid">
+        <div class="photo-card"><img src="Images/aquarium/malaysia1.jpg" alt=""></div>
+        <div class="photo-card"><img src="Images/aquarium/malaysia2.jpg" alt=""></div>
+        <div class="photo-card"><img src="Images/aquarium/malaysia3.jpg" alt=""></div>
+        <div class="photo-card"><img src="Images/aquarium/malaysia4.jpg" alt=""></div>
+        <div class="photo-card"><img src="Images/aquarium/malaysia5.jpg" alt=""></div>
+      </div>
+
+      <div class="place-note">
+        <p>
+          말레이시아에서 만나는 수족관은 조금 더 익숙하고 편안하다.
+          멀리 떠나지 않아도 잠시 다른 세계에 들어갔다 나오는 느낌이 있다.
+        </p>
+        <p class="small-location">Malaysia · Kuala Lumpur</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL -->
+  <div class="modal" id="imageModal">
+    <span class="close-btn" id="closeModal">&times;</span>
+    <img id="modalImage" src="" alt="">
+  </div>
+
+  <script>
+    const photoCards = document.querySelectorAll('.photo-card img');
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const closeModal = document.getElementById('closeModal');
+
+    photoCards.forEach(photo => {
+      photo.addEventListener('click', () => {
+        modal.classList.add('active');
+        modalImage.src = photo.src;
+      });
+    });
+
+    closeModal.addEventListener('click', () => {
+      modal.classList.remove('active');
+      modalImage.src = '';
+    });
+
+    modal.addEventListener('click', (e) => {
+      if(e.target === modal){
+        modal.classList.remove('active');
+        modalImage.src = '';
+      }
+    });
+  </script>
+
+</body>
+</html>

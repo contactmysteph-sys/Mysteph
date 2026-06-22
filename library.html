@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Library Notes | Healing Spaces</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Inter', sans-serif;
+      background:#f4efe7;
+      color:#2f3b4a;
+      line-height:1.8;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .top-nav{
+      width:min(1050px,90%);
+      margin:28px auto 0;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      font-size:13px;
+      letter-spacing:1.5px;
+      text-transform:uppercase;
+      color:#6f7885;
+    }
+
+    .page-wrap{
+      width:min(900px,90%);
+      margin:60px auto 90px;
+    }
+
+    .page-header{
+      text-align:center;
+      margin-bottom:42px;
+    }
+
+    .page-header span{
+      display:block;
+      font-size:11px;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      color:#8c938d;
+      margin-bottom:10px;
+    }
+
+    .page-header h1{
+      font-family:'Cormorant Garamond', serif;
+      font-size:50px;
+      font-weight:600;
+    }
+
+    .page-header p{
+      margin-top:12px;
+      font-size:15px;
+      color:#6c746f;
+    }
+
+    .journal-card{
+      background:rgba(255,255,255,0.72);
+      border:1px solid rgba(47,59,74,0.12);
+      box-shadow:0 18px 45px rgba(47,59,74,0.08);
+      padding:42px;
+      margin-bottom:34px;
+    }
+
+    .photo-row{
+      display:grid;
+      grid-template-columns:2fr 1fr 1fr;
+      gap:12px;
+      margin-bottom:32px;
+    }
+
+    .photo-row img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+      background:#fff;
+      padding:8px;
+      border:1px solid rgba(47,59,74,0.12);
+    }
+
+    .photo-row img:first-child{
+      height:300px;
+    }
+
+    .journal-text{
+      width:min(700px,95%);
+      margin:0 auto;
+      text-align:center;
+    }
+
+    .journal-text h2{
+      font-family:'Cormorant Garamond', serif;
+      font-size:32px;
+      font-weight:500;
+      margin-bottom:18px;
+    }
+
+    .journal-text p{
+      font-size:15px;
+      color:#4f5b55;
+      margin-bottom:16px;
+    }
+
+    .date-note{
+      margin-top:20px;
+      font-size:12px;
+      letter-spacing:1.5px;
+      text-transform:uppercase;
+      color:#8c938d;
+    }
+
+    .add-note{
+      border:1px dashed rgba(47,59,74,0.25);
+      padding:28px;
+      text-align:center;
+      color:#8c938d;
+      font-size:14px;
+    }
+
+    @media(max-width:768px){
+      .page-header h1{
+        font-size:40px;
+      }
+
+      .journal-card{
+        padding:28px 22px;
+      }
+
+      .photo-row{
+        grid-template-columns:1fr;
+      }
+
+      .photo-row img,
+      .photo-row img:first-child{
+        height:240px;
+      }
+
+      .journal-text{
+        text-align:left;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="top-nav">
+    <a href="healing.html">← Back to Healing Spaces</a>
+    <a href="index.html">Home</a>
+  </nav>
+
+  <main class="page-wrap">
+
+    <header class="page-header">
+      <span>Healing Spaces</span>
+      <h1>Library Notes</h1>
+      <p>Small memories of books, quiet shelves, and places where time slows down.</p>
+    </header>
+
+    <section class="journal-card">
+
+      <div class="photo-row">
+        <img src="Images/library/library1.jpg" alt="">
+        <img src="Images/library/library2.jpg" alt="">
+        <img src="Images/library/library3.jpg" alt="">
+      </div>
+
+      <div class="journal-text">
+        <h2>Why I like libraries</h2>
+
+        <p>
+          서점과 도서관에 가면 이상하게 마음이 차분해진다.
+          꼭 책을 많이 읽지 않아도, 책등이 나란히 놓인 풍경만으로도
+          잠시 생각이 정리되는 기분이 든다.
+        </p>
+
+        <p>
+          조용한 조명, 낮은 발소리, 오래 머물러도 괜찮은 분위기.
+          그런 공간들이 나에게는 작은 쉼표처럼 느껴진다.
+        </p>
+
+        <p class="date-note">
+          Bookstores · Libraries · Quiet Shelves
+        </p>
+      </div>
+
+    </section>
+
+    <section class="add-note">
+      Later Journal Entry
+    </section>
+
+  </main>
+
+</body>
+</html>

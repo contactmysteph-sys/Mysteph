@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Small Wonders</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:#f6f5f2;
+  font-family:'Montserrat', sans-serif;
+  color:#2d3e52;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+.back-wrap{
+  width:min(1120px,90%);
+  margin:28px auto 0;
+}
+
+.back-link{
+  font-size:11px;
+  letter-spacing:1.0px;
+  text-transform:uppercase;
+  color:#232831;
+}
+
+
+/* HERO */
+.hero{
+  width:100%;
+  height:30vh;
+  background-image:url("Images/Logo/dailybanner.png");
+  background-size:cover;
+  background-position:center;
+  border-bottom-left-radius:12px;
+  border-bottom-right-radius:12px;
+}
+
+/* INTRO */
+
+.back-link{
+  font-size:11px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:#232831;
+  transition:0.3s;
+  margin-left:60px ;
+}
+
+.back-link:hover{
+  color:#31476E;
+}
+
+.intro{
+  text-align:center;
+  padding:24px 10px 34px;
+}
+
+.intro h1{
+  font-family:'Cormorant Garamond', serif;
+  font-size:26px;
+  font-weight:600;
+  color:#31476E;
+  letter-spacing:4px;
+  margin-bottom:6px;
+}
+
+.intro p{
+  font-size:11px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#7d8896;
+}
+
+/* MAIN */
+.main-layout{
+  width:min(1180px,92%);
+  margin:0 auto 52px;
+  display:grid;
+  grid-template-columns:1.15fr 0.85fr;
+  gap:26px;
+  align-items:start;
+}
+
+/* LEFT POST */
+.post-area{
+  background:rgba(255,255,255,0.64);
+  border-radius:28px;
+  padding:50px;
+  border:1px solid rgba(255,255,255,0.7);
+  box-shadow:0 14px 35px rgba(0,0,0,0.05);
+}
+
+.slider{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  border-radius:16px;
+  margin-bottom:18px;
+}
+
+.slide-track{
+  display:flex;
+  transition:transform 0.5s ease;
+}
+
+.slide{
+  min-width:100%;
+}
+
+.slide img{
+  width:100%;
+  height:400px;
+  object-fit:cover;
+  display:block;
+  border-radius:16px;
+}
+
+.slide-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:36px;
+  height:36px;
+  border:none;
+  border-radius:50%;
+  background:rgba(255,255,255,0.78);
+  color:#858687;
+  cursor:pointer;
+  font-size:22px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.12);
+}
+
+.prev{ left:14px; }
+.next{ right:14px; }
+
+.dots{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin:14px 0 34px;
+}
+
+.dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#b8c0ca;
+  cursor:pointer;
+}
+
+.dot.active{
+  background:#31476E;
+}
+
+.post-meta{
+  font-size:10px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#8a96a5;
+  margin-bottom:20px;
+}
+
+.post-title{
+  font-family:'Cormorant Garamond', serif;
+  font-size:20px;
+  font-weight:600;
+  color:#243d68;
+  margin-bottom:10px;
+}
+
+.post-body p{
+  font-size:13px;
+  line-height:1.8;
+  color:#354a68;
+  margin-bottom:12px;
+}
+
+/* RIGHT CARDS */
+.side-area{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.side-card{
+  background:rgba(255,255,255,0.68);
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.75);
+  box-shadow:0 12px 30px rgba(0,0,0,0.06);
+  cursor:pointer;
+  transition:0.3s ease;
+}
+
+.side-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 18px 38px rgba(0,0,0,0.1);
+}
+
+.side-card img{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  display:block;
+}
+
+.side-content{
+  padding:18px;
+}
+
+.side-content span{
+  display:block;
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#9aa4af;
+  margin-bottom:2px;
+}
+
+.side-content h3{
+  font-family:'Cormorant Garamond', serif;
+  font-size:18px;
+  color:#181c24;
+  margin-bottom:4px;
+}
+
+.read-more{
+  display:inline-block;
+  margin-top:10px;
+
+  font-size:10px;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
+
+  color:#31476E;
+  border-bottom:1px solid #31476E;
+  padding-bottom:2px;
+}
+
+/* PHOTO INDEX */
+
+.index-section{
+  width:min(1180px,92%);
+  margin:0 auto 90px;
+
+  background:rgba(255,255,255,0.62);
+  border-radius:26px;
+  padding:30px;
+
+  border:1px solid rgba(255,255,255,0.7);
+  box-shadow:0 14px 35px rgba(0,0,0,0.05);
+}
+
+.index-title{
+  font-family:'Cormorant Garamond', serif;
+  font-size:18px;
+  font-weight:600;
+  color:#202837;
+  margin-bottom:14px;
+}
+
+.archive-nav{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:20px;
+  margin-top:30px;
+}
+
+.archive-nav button{
+  border:none;
+  background:none;
+  font-size:12px;
+  cursor:pointer;
+  color:#5d6b82;
+  transition:0.3s;
+}
+
+.archive-nav button:hover{
+  transform:translateY(-2px);
+  color:#2f3b4a;
+}
+
+#page-number{
+  font-size:11px;
+  letter-spacing:2px;
+  color:#8c95a5;
+}
+
+
+.index-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:0 40px;
+}
+
+
+.archive-item{
+    display:flex;
+    align-items:center;
+    gap:16px;
+ 
+    padding:12px 0;
+
+    border-bottom:1px solid rgba(49,71,110,0.1);
+ 
+}
+
+.archive-item span{
+  font-size:10px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:#9aa4af;
+  white-space:nowrap;
+}
+
+.archive-left{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  min-width:0;
+}
+
+.archive-thumb{
+  width:55px;
+  height:40px;
+
+  object-fit:cover;
+
+  border-radius:8px;
+
+  flex-shrink:0;
+}
+
+.archive-item h3{
+  font-family:'Cormorant Garamond', serif;
+  font-size:14px;
+  font-weight:600;
+  color:#31476E;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+
+  .main-layout{
+    grid-template-columns:1fr;
+  }
+
+  .post-area,
+  .side-area,
+  .index-section{
+    width:92%;
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .slide img{
+    height:230px;
+  }
+
+  .index-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:650px){
+
+  body{
+    overflow-x:hidden;
+  }
+
+  .hero{
+    height:130px;
+    background-size:contain;
+    background-position:center top;
+    background-repeat:no-repeat;
+  }
+
+  .back-wrap{
+    width:100%;
+    margin:0 auto;
+  }
+
+  .back-link{
+    display:block;
+    width:fit-content;
+    margin:0 0 12px 22px;
+    font-size:9px;
+    letter-spacing:1.2px;
+  }
+
+  .intro{
+    width:100%;
+    padding:8px 10px 14px;
+    text-align:center;
+  }
+
+  .intro h1{
+    font-size:17px;
+    letter-spacing:2px;
+    margin-bottom:0;
+  }
+
+  .intro p{
+    display:none;
+  }
+
+  /* 핵심 수정 */
+  .post-area{
+    width:92%;
+    max-width:none;
+    margin:0 auto 26px;
+    padding:32px 24px 34px;
+    border-radius:22px;
+    box-sizing:border-box;
+  }
+
+ .slider{
+    width:100%;
+    margin:0 auto 26px;
+  }
+
+ .slide-btn{
+    
+    transform:translateY(-50%);
+    width:14px;
+    height:14px;
+    border:none;
+    background:transparent;
+    color:none;
+    cursor:pointer;
+    font-size:12px;
+    box-shadow:0; 
+  }
+
+  .prev{ left:10px; }
+  .next{ right:10px; }
+
+
+
+ .slide img{
+   width:100%;
+   height:230px;
+   object-fit:cover;
+   border-radius:14px;
+   display:block;
+  }
+
+  /* 글 영역 전체 정렬 */
+  .post-meta,
+  .post-title,
+  .post-subtitle,
+  .post-body{
+    width:100%;
+    margin-left:0;
+    margin-right:0;
+    padding:0;
+    box-sizing:border-box;
+  }
+
+ .post-meta{
+   font-size:9px;
+   letter-spacing:3px;
+   margin-top:22px;
+   margin-bottom:14px;
+  }
+
+ .post-title{
+   font-size:17px;
+   line-height:1.35;
+   margin-bottom:6px;
+  }
+
+ .post-subtitle{
+   font-size:11px;
+   line-height:1.5;
+   margin-bottom:10px;
+  }
+
+ .post-body p{
+   width:100%;
+   font-size:11px;
+   line-height:1.65;
+   margin:0 0 8px 0;
+   padding:0;
+  }
+
+ /* 아래 카드들 */
+ .index-section{
+   width:92%;
+   max-width:none;
+   margin:0 auto 50px;
+   padding:0;
+   background:transparent;
+   box-shadow:none;
+   border:none;
+  }
+
+ .index-grid{
+   grid-template-columns:1fr;
+   gap:14px;
+  }
+
+ .index-card,
+ .place-card,
+ .food-card{
+   width:100%;
+   margin:0 auto;
+  }
+
+ .index-card img,
+ .place-card img,
+ .food-card img{
+   width:100%;
+   display:block;
+   object-fit:cover;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero"></section>
+
+<!-- BACK BUTTON -->
+<div class="back-wrap">
+  <a href="index.html" class="back-link">
+    ← Back to Home
+  </a>
+</div>
+
+<section class="intro">
+  <h1>Small Wonders</h1>
+  <p>tiny moments collected along the way</p>
+</section>
+
+<main class="main-layout">
+
+  <!-- LEFT POST -->
+  <section class="post-area">
+
+    <div class="slider">
+      <div class="slide-track" id="slideTrack"></div>
+
+      <button class="slide-btn prev" onclick="moveSlide(-1)">‹</button>
+      <button class="slide-btn next" onclick="moveSlide(1)">›</button>
+    </div>
+
+    <div class="dots" id="dots"></div>
+
+    <article class="post-note">
+      <div class="post-meta" id="postDate"></div>
+      <h2 class="post-title" id="postTitle"></h2>
+      <div class="post-body" id="postBody"></div>
+    </article>
+
+  </section>
+
+  <!-- RIGHT CARDS -->
+  <aside class="side-area">
+
+    <article class="side-card">
+      <img src="Images/small/fine/graze5.jpg" alt="Fine Dining">
+
+      <div class="side-content">
+        <span>Favorite Places</span>
+        <h3>Fine Dining</h3>
+
+        <a href="fine.html" class="read-more">Read More</a>
+      </div>
+    </article>
+
+    <article class="side-card">
+      <img src="Images/small/like/bh3.jpg" alt="Places I Like">
+
+      <div class="side-content">
+        <span>Quiet Corners</span>
+        <h3>Places I Like</h3>
+
+        <a href="like.html" class="read-more">Read More</a>
+      </div>
+    </article>
+   
+  </aside>
+
+</main>
+
+<!-- PHOTO INDEX -->
+<section class="index-section">
+  <h2 class="index-title">Archive</h2>
+  <div class="index-grid">
+
+    <div class="archive-column" id="left-column"></div>
+
+    <div class="archive-column" id="right-column"></div>
+
+  </div>
+
+  <div class="archive-nav">
+
+     <button onclick="prevIndexPage()">
+       ← Newer
+     </button>
+
+     <button onclick="nextIndexPage()">
+       Older →
+     </button>
+
+  </div>
+</section>
+
+
+<script>
+const posts = [
+  
+  {
+    date: "2026-06-15",
+    title: "Something Swimming in the Clouds",
+    images: [
+      "Images/small/c3.jpg",
+      "Images/small/c2.jpg",
+      "Images/small/c1.jpg"
+    ],
+    body: `
+      <p>A Squid in the Evening Sky</p>
+      <p>매일 새로운 하늘과 구름을 보지만 오늘의 구름은 특별했다.</p>
+      <p></p>
+      <p></p>
+      <p></p>
+
+    `
+  },
+  {
+    date: "2026-04-20",
+    title: "Clouds That Made Me Look Up",
+    images: [
+      "Images/small/s22.jpg",
+      "Images/small/s24.jpg",
+      "Images/small/s23.jpg"
+    ],
+    body: `솜사탕 구름.
+      <p>클리닉 다녀 오는 길.</p>
+      <p>구름 모양 하나가 하루를 조금 부드럽게 만들었다.</p>
+    `
+  },
+  {
+    date: "2022-10-14",
+    title: "A Moon at Daybreak",
+    images: [
+      "Images/small/2210moon1.jpg",
+      "Images/small/2210moon2.jpg",
+      "Images/small/22oct3.jpg",
+    ],
+    body: `
+      <p>새벽에만 볼 수 있는 행운.</p>
+      <p>이렇게 선명하게 찍기가 쉽지 않다.</p>
+    `
+  },
+  {
+    date: "2022-10-21",
+    title: "Celebrating Lyness",
+    images: [
+      "Images/small/ole5.jpg",
+      "Images/small/ole4.png",
+      "Images/small/ole6.jpg",
+    ],
+    body: `
+      <p>A celebration with friends who made my life abroad feel a little more like home..</p>
+      <p>Ole Ole Bali.</p>
+    `
+  },
+  {
+    date: "2022-11-27",
+    title: "A Cat at Melawati LRT Station",
+    images: [
+      "Images/small/sc1.jpg",
+      "Images/small/sc2.jpg",
+    ],
+    body: `
+      <p>시내에 다녀 오는 길에 역에서 만난 고양이.</p>
+      <p>이 나라에서는 어디서나 고양이를 볼 수 있는데, 길냥이 같지도 않다.</p>
+    `
+  },
+  {
+    date: "2026-05-13",
+    title: "Today",
+    images: [
+      "Images/small/s34.jpg",
+      "Images/small/s32.jpg",
+      "Images/small/s30.jpg"
+    ],
+    body: `
+      <p>나를 차분하게 하는 하늘.</p>
+    `
+  },
+  {
+    date: "2026-04-23",
+    title: "Fluffy Clouds",
+    images: [
+      "Images/small/april10.jpg",
+      "Images/small/s10.jpg",
+      "Images/small/s5.jpg",
+    ],
+    body: `
+      <p>동동구름 몽글몽글.</p>
+    `
+  },
+  {
+    date: "2026-04-20",
+    title: "Jibby East",
+    images: [
+      "Images/small/s8.jpg",
+      "Images/small/s9.jpg",
+    ],
+    body: `
+      <p>걸어서 5분 거리에 있는 Cafe.</p>
+    `
+  },
+
+  {
+    date: "2019-10-25",
+    title: "VIVO Midvalley",
+    images: [
+      "Images/small/vivo1.jpg",
+      "Images/small/vivo2.jpg",
+      "Images/small/vivo3.jpg",
+    ],
+    body: `
+      <p>My First Home in Malaysia</p>
+    `
+  },
+
+  {
+    date: "2025-10-28",
+    title: "Soft Evening Light",
+    images: [
+      "Images/small/2510ss1.jpg",
+      "Images/small/2510ss2.jpg",
+      "Images/small/2510ss3.jpg",
+    ],
+    body: `
+      <p>Soft Evening Light.</p>
+    `
+  },
+
+  {
+    date: "2026",
+    title: "Hidden Corners",
+    images: [
+      "Images/small/s21.jpg",
+      "Images/small/s22.jpg",
+      "Images/small/s23.jpg"
+    ],
+    body: `
+      <p>익숙한 길에서도 가끔은 처음 보는 장면을 만난다.</p>
+    `
+  },
+
+];
+
+posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+let currentPost = 0;
+let currentSlide = 0;
+
+let currentPage = 1;
+const postsPerPage = 10;
+
+const slideTrack = document.getElementById("slideTrack");
+const dotsWrap = document.getElementById("dots");
+
+function showPost(index){
+  currentPost = index;
+  currentSlide = 0;
+
+  const post = posts[index];
+
+  document.getElementById("postDate").innerText =
+    post.displayDate || post.date;
+
+  document.getElementById("postTitle").innerText = post.title;
+  document.getElementById("postBody").innerHTML = post.body;
+
+  renderSlides(post.images);
+  renderIndex();
+  updateSlide();
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+function renderSlides(images){
+  slideTrack.innerHTML = "";
+  dotsWrap.innerHTML = "";
+
+  images.forEach((image, index) => {
+    slideTrack.innerHTML += `
+      <div class="slide">
+        <img src="${image}" alt="" loading="lazy">
+      </div>
+    `;
+
+    dotsWrap.innerHTML += `
+      <span class="dot" onclick="goSlide(${index})"></span>
+    `;
+  });
+}
+
+function updateSlide(){
+  const dots = document.querySelectorAll(".dot");
+
+  slideTrack.style.transform =
+    `translateX(-${currentSlide * 100}%)`;
+
+  dots.forEach(dot => dot.classList.remove("active"));
+
+  if(dots[currentSlide]){
+    dots[currentSlide].classList.add("active");
+  }
+}
+
+function moveSlide(step){
+  const totalSlides = posts[currentPost].images.length;
+
+  currentSlide += step;
+
+  if(currentSlide < 0){
+    currentSlide = totalSlides - 1;
+  }
+
+  if(currentSlide >= totalSlides){
+    currentSlide = 0;
+  }
+
+  updateSlide();
+}
+
+function goSlide(index){
+  currentSlide = index;
+  updateSlide();
+}
+
+function renderIndex(){
+  const leftColumn = document.getElementById("left-column");
+  const rightColumn = document.getElementById("right-column");
+
+  leftColumn.innerHTML = "";
+  rightColumn.innerHTML = "";
+
+  const start = (currentPage - 1) * postsPerPage;
+  const end = start + postsPerPage;
+
+  const visiblePosts = posts.slice(start, end);
+
+  visiblePosts.forEach((post, i) => {
+    const realIndex = start + i;
+
+    const item = `
+      <div class="archive-item" onclick="showPost(${realIndex})">
+
+        <div class="archive-left">
+          <img src="${post.images[0]}"
+               alt="${post.title}"
+               class="archive-thumb">
+
+          <h3>${post.title}</h3>
+        </div>
+
+        <span>${post.displayDate || post.date}</span>
+
+      </div>
+    `;
+
+    if(i < 5){
+      leftColumn.innerHTML += item;
+    } else {
+      rightColumn.innerHTML += item;
+    }
+  });
+}
+
+function nextIndexPage(){
+  const maxPage = Math.ceil(posts.length / postsPerPage);
+
+  if(currentPage < maxPage){
+    currentPage++;
+    renderIndex();
+  }
+}
+
+function prevIndexPage(){
+  if(currentPage > 1){
+    currentPage--;
+    renderIndex();
+  }
+}
+
+renderIndex();
+showPost(0);
+</script>
+
+</body>
+</html>

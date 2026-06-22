@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Gallery | Stephanie</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:2px;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Inter', sans-serif;
+      color:#2f3b4a;
+      background:
+        linear-gradient(rgba(160, 161, 186, 0.88), rgba(125, 125, 134, 0.88));
+      background-size:cover;
+      background-attachment:fixed;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+    
+
+    /* =========================
+       BACK BUTTON
+    ========================== */
+
+   .back-wrapper{
+      width:min(1120px,90%);
+      padding-top:22px;
+      margin:0 auto 10px;
+      text-align:left;
+    }
+
+   .back-btn{
+      display:inline-block;
+      font-size:11px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      color:#f8fafd;
+
+      padding-bottom:4px;
+      transition:0.3s ease;
+    }
+
+    .back-btn:hover{
+      opacity:0.7;
+      transform:translateX(-4px);
+    }
+
+    /* INTRO */
+    .intro{
+      text-align:center;
+      width:min(760px,88%);
+      margin:0 auto 15px;
+      margin-top:2px;
+    }
+
+    .intro h2{
+      font-family:'Cormorant Garamond', serif;
+      font-size:30px;
+      font-weight:600;
+      margin-bottom:5px;
+    }
+
+    .intro p{
+      font-size:14px;
+      line-height:1.4;
+      color:#2f3439;
+    }
+
+    /* CATEGORY SECTION */
+    .gallery-wrapper{
+      width:min(1180px,90%);
+      margin:0 auto 12px;
+      padding:20px;
+      box-shadow:0 25px 70px rgba(205, 207, 208, 0.13);
+    }
+
+    .section-label{
+      font-family:'Caveat', cursive;
+      font-size:24px;
+      color:#506275;
+      margin-bottom:30px;
+      text-align:center;
+    }
+
+    .category-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:20px;
+    }
+
+    .category-card{
+      display:grid;
+      grid-template-columns:60% 40%;
+      background:rgb(210, 211, 211);
+      min-height:200px;
+      box-shadow:0 12px 20px rgba(178, 179, 181, 0.08);
+      overflow:hidden;
+      transition:0.35s ease;
+    }
+
+    .category-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 18px 38px rgba(187, 198, 211, 0.14);
+    }
+
+    .category-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .category-info{
+      padding:28px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+
+    .category-info span{
+      font-size:10px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      color:#9aa3ad;
+      margin-bottom:8px;
+    }
+
+    .category-info h3{
+      font-family:'Cormorant Garamond', serif;
+      font-size:20px;
+      font-weight:600;
+      color:#2f3b4a;
+      margin-bottom:10px;
+      line-height:1.1;
+    }
+
+    .category-info p{
+      font-size:11px;
+      line-height:1.7;
+      color:#687383;
+      margin-bottom:16px;
+    }
+
+    .category-info a{
+      font-size:11px;
+      letter-spacing:1.5px;
+      text-transform:uppercase;
+      color:#31516a;
+      font-weight:600;
+    }
+
+    .notes-box{
+      margin-top:20px;
+      padding:10px;
+      background:#b6b7b8;
+      border-left:4px solid #506275;
+      margin-bottom:0px;
+    }
+
+    .notes-box h3{
+      font-family:'Cormorant Garamond', serif;
+      font-size:20px;
+      margin-bottom:12px;
+      color:#2f3b4a;
+    }
+
+    .notes-box p{
+      font-size:12px;
+      line-height:1.2;
+      color:#657181;
+    }
+
+    /* FOOTER */
+    footer{
+      margin-top: 0;
+      padding:10px 0 18px;
+      text-align:center;
+      font-size:12px;
+      color:#363737;
+    }
+
+    @media(max-width:560px){
+
+    .gallery-wrapper{
+      padding:14px 14px 24px;
+
+    }
+
+    .back-wrapper{
+      width:95%;
+      padding-top:10px;
+      margin:0 auto 6px;
+    }
+
+    .back-btn{
+      text-decoration:none;
+      border:none;
+      box-shadow:none;
+      font-size:8px;
+      letter-spacing:1px;
+    }
+
+    .intro{
+      margin:0 auto 0;
+      padding:0;
+    }
+
+   .intro h2{
+      font-size:24px;
+      margin:0;
+      line-height:1;
+      letter-spacing: 3px;
+      margin-bottom:0 !important;
+    }
+
+   .intro p{
+     display:none;
+    }
+
+   .section-label{
+     font-size:18px;
+     margin-top:0 !important;
+     margin-bottom:10px;
+     line-height:1;
+    }
+ 
+    .category-grid{
+      grid-template-columns:repeat(2, 1fr);
+      gap:10px;
+    }
+
+    .category-card{
+      grid-template-columns:1fr;
+      grid-template-rows:75% 25%;
+      background:#f4f4f2;
+    }
+
+    .category-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .category-info{
+      padding:10px 12px;
+    }
+
+    .category-info h3{
+      font-size:12px;
+      margin-bottom:10px;
+      line-height:1.1;
+    }
+
+    .category-info p{
+      display:none;
+    }
+
+    .category-info span{
+      display: none;
+    }
+
+    .category-info a{
+      font-size:8px;
+      color: #828280;
+      font-weight: 400;
+      margin-top:0.5px;
+
+    }
+
+    .notes-box{
+     display: none; 
+    }
+  }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+
+  <!-- BACK -->
+    <div class="back-wrapper">
+       <a href="index.html" class="back-btn">← Back to Home</a>
+    </div>
+
+  <!-- INTRO -->
+  <section class="intro">
+    <h2>Gallery</h2>
+    <p>
+      A quiet album of travels, everyday moments,
+      drawings, works, books, and small memories.
+    </p>
+  </section>
+
+  <!-- GALLERY CATEGORIES -->
+  <section class="gallery-wrapper">
+
+    <div class="section-label">Categories</div>
+
+    <div class="category-grid">
+
+      <div class="category-card">
+        <img src="Images/sunset1.png" alt="Everyday moments">
+
+        <div class="category-info">
+          <span>ordinary beauty</span>
+          <h3>Everyday Moments</h3>
+          <p>
+            Small scenes from daily life,
+            and quiet little discoveries.
+          </p>
+          <a href="small.html">View Album →</a>
+        </div>
+      </div>
+
+      <div class="category-card">
+        <img src="Images/EU/london.jpg" alt="Travel collection">
+
+        <div class="category-info">
+          <span>wandering with steph</span>
+          <h3>Travel Collection</h3>
+          <p>
+            Places I have visited,
+            cities I remember,
+            and photographs collected along the way.
+          </p>
+          <a href="collect.html">View Album →</a>
+        </div>
+      </div>
+
+      <div class="category-card">
+        <img src="Images/Menu/paint.png" alt="Canvas and works">
+
+        <div class="category-info">
+          <span>space being</span>
+          <h3>Canvas & Works</h3>
+          <p>
+            Drawings, paintings, handmade pieces,
+            wood, color, and the slow process of making.
+          </p>
+          <a href="painting.html">View Album →</a>
+        </div>
+      </div>
+
+      <div class="category-card">
+        <img src="Images/healing.jpg" alt="Healing spaces">
+
+        <div class="category-info">
+          <span>soft places</span>
+          <h3>Healing Spaces</h3>
+          <p>
+            Calm rooms, peaceful corners,
+            spaces that make me feel rested.
+          </p>
+          <a href="healing.html">View Album →</a>
+        </div>
+      </div>
+
+      <div class="category-card">
+        <img src="Images/hp.jpg" alt="Working days in Malaysia">
+
+        <div class="category-info">
+          <span>malaysia days</span>
+          <h3>Working Days in Malaysia</h3>
+          <p>
+            Work days, small routines, and moments from living in Malaysia.
+          </p>
+          <a href="hp.html">View Album →</a>
+        </div>
+      </div>
+
+      <article class="category-card ebook-card">
+        <img src="Images/ebook4.png" alt="Mindful moments">
+
+        <div class="category-info">
+          <span>books & quiet thoughts</span>
+          <h3>Mindful Moments</h3>
+          <p>
+            Short essays, quiet pages,books.
+          </p>
+          <a href="ebook.html">View ebook →</a>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="notes-box">
+      <h3>Notes</h3>
+      <p>
+        This gallery is not only for travel photos.
+        It is a soft album for the things I see, make,
+        remember, write, and quietly keep.
+      </p>
+    </div>
+
+  </section>
+
+  <footer>
+    © Stephanie's Quiet Album
+  </footer>
+
+</body>
+</html>

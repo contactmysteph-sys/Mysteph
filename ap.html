@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Collected Moments</title>
+
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+
+      background:
+      linear-gradient(
+        rgba(246,245,242,0.95),
+        rgba(246,245,242,0.95)
+      );
+
+      background-size:cover;
+      background-attachment:fixed;
+
+      font-family:'Montserrat', sans-serif;
+
+      color:#2d3e52;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    img{
+      width:100%;
+      display:block;
+    }
+
+
+    /* =========================
+       BACK BUTTON
+    ========================== */
+
+   .back-wrapper{
+      width:min(1120px,90%);
+      margin:22px auto 10px;
+      text-align:left;
+    }
+
+   .back-btn{
+      display:inline-block;
+      font-size:11px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      color:#31476E;
+      border-bottom:1px solid #31476E;
+      padding-bottom:4px;
+      transition:0.3s ease;
+    }
+
+    .back-btn:hover{
+      opacity:0.7;
+      transform:translateX(-4px);
+    }
+
+    /* =========================
+       INTRO
+    ========================== */
+
+    .intro{
+      text-align:center;
+      padding:30px 10px 50px;
+    }
+
+    .intro h1{
+      font-family:'Cormorant Garamond', serif;
+      font-size:30px;
+      font-weight:600;
+      color:#31476E;
+      margin-bottom:12px;
+    }
+
+    .intro p{
+      font-size:11px;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      color:#7d8896;
+    }
+
+    /* =========================
+       MAIN LAYOUT
+    ========================== */
+
+    .main-layout{
+
+      width:min(1450px,90%);
+      margin:auto;
+
+      display:grid;
+      grid-template-columns:48% 52%;
+
+      gap:40px;
+
+      align-items:start;
+
+      margin-bottom:60px;
+    }
+
+    /* =========================
+       FEATURED POST
+    ========================== */
+
+    .featured-image {
+      position:relative;
+      width:100%;
+      height:280px;
+      overflow:hidden;
+      border-radius:8px;
+      margin-bottom:24px;
+      
+    }
+
+    .featured-image .slide{
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:0;
+      transition:opacity 4s ease;
+    }
+
+    .featured-image .slide.active{
+      opacity:1;
+    }
+
+    .featured-info span{
+      font-size:10px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      color:#8a94a3;
+    }
+
+    .featured-info h2{
+      font-family:'Cormorant Garamond', serif;
+      font-size:20px;
+      font-weight:600;
+      line-height:1.15;
+      margin:14px 0 18px;
+      color:#31476E;
+    }
+
+    .featured-info p{
+      font-size:15px;
+      line-height:1.9;
+      color:#566171;
+      max-width:540px;
+    }
+
+    .featured-image img{
+      height:280px;
+    }
+
+    .read-more{
+      display:inline-block;
+      margin-top:24px;
+      font-size:11px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      border-bottom:1px solid #31476E;
+      padding-bottom:5px;
+      transition:0.3s ease;
+    }
+
+    .read-more:hover{
+      opacity:0.6;
+    }
+
+    /* =========================
+       REGION SECTION
+    ========================== */
+
+    .region-title{
+      margin-bottom:10px;
+    }
+
+    .region-title h3{
+      font-family:'Cormorant Garamond', serif;
+      font-size:24px;
+      font-weight:700;
+      color:#31476E;
+      margin-bottom:10px;
+    }
+
+    .region-title p{
+      font-size:12px;
+      line-height:1.4;
+      color:#7d8896;
+    }
+
+    .region-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+
+    .region-card{
+      position:relative;
+      height:120px;
+      border-radius:8px;
+      overflow:hidden;
+    }
+
+    .region-card img{
+      height:100%;
+      object-fit:cover;
+      transition:0.6s ease;
+    }
+
+    .region-card:hover img{
+      transform:scale(1.05);
+    }
+
+    .region-overlay{
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,0.28);
+      display:flex;
+      align-items:flex-end;
+      padding:12px;
+    }
+
+    .region-overlay h4{
+      color:white;
+      font-family:'Cormorant Garamond', serif;
+      font-size:20px;
+      font-weight:500;
+      letter-spacing:1px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================== */
+
+    @media(max-width:900px){
+
+      .main-layout{
+
+        grid-template-columns:1fr;
+        gap:70px;
+      }
+
+      .featured-image img{
+
+        height:300px;
+      }
+    }
+
+    @media(max-width:600px){
+
+      .back-wrapper{
+       margin:0;
+       text-align:left;
+      }
+
+      .back-btn{
+       display:inline-block;
+       font-size:8px;
+       letter-spacing:0.5px;
+       border-bottom:none;
+       padding-bottom:0;
+       margin-top: 10px;
+      }
+
+      .intro{
+        padding:20px 10px 30px;
+      }
+
+      .intro h1{
+        font-size:20px;
+      }
+
+      .intro p{
+        font-size:8px;
+      }
+
+      .featured-info span{
+        font-size:10px;
+        letter-spacing:1px;
+      }
+
+      .featured-info h2{
+       font-size:14px;
+       line-height:1.5;
+      }
+
+     .featured-info p{
+       font-size:11px;
+       line-height:1.5;
+       letter-spacing:1.2px;
+      }
+
+     .read-more{
+       display:inline-block;
+       margin-top:5px;
+       font-size:8px;
+       letter-spacing:1.2px;
+      }
+
+      .read-more:hover{
+        opacity:0.6;
+      } 
+
+      .main-layout{
+        margin:auto;
+        gap:30px;
+        margin-bottom:30px;
+      }
+       
+      .region-title h3{
+        font-size:18px;
+      }
+
+      .region-grid{
+        grid-template-columns:2, 1fr;
+      }
+
+      .featured-image img{
+        height:320px;
+      }
+
+      .region-title h3{
+        margin-top:0;
+        font-size:18px;
+        margin-bottom:5px;
+      }
+      .region-title p{
+        font-size:10px;
+        margin-bottom:10px;
+      }
+      
+      .region-overlay h4{
+        font-size:14px;
+        letter-spacing:1px;
+      }
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- HERO -->
+
+  <section class="hero"></section>
+
+  <div class="back-wrapper">
+        <a href="collect.html" class="back-btn">
+           ← Back to Travel Collection
+        </a>
+  </div>
+
+  <!-- INTRO -->
+
+  <section class="intro">
+
+    <h1>ASIA-PACIFIC</h1>
+
+    <p>
+      Fragments of places and quiet memories
+    </p>
+
+  </section>
+
+  <!-- MAIN LAYOUT -->
+
+  <section class="main-layout">
+
+    <!-- FEATURED POST -->
+
+    <div class="featured-post">
+
+      <div class="featured-image">
+
+         <img src="Images/Asia-Pacific/Maldive/maldive2.jpg" class="slide active" alt="Maldives">
+         <img src="Images/Asia-Pacific/Maldive/maldive4.jpg" class="slide" alt="Maldives">
+         <img src="Images/Asia-Pacific/Maldive/maldive7.jpg" class="slide" alt="Maldives">
+
+      </div>
+
+      <div class="featured-info">
+
+        <span>Maldives · 2014</span>
+
+        <h2>
+          OMG, Mosquitoes!!
+        </h2>
+
+        <p>
+          우여곡절 끝에 가게 된 몰디브.
+          어디를 바라봐도 그림 같았고,
+          사진과 똑같은 바다의 모습에 놀라지 않을 수 없었다.
+          90여개의 섬들에 리조트, 주민들이 사는 섬, 감옥 등이 하나씩 들어서 있다고 하니 흥미롭지 않을 수 없다. 
+          이 섬은 전체 면적을 말하자면 천천히, 아주 천천히 걸어서 한바퀴를 돌면 15분이 걸린다
+          저렴한 가격에 해변을 즐기는 사람들이 선호하는 곳이라 알뜰 유럽여행자들이 많이 찾는 듯하다. 
+        </p>
+
+        <a href="maldive.html" class="read-more">
+          Read Journal
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- REGION SECTION -->
+
+    <div class="regions">
+
+      <div class="region-title">
+
+        <h3>Explore by Place</h3>
+
+        <p>
+          Places, memories, and quiet moments
+          gathered along the way.
+        </p>
+
+      </div>
+
+      <div class="region-grid">
+
+        <!-- CARD 1 -->
+
+        <a href="#" class="region-card">
+
+          <img src="Images/Asia-Pacific/fiji.jpg" alt="FIJI">
+
+          <div class="region-overlay">
+
+            <h4>FIJI</h4>
+
+          </div>
+
+        </a>
+
+        <!-- CARD 2 -->
+
+        <a href="#" class="region-card">
+
+          <img src="Images/Asia-Pacific/au5.jpg" alt="Australia">
+
+          <div class="region-overlay">
+
+            <h4>AUSTRALIA</h4>
+
+          </div>
+
+        </a>
+
+        <!-- CARD 3 -->
+
+        <a href="#" class="region-card">
+
+          <img src="Images/Asia-Pacific/vietnam.jpg" alt="VIETNAM">
+
+          <div class="region-overlay">
+
+            <h4>VIETNAM</h4>
+
+          </div>
+
+        </a>
+
+        <!-- CARD 4 -->
+
+        <a href="#" class="region-card">
+
+          <img src="Images/Asia-Pacific/palau.JPG" alt="Asia-PALAU">
+
+          <div class="region-overlay">
+
+            <h4>PALAU</h4>
+
+          </div>
+
+        </a>
+
+        <!-- CARD 5 -->
+
+        <a href="#" class="region-card">
+
+          <img src="Images/Asia-Pacific/singapore.jpg" alt="SINGAPORE">
+
+          <div class="region-overlay">
+
+            <h4>SINGAPORE</h4>
+
+          </div>
+
+        <!-- CARD 6 -->
+        </a>
+        <a href="#" class="region-card">
+
+          <img src="Images/Asia-Pacific/taiwan.jpg" alt="TAIWAN">
+
+          <div class="region-overlay">
+
+            <h4>TAIWAN</h4>
+
+          </div>
+
+        </a>
+
+        <!-- CARD 7 -->
+
+        <a href="#" class="region-card">
+
+          <img src="Images/Asia-Pacific/china.jpg" alt="CHINA">
+
+          <div class="region-overlay">
+
+            <h4>CHINA</h4>
+
+          </div>
+
+        </a>
+
+        
+        <!-- CARD 8 -->
+
+        <a href="#" class="region-card">
+
+          <img src="Images/Asia-Pacific/hk1.jpg" alt="HONG KONG">
+
+          <div class="region-overlay">
+
+            <h4>HONG KONG</h4>
+
+          </div>
+
+        </a>
+
+        
+        <!-- CARD 9 -->
+
+        <a href="#" class="region-card">
+
+          <img src="Images/Asia-Pacific/guam.JPG" alt="GUAM">
+
+          <div class="region-overlay">
+
+            <h4>GUAM</h4>
+
+          </div>
+
+        </a>
+
+        <!-- CARD 10 -->
+
+        <a href="#" class="region-card">
+
+          <img src="Images/Asia-Pacific/bangkok1.jpg" alt="THAILAND">
+
+          <div class="region-overlay">
+
+            <h4>THAILAND</h4>
+
+          </div>
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <script>
+    const slides = document.querySelectorAll(".featured-image .slide");
+
+    let current = 0;
+
+    if(slides.length > 0){
+
+      setInterval(() => {
+
+        slides[current].classList.remove("active");
+
+        current = (current + 1) % slides.length;
+
+        slides[current].classList.add("active");
+
+      }, 12000);
+
+    }
+
+  </script>
+
+</body>
+</html>
+

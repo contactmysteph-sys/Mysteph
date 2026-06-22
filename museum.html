@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Museum Notes | Healing Spaces</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Inter', sans-serif;
+      background:#f4efe7;
+      color:#2f3b4a;
+      line-height:1.8;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    /* =========================
+       TOP NAV
+    ========================== */
+    .top-nav{
+      width:min(1100px,90%);
+      margin:28px auto 0;
+
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+
+      font-size:13px;
+      letter-spacing:1.5px;
+      text-transform:uppercase;
+      color:#6f7885;
+    }
+
+    .top-nav a:hover{
+      color:#2f3b4a;
+    }
+
+    /* =========================
+       PAGE HEADER
+    ========================== */
+    .page-header{
+      width:min(1000px,90%);
+      margin:60px auto 45px;
+      text-align:center;
+    }
+
+    .page-header span{
+      display:block;
+      font-size:11px;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      color:#8c938d;
+      margin-bottom:10px;
+    }
+
+    .page-header h1{
+      font-family:'Cormorant Garamond', serif;
+      font-size:50px;
+      font-weight:600;
+      color:#2f3b4a;
+    }
+
+    .page-header p{
+      margin-top:12px;
+      font-size:15px;
+      color:#6c746f;
+    }
+
+    /* =========================
+       WRAPPER
+    ========================== */
+    .museum-wrapper{
+      width:min(1050px,90%);
+      margin:0 auto 90px;
+
+      display:flex;
+      flex-direction:column;
+      gap:42px;
+    }
+
+    /* =========================
+       MUSEUM SECTION
+    ========================== */
+    .museum-section{
+      background:rgba(255,255,255,0.72);
+      border:1px solid rgba(47,59,74,0.12);
+      box-shadow:0 18px 45px rgba(47,59,74,0.08);
+
+      padding:42px 44px 46px;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:28px;
+    }
+
+    .section-title span{
+      display:block;
+      font-size:10px;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      color:#9a9489;
+      margin-bottom:6px;
+    }
+
+    .section-title h2{
+      font-family:'Cormorant Garamond', serif;
+      font-size:38px;
+      font-weight:500;
+      color:#344154;
+    }
+
+    .section-quote{
+      margin-top:8px;
+      font-family:'Cormorant Garamond', serif;
+      font-size:20px;
+      font-style:italic;
+      color:#7a817b;
+    }
+
+    /* =========================
+       PHOTO STRIP
+    ========================== */
+    .photo-strip{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:12px;
+      margin-bottom:34px;
+    }
+
+    .photo-card{
+      background:#fff;
+      border:1px solid rgba(47,59,74,0.14);
+      padding:7px;
+      height:125px;
+    }
+
+    .photo-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    /* =========================
+       TEXT
+    ========================== */
+    .museum-text{
+      width:min(760px,92%);
+      margin:0 auto;
+      text-align:center;
+    }
+
+    .museum-text p{
+      font-size:15px;
+      color:#4f5b55;
+      margin-bottom:16px;
+    }
+
+    .museum-text .small-note{
+      margin-top:22px;
+      font-size:13px;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      color:#8c938d;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+    @media(max-width:768px){
+
+      .page-header{
+        margin-top:45px;
+      }
+
+      .page-header h1{
+        font-size:40px;
+      }
+
+      .museum-section{
+        padding:32px 22px 36px;
+      }
+
+      .section-title h2{
+        font-size:32px;
+      }
+
+      .photo-strip{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .photo-card{
+        height:130px;
+      }
+
+      .museum-text{
+        text-align:left;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="top-nav">
+    <a href="healing.html">← Back to Healing Spaces</a>
+    <a href="index.html">Home</a>
+  </nav>
+
+  <header class="page-header">
+    <span>Healing Spaces</span>
+    <h1>Museum Notes</h1>
+    <p>Small memories of quiet rooms, light, and the spaces that stayed with me.</p>
+  </header>
+
+  <main class="museum-wrapper">
+
+    <!-- =========================
+         EUROPEAN MUSEUMS
+    ========================== -->
+    <section class="museum-section">
+
+      <div class="section-title">
+        <span>Chapter One</span>
+        <h2>European Museums</h2>
+        <p class="section-quote">
+          The light was as memorable as the paintings.
+        </p>
+      </div>
+
+      <div class="photo-strip">
+        <div class="photo-card">
+          <img src="Images/healing/europe1.jpg" alt="European museum photo">
+        </div>
+
+        <div class="photo-card">
+          <img src="Images/healing/europe2.jpg" alt="European museum photo">
+        </div>
+
+        <div class="photo-card">
+          <img src="Images/healing/europe3.jpg" alt="European museum photo">
+        </div>
+
+        <div class="photo-card">
+          <img src="Images/healing/europe4.jpg" alt="European museum photo">
+        </div>
+
+        <div class="photo-card">
+          <img src="Images/healing/europe5.jpg" alt="European museum photo">
+        </div>
+      </div>
+
+      <div class="museum-text">
+        <p>
+          유럽의 미술관은 작품보다 공간이 먼저 기억에 남을 때가 있다.
+          높은 천장, 오래된 벽, 천천히 걸어가는 사람들,
+          그리고 창문 사이로 들어오던 부드러운 빛.
+        </p>
+
+        <p>
+          어떤 방에서는 그림보다 그 방의 공기가 더 오래 남았다.
+          조용히 서 있는 것만으로도 잠시 다른 시간 속에 들어간 것 같은 기분이 들었다.
+        </p>
+
+        <p class="small-note">
+          Paris · London · Amsterdam · Malta · Switzerland
+        </p>
+      </div>
+
+    </section>
+
+    <!-- =========================
+         JAPANESE MUSEUMS
+    ========================== -->
+    <section class="museum-section">
+
+      <div class="section-title">
+        <span>Chapter Two</span>
+        <h2>Japanese Museums</h2>
+        <p class="section-quote">
+          Quietness became part of the exhibition.
+        </p>
+      </div>
+
+      <div class="photo-strip">
+        <div class="photo-card">
+          <img src="Images/healing/japan1.jpg" alt="Japanese museum photo">
+        </div>
+
+        <div class="photo-card">
+          <img src="Images/healing/japan2.jpg" alt="Japanese museum photo">
+        </div>
+
+        <div class="photo-card">
+          <img src="Images/healing/japan3.jpg" alt="Japanese museum photo">
+        </div>
+
+        <div class="photo-card">
+          <img src="Images/healing/japan4.jpg" alt="Japanese museum photo">
+        </div>
+
+        <div class="photo-card">
+          <img src="Images/healing/japan5.jpg" alt="Japanese museum photo">
+        </div>
+      </div>
+
+      <div class="museum-text">
+        <p>
+          일본의 미술관은 조용함이 공간의 일부처럼 느껴진다.
+          나오시마의 바다, 가나자와의 정돈된 동선,
+          도쿄의 작은 전시실들까지.
+        </p>
+
+        <p>
+          작품을 보러 갔다가도 결국 기억에 남는 것은
+          빛이 머무는 벽, 발소리가 낮아지는 복도,
+          그리고 아무 말 없이 앉아 있던 시간이었다.
+        </p>
+
+        <p class="small-note">
+          Naoshima · Kanazawa · Tokyo · Sapporo · Kyoto
+        </p>
+      </div>
+
+    </section>
+
+  </main>
+
+</body>
+</html>

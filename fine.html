@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Fine Dining</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&family=Parisienne&display=block" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&family=Parisienne&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html,
+body{
+  overflow-x:hidden;
+}
+
+body{
+  background:
+ 
+  linear-gradient(
+    rgba(215, 217, 241, 0.95),
+    rgba(198, 198, 246, 0.95)
+  );
+
+    font-family:'Montserrat', sans-serif;
+    color:#2c343e;
+  
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+.back-wrap{
+  width:min(1120px,90%);
+  margin:28px auto 0;
+}
+
+.back-link{
+  font-size:11px;
+  letter-spacing:1.0px;
+  text-transform:uppercase;
+  color:#232831;
+}
+
+.hero{
+  text-align:center;
+  padding:30px 20px 24px;
+}
+
+
+.hero h1{
+  position:relative;
+  display:inline-block;
+
+  font-family:'Parisienne', cursive;
+  font-size:58px;
+  font-weight:400;
+  letter-spacing:1px;
+
+  color:#1f2f55;
+
+  text-shadow:
+    0 0 6px rgba(255,255,255,0.8),
+    0 0 14px rgba(201,161,90,0.45);
+
+  animation:softGlow 2.8s ease-in-out infinite;
+}
+
+@keyframes softGlow{
+  0%{
+    opacity:0.82;
+    text-shadow:
+      0 0 4px rgba(255,255,255,0.6),
+      0 0 8px rgba(201,161,90,0.25);
+  }
+
+  50%{
+    opacity:1;
+    text-shadow:
+      0 0 8px rgba(255,255,255,0.95),
+      0 0 18px rgba(201,161,90,0.65),
+      0 0 28px rgba(201,161,90,0.35);
+  }
+
+  100%{
+    opacity:0.82;
+    text-shadow:
+      0 0 4px rgba(255,255,255,0.6),
+      0 0 8px rgba(201,161,90,0.25);
+  }
+}
+
+.hero h1::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-40%;
+  width:40%;
+  height:100%;
+
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.75),
+    transparent
+  );
+
+  transform:skewX(-20deg);
+  animation:shineMove 3.5s ease-in-out infinite;
+}
+
+@keyframes shineMove{
+  0%{
+    left:-50%;
+    opacity:0;
+  }
+
+  35%{
+    opacity:0.8;
+  }
+
+  70%{
+    left:110%;
+    opacity:0;
+  }
+
+  100%{
+    left:110%;
+    opacity:0;
+  }
+}
+
+
+.fine-wrapper{
+  width:min(1120px,90%);
+  margin:0 auto 80px;
+}
+
+.restaurant-layout{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px;
+  align-items:start;
+}
+
+.restaurant-card{
+  background:rgba(255,255,255,0.72);
+  border-radius:26px;
+  padding:24px;
+  border:1px solid rgba(255,255,255,0.75);
+  box-shadow:0 16px 40px rgba(0,0,0,0.06);
+}
+.restaurant-header{
+  margin-bottom:20px;
+  padding-bottom:14px;
+  border-bottom:1px solid rgba(49,71,110,0.08);
+}
+
+.restaurant-header h3{
+  font-family:'Cormorant Garamond', serif;
+  font-size:22px;
+  font-weight:600;
+  color:#192335;
+  margin-bottom:4px;
+}
+
+.restaurant-header span{
+  display:block;
+  font-size:10px;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+  color:#151d25;
+}
+.photo-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:10px;
+  margin-bottom:24px;
+}
+
+.photo-grid img{
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  display:block;
+  border-radius:14px;
+}
+
+.restaurant-info span{
+  display:block;
+  font-size:13px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#0f161f;
+  margin-bottom:10px;
+}
+
+.restaurant-meta{
+  font-size:12px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#383e45;
+  margin-bottom:12px;
+}
+.restaurant-info p{
+  font-size:13px;
+  line-height:1.2;
+  color:#27313d;
+  margin-bottom:10px;
+}
+
+.pager{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:28px;
+  margin-top:34px;
+}
+
+.pager button{
+  border:none;
+  background:transparent;
+  font-family:'Cormorant Garamond', serif;
+  font-size:32px;
+  color:#292c30;
+  cursor:pointer;
+}
+
+.page-count{
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#8a96a5;
+}
+
+@media(max-width:900px){
+  .pager{
+    margin-top:10px;
+  }
+  .restaurant-layout{
+    grid-template-columns:1fr;
+    gap:8px;
+  }
+
+  .fine-wrapper{
+    width:92%;
+    margin:0 auto 40px;
+  }
+
+  .restaurant-card{
+    width:100%;
+    margin:0 auto 8px;
+    padding:24px;
+    border-radius:20px;
+  }
+
+  .restaurant-header{
+    margin-bottom:16px;
+    padding-bottom:12px;
+  }
+
+  .restaurant-header h3{
+    font-size:19px;
+  }
+
+  .restaurant-header span{
+    font-size:8px;
+    letter-spacing:1.4px;
+  }
+
+  .photo-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:6px;
+    margin-bottom:14px;
+  }
+
+  .photo-grid img{
+    height:120px;
+    border-radius:10px;
+  }
+
+  .restaurant-info span{
+    font-size:10px;
+    letter-spacing:1.5px;
+  }
+
+  .restaurant-info p{
+    font-size:11px;
+    line-height:1.45;
+    margin-bottom:6px;
+  }
+}
+
+@media(max-width:600px){
+
+.back-wrap{
+  width:92%;
+  margin:14px auto 0;
+  padding-left:8px;
+  overflow:hidden;
+}
+
+.back-link{
+  display:block;
+  width:fit-content;
+  font-size:8px;
+  letter-spacing:0.7px;
+  line-height:1.2;
+  margin-left:0;
+}
+
+.hero{
+  padding:10px 12px 8px;
+}
+
+.hero h1{
+   font-size:24px;
+   line-height:1;
+   letter-spacing:0;
+   animation:none;
+}
+
+.hero h1::after{
+    display:none;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="back-wrap">
+  <a href="small.html" class="back-link"> Back to Small Wonders</a>
+</div>
+
+<section class="hero">
+  <h1>Fine Dining</h1>
+  <p></p>
+</section>
+
+<main class="fine-wrapper">
+
+  <section class="restaurant-layout" id="restaurantLayout"></section>
+
+  <div class="pager">
+    <button onclick="movePage(-1)">‹</button>
+    <div class="page-count" id="pageCount"></div>
+    <button onclick="movePage(1)">›</button>
+  </div>
+
+</main>
+
+<script>
+const restaurants = [
+  {
+    title:"GRAZE",
+    location:"Kuala Lumpur",
+    date:"2026-05-31",
+
+    category:"Italian",
+    rating : 4.5,
+
+
+    images:[
+      "Images/small/fine/graze1.jpg",
+      "Images/small/fine/graze2.jpg",
+      "Images/small/fine/graze3.jpg",
+      "Images/small/fine/graze4.jpg",
+      "Images/small/fine/graze5.jpg",
+      "Images/small/fine/graze6.jpg",
+      "Images/small/fine/graze7.jpg",
+      "Images/small/fine/graze8.jpg",
+    ],
+
+    body:`
+      <p>회사에서 제공한 20% 쿠폰이 없었다면 절대 가지 못할 곳.</p>
+      <p>호텔 레스토랑 중에서도 서비스, 분위기 상당히 훌륭. 다만 음식은 so-so.</p>
+    `
+  },
+  
+  {
+    title:"Ombak Bansar",
+    location:"Kuala Lumpur",
+    date:"2026-05-03",
+
+    category:"Seafood",
+    rating : 4.0,
+
+    images:[
+      "Images/small/fine/ombak1.jpg",
+      "Images/small/fine/ombak2.jpg",
+      "Images/small/fine/ombak3.jpg",
+      "Images/small/fine/ombak4.jpg",
+      "Images/small/fine/ombak7.jpg",
+      "Images/small/fine/ombak8.jpg",
+      "Images/small/fine/ombak5.jpg",
+      "Images/small/fine/ombak6.jpg",
+    ],
+
+    body:`
+      <p>새우도 신선하고, Seafood Soup도 괜찮았다. 다음엔 Crab에 도전.</p>
+      <p>모임하기엔 괜찮을 것 같은데, 둘이 먹기엔 가격때문에 메뉴 선택에 상당한 고민이 있었음.</p>
+    `
+  },
+
+  {
+    title:"Dolce Vita",
+    location:"Kuala Lumpur",
+    date:"2026-04-18",
+
+    category:"Italian",
+    rating : 4.5,
+
+    images:[
+      "Images/small/fine/dolce1.jpg",
+      "Images/small/fine/dolce2.jpg",
+      "Images/small/fine/dolce3.jpg",
+      "Images/small/fine/dolce4.jpg",
+      "Images/small/fine/dolce5.jpg",
+      "Images/small/fine/dolce6.jpg",
+      "Images/small/fine/dolce7.jpg",
+      "Images/small/fine/dolce9.jpg",
+    ],
+
+    body:`
+      <p>크게 기대하지 않았는데 생각보다 괜찮았음.</p>
+      <p>맛, 분위기, 서비스 전체적으로 우수.</p>
+    `
+  },
+
+  {
+    title:"Ling Long",
+    location:"Kuala Lumpur",
+    date:"2026-02-01",
+
+    category:"Chinese Fusion",
+    rating : 4.0,
+
+    images:[
+      "Images/small/fine/ling1.jpg",
+      "Images/small/fine/ling2.jpg",
+      "Images/small/fine/ling5.jpg",
+      "Images/small/fine/ling3.jpg",
+      "Images/small/fine/ling4.jpg",
+      "Images/small/fine/ling6.jpg",
+      "Images/small/fine/ling7.jpg",
+      "Images/small/fine/ling9.jpg",
+    ],
+
+    body:`
+      <p>테이블 5-6정도의 작은 레스토랑. 중식과 프렌치 퓨전 코스요리.</p>
+      <p>색다른 맛, 특별한 경험.</p>
+    `
+  },
+
+  {
+    title:"The Hungry Tapir",
+    location:"Kuala Lumpur",
+    date:"2026-01-30",
+
+    category:"Vegeterian",
+    rating : 4.0,
+
+    images:[
+      "Images/small/fine/hungry1.jpg",
+      "Images/small/fine/hungry2.jpg",
+      "Images/small/fine/hungry5.jpg",
+      "Images/small/fine/hungry3.jpg",
+      "Images/small/fine/hungry4.jpg",
+      "Images/small/fine/hungry9.jpg",
+      "Images/small/fine/hungry3.jpg",
+      "Images/small/fine/hungry7.jpg",
+    ],
+
+    body:`
+      <p>My First Vegetarian Restaurant Experience</p>
+      <p>Thanks to a visit from our Chennai team members.</p>
+      <p>맛은 훌륭했으나 풀과 밀가루가 재료인데 그 가격은 좀..</p>
+    `
+  },
+  
+  {
+    title:"ATAS RUMA HOTEL",
+    location:"Kuala Lumpur",
+    date:"2025-11-02",
+
+    category:"Lunch Buffet",
+    rating : 4.5,
+
+    images:[
+      "Images/small/fine/aias1.jpg",
+      "Images/small/fine/aias5.jpg",
+      "Images/small/fine/aias3.jpg",
+      "Images/small/fine/aias4.jpg",
+      "Images/small/fine/aias6.jpg",
+      "Images/small/fine/aias7.jpg",
+      "Images/small/fine/aias8.jpg",
+      "Images/small/fine/aias9.jpg",
+    ],
+
+    body:`
+      <p>어둡다는 것을 빼면 모든 것이 맘에 들었다. Beef Wellington이 있다는 것도 신기.</p>
+      <p>Buffet임에도 선택 A la cate 메뉴가 있어 코스요리 먹는 기분도 나고.</p>
+      <p>Beffet 메뉴는 그냥 보통.</p>
+    `
+  },
+
+
+  {
+    title:"Come True",
+    location:"Kuala Lumpur",
+    date:"2026-01-01",
+
+    category:"Taiwan-Japanese Fusion Cafe",
+    rating : 5.0,
+
+    images:[
+      "Images/small/fine/come1.jpg",
+      "Images/small/fine/come2.jpg",
+      "Images/small/fine/come5.jpg",
+      "Images/small/fine/come3.jpg",
+      "Images/small/fine/come4.jpg",
+      "Images/small/fine/come6.jpg",
+      "Images/small/fine/come7.jpg",
+    
+    ],
+
+    body:`
+      <p>My favorite cafe.</p>
+      <p>배고플 때만 안가면 최고. 인내심이 강한 사람들만 갈 것ㅋ</p>
+      <p>기다릴만한 가치가 있다.</p>
+    `
+  },
+
+  {
+    title:"Trigona at Four Seasons KL",
+    location:"Kuala Lumpur",
+    date:"2025",
+
+    category:"Afternoon Tea",
+    rating : 4.0,
+
+    images:[
+      "Images/small/fine/trigona1.jpg",
+      "Images/small/fine/trigona2.jpg",
+      "Images/small/fine/trigona3.jpg",
+      "Images/small/fine/trigona4.jpg",
+      "Images/small/fine/trigona5.jpg",
+      "Images/small/fine/trigona6.jpg",
+      "Images/small/fine/trigona7.jpg",
+      "Images/small/fine/trigona8.jpg",
+    ],
+
+    body:`
+      <p>단체 소음때문에 제대로 즐기지 못한 Afternoon Tea.</p>
+      <p>Quality는 지금까지 경험 중 최고.</p>
+    `
+  },
+
+  {
+    title:"KAMPAI at Bamboo Hills",
+    location:"Kuala Lumpur",
+    date:"2024-02-25",
+
+    category:"Japanese",
+    rating : 4.5,
+
+    images:[
+      "Images/small/fine/kampai1.jpg",
+      "Images/small/fine/kampai2.jpg",
+      "Images/small/fine/kampai3.jpg",
+      "Images/small/fine/kampai4.jpg",
+      "Images/small/fine/kampai5.jpg",
+      "Images/small/fine/kampai6.jpg",
+    ],
+
+    body:`
+      <p>참으로 이상하게 소고기가 맛없는 나라.</p>
+      <p>그나마 가장 입맛에 맞았던 yakiniku restaurant.</p>
+    `
+  },
+
+  {
+    title:"La Swiss at TTDI",
+    location:"Kuala Lumpur",
+    date:"2024-09-19",
+
+    category:"Swiss",
+    rating : 4.5,
+
+    images:[
+      "Images/small/fine/swiss.jpg",
+      "Images/small/fine/swiss1.jpg",
+      "Images/small/fine/swiss2.jpg",
+      "Images/small/fine/swiss3.jpg",
+      "Images/small/fine/swiss4.jpg",
+      "Images/small/fine/swiss5.jpg",     
+    ],
+
+    body:`
+      <p>스위스인 오너의 자부심 가득한 설명에 주문.</p>
+      <p>음식은 꽤 괜찮았으나 딱히 스위스스럽다 이런 느낌은 아님.</p>
+    `
+  },
+
+  {
+    title:"Positano Risto & The Lemon Tree",
+    location:"Kuala Lumpur",
+    date:"2025-05-04",
+
+    category:"Cafe",
+    rating : 4.5,
+
+    images:[
+      "Images/small/fine/lt1.jpg",
+      "Images/small/fine/lt2.jpg",
+      "Images/small/fine/lt5.jpg",
+      "Images/small/fine/lt4.jpg",
+      "Images/small/fine/lt3.jpg",
+      "Images/small/fine/lt6.jpg",
+    ], 
+
+    body:`
+      <p>Lemon Tree 노랑노랑.</p>
+      <p>Positano Risto-특별한 인상 없음</p>
+    `
+  },
+
+  
+  {
+    title:"Tap Room",
+    location:"Kuala Lumpur",
+    date:"July 2024",
+
+    category:"Local Fusion",
+    rating : 5.0,
+
+    images:[
+      "Images//small/fine/tap1.jpg",
+      "Images/small/fine/tap2.jpg",
+      "Images/small/fine/tap3.jpg",
+      "Images/small/fine/tap4.jpg",
+      "Images/small/fine/tap5.jpg",
+  
+    ],
+
+    body:`
+      <p>인테리어도 괜찮았고, 모든 음식이 맛있었다.</p>
+      <p>주말엔 사람이 많아 정신이 없고 예약이 필요하다.</p>
+      <p>다시 가고 싶은 곳 중 하나.</p>
+    `
+  },
+
+  {
+    title:"Marco Gardens Mall",
+    location:"Kuala Lumpur",
+    date:"2025-10-19",
+
+    category:"Fusion",
+    rating : 4.5,
+
+    images:[
+      "Images/small/fine/marco1.jpg",
+      "Images/small/fine/marco2.jpg",
+      "Images/small/fine/marco3.jpg",
+      "Images/small/fine/marco4.jpg",
+      "Images/small/fine/marco5.jpg",
+      "Images/small/fine/marco7.jpg",
+    ],
+
+    body:`
+      <p>Signiture Menu-Pork Wellington.</p>
+      <p>Beef는 봤어도 Pork로 만든 웰링턴은 처음이어서 새로운 경험.</p>
+    `
+  },
+
+
+];
+
+
+let currentPage = 0;
+const perPage = 2;
+
+const restaurantLayout = document.getElementById("restaurantLayout");
+const pageCount = document.getElementById("pageCount");
+
+function renderRestaurants(){
+  restaurantLayout.innerHTML = "";
+
+  const start = currentPage * perPage;
+  const currentRestaurants = restaurants.slice(start, start + perPage);
+
+  currentRestaurants.forEach(place => {
+    restaurantLayout.innerHTML += `
+      <article class="restaurant-card">
+
+        <div class="restaurant-header">
+           <h3>${place.title}</h3>
+           <span>${place.location} · ${place.date}</span>
+       </div>
+
+        <div class="photo-grid">
+          ${place.images.map(img => `
+            <img src="${img}" alt="${place.title}" loading="lazy">
+          `).join("")}
+        </div>
+
+        <div class="restaurant-info">
+          <span>${place.category}· ${getStars(place.rating)}
+          </span>
+          ${place.body}
+        </div>
+
+      </article>
+    `;
+  });
+
+  const totalPages = Math.ceil(restaurants.length / perPage);
+  pageCount.innerText = `${currentPage + 1} / ${totalPages}`;
+}
+
+function getStars(rating){
+
+  const full = Math.floor(rating);
+  const half = rating % 1 !== 0;
+
+  let stars = "★".repeat(full);
+
+  if(half){
+    stars += "½";
+  }
+
+  stars += "☆".repeat(5 - Math.ceil(rating));
+
+  return stars;
+}
+
+
+function movePage(step){
+  const totalPages = Math.ceil(restaurants.length / perPage);
+
+  currentPage += step;
+
+  if(currentPage < 0){
+    currentPage = totalPages - 1;
+  }
+
+  if(currentPage >= totalPages){
+    currentPage = 0;
+  }
+
+  renderRestaurants();
+}
+
+renderRestaurants();
+</script>
+
+</body>
+</html>

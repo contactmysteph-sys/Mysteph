@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Japan | Wandering with Steph</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&family=Caveat:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Montserrat', sans-serif;
+      background:
+        linear-gradient(rgba(246,245,241,0.94), rgba(246,245,241,0.94));
+      background-size:cover;
+      background-attachment:fixed;
+      color:#2f3b4a;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    img{
+      width:100%;
+      display:block;
+    }
+    
+    
+    /* BACK */
+
+    .back-wrapper{
+      width:min(1120px,90%);
+      margin:24px auto 0;
+    }
+
+    .back-btn{
+      display:inline-block;
+      font-size:11px;
+      letter-spacing:0.7px;
+      text-transform:uppercase;
+      color:#31476E;
+      border-bottom:1px solid #31476E;
+      padding-bottom:4px;
+      transition:0.3s ease;
+    }
+
+    .back-btn:hover{
+      opacity:0.7;
+      transform:translateX(-4px);
+    }
+
+    /* INTRO */
+
+    .country-intro{
+      width:min(760px,88%);
+      margin:20px auto 20px;
+      text-align:center;
+    }
+
+    .country-intro h1{
+      font-family:'Cormorant Garamond', serif;
+      font-size:30px;
+      font-weight:600;
+      color:#31476E;
+      margin-bottom:12px;
+    }
+
+    .country-intro .handwriting{
+      font-family:'Caveat', cursive;
+      font-size:14px;
+      color:#8fa2bc;
+      margin-bottom:10px;
+    }
+
+   .country-intro h2{
+      font-family:'Cormorant Garamond', serif;
+      font-size:16px;
+      font-weight:600;
+      color:#31476e;
+      margin-bottom:12px;
+    }
+
+   .country-intro p{
+      font-size:12px;
+      line-height:1.9;
+      color:#5b6575;
+}
+
+    /* FEATURED CITIES */
+
+    .featured-cities{
+      width:min(1050px,90%);
+      margin:0 auto 62px;
+
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:22px;
+    }
+
+    .city-card{
+      background:rgba(255,255,255,0.76);
+      border:1px solid rgba(49,71,110,0.16);
+      box-shadow:0 16px 38px rgba(49,71,110,0.08);
+      transition:0.35s ease;
+    }
+
+    .city-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 22px 48px rgba(49,71,110,0.14);
+    }
+
+    .city-card img{
+      height:120px;
+      object-fit:cover;
+    }
+
+    .city-card-content{
+      padding:22px;
+    }
+
+    .city-card-content span{
+      font-size:10px;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      color:#9aa3af;
+    }
+
+    .city-card-content h3{
+      font-family:'Cormorant Garamond', serif;
+      font-size:27px;
+      font-weight:500;
+      color:#31476e;
+      margin:7px 0 8px;
+    }
+
+    .city-card-content p{
+      font-size:12.5px;
+      line-height:1.8;
+      color:#5f6978;
+    }
+
+    /* CITY PHOTO INDEX */
+
+    .city-photo-index{
+      width:min(1120px,90%);
+      margin:0 auto 80px;
+      padding-top:46px;
+      border-top:1px solid rgba(49,71,110,0.18);
+      text-align:center;
+    }
+
+    .city-photo-index h2{
+      font-family:'Cormorant Garamond', serif;
+      font-size:22px;
+      font-weight:500;
+      color:#31476e;
+      margin-bottom:6px;
+    }
+
+    .city-photo-index .sub{
+      font-family:'Caveat', cursive;
+      font-size:16px;
+      color:#8fa2bc;
+      margin-bottom:30px;
+    }
+
+    .city-mini-grid{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:16px;
+    }
+
+    .mini-city-card{
+      background:rgba(255,255,255,0.72);
+      border:1px solid rgba(49,71,110,0.15);
+      box-shadow:0 12px 28px rgba(49,71,110,0.07);
+      overflow:hidden;
+      transition:0.3s ease;
+    }
+
+    .mini-city-card:hover{
+      transform:translateY(-5px);
+      box-shadow:0 18px 40px rgba(49,71,110,0.13);
+    }
+
+    .mini-city-card img{
+      height:115px;
+      object-fit:cover;
+    }
+
+    .mini-city-card span{
+      display:block;
+      padding:12px 8px;
+      font-size:12px;
+      letter-spacing:1.4px;
+      color:#31476e;
+      background:rgba(255,255,255,0.82);
+    }
+
+    /* CITY DETAIL */
+
+    .city-details{
+      width:min(1120px,90%);
+      margin:0 auto 90px;
+    }
+
+    .city-detail{
+      padding:46px 0;
+      border-top:1px solid rgba(49,71,110,0.16);
+      scroll-margin-top:40px;
+    }
+
+    .city-detail h2{
+      font-family:'Cormorant Garamond', serif;
+      font-size:24px;
+      font-weight:500;
+      color:#31476e;
+      margin-bottom:8px;
+    }
+
+    .city-detail p{
+      font-size:13px;
+      line-height:1.9;
+      color:#5b6575;
+      max-width:720px;
+      margin-bottom:22px;
+    }
+
+    .travel-blog-link{
+      display:inline-block;
+      margin-left:12px;
+      font-size:12px;
+      letter-spacing:1.5px;
+      text-transform:uppercase;
+      text-decoration:none;
+      color:#2f4668;
+      border-bottom:1px solid rgba(47,70,104,0.45);
+    }
+
+    .travel-blog-link:hover{
+      color:#8a6f3d;
+      border-bottom-color:#8a6f3d;
+    }
+
+    .photo-row{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:14px;
+    }
+
+    .photo-row img{
+      height:180px;
+      object-fit:cover;
+      border-radius:8px;
+    }
+
+    .footer-note{
+      width:min(700px,90%);
+      margin:0 auto 70px;
+      text-align:center;
+      font-size:11px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      color:#9aa3af;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:900px){
+
+      .featured-cities{
+        grid-template-columns:1fr;
+      }
+
+      .city-mini-grid{
+        grid-template-columns:repeat(2, 1fr);
+      }
+
+      .photo-row{
+        grid-template-columns:1fr 1fr;
+      }
+
+    }
+
+    @media(max-width:520px){
+     .back-wrapper{
+       margin: 0;
+      }
+
+     .back-btn{
+       font-size:8px;
+       letter-spacing:0.5px;
+       border-bottom:none;
+       padding-bottom:0;
+       margin-top: 10px;
+      }
+
+      .country-intro{
+        margin-top: 10px;
+        text-align:center;
+      }
+
+      .country-intro h1{
+        font-size:18px;
+        margin-bottom:2px;
+      }
+
+      .country-intro .handwriting{
+        display:none;    
+      }
+
+      .country-intro h2{
+        font-size:12px;
+      }
+
+      .country-intro p{
+        display:none;
+      } 
+      
+    .city-photo-index{
+      margin:0 auto 20px;
+      padding-top:8px;
+      text-align:center;
+    }
+
+    .city-photo-index h2{
+      font-size:14px;
+      margin-bottom:8px;
+    }
+
+   .city-mini-grid{
+     width:100%;
+     display:grid;
+     grid-template-columns:repeat(3, 1fr);
+     gap:3px;
+    }
+
+   .mini-city-card{
+     overflow:hidden;
+     background:white;
+    }
+
+   .mini-city-card img{
+     width:100%;
+     height:34px;
+     object-fit:cover;
+     display:block;
+    }
+
+   .mini-city-card span{
+     display:block;
+     padding:4px 2px;
+     font-size:7px;
+     letter-spacing:1px;
+     line-height:1.1;
+    }
+
+
+   .city-details{
+      width:84%;
+      margin:0 auto 50px;
+    }
+
+   .city-detail{
+      padding:28px 0;
+    }
+
+    .city-detail h2{
+      font-size:20px;
+      margin-bottom:10px;
+    }
+
+    .city-detail p{
+      font-size:12px;
+      line-height:1.7;
+      margin-bottom:16px;
+    }
+
+    .photo-row{
+      grid-template-columns:repeat(2, 1fr);
+      gap:10px;
+     }
+
+    .photo-row img{
+      width:100%;
+      height:150px;
+      display:block;
+      object-fit:cover;
+      border-radius:8px;
+     }
+
+
+     .footer-note{
+       display: none;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- BACK -->
+  <div class="back-wrapper">
+    <a href="collect.html" class="back-btn">
+      ← Back to Travel Collection
+    </a>
+  </div>
+
+  <!-- INTRO -->
+  <section class="country-intro">
+    <h1>JAPAN</h1>
+ 
+   <div class="handwriting"></div>
+
+   <h2>Many Cities, Many Little Memories</h2>
+
+    <p>
+      Japan is not one single memory for me. Every trip needs a theme: museums, aquariums, and hot springs hidden across Japan.
+    </p>
+
+  </section>
+
+
+  <!-- CITY PHOTO INDEX -->
+  <section class="city-photo-index">
+
+    <h2>City Photo Index</h2>
+    <div class="sub">small windows into places I have walked through</div>
+
+    <div class="city-mini-grid">
+
+      <a href="#nagasaki" class="mini-city-card">
+        <img src="Images/Japan/nagasaki.jpg" alt="Nagasaki" loading="lazy">
+        <span>Nagasaki</span>
+      </a>
+
+      <a href="#huistenbosch" class="mini-city-card">
+        <img src="Images/Japan/huistenbosch.jpg" alt="Huis Ten Bosch" loading="lazy">
+        <span>Huis Ten Bosch</span>
+      </a>
+
+      <a href="#naoshima" class="mini-city-card">
+        <img src="Images/Japan/naoshima.jpg" alt="Naoshima" loading="lazy">
+        <span>Naoshima</span>
+      </a>
+
+      <a href="#sapporo" class="mini-city-card">
+        <img src="Images/Japan/sapporo.jpg" alt="Sapporo" loading="lazy">
+        <span>Sapporo</span>
+      </a>
+
+      <a href="#furano" class="mini-city-card">
+        <img src="Images/Japan/furano.jpg" alt="Furano" loading="lazy">
+        <span>Furano</span>
+      </a>
+
+      <a href="#imari" class="mini-city-card">
+        <img src="Images/Japan/imari.jpg" alt="Imari" loading="lazy">
+        <span>Imari</span>
+      </a>
+
+      <a href="#okinawa" class="mini-city-card">
+        <img src="Images/Japan/okinawa.jpg" alt="Okinawa" loading="lazy">
+        <span>Okinawa</span>
+      </a>
+
+      <a href="#kanazawa" class="mini-city-card">
+        <img src="Images/Japan/kanazawa.jpg" alt="Kanazawa" loading="lazy">
+        <span>Kanazawa</span>
+      </a>
+
+      <a href="#tateyama" class="mini-city-card">
+        <img src="Images/Japan/tateyama.jpg" alt="Tateyama" loading="lazy">
+        <span>Tateyama</span>
+      </a>
+
+      <a href="#toyama" class="mini-city-card">
+        <img src="Images/Japan/toyama.jpg" alt="Toyama" loading="lazy">
+        <span>Toyama</span>
+      </a>
+
+      <a href="#akita" class="mini-city-card">
+        <img src="Images/Japan/akita.jpg" alt="Akita" loading="lazy">
+        <span>Akita</span>
+      </a>
+
+      <a href="#oga" class="mini-city-card">
+        <img src="Images/Japan/oga1.jpg" alt="Oga" loading="lazy">
+        <span>Oga</span>
+      </a>
+
+      <a href="#otaru" class="mini-city-card">
+        <img src="Images/Japan/otaru.jpg" alt="Otaru" loading="lazy">
+        <span>Otaru</span>
+      </a>
+
+      <a href="#kochi" class="mini-city-card">
+        <img src="Images/Japan/kochi.jpg" alt="Kochi" loading="lazy">
+        <span>Kochi</span>
+      </a>
+
+      <a href="#abashiri" class="mini-city-card">
+        <img src="Images/Japan/abashiri.jpg" alt="Abashiri" loading="lazy">
+        <span>Abashiri</span>
+      </a>
+
+      <a href="#aomori" class="mini-city-card">
+        <img src="Images/Japan/aomori.jpg" alt="Aomori" loading="lazy">
+        <span>Aomori</span>
+      </a>
+
+      <a href="#saga" class="mini-city-card">
+        <img src="Images/Japan/saga.jpg" alt="Saga" loading="lazy">
+        <span>Saga</span>
+      </a>
+
+      <a href="#kobe" class="mini-city-card">
+        <img src="Images/Japan/kobe.jpg" alt="Kobe" loading="lazy">
+        <span>Kobe</span>
+      </a>
+
+      <a href="#oita" class="mini-city-card">
+        <img src="Images/Japan/oita.jpg" alt="Oita" loading="lazy">
+        <span>Oita</span>
+      </a>
+
+      <a href="#shizuoka" class="mini-city-card">
+        <img src="Images/Japan/shizuoka.jpg" alt="Shizuoka" loading="lazy">
+        <span>Shizuoka</span>
+      </a>
+
+      <a href="#yufuin" class="mini-city-card">
+        <img src="Images/Japan/yufuin.jpg" alt="Yufuin" loading="lazy">
+        <span>Yufuin</span>
+      </a>
+
+      <a href="#beppu" class="mini-city-card">
+        <img src="Images/Japan/beppu.jpg" alt="Beppu" loading="lazy">
+        <span>Beppu</span>
+      </a>
+
+      <a href="#sendai" class="mini-city-card">
+        <img src="Images/Japan/sendai3.jpg" alt="Sendai" loading="lazy">
+        <span>Sendai</span>
+      </a>
+
+
+      <a href="#kyoto" class="mini-city-card">
+        <img src="Images/Japan/kyoto.jpg" alt="Kyoto" loading="lazy">
+        <span>Kyoto</span>
+      </a>
+
+      <a href="#osaka" class="mini-city-card">
+        <img src="Images/Japan/osaka.jpg" alt="Osaka" loading="lazy">
+        <span>Osaka</span>
+      </a>
+
+       <a href="#tokyo" class="mini-city-card">
+        <img src="Images/Japan/odaiba.jpg" alt="Tokyo" loading="lazy">
+        <span>Tokyo</span>
+      </a>
+
+      <a href="#yokohama" class="mini-city-card">
+        <img src="Images/Japan/yokohama.jpg" alt="Yokohama" loading="lazy">
+        <span>Yokohama</span>
+      </a>
+
+
+    </div>
+
+  </section>
+
+  <!-- CITY DETAILS -->
+  <section class="city-details">
+
+    <section id="nagasaki" class="city-detail">
+      <h2>Nagasaki</h2>
+      <p class="place-desc">
+        <a href="nagasaki.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+        <img src="Images/Japan/nagasaki.jpg" alt="Nagasaki" loading="lazy">
+        <img src="Images/Japan/naga1.jpg" alt="Nagasaki" loading="lazy">
+        <img src="Images/Japan/naga2.jpg" alt="Nagasaki" loading="lazy">
+        <img src="Images/Japan/naga3.jpg" alt="Nagasaki" loading="lazy">
+        <img src="Images/Japan/naga4.jpg" alt="Nagasaki" loading="lazy">
+        <img src="Images/Japan/naga10.jpg" alt="Nagasaki" loading="lazy">
+        <img src="Images/Japan/naga6.jpg" alt="Nagasaki" loading="lazy">
+        <img src="Images/Japan/naga12.png" alt="Nagasaki" loading="lazy">
+        <img src="Images/Japan/naga16.jpg" alt="Nagasaki" loading="lazy">
+
+      </div>
+    </section>
+
+    
+    <section id="huistenbosch" class="city-detail">
+      <h2>Huis Ten Bosch</h2>
+      <p class="place-desc">
+        <a href="nagasaki.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+
+      <div class="photo-row">
+        <img src="Images/Japan/hu1.jpg" alt="Huis Ten Bosch" loading="lazy">
+        <img src="Images/Japan/hu2.jpg" alt="Huis Ten Bosch" loading="lazy" >
+        <img src="Images/Japan/hui2.jpg" alt="Huis Ten Bosch" loading="lazy">
+        <img src="Images/Japan/hui3.jpg" alt="Huis Ten Bosch" loading="lazy">
+        <img src="Images/Japan/hu12.jpg" alt="Huis Ten Bosch" loading="lazy">
+        <img src="Images/Japan/hu16.jpg" alt="Huis Ten Bosch" loading="lazy">
+        <img src="Images/Japan/hu13.jpg" alt="Huis Ten Bosch" loading="lazy">
+        <img src="Images/Japan/hu15.jpg" alt="Huis Ten Bosch" loading="lazy">
+        <img src="Images/Japan/hu17.jpg" alt="Huis Ten Bosch" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="naoshima" class="city-detail">
+      <h2>Naoshima</h2>
+      <p class="place-desc">
+        <a href="naoshima.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+
+      <div class="photo-row">
+        <img src="Images/Japan/naoshima.jpg" alt="Naoshima" loading="lazy">
+        <img src="Images/Japan/naoshima1.jpg" alt="Naoshima" loading="lazy">
+        <img src="Images/Japan/naoshima2.jpg" alt="Naoshima" loading="lazy">
+        <img src="Images/Japan/naoshima3.jpg" alt="Naoshima" loading="lazy">
+        <img src="Images/Japan/naoshima4.jpg" alt="Naoshima" loading="lazy">
+        <img src="Images/Japan/naoshima5.jpg" alt="Naoshima" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="sapporo" class="city-detail">
+      <h2>Sapporo</h2>
+       <p class="place-desc">
+        <a href="sapporo.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+
+      <div class="photo-row">
+        <img src="Images/Japan/sapporo2.png" alt="Sapporo" loading="lazy">
+        <img src="Images/Japan/sapporo3.jpg" alt="Sapporo" loading="lazy">
+        <img src="Images/Japan/sapporo4.jpg" alt="Sapporo" loading="lazy">
+        <img src="Images/Japan/sapporo1.png" alt="Sapporo" loading="lazy">
+        <img src="Images/Japan/sapporo.jpg" alt="Sapporo" loading="lazy">
+        <img src="Images/Japan/sapporo6.jpg" alt="Sapporo" loading="lazy">
+        <img src="Images/Japan/sapporo9.jpg" alt="Sapporo" loading="lazy">
+        <img src="Images/Japan/sapporo11.jpg" alt="Sapporo" loading="lazy">
+        <img src="Images/Japan/sapporo13.jpg" alt="Sapporo" loading="lazy">
+
+
+      </div>
+    </section>
+
+    <section id="furano" class="city-detail">
+      <h2>Furano</h2>
+      <p class="place-desc">
+        <a href="furano.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+
+      <div class="photo-row">
+        <img src="Images/Japan/furano.jpg" alt="Furano" loading="lazy">
+        <img src="Images/Japan/furano1.jpg" alt="Furano" loading="lazy">
+        <img src="Images/Japan/furano3.jpg" alt="Furano" loading="lazy">
+        <img src="Images/Japan/furano6.jpg" alt="Furano" loading="lazy">
+        <img src="Images/Japan/furano8.jpg" alt="Furano" loading="lazy">
+        <img src="Images/Japan/furano11.jpg" alt="Furano" loading="lazy">
+
+
+      </div>
+    </section>
+
+    <section id="imari" class="city-detail">
+      <h2>Imari</h2>
+       <p class="place-desc">
+        <a href="imari.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+       </p>
+      <div class="photo-row">
+        <img src="Images/Japan/imari.jpg" alt="Imari" loading="lazy">
+        <img src="Images/Japan/imari1.jpg" alt="Imari" loading="lazy">
+        <img src="Images/Japan/imari2.jpg" alt="Imari" loading="lazy">
+        <img src="Images/Japan/imari3.jpg" alt="Imari" loading="lazy">
+        <img src="Images/Japan/imari4.jpg" alt="Imari" loading="lazy">
+        <img src="Images/Japan/imari6.jpg" alt="Imari" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="okinawa" class="city-detail">
+      <h2>Okinawa</h2>
+      <p class="place-desc">
+        <a href="okinawa.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+
+      <div class="photo-row">
+        <img src="Images/Japan/okinawa.png" alt="Okinawa" loading="lazy">
+        <img src="Images/Japan/okinawa13.jpg" alt="Okinawa" loading="lazy">
+        <img src="Images/Japan/okinawa11.jpg" alt="Okinawa" loading="lazy">
+        <img src="Images/Japan/okinawa6.jpg" alt="Okinawa" loading="lazy">
+        <img src="Images/Japan/okinawa5.jpg" alt="Okinawa" loading="lazy">
+        <img src="Images/Japan/okinawa2.jpg" alt="Okinawa" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="kanazawa" class="city-detail">
+      <h2>Kanazawa</h2>
+      <p class="place-desc">
+        <a href="kanazawa.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+     </p>
+      <div class="photo-row">
+        <img src="Images/Japan/kanazawa.jpg" alt="Kanazawa" loading="lazy">
+        <img src="Images/Japan/kana1.png" alt="Kanazawa" loading="lazy">
+        <img src="Images/Japan/kana2.jpg" alt="Kanazawa" loading="lazy">
+        <img src="Images/Japan/kana3.jpg" alt="Kanazawa" loading="lazy">
+        <img src="Images/Japan/kana4.png" alt="Kanazawa" loading="lazy">
+        <img src="Images/Japan/kana20.jpg" alt="Kanazawa" loading="lazy">
+        <img src="Images/Japan/kana6.jpg" alt="Kanazawa" loading="lazy">
+        <img src="Images/Japan/kana7.jpg" alt="Kanazawa" loading="lazy">
+        <img src="Images/Japan/kana8.jpg" alt="Kanazawa" loading="lazy">
+        <img src="Images/Japan/kana13.jpg" alt="Kanazawa" loading="lazy">
+        <img src="Images/Japan/kana17.jpg" alt="Kanazawa" loading="lazy">
+        <img src="Images/Japan/kana18.jpg" alt="Kanazawa" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="tateyama" class="city-detail">
+      <h2>Tateyama</h2>
+      <p class="place-desc">
+        <a href="tateyama.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+     </p>
+      <div class="photo-row">
+        <img src="Images/Japan/tateyama.jpg" alt="Tateyama" loading="lazy">
+        <img src="Images/Japan/tate2.jpg" alt="Tateyama" loading="lazy">
+        <img src="Images/Japan/tate3.jpg" alt="Tateyama" loading="lazy">
+        <img src="Images/Japan/tate7.jpg" alt="Tateyama" loading="lazy">
+        <img src="Images/Japan/tate4.jpg" alt="Tateyama" loading="lazy">
+        <img src="Images/Japan/tate15.jpg" alt="Tateyama" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="toyama" class="city-detail">
+      <h2>Toyama</h2>
+      <p class="place-desc">
+        <a href="toyama.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+     </p>
+
+      <div class="photo-row">
+        <img src="Images/Japan/toyama6.jpg" alt="Toyama" loading="lazy">
+        <img src="Images/Japan/toyama5.jpg" alt="Toyama" loading="lazy">
+        <img src="Images/Japan/toyama9.jpg" alt="Toyama" loading="lazy">
+        <img src="Images/Japan/toyama8.jpg" alt="Toyama" loading="lazy">
+        <img src="Images/Japan/toyama3.jpg" alt="Toyama" loading="lazy">
+        <img src="Images/Japan/toyama4.jpg" alt="Toyama" loading="lazy">
+
+
+      </div>
+    </section>
+
+    <section id="akita" class="city-detail">
+      <h2>Akita</h2>
+      <p class="place-desc">
+        <a href="akita.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+        <img src="Images/Japan/akita.jpg" alt="Akita" loading="lazy">
+        <img src="Images/Japan/akita1.jpg" alt="Akita" loading="lazy">
+        <img src="Images/Japan/akita6.jpg" alt="Akita" loading="lazy">
+        <img src="Images/Japan/akita4.jpg" alt="Akita" loading="lazy">
+        <img src="Images/Japan/akita5.jpg" alt="Akita" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="oga" class="city-detail">
+      <h2>Oga</h2>
+      <p class="place-desc">
+        <a href="oga.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+        <img src="Images/Japan/oga2.jpg" alt="Oga" loading="lazy">
+        <img src="Images/Japan/oga7.jpg" alt="Oga" loading="lazy">
+        <img src="Images/Japan/oga3.jpg" alt="Oga" loading="lazy">
+        <img src="Images/Japan/oga5.jpg" alt="Oga" loading="lazy">
+        <img src="Images/Japan/oga4.jpg" alt="Oga" loading="lazy">
+        <img src="Images/Japan/Oga8.jpg" alt="Oga" loading="lazy">
+
+      </div>
+    </section>
+
+
+    <section id="otaru" class="city-detail">
+      <h2>Otaru</h2>
+      <p class="place-desc">
+        <a href="otaru.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+        <img src="Images/Japan/otaru.jpg" alt="Otaru" loading="lazy">
+        <img src="Images/Japan/otaru1.jpg" alt="Otaru" loading="lazy">
+        <img src="Images/Japan/otaru2.jpg" alt="Otaru" loading="lazy">
+        <img src="Images/Japan/otaru3.jpg" alt="Otaru" loading="lazy">
+        <img src="Images/Japan/otaru5.jpg" alt="Otaru" loading="lazy">
+        <img src="Images/Japan/otaru6.png" alt="Otaru" loading="lazy">
+
+
+      </div>
+    </section>
+
+    <section id="kochi" class="city-detail">
+      <h2>Kochi</h2>
+      <p class="place-desc">
+        <a href="kochi.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+        <img src="Images/Japan/kochi.jpg" alt="Kochi" loading="lazy">
+        <img src="Images/Japan/kochi1.jpg" alt="Kochi" loading="lazy">
+        <img src="Images/Japan/kochi2.jpg" alt="Kochi" loading="lazy">
+        <img src="Images/Japan/kochi3.jpg" alt="Kochi" loading="lazy">
+        <img src="Images/Japan/ampangman4.png" alt="Kochi" loading="lazy">
+        <img src="Images/Japan/kochi6.jpg" alt="Kochi" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="abashiri" class="city-detail">
+      <h2>Abashiri</h2>
+      <p class="place-desc">
+        <a href="abashiri.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+        <img src="Images/Japan/abashiri2.jpg" alt="Abashiri" loading="lazy">
+        <img src="Images/Japan/abashiri.jpg" alt="Abashiri" loading="lazy">
+        <img src="Images/Japan/abashiri1.jpg" alt="Abashiri" loading="lazy">
+        <img src="Images/Japan/abashiri3.jpg" alt="Abashiri" loading="lazy">
+        <img src="Images/Japan/abashiri7.jpg" alt="Abashiri" loading="lazy">
+        <img src="Images/Japan/abashiri5.jpg" alt="Abashiri" loading="lazy">
+      </div>
+    </section>
+
+    <section id="aomori" class="city-detail">
+      <h2>Aomori</h2>
+      <p class="place-desc">
+        <a href="aomori.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+        <img src="Images/Japan/aomori.jpg" alt="Aomori" loading="lazy">
+        <img src="Images/Japan/aomori1.jpg" alt="Aomori" loading="lazy">
+        <img src="Images/Japan/aomori5.jpg" alt="Aomori" loading="lazy">
+        <img src="Images/Japan/aomori2.jpg" alt="Aomori" loading="lazy">
+        <img src="Images/Japan/aomori6.jpg" alt="Aomori" loading="lazy">
+        <img src="Images/Japan/aomori7.jpg" alt="Aomori" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="kyoto" class="city-detail">
+      <h2>Kyoto</h2>
+      <p class="place-desc">
+        <a href="kyoto.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+        <img src="Images/Japan/kyoto.jpg" alt="Kyoto" loading="lazy">
+        <img src="Images/Japan/kyoto1.jpg" alt="Kyoto" loading="lazy">
+        <img src="Images/Japan/kyoto4.jpg" alt="Kyoto" loading="lazy">
+        <img src="Images/Japan/kyoto6.jpg" alt="Kyoto" loading="lazy">
+        <img src="Images/Japan/kyoto8.jpg" alt="Kyoto" loading="lazy">
+        <img src="Images/Japan/kyoto14.jpg" alt="Kyoto" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="osaka" class="city-detail">
+      <h2>Osaka</h2>
+      <p class="place-desc">
+        <a href="osaka.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+        <img src="Images/Japan/osaka3.png" alt="Osaka" loading="lazy">
+        <img src="Images/Japan/osaka17.jpg" alt="Osaka" loading="lazy">
+        <img src="Images/Japan/osaka19.jpg" alt="Osaka" loading="lazy">
+        <img src="Images/Japan/osaka18.jpg" alt="Osaka" loading="lazy">
+        <img src="Images/Japan/osaka2.jpg" alt="Osaka" loading="lazy">
+        <img src="Images/Japan/osaka4.jpg" alt="Osaka" loading="lazy">
+        <img src="Images/Japan/osaka9.jpg" alt="Osaka" loading="lazy">
+        <img src="Images/Japan/osaka10.jpg" alt="Osaka" loading="lazy">
+        <img src="Images/Japan/osaka.jpg" alt="Osaka" loading="lazy">
+        <img src="Images/Japan/osaka26.jpg" alt="Osaka" loading="lazy">
+        <img src="Images/Japan/bandar1.jpg" alt="Osaka" loading="lazy">
+        <img src="Images/Japan/osaka8.jpg" alt="Osaka" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="saga" class="city-detail">
+      <h2>Saga</h2>
+      <p class="place-desc">
+        <a href="saga.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+        <img src="Images/Japan/saga4.png" alt="Saga" loading="lazy">
+        <img src="Images/Japan/saga2.jpg" alt="Saga" loading="lazy">
+        <img src="Images/Japan/saga1.jpg" alt="Saga" loading="lazy">
+        <img src="Images/Japan/saga.jpg" alt="Saga" loading="lazy">
+        <img src="Images/Japan/saga6.jpg" alt="Saga" loading="lazy">
+        <img src="Images/Japan/saga8.jpg" alt="Saga" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="kobe" class="city-detail">
+      <h2>Kobe</h2>
+      <p class="place-desc">
+        <a href="kobe.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+        <img src="Images/Japan/arima10.jpg" alt="Kobe" loading="lazy">
+        <img src="Images/Japan/kobe10.jpg" alt="Kobe" loading="lazy">
+        <img src="Images/Japan/arima3.jpg" alt="Kobe" loading="lazy">
+        <img src="Images/Japan/arima9.jpg" alt="Kobe" loading="lazy">
+        <img src="Images/Japan/arima7.jpg" alt="Kobe" loading="lazy">
+        <img src="Images/Japan/kobe.jpg" alt="Kobe" loading="lazy">
+       
+      </div>
+    </section>
+
+    <section id="oita" class="city-detail">
+      <h2>Oita</h2>
+      <p class="place-desc">
+        <a href="oita.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+        <img src="Images/Japan/oita1.jpg" alt="Oita" loading="lazy">
+        <img src="Images/Japan/oita3.jpg" alt="Oita" loading="lazy">
+        <img src="Images/Japan/oita5.jpg" alt="Oita" loading="lazy">
+        <img src="Images/Japan/oita2.jpg" alt="Oita" loading="lazy">
+        <img src="Images/Japan/oita10.jpg" alt="Oita" loading="lazy">
+        <img src="Images/Japan/oita9.jpg" alt="Oita" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="shizuoka" class="city-detail">
+      <h2>Shizuoka</h2>
+       <p class="place-desc">
+        <a href="shizuoka.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+        <img src="Images/Japan/shizuoka1.jpg" alt="Shizuoka" loading="lazy">
+        <img src="Images/Japan/shizuoka.jpg" alt="Shizuoka" loading="lazy">
+        <img src="Images/Japan/shizuoka3.jpg" alt="Shizuoka" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="yufuin" class="city-detail">
+      <h2>Yufuin</h2>
+      <p class="place-desc">
+        <a href="yufuin.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+        <img src="Images/Japan/yufuin.jpg" alt="Yufuin" loading="lazy">
+        <img src="Images/Japan/yufuin1.jpg" alt="Yufuin" loading="lazy">
+        <img src="Images/Japan/yufuin3.jpg" alt="Yufuin" loading="lazy">
+        <img src="Images/Japan/yufuin6.png" alt="Yufuin" loading="lazy">
+        <img src="Images/Japan/yufuin9.png" alt="Yufuin" loading="lazy">
+        <img src="Images/Japan/yufuin10.png" alt="Yufuin" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="beppu" class="city-detail">
+      <h2>Beppu</h2>
+      <p class="place-desc">
+        <a href="beppu.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+        <img src="Images/Japan/beppu.jpg" alt="Beppu" loading="lazy">
+        <img src="Images/Japan/beppu1.jpg" alt="Beppu" loading="lazy">
+        <img src="Images/Japan/beppu2.jpg" alt="Beppu" loading="lazy">
+        <img src="Images/Japan/beppu3.png" alt="Beppu" loading="lazy">
+        <img src="Images/Japan/beppu12.png" alt="Beppu" loading="lazy">
+        <img src="Images/Japan/beppu5.jpg" alt="Beppu" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="fujiyama" class="city-detail">
+      <h2>Hakone</h2>
+      <p class="place-desc">
+        <a href="hakone.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+        <img src="Images/Japan/hakone.jpg" alt="Hakone" loading="lazy">
+        <img src="Images/Japan/hakone1.jpg" alt="Hakone" loading="lazy">
+        <img src="Images/Japan/hakone2.jpg" alt="Hakone" loading="lazy">
+        <img src="Images/Japan/hakone5.jpg" alt="Hakone" loading="lazy">
+        <img src="Images/Japan/hakone4.jpg" alt="Hakone" loading="lazy">
+        <img src="Images/Japan/hakone8.jpg" alt="Hakone" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="sendai" class="city-detail">
+      <h2>Sendai</h2>
+      <p class="place-desc">
+        <a href="sendai.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+        <img src="Images/Japan/sendai1.jpg" alt="Sendai" loading="lazy">
+        <img src="Images/Japan/sendai2.jpg" alt="Sendai" loading="lazy">
+        <img src="Images/Japan/sendai3.jpg" alt="Sendai" loading="lazy">
+        <img src="Images/Japan/sendai4.jpg" alt="Sendai" loading="lazy">
+        <img src="Images/Japan/sendai5.jpg" alt="Sendai" loading="lazy">
+        <img src="Images/Japan/sendai6.jpg" alt="Sendai" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="miyazaki" class="city-detail">
+      <h2>Miyazaki</h2>
+      <p class="place-desc">
+        <a href="miyazaki.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+        <img src="Images/Japan/miyazaki1.jpg" alt="Miyazaki" loading="lazy">
+        <img src="Images/Japan/miyazaki2.jpg" alt="Miyazaki" loading="lazy">
+        <img src="Images/Japan/miyazaki3.jpg" alt="Miyazaki" loading="lazy">
+        <img src="Images/Japan/miyazaki4.jpg" alt="Miyazaki" loading="lazy">
+        <img src="Images/Japan/miyazaki5.jpg" alt="Miyazaki" loading="lazy">
+        <img src="Images/Japan/miyazaki.jpg" alt="Miyazaki" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="tokyo" class="city-detail">
+      <h2>Tokyo</h2>
+      <p class="place-desc">
+        <a href="tokyo.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+        <img src="Images/Japan/tokyoskytree.jpg" alt="Tokyo" loading="lazy">
+        <img src="Images/Japan/tokyo13.jpg" alt="Tokyo" loading="lazy">
+        <img src="Images/Japan/tokyo10.jpg" alt="Tokyo" loading="lazy">
+        <img src="Images/Japan/tokyo3.jpg" alt="Tokyo" loading="lazy">
+        <img src="Images/Japan/tokyo4.jpg" alt="Tokyo" loading="lazy">
+        <img src="Images/Japan/tokyo7.jpg" alt="Tokyo" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="yokohama" class="city-detail">
+      <h2>Yokohama</h2>
+      <p class="place-desc">
+        <a href="yokohama.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+        <img src="Images/Japan/yokohama.jpg" alt="Yokohama" loading="lazy">
+        <img src="Images/Japan/yokohama6.jpg" alt="Yokohama" loading="lazy">
+        <img src="Images/Japan/yokohama4.jpg" alt="Yokohama" loading="lazy">
+        <img src="Images/Japan/yokohama5.jpg" alt="Yokohama" loading="lazy">
+        <img src="Images/Japan/yokohama7.jpg" alt="Yokohama" loading="lazy">
+
+      </div>
+    </section>
+
+
+  </section>
+
+  <div class="footer-note">
+    Wandering with Steph · Japan Archive
+  </div>
+
+</body>
+</html>

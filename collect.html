@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Collected Moments | Wandering with Steph</title>
+
+  <!-- Bootstrap -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      background:
+      linear-gradient(
+       rgba(62, 58, 68, 0.92),
+       rgba(26, 26, 47, 0.92)
+     );
+
+      background-size:cover;
+      background-attachment:fixed;
+      color:#2d2d2d;
+      font-family:'Montserrat', sans-serif;
+    }
+
+    /* =========================
+       BACK BUTTON
+    ========================== */
+
+   .back-wrapper{
+      width:min(1120px,90%);
+      margin:22px auto 10px;
+      text-align:left;
+    }
+
+   .back-btn{
+      display:inline-block;
+      font-size:11px;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      color:#838896;
+      padding-bottom:4px;
+      transition:0.3s ease;
+    }
+
+    .back-btn:hover{
+      opacity:0.7;
+      transform:translateX(-4px);
+    }
+
+
+    /* =========================
+       INTRO
+    ========================== */
+
+    .intro{
+
+      text-align:center;
+      padding:10px 5px 20px;
+    }
+
+    .intro h1{
+
+      font-family:'Caveat', cursive;
+      font: size 20px;
+      font-weight:400;
+
+      color:#cccdce;
+
+      margin-bottom:0;
+    }
+
+    .intro p{
+        letter-spacing:2px;
+        font-size:14px;
+        color:#858287
+      }
+
+
+    /* =========================
+       FILTER
+    ========================== */
+
+    .gallery-filter{
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-wrap:wrap;
+
+      gap:0;
+
+      margin-top:0;
+      padding:10px 5px 10px;
+    }
+
+    .filter-btn{
+      margin-top:0;
+      border:none;
+      background:transparent;
+
+      font-size:12px;
+      letter-spacing:1px;
+      text-transform:uppercase;
+
+      color:#ccd1d6;
+      cursor:pointer;
+
+      padding:0 14px 6px;
+
+      border-bottom:1px solid transparent;
+      transition:0.3s ease;
+    }
+
+    .filter-btn + .filter-btn{
+      border-left:1px solid rgba(53,70,86,0.3);
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active{
+      color:#42566b;
+    
+    }
+
+
+    /* =========================
+      TRAVEL ARCHIVE
+    ========================== */
+
+    .travel-archive{
+
+      max-width:1400px;
+
+      margin:auto;
+
+      padding:20px 10px 60px;
+    }
+
+
+    /* =========================
+      COUNTRY SECTION
+    ========================== */
+
+    .country-section{
+
+      backdrop-filter:blur(8px);
+      border:1px solid rgba(120,130,140,0.08);
+      border-radius:20px;
+      padding: 15px 20px;
+      margin-bottom:20px;
+      box-shadow:0 4px 18px rgba(0,0,0,0.04);
+    }
+
+    /* =========================
+      COUNTRY HEADER
+    ========================== */
+
+    .country-header{
+
+      margin-bottom:5px;
+    }
+
+    .country-header h2 {
+
+        font-family:'Cormorant Garamond', serif;
+        font-size:18px;
+        font-weight:500;
+        letter-spacing:1px;
+        color:#727477;
+        margin-bottom:10px;
+    }
+    .country-header h2 a{
+        color:#a9acaf;
+        text-decoration:none;
+        transition:0.3s ease;
+    }
+    .country-header h2 a:hover{
+      color:#9b9ea2;
+    }
+
+    .country-header h2 a::after{
+
+      content:"→";
+      font-size:15px;
+      opacity:0;
+      transform:translateX(-5px);
+      transition:0.3s ease;
+    }
+
+    .country-header h2 a:hover::after{
+
+      opacity:1;
+
+      transform:translateX(0);
+    }
+
+
+    /* =========================
+      CITY GRID
+    ========================== */
+    .city-grid{
+
+       display:flex;
+       flex-wrap:wrap;
+       gap:10px;
+    }
+
+    /* =========================
+      CITY SLIDER
+    ========================== */
+
+    .city-slider{
+
+       display:flex;
+       gap:10px;
+
+       overflow-x:auto;
+       scroll-behavior:smooth;
+
+       scrollbar-width:none;
+       padding: 10px 50px;
+    }
+
+    .city-slider::-webkit-scrollbar{
+       display:none;
+      
+    }
+
+
+    /* =========================
+       SLIDER CONTAINER
+    ========================== */
+
+    .slider-container{
+
+       position:relative;
+    }
+
+    /* =========================
+       SLIDER CONTAINER
+    ========================== */
+
+    .slide-btn{
+
+       position:absolute;
+       top:50%;
+       transform:translateY(-50%);
+       width:20px;
+       height:20px;
+       border:none;
+       border-radius:50%;
+       background:transparent;
+       box-shadow:0 4px 12px rgba(0,0,0,0.12);
+       cursor:pointer;
+       font-size:16px;
+       color:#b3b4b6;
+       z-index:10;
+       transition:0.3s ease;
+    }
+
+    .slide-btn:hover{
+
+       background:#c6c9cd;
+       color:white;
+    }
+      
+    .prev{
+       left:3px;
+    }
+
+    .next{
+       right:3px;
+    }
+
+
+    /* =========================
+      CITY CARD
+    ========================== */
+
+    .city-card{
+
+      flex:0 0 auto;
+      position:relative;
+      min-width:120px;
+      width: 120px;
+      height: 120px;
+      overflow:hidden;
+      border-radius:14px;
+      text-decoration:none;
+      background:rgba(134, 131, 131, 0.88);
+      box-shadow:0 4px 14px rgba(0,0,0,0.05);
+      transition:0.35s ease;
+    }
+
+    .city-card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 10px 20px rgba(0,0,0,0.1);
+    }
+
+
+    /* =========================
+       CARD IMAGE
+    ========================== */
+
+    .city-card img{
+
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .city-card:hover img{
+     transform:scale(1.05);
+    }
+
+
+    /* =========================
+       CITY NAME BOX
+    ========================== */
+
+    .city-name{
+
+       position:absolute;
+       bottom:0;
+       left:0;
+       width:100%;
+       background:rgba(198, 198, 204, 0.92);
+       color:#3a4c5f;
+       text-align:center;
+       padding:5px 5px;
+       font-size:12px;
+       font-weight:500;
+       letter-spacing:1px;
+       backdrop-filter:blur(4px);
+    }
+
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media(max-width:992px){
+
+     .city-grid{
+
+       justify-content:center;
+      }
+
+     .country-header{
+
+       text-align:center;
+       margin-bottom:10px;
+      }
+    }
+
+
+    @media(max-width:576px){
+
+      /* Back button */
+      .back-wrapper{
+        width:90%;
+        margin:22px auto 0;
+      }
+
+      .back-btn{
+        font-size:9px;
+        letter-spacing:0.7px;
+        padding-bottom: none;
+      }
+
+      .intro{
+         padding:10px 0 12px;
+      }
+
+      .intro p{
+         margin-bottom:0;
+         letter-spacing:1.2px;
+         font-size:11px;
+         color:#adaeb0
+      }
+
+
+      .intro h1{
+        font-size:18px;
+        letter-spacing:2.5px;
+      }
+
+      .country-filter{
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        flex-wrap:wrap;
+        gap:0;
+        padding:10px 5px 10px;
+        width:92%;
+
+      }
+     
+      .country-nav a,
+      .country-nav button{
+        font-size:8px;
+        letter-spacing:0.5px;
+      }
+
+      .filter-btn{
+        font-size:10px;
+        letter-spacing:0.7px;
+        padding:0 10px;
+        line-height:1.2;
+      }
+
+      .country-header h2{
+        font-size:15px;
+        font-family:'Caveat', cursive;
+        letter-spacing:2px;
+        margin-bottom:5px;
+      }
+
+      .travel-archive{
+        padding:20px 10px 50px;
+      }
+
+      .city-grid{
+        display:grid;
+        grid-template-columns:repeat(2,130px);
+        gap:12px;
+        justify-content:start;
+        margin-left:-20px;
+      }
+
+      .city-card{
+         width:130px;
+         height:140px;
+      }
+
+      .city-card img{
+        width:100%;
+        height:105px;
+        object-fit:cover;
+      }
+
+      .city-name{
+        width:100%;
+        height:35px;
+      }
+
+      .city-slider{
+        padding:10px 22px;
+      }
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer{
+      padding:50px 20px;
+      text-align:center;
+      color:#777;
+      border-top:1px solid rgba(0,0,0,0.08);
+      font-size:0.9rem;
+    }
+
+
+
+  </style>
+</head>
+
+<body>
+  <div id="top"></div>
+
+    
+  <!-- BACK -->
+    <div class="back-wrapper">
+       <a href="gallery.html" class="back-btn">← Back to Gallery</a>
+   </div>
+
+  <!-- INTRO -->
+
+  <section class="intro">
+
+    <h1>Travel Collection</h1>
+
+    <p>Collected Moments</p>
+
+  </section>
+     
+
+  </section>
+
+  <!-- =========================
+     COUNTRY FILTER
+  ========================== -->
+
+  <section class="gallery-filter">
+
+      <a href="#all" class="filter-btn active"></a>
+      <a href="malaysia.html" class="filter-btn">MALAYSIA</a>
+      <a href="japan.html" class="filter-btn">JAPAN</a>
+      <a href="ap.html" class="filter-btn">ASIA-PACIFIC</a>
+      <a href="eu.html" class="filter-btn">EU/UK</a>
+      <a href="usa.html" class="filter-btn">USA/CANADA</a>
+      <a href="korea.html" class="filter-btn">KOREA</a>
+
+  </section>
+ 
+  <!-- =========================
+     COUNTRY ARCHIVE SECTION
+  ========================== -->
+
+  <section class="travel-archive">
+
+    <!-- =========================
+       JAPAN
+    ========================== -->
+
+    <div class="country-section" id="japan">
+
+      <div class="country-header">
+        <h2>
+           <a href="japan1.html">
+             JAPAN
+            </a>
+          </h2>
+      </div>
+
+      <div class="slider-container">
+
+        <!-- 왼쪽 버튼 -->
+        <button class="slide-btn prev">&#10094;
+        </button>
+
+      <div class="city-slider">
+
+        
+        <!-- TOKYO -->
+
+        <a href="japan1.html" class="city-card">
+
+          <img src="Images/Japan/odaiba.jpg" alt="Tokyo">
+
+          <div class="city-name">
+            Tokyo
+          </div>
+
+        </a>
+
+        <!-- Yokohama -->
+
+        <a href="japan1.html" class="city-card">
+
+          <img src="Images/Japan/yokohama.jpg" alt="Yokohama">
+
+          <div class="city-name">
+            Yokohama
+          </div>
+
+        </a>
+
+
+        <!-- Naoshima -->
+
+        <a href="japan1.html" class="city-card">
+
+          <img src="Images/Japan/naoshima.jpg" alt="Naoshima">
+
+          <div class="city-name">
+            Naoshima
+          </div>
+
+        </a>
+
+        <!-- SAPPORO -->
+
+        <a href="japan1.html" class="city-card">
+
+          <img src="Images/Japan/sapporo.jpg" alt="Sapporo">
+
+          <div class="city-name">
+            Sapporo
+          </div>
+
+        </a>
+
+        <!-- Nagasaki -->
+
+        <a href="japan1.html" class="city-card">
+
+          <img src="Images/Japan/nagasaki.jpg" alt="Nagasaki">
+
+          <div class="city-name">
+            Nagasaki
+          </div>
+
+        </a>
+
+        <!-- Furano -->
+
+        <a href="japan1.html" class="city-card">
+
+          <img src="Images/Japan/furano.jpg" alt="Furano">
+
+          <div class="city-name">
+            Furano
+          </div>
+        </a>
+
+        <!-- Imari -->
+
+        <a href="japan1.html" class="city-card">
+
+          <img src="Images/Japan/imari.jpg" alt="Imari">
+
+          <div class="city-name">
+            Imari
+          </div>
+
+        </a>
+
+        <!-- okinawa -->
+
+        <a href="japan1.html" class="city-card">
+
+          <img src="Images/Japan/okinawa.jpg" alt="Okinawa">
+
+          <div class="city-name">
+            Okinawa
+          </div>
+
+        </a>
+
+        <!-- Kanazawa -->
+
+        <a href="japan1.html" class="city-card">
+
+          <img src="Images/Japan/kanazawa.jpg" alt="Kanazawa">
+
+          <div class="city-name">
+            Kanazawa
+          </div>
+
+        </a>
+
+        <!-- Tateyama -->
+
+        <a href="japan1.html" class="city-card">
+
+          <img src="Images/Japan/tateyama.jpg" alt="Tateyama">
+
+          <div class="city-name">
+            Tateyama
+          </div>
+
+        </a>
+
+        <!-- Akita -->
+
+        <a href="japan1.html" class="city-card">
+
+          <img src="Images/Japan/akita.jpg" alt="Akita">
+
+          <div class="city-name">
+            Akita
+          </div>
+
+        </a>
+
+        <!-- Otaru -->
+
+        <a href="japan1.html" class="city-card">
+
+          <img src="Images/Japan/otaru.jpg" alt="Otaru">
+
+          <div class="city-name">
+            Otaru
+          </div>
+
+        </a>
+
+        <!-- Kochi -->
+
+        <a href="japan1.html" class="city-card">
+
+          <img src="Images/Japan/kochi.jpg" alt="Kochi">
+
+          <div class="city-name">
+            Kochi
+          </div>
+
+        </a>
+
+        <!-- HuisTenBosch -->
+
+        <a href="japan1.html" class="city-card">
+
+          <img src="Images/Japan/huistenbosch.jpg" alt="HuisTenBosch">
+
+          <div class="city-name">
+            HuisTenBosch
+          </div>
+
+        </a>
+
+        <!-- Abashiri -->
+
+        <a href="japan1.html" class="city-card">
+
+          <img src="Images/Japan/abashiri.jpg" alt="Abashiri">
+
+          <div class="city-name">
+            Abashiri
+          </div>
+
+        </a>
+
+        <!-- Aomori -->
+
+        <a href="japan1.html" class="city-card">
+
+          <img src="Images/Japan/aomori.jpg" alt="Aomori">
+
+          <div class="city-name">
+            Aomori
+          </div>
+
+        </a>
+
+        <!-- Kyoto -->
+
+        <a href="japan1.html" class="city-card">
+
+          <img src="Images/Japan/kyoto.jpg" alt="Kyoto">
+
+          <div class="city-name">
+            Kyoto
+          </div>
+
+        </a>
+
+        <!-- OSAKA -->
+
+        <a href="japan1.html" class="city-card">
+
+          <img src="Images/Japan/osaka.jpg" alt="Osaka">
+
+          <div class="city-name">
+            Osaka
+          </div>
+
+        </a>
+
+        <!-- SAGA -->
+
+        <a href="japan1.html" class="city-card">
+
+          <img src="Images/Japan/saga.jpg" alt="Saga">
+
+          <div class="city-name">
+            Saga
+          </div>
+
+        </a>
+
+        <!-- Kobe -->
+
+        <a href="japan1.html" class="city-card">
+
+          <img src="Images/Japan/kobe.jpg" alt="Kobe">
+
+          <div class="city-name">
+            Kobe
+          </div>
+
+        </a>
+
+        <!-- Oita -->
+
+        <a href="japan1.html" class="city-card">
+
+          <img src="Images/Japan/oitamuseum.jpg" alt="Oita">
+
+          <div class="city-name">
+            Oita
+          </div>
+
+        </a>
+
+        <!-- Shizuoka -->
+
+        <a href="japan1.html" class="city-card">
+
+          <img src="Images/Japan/shizuoka.jpg" alt="Shizuoka">
+
+          <div class="city-name">
+            Shizuoka
+          </div>
+
+        </a>
+
+
+        <!-- Yufuin -->
+
+        <a href="japan1.html" class="city-card">
+
+          <img src="Images/Japan/yufuin.jpg" alt="Yufuin">
+
+          <div class="city-name">
+            Yufuin
+          </div>
+
+        </a>
+
+        <!-- Fujiyama -->
+
+        <a href="japan1.html" class="city-card">
+
+          <img src="Images/Japan/fujiyama.jpg" alt="Fujiyama">
+
+          <div class="city-name">
+            Fujiyama
+          </div>
+
+        </a>
+
+          <!-- Miyazaki -->
+
+        <a href="japan1.html" class="city-card">
+
+          <img src="Images/Japan/miyazaki1.jpg" alt="Miyazaki">
+
+          <div class="city-name">
+            Miyazaki
+          </div>
+
+        </a>
+     
+
+      </div>
+
+        <!-- 오른쪽 버튼 -->
+
+        <button class="slide-btn next">&#10095;</button>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================
+       MALAYSIA
+    ========================== -->
+
+    <div class="country-section" id="malaysia">
+
+      <div class="country-header">
+        <h2>
+          <a href="malaysia.html">
+            MALAYSIA
+          </a>
+        </h2>
+        <p></p>
+      </div>
+
+      <div class="slider-container">
+
+        <!-- 왼쪽 버튼 -->
+        <button class="slide-btn prev">&#10094;
+        </button>
+
+      <div class="city-slider">
+
+
+        <!-- KL -->
+
+        <a href="kl.html" class="city-card">
+
+          <img src="Images/malaysia/kl.jpg" alt="KL">
+
+          <div class="city-name">
+            Kuala Lumpur
+          </div>
+
+        </a>
+
+        <!-- JOHOR Bahru -->
+
+        <a href="johor.html" class="city-card">
+
+          <img src="Images/malaysia/johor.jpg" alt="Johor">
+
+          <div class="city-name">
+            Johor Bahru
+          </div>
+
+          </a>
+
+        <!-- Redang Island -->
+
+        <a href="redang.html" class="city-card">
+
+          <img src="Images/malaysia/redang.jpg" alt="Redang">
+
+          <div class="city-name">
+            Redang Island
+          </div>
+
+        </a>
+
+        <!-- Tioman Island -->
+
+        <a href="tioman.html" class="city-card">
+
+          <img src="Images/malaysia/tioman.jpg" alt="Tioman">
+
+          <div class="city-name">
+            Tioman Island
+          </div>
+
+        </a>
+
+        <!-- Perhentian -->
+
+        <a href="perhentian.html" class="city-card">
+
+          <img src="Images/malaysia/perhentian.jpg" alt="Perhentian">
+
+          <div class="city-name">
+            Perhentian is.
+          </div>
+
+        </a>
+
+        <!-- Pulau Besar -->
+
+        <a href="pulaubesar.html" class="city-card">
+
+          <img src="Images/malaysia/pulaubesar.jpg" alt="Pulau Besar">
+
+          <div class="city-name">
+            Pulau Besar
+          </div>
+
+        </a>
+
+        <!-- Cameron Highlands -->
+
+        <a href="cameron.html" class="city-card">
+
+          <img src="Images/malaysia/cameron.jpg" alt="Cameron">
+
+          <div class="city-name">
+            Cameron Highlands
+          </div>
+
+        </a>
+
+        <!-- Langkawi -->
+
+        <a href="langkawi.html" class="city-card">
+
+          <img src="Images/malaysia/langkawi.jpg" alt="Langkawi">
+
+          <div class="city-name">
+            Langkawi
+          </div>
+
+        </a>
+
+        <!-- MELAKA -->
+
+        <a href="melaka.html" class="city-card">
+
+          <img src="Images/malaysia/melaka.jpg" alt="Melaka">
+
+          <div class="city-name">
+            Melaka
+          </div>
+
+        </a>
+
+        <!-- PENANG -->
+
+        <a href="penang.html" class="city-card">
+
+          <img src="Images/malaysia/penang.jpg" alt="Penang">
+
+          <div class="city-name">
+            Penang
+          </div>
+
+        </a>
+
+        <!-- Sandakan -->
+
+        <a href="sandakan.html" class="city-card">
+
+          <img src="Images/malaysia/sandakan.jpg" alt="Sandakan">
+
+          <div class="city-name">
+            Sandakan
+          </div>
+
+        </a>
+
+        <!-- Desaru -->
+
+        <a href="desaru.html" class="city-card">
+
+          <img src="Images/malaysia/desaru.jpg" alt="Desaru">
+
+          <div class="city-name">
+            Desaru
+          </div>
+
+        </a>
+
+
+      </div>
+      
+        <!-- 오른쪽 버튼 -->
+
+        <button class="slide-btn next">&#10095;</button>
+      
+      </div>
+
+    </div>
+
+
+    <!-- =========================
+        ASIA-PACIFIC
+    ========================== -->
+
+    <div class="country-section" id="asiapacific">
+
+      <div class="country-header">
+        <h2>
+          <a href="ap.html">
+            ASIA-PACIFIC
+          </a>
+        </h2>
+        <p></p>
+      </div>
+
+      <div class="slider-container">
+
+        <!-- 왼쪽 버튼 -->
+        <button class="slide-btn prev">&#10094;
+        </button>
+
+      <div class="city-slider">
+
+         <!-- China -->
+         
+         <a href="ap.html" class="city-card">
+
+            <img src="Images/Asia-Pacific/china.jpg" alt="China">
+
+            <div class="city-name">
+              China
+            </div>
+
+          </a>
+         
+          <!-- Beijing -->
+
+          <a href="ap.html" class="city-card">
+
+            <img src="Images/Asia-Pacific/beijing.jpg" alt="Beijing">
+
+            <div class="city-name">
+              Beijing
+            </div>
+
+          </a>
+
+
+          <!-- Zhujiajiao -->
+          
+          <a href="ap.html" class="city-card">
+
+            <img src="Images/Asia-Pacific/zhujiajiao.jpg" alt="Zhujiajiao">
+
+            <div class="city-name">
+              Zhujiajiao
+            </div>
+
+          </a>
+
+        <!-- Vietnam -->
+
+        <a href="ap.html" class="city-card">
+
+            <img src="Images/Asia-Pacific/vietnam.jpg" alt="Vietnam">
+
+            <div class="city-name">
+              Vietnam
+            </div>
+
+          </a>
+
+          <!-- Hoian -->
+
+          <a href="ap.html" class="city-card">
+
+            <img src="Images/Asia-Pacific/hoian.jpg" alt="Hoian">
+
+            <div class="city-name">
+              Hoian
+            </div>
+
+          </a>
+
+          <!-- DaNang -->
+
+          <a href="ap.html" class="city-card">
+
+            <img src="Images/Asia-Pacific/danang.jpg" alt="DaNang">
+
+            <div class="city-name">
+              DaNang
+            </div>
+
+          </a>
+
+          <!-- Nha Trang -->
+
+          <a href="ap.html" class="city-card">
+
+            <img src="Images/Asia-Pacific/nhatrang.jpg" alt="NhaTrang">
+
+            <div class="city-name">
+               Nha trang
+            </div>
+
+          </a>
+
+        <!-- Singapore -->
+
+        <a href="ap.html" class="city-card">
+
+           <img src="Images/Asia-Pacific/singapore.jpg" alt="Singapore">
+
+           <div class="city-name">
+             Singapore
+           </div>
+
+        </a>
+
+        <!-- Thailand -->
+        
+        <a href="ap.html" class="city-card">
+
+            <img src="Images/Asia-Pacific/bangkok.jpg" alt="Bangkok">
+
+            <div class="city-name">
+              Bangkok
+            </div>
+
+        </a>
+
+        <a href="ap.html" class="city-card">
+
+            <img src="Images/Asia-Pacific/pataya.jpg" alt="Pattaya">
+
+            <div class="city-name">
+              Pattaya
+            </div>
+
+        </a>
+
+        <!-- Australia -->
+
+        <a href="ap.html" class="city-card">
+
+            <img src="Images/Asia-Pacific/tasmania.jpg" alt="Tasmania">
+
+            <div class="city-name">
+               Tasmania
+            </div>
+
+        </a>
+
+        <!-- Fiji -->
+
+        <a href="ap.html" class="city-card">
+
+          <img src="Images/Asia-Pacific/fiji.jpg" alt="Fiji">
+
+          <div class="city-name">
+            Fiji
+          </div>
+
+        </a>
+
+        <!-- Maldives -->
+
+        <a href="ap.html" class="city-card">
+
+          <img src="Images/Asia-Pacific/maldives.jpg" alt="Maldives">
+
+          <div class="city-name">
+            Maldives
+          </div>
+
+        </a>
+
+      </div>
+        <!-- 오른쪽 버튼 -->
+
+        <button class="slide-btn next">&#10095;
+        </button>
+      
+      </div>
+
+
+    </div>
+
+    <!-- =========================
+       EU/UK
+    ========================== -->
+
+    <div class="country-section" id="eu">
+
+      <div class="country-header">
+        <h2>
+          <a href="eu.html">
+            EU/UK
+          </a>
+        </h2>
+        <p></p>
+      </div>
+
+      <div class="slider-container">
+
+        <!-- 왼쪽 버튼 -->
+        <button class="slide-btn prev">&#10094;
+        </button>
+
+      <div class="city-slider">
+
+        <!-- London -->
+
+        <a href="eu.html" class="city-card">
+
+          <img src="Images/EU/london.jpg" alt="London">
+
+          <div class="city-name">
+            London
+          </div>
+
+        </a>
+
+        <!-- Paris -->
+
+        <a href="eu.html" class="city-card">
+
+          <img src="Images/EU/paris.jpg" alt="Paris">
+
+          <div class="city-name">
+            Paris
+          </div>
+
+        </a>
+
+        <!-- Bordaux -->
+
+        <a href="eu.html" class="city-card">
+
+          <img src="Images/EU/bordaux.jpg" alt="Bordaux">
+
+          <div class="city-name">
+            Bordaux
+          </div>
+
+        </a>
+
+        <!-- Malta -->
+
+        <a href="eu.html" class="city-card">
+
+          <img src="Images/EU/malta.jpg" alt="Malta">
+
+          <div class="city-name">
+            Malta
+          </div>
+
+        </a>
+
+        <!-- Zurich -->
+
+        <a href="eu.html" class="city-card">
+
+          <img src="Images/EU/zurich.jpg" alt="Zurich">
+
+          <div class="city-name">
+            Zurich
+          </div>
+
+        </a>
+
+        <!-- Bristol -->
+
+        <a href="eu.html" class="city-card">
+
+          <img src="Images/EU/bristol.jpg" alt="Bristol">
+
+          <div class="city-name">
+            Bristol
+          </div>
+       
+        </a>
+
+        <!-- Amsterdam -->
+
+        <a href="eu.html" class="city-card">
+
+          <img src="Images/EU/amsterdam.jpg" alt="Amsterdam">
+
+          <div class="city-name">
+            Amsterdam
+          </div>
+       
+        </a>
+
+        <!-- Groningen -->
+
+        <a href="eu.html" class="city-card">
+
+          <img src="Images/EU/groningen.jpg" alt="Groningen">
+
+          <div class="city-name">
+            Groningen
+          </div>
+       
+        </a>
+
+        <!-- Royal Holloway -->
+        <a href="eu.html" class="city-card">
+
+          <img src="Images/EU/royal.jpg" alt="Egham ">
+
+          <div class="city-name">
+            Egham
+          </div>
+       
+        </a>
+
+     
+      </div>
+
+        <!-- 오른쪽 버튼 -->
+       <button class="slide-btn next">&#10095;</button>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================
+       USA/CANADA
+    ========================== -->
+
+    <div class="country-section" id="usa">
+
+      <div class="country-header">
+        <h2>
+          <a href="usa.html">
+            USA/CANADA
+          </a>
+        </h2>
+        <p></p>
+      </div>
+
+    <div class="slider-container">
+
+        <!-- 왼쪽 버튼 -->
+        <button class="slide-btn prev">&#10094;
+        </button>
+
+    <div class="city-slider">
+
+      <!-- Washington  -->
+
+      <a href="usa.html" class="city-card">
+
+        <img src="Images/USA/dc1.jpg" alt="Washington">
+
+        <div class="city-name">
+          Washington 
+        </div>
+
+      </a>
+
+      <!-- New York -->
+
+      <a href="usa.html" class="city-card">
+
+        <img src="Images/USA/newyork.jpg" alt="New York">
+
+        <div class="city-name">
+          New York
+        </div>
+
+      </a>
+
+      <!-- Seattle -->
+
+      <a href="usa.html" class="city-card">
+
+        <img src="Images/USA/seattle1.jpg" alt="Seattle">
+
+        <div class="city-name">
+          Seattle
+        </div>
+
+      </a>
+
+      <!-- Canada -->
+
+      <a href="usa.html" class="city-card">
+
+        <img src="Images/USA/victoria.jpg" alt="Victoria Island">
+
+        <div class="city-name">
+          Victoria Island
+        </div>
+
+      </a>
+
+      </div>
+      
+        <!-- 오른쪽 버튼 -->
+
+        <button class="slide-btn next">&#10095;
+        </button>
+      
+      </div>
+
+    </div>
+
+    <!-- =========================
+       Korea
+    ========================== -->
+
+    <div class="country-section" id="korea">
+
+      <div class="country-header">
+        <h2>
+          <a href="korea.html">
+            Korea
+          </a>
+        </h2>
+      </div>
+
+    <div class="slider-container">
+
+        <!-- 왼쪽 버튼 -->
+        <button class="slide-btn prev">&#10094;
+        </button>
+
+    <div class="city-slider">
+
+      <!-- Suwon  -->
+
+      <a href="suwon.html" class="city-card">
+
+        <img src="Images/Korea/suwon1.jpg" alt="Suwon">
+
+        <div class="city-name">
+          Suwon
+        </div>
+
+      </a>
+
+      <!-- Yangyang -->
+
+      <a href="yangyang.html" class="city-card">
+
+        <img src="Images/Korea/yangyang1.png" alt="Yangyang">
+
+        <div class="city-name">
+          Yangyang
+        </div>
+
+      </a>
+
+      <!-- KYOUNGJU -->
+
+      <a href="kyoungju.html" class="city-card">
+
+        <img src="Images/Korea/Kyoungju1.jpg" alt="Kyoungju">
+
+        <div class="city-name">
+          Kyoungju
+        </div>
+
+      </a>
+
+      <!-- CHUNCHEON -->
+
+      <a href="chuncheon.html" class="city-card">
+
+        <img src="Images/Korea/chuncheon.jpg" alt="Chuncheon">
+
+        <div class="city-name">
+          Chuncheon
+        </div>
+
+      </a>
+      
+
+      <!-- NAMHAE-->
+
+      <a href="namhae.html" class="city-card">
+
+        <img src="Images/Korea/namhae1.jpg" alt="Namhae">
+
+        <div class="city-name">
+          Nanhae
+        </div>
+
+      </a>
+
+      <!-- JEJU-->
+
+      <a href="jeju.html" class="city-card">
+
+        <img src="Images/Korea/haebeachjeju.jpg" alt="Jeju">
+
+        <div class="city-name">
+          Jeju
+        </div>
+
+      </a>
+
+      <!--PYOUNGCHANG -->
+
+      <a href="jeongsun.html" class="city-card">
+
+        <img src="Images/Korea/pyoung1.jpg" alt="Pyoungchang">
+
+        <div class="city-name">
+          Pyoungchang
+        </div>
+
+      </a>
+
+      <!--BUSAN -->
+
+      <a href="busan.html" class="city-card">
+
+        <img src="Images/Korea/busan1.jpg" alt="Busan">
+
+        <div class="city-name">
+          Busan
+        </div>
+
+      </a>
+
+
+      <!--WOOLEUNGDO -->
+
+      <a href="wooleung.html" class="city-card">
+
+        <img src="Images/Korea/wool1.jpg" alt="Wooleungdo">
+
+        <div class="city-name">
+          Wooleungdo
+        </div>
+
+      </a>
+
+      <!--SAMCHEOK -->
+
+      <a href="seohae.html" class="city-card">
+
+        <img src="Images/Korea/samcheok1.jpg" alt="Samcheok">
+
+        <div class="city-name">
+          Samcheok
+        </div>
+
+      </a>
+
+      
+      <!--EVERLAND -->
+
+      <a href="everland.html" class="city-card">
+
+        <img src="Images/Korea/tong1.jpg" alt="Tongyoung">
+
+        <div class="city-name">
+          Tongyoung
+        </div>
+
+      </a>
+
+        <!-- 오른쪽 버튼 -->
+
+        <button class="slide-btn next">&#10095;
+        </button>
+      
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <script>
+
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const galleryItems = document.querySelectorAll(".gallery-item");
+
+  filterButtons.forEach(button => {
+
+     button.addEventListener("click", () => {
+
+       document
+       .querySelector(".filter-btn.active")
+       .classList.remove("active");
+
+     button.classList.add("active");
+
+     const filter = button.dataset.filter;
+
+     galleryItems.forEach(item => {
+
+      if(filter === "all"){
+
+        item.style.display = "block";
+
+      }else{
+
+        if(item.classList.contains(filter)){
+
+          item.style.display = "block";
+
+        }else{
+
+          item.style.display = "none";
+        }
+      }
+
+    });
+
+  });
+
+});
+   
+   /* =========================
+   SLIDER
+   ========================== */
+
+  const sliders = document.querySelectorAll('.slider-container');
+
+  sliders.forEach(container => {
+
+    const slider = container.querySelector('.city-slider');
+
+    const nextBtn = container.querySelector('.next');
+    const prevBtn = container.querySelector('.prev');
+
+    nextBtn.addEventListener('click', () => {
+
+      slider.scrollBy({
+      left:300,
+      behavior:'smooth'
+    });
+
+  });
+
+  prevBtn.addEventListener('click', () => {
+
+    slider.scrollBy({
+      left:-300,
+      behavior:'smooth'
+    });
+
+  });
+
+});
+
+ </script>
+
+  <!-- FOOTER -->
+
+  <footer>
+    © 2026 Wandering with Steph · Collecting Moments Across The World
+  </footer>
+
+</body>
+</html>

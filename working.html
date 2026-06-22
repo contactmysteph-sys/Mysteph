@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Working in Malaysia</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:
+    linear-gradient(
+      rgba(227, 230, 225, 0.94),
+      rgba(206,213,234,0.94)
+    ),
+    url("Images/papertexture.jpg");
+
+  background-size:cover;
+  background-attachment:fixed;
+  font-family:'Montserrat', sans-serif;
+  color:#282b2f;
+}
+
+/* BACK */
+.back-wrapper{
+  width:min(1180px,90%);
+  margin:10px auto 20px;
+}
+
+.back-btn{
+  display:inline-block;
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#252d35;
+  text-decoration:none;
+  transition:0.3s ease;
+}
+
+.back-btn:hover{
+  color:#1E3157;
+  transform:translateX(-3px);
+}
+
+/* HERO */
+.hero{
+  width:100%;
+  height:25vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.hero h1{
+  font-family:'Cormorant Garamond', serif;
+  font-size:28px;
+  font-weight:600;
+  letter-spacing:3px;
+  color:#141118;
+  margin-bottom:10px;
+}
+
+.hero h2{
+  font-family:'Cormorant Garamond', serif;
+  font-size:16px;
+  font-weight:500;
+  letter-spacing:2px;
+  color:#393748;
+}
+
+/* MAIN */
+.editorial-grid{
+  width:90%;
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:0.95fr 1.05fr;
+  gap:40px;
+  align-items:start;
+  padding-bottom:100px;
+}
+
+/* LEFT CARD */
+.feature-card{
+  background:rgba(255,255,255,0.55);
+  border-radius:35px;
+  overflow:hidden;
+  backdrop-filter:blur(8px);
+  box-shadow:0 10px 30px rgba(0,0,0,0.05);
+  border:1px solid rgba(255,255,255,0.6);
+}
+
+.feature-image{
+  width:100%;
+  height:90%;
+  object-fit:contain;
+  object-position:center;
+  display:block;
+}
+
+.feature-content{
+  padding:26px;
+}
+
+.feature-label{
+  font-size:12px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#777f8c;
+  margin-bottom:18px;
+}
+
+.feature-title{
+  font-family:'Cormorant Garamond', serif;
+  font-size:22px;
+  font-weight:500;
+  line-height:1.15;
+  margin-bottom:10px;
+  color:#2f4663;
+  white-space:nowrap;
+}
+
+.feature-text{
+  font-size:14px;
+  line-height:1.6;
+  color:#5d6775;
+  margin-bottom:10px;
+}
+
+.feature-link{
+  text-decoration:none;
+  font-size:12px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#31476E;
+  border-bottom:1px solid #31476E;
+  padding-bottom:5px;
+}
+
+/* RIGHT SLIDER */
+.story-slider{
+  position:relative;
+}
+
+.story-card{
+  background:rgba(255,255,255,0.55);
+  border-radius:35px;
+  overflow:hidden;
+  backdrop-filter:blur(8px);
+  box-shadow:0 10px 30px rgba(0,0,0,0.05);
+  border:1px solid rgba(255,255,255,0.6);
+  
+}
+
+.story-content{
+  padding:30px;
+}
+
+.story-label{
+  font-size:11px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#8a94a3;
+  margin-bottom:16px;
+}
+
+.story-title{
+  font-family:'Cormorant Garamond', serif;
+  font-size:24px;
+  font-weight:600;
+  line-height:1.2;
+  color:#2f4663;
+  margin-bottom:8px;
+}
+
+.story-text{
+  font-size:14px;
+  line-height:1.6;
+  color:#687384;
+  margin-bottom:10px;
+  white-space:pre-line;
+}
+
+
+.story-link{
+  text-decoration:none;
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#31476E;
+  border-bottom:1px solid #31476E;
+  padding-bottom:4px;
+}
+
+/* ARROWS */
+.slide-btn{
+  position:absolute;
+  top:60%;
+  transform:translateY(-50%);
+  z-index:10;
+
+  width:34px;
+  height:34px;
+  border:none;
+  border-radius:50%;
+
+  background:none;
+  color:#505445;
+
+  font-size:28px;
+  line-height:1;
+  cursor:pointer;
+
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+}
+
+.slide-btn.prev{
+  left:-16px;
+}
+
+.slide-btn.next{
+  right:-16px;
+}
+
+.slide-btn:hover{
+  background:white;
+}
+
+/* DOTS */
+.story-dots{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin-top:18px;
+}
+
+.dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:rgba(47,70,99,0.25);
+}
+
+.dot.active{
+  background:rgba(47,70,99,0.75);
+}
+
+/* RESPONSIVE */
+@media(max-width:1000px){
+  .editorial-grid{
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+
+  .feature-image{
+    height:520px;
+  }
+}
+
+@media(max-width:768px){
+
+  .back-wrap{
+    margin:0 0 35px;
+    padding:0;
+  }
+
+  .back-btn{
+    display:inline-block;
+    font-size:10px;
+    letter-spacing:1px;
+    margin:0;
+  }
+
+  .hero{
+    height:auto;
+    padding:12px 0 18px;
+  }
+
+  .hero h1{
+    margin:0 0 12px;
+    font-size: 20px;
+    letter-spacing:2px;
+  }
+
+  .hero h2{
+    margin:0;
+    font-size: 12px;
+    letter-spacing:1px;
+  }
+
+  .feature-image{
+    width: 100%;
+    height:420px;
+    object-fit:cover;
+  }
+
+  .feature-title{
+    font-size:16px;
+    line-height:1.25;
+    margin-bottom:10px;
+  }
+   
+  .feature-text{
+    font-size:12px;
+    line-height:1.6;
+  }
+
+  .feature-card,
+  .story-card{
+    margin-top:0   !important;
+  }
+
+
+  .story-content{
+    padding: 18px;
+    
+  }
+
+  .story-photos{
+    grid-template-columns:1fr 1fr;
+    padding:18px 18px 0;
+  }
+
+  .story-photos img{
+    height:130px;
+  }
+
+  .story-label{
+    display: none;
+  }
+
+  .story-title{
+    font-size:16px;
+    text-align: center;
+    margin: 14px;
+  }
+
+  .story-text{
+    font-size:12px;
+  }
+
+  .story-nav{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:18px;
+    margin-top:14px;
+  }
+
+  .slide-btn.prev::after{
+    content:"Previous";
+  }
+
+  .slide-btn.next::after{
+    content:"Next";
+  }
+
+  .slide-btn{
+    position:static !important;
+    transform:none !important;
+    width:auto;
+    height:auto;
+    padding:0;
+    background:none;
+    box-shadow:none;
+    border:none;
+    font-size:0;
+    letter-spacing:1.6px;
+    color:#8994a3;
+  }
+  
+  .slide-btn::after{
+    font-size:11px;
+    letter-spacing:1.5px;
+  }
+
+  .story-dots{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    margin:0;
+  }
+
+}
+  
+</style>
+</head>
+
+<body>
+
+  <div class="back-wrapper">
+  <a href="index.html" class="back-btn">
+    ← Back to Home
+  </a>
+</div>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Working in Malaysia</h1>
+    <h2>Working Abroad, Quiet Thoughts</h2>
+  </div>
+</section>
+
+<section class="editorial-grid">
+
+  <!-- LEFT FEATURE -->
+  <article class="feature-card">
+
+    <img src="Images/working/trx.jpg"
+         alt="Working in Malaysia"
+         class="feature-image">
+
+    <div class="feature-content">
+
+      <div class="feature-label">
+        TRX Office
+      </div>
+
+      <h2 class="feature-title">
+         A Different Way of Working
+      </h2>
+
+      <p class="feature-text">
+
+         Notes from my working life in Malaysia —
+         different work cultures, multicultural conversations,
+         unexpected lessons, and small reflections gathered
+         while learning how people collaborate across languages,
+         backgrounds, and everyday routines.
+    </p>
+
+    </div>
+
+  </article>
+
+  <!-- RIGHT STORY SLIDER -->
+  <div class="story-slider">
+
+    <article class="story-card">
+      
+
+      <div class="story-content">
+
+       <div class="story-label" id="story-label">
+         Work Life
+       </div>
+
+       <h3 class="story-title" id="story-title">
+         Working with Good People
+       </h3>
+
+       <p class="story-text" id="story-text">
+         Reflections on working in Malaysia, multicultural workplaces,
+         different working styles, and practical experiences gathered
+         while living and working abroad.
+       </p>
+
+       <a href="#" class="story-link" id="story-link">
+         Related Notes
+       </a>
+
+      </div>
+
+      <div class="story-nav">
+         <button class="slide-btn prev" onclick="changeStory(-1)"></button>
+
+         <div class="story-dots">
+           <span class="dot active" id="dot-0"></span>
+           <span class="dot" id="dot-1"></span>
+           <span class="dot" id="dot-2"></span>
+         </div>
+
+         <button class="slide-btn next" onclick="changeStory(1)"></button>
+     </div>
+
+   </article>
+
+</section>
+
+<script>
+const stories = [
+  {
+    title: "Working with Good People",
+    text: `
+      When people ask me what I like most about working in Malaysia, they often expect me to talk about the food, the weather, or the opportunity to live abroad.
+
+      While those things are certainly part of the experience, the answer that comes to mind first is much simpler: the people.
+
+      I have been fortunate to work with colleagues who have made everyday work not only easier, but also more enjoyable.
+
+      Ram, my manager, leads with a calm confidence that creates trust. He gives people the space to do their work while always being available when guidance is needed. His experience, patience, and sense of humor have made a lasting impression on me.
+
+      Noriko has taught me that kindness and professionalism can coexist effortlessly. She approaches every situation with thoughtfulness and respect, and her quiet reliability is something I deeply admire.
+
+      Yuka brings warmth and positive energy to the team. Even during busy periods, she somehow manages to make the workplace feel lighter. Her encouragement and friendliness have often brightened ordinary workdays.
+
+      Living and working abroad can sometimes feel uncertain. There are unfamiliar places, different cultures, and moments when everything feels new. Having good colleagues makes those challenges much easier to navigate.
+
+      Looking back, I realize that some of my favorite memories of Malaysia are not connected to places or events, but to conversations, shared lunches, small jokes, and the people I have worked alongside.
+
+      For that, I am truly grateful.
+    `,
+
+  },
+
+ {
+    label: "Work Life",
+
+    title: "My First Job in Malaysia",
+
+    text: `
+     Moving to Malaysia for work was both exciting and intimidating.
+
+     Everything felt new at first — the city, the language, the food, and even the way people worked. Although I had previous work experience, starting a job in a different country felt like beginning from the first page again.
+
+     One of the biggest adjustments was learning how diverse the workplace could be. My colleagues came from different cultural backgrounds, spoke different languages, and often had different perspectives on the same problem. It was something I had rarely experienced before.
+
+     At first, I worried about fitting in and communicating effectively. I wondered whether my English would be good enough, whether I would understand local working styles, and whether I could build strong relationships with my team.
+
+     Over time, those concerns gradually disappeared.
+
+     I discovered that most people are willing to help when you are willing to learn. A simple question often led to a meaningful conversation, and small everyday interactions slowly built trust and understanding.
+
+     Looking back, my first job in Malaysia taught me far more than professional skills. It taught me how to work with people from different cultures, how to adapt to unfamiliar situations, and how to feel at home in a place that was once completely foreign.
+
+     For anyone considering working in Malaysia, my advice is simple: stay curious, be open-minded, and give yourself time. The adjustment may take longer than expected, but the experience is often more rewarding than you imagine.
+   `,
+
+     link: ""
+  },
+
+  {
+
+   title: "Working in a Multicultural Environment",
+
+   text: `
+     Before moving to Malaysia, I had heard that the country was multicultural. What I did not fully understand at the time was how much that diversity would become part of my everyday working life.
+
+     In a typical week, I might work with colleagues from Malaysia, Japan, India, Korea, and several other countries. Different languages, different customs, and different ways of thinking all come together in the same office.
+
+     At first, I assumed that cultural differences would make communication more difficult. In reality, I found the opposite to be true. Working with people from different backgrounds encouraged me to listen more carefully, ask more questions, and avoid making assumptions.
+
+     I also learned that there is rarely only one correct way to approach a problem. Some colleagues preferred detailed planning, while others valued flexibility and quick decision-making. Some communicated directly, while others preferred a more careful and diplomatic approach.
+
+     The most valuable lesson was realizing that diversity is not simply about nationality. Every person brings unique experiences, perspectives, and strengths to a team. When those differences are respected, they become one of the greatest advantages in the workplace.
+
+     Of course, misunderstandings occasionally happen. Different communication styles can sometimes create confusion. However, I found that patience, curiosity, and mutual respect usually solve most problems better than perfect language skills ever could.
+
+     Working in a multicultural environment has made me more adaptable, more open-minded, and more aware of the many ways people can work together successfully.
+
+     Looking back, it is one of the experiences I value most about living and working in Malaysia.
+   `,
+
+     link: ""
+  },
+
+  {
+
+    title: "Lunch Culture in the Office",
+
+    text: `
+      One of the small but memorable parts of working in Malaysia has been the office lunch culture.
+
+      Lunch is more than just a meal. It is often a time to catch up with colleagues, exchange stories, and learn about different cultures through food.
+
+      In a multicultural workplace, even a simple lunch table can become an interesting conversation about traditions, family recipes, favorite restaurants, and the foods people miss from home.
+
+      Looking back, some of the best conversations I have had at work happened not in meeting rooms, but around a lunch table.
+    `,
+
+    link: ""
+  },
+
+  {
+
+   title: "Things I Wish I Knew Before Moving",
+
+   text: `
+     Moving to another country is exciting, but there are always things you only learn after you arrive.
+
+     Some lessons are practical, such as understanding transportation, banking, taxes, and housing. Others are less obvious and take time to discover.
+
+     Looking back, there are many small things I wish I had known before moving to Malaysia. None of them were major problems, but knowing them earlier would have made the transition smoother and less stressful.
+
+     This is a collection of observations, lessons, and practical advice that I hope may be helpful to anyone considering a similar move.
+   `,
+
+    link: ""
+  },
+
+];
+
+let currentStory = 0;
+
+function changeStory(direction){
+  currentStory += direction;
+
+  if(currentStory < 0){
+    currentStory = stories.length - 1;
+  }
+
+  if(currentStory >= stories.length){
+    currentStory = 0;
+  }
+
+  document.getElementById("story-label").innerText = stories[currentStory].label;
+  document.getElementById("story-title").innerText = stories[currentStory].title;
+  document.getElementById("story-text").innerText = stories[currentStory].text;
+  const storyLink =
+  document.getElementById("story-link");
+
+    if(stories[currentStory].link){
+
+     storyLink.style.display = "inline-block";
+     storyLink.href = stories[currentStory].link;
+
+    }else{
+
+     storyLink.style.display = "none";
+
+    }
+
+  document.querySelectorAll(".dot").forEach(dot => {
+    dot.classList.remove("active");
+  });
+
+  document.getElementById("dot-" + currentStory).classList.add("active");
+}
+
+changeStory(0);
+</script>

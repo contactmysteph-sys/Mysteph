@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Wood, Canvas & Keys</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&family=Caveat:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Montserrat', sans-serif;
+      color:#2f3b4a;
+      background:
+        radial-gradient(circle at top left, rgba(190,205,218,0.35), transparent 35%),
+        linear-gradient(rgba(238,242,245,0.96), rgba(246,242,235,0.96));
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    img{
+      display:block;
+    }
+
+    /* BANNER */
+
+    .banner{
+      width:100%;
+      height:50vh;
+      overflow:hidden;
+    }
+
+    .banner img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .back-wrapper{
+      width:min(1200px,90%);
+      margin:0;
+    }
+
+    .back-home{
+      display:inline-block;
+      font-size:12px;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      color:#31476E;
+      padding-bottom:5px;
+      margin-left: 50px;
+    }
+    
+
+    /* HERO */
+
+    .hero{
+      width:100%;
+      padding:10px 5px;
+      background:
+        radial-gradient(circle at top left, rgba(190,205,218,0.35), transparent 35%),
+        linear-gradient(rgba(238,242,245,0.96), rgba(246,242,235,0.96));
+      box-shadow:0 20px 60px rgba(143, 150, 163, 0.08);
+      text-align:center;
+    }
+
+    .hero h1{
+      margin-top:0;
+      font-family:'Cormorant Garamond', serif;
+      font-size:30px;
+      font-weight:500;
+      color:#31476E;
+    }
+
+    .handwriting{
+      margin-top:0;
+      font-family:'Caveat', cursive;
+      font-size:16x;
+      color:#8FA2BC;
+    }
+
+    /* MAIN CARDS */
+
+    .being-section{
+      width:min(1200px,90%);
+      margin:40px auto 90px;
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:20px;
+    }
+
+    .being-card{
+      width:100%;
+      min-width:0;
+      background:rgba(255,255,255,0.72);
+      border:1px solid rgba(49,71,110,0.14);
+      box-shadow:0 16px 45px rgba(49,71,110,0.08);
+      overflow:hidden;
+      transition:0.35s ease;
+      animation:fadeUp 0.8s ease both;
+    }
+
+    .being-card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 22px 55px rgba(49,71,110,0.14);
+    }
+
+    .being-card-image{
+      width:100%;
+      height: 320px;
+      justify-content:center;
+      overflow:hidden;
+  
+    }
+
+    .being-card-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:0.5s ease;
+    }
+
+    .being-card-image img:hover{
+      transform:scale(1.05);
+    }
+
+    .card-content{
+      padding:24px;
+    }
+
+    .card-content span{
+      font-size:11px;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      color:#9aa5b3;
+    }
+
+    .card-content h2{
+      margin:14px 0 18px;
+      font-family:'Cormorant Garamond', serif;
+      font-size:26px;
+      font-weight:500;
+      color:#31476E;
+    }
+
+    .card-content p{
+      font-size:13px;
+      line-height:2;
+      color:#5f6b78;
+      margin-bottom:24px;
+    }
+
+    .read-link{
+      display:inline-block;
+      font-size:11px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      color:#31476E;
+      border-bottom:1px solid #31476E;
+      padding-bottom:5px;
+    }
+
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(20px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    /* MOBILE */
+
+    @media(max-width:900px){
+      .banner{
+        height: 20vh;
+        margin-bottom: 0;
+      }
+
+      .back-wrapper{
+        width:90%;
+        margin:0 auto 10px;
+        text-align:left;
+        margin-top:0;
+      }
+
+      .back-home{
+        display:inline-block;
+        font-size:8px;
+        letter-spacing:0.5px;
+        margin:0;
+        margin-bottom:10px;
+        text-transform:uppercase;
+        color:#95989b;
+      }
+
+      .hero{
+  
+        background:none;
+        box-shadow:none;
+        padding:10px 14px 14px;
+        margin-top: 0;
+      }
+
+      .hero h1{
+        margin-top:0;
+        font-weight:500;
+        color:#273141;
+        font-size: 20px;
+      }
+
+      .card-content h2{
+        font-size:20px;
+        margin:6px 0 10px;
+      }
+
+      .card-content span{
+        font-size:9px;
+        letter-spacing:2px;
+      }
+  
+      .card-content p{
+        font-size:12px;
+        line-height:1.8;
+        margin-bottom:18px;
+      }
+
+      .read-link {
+        font-size:8px;
+        line-height:1.0;
+        margin-bottom:8px;
+        letter-spacing:1px;
+      }
+
+      .being-section{
+        grid-template-columns:1fr;
+        margin-top: 0;
+      }
+      
+      .being-card{
+        margin-top: 0;
+      }
+
+      .being-card-image{
+        height: 350px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- BANNER -->
+  <section class="banner">
+    <img src="Images/Logo/space1.png" alt="Space for Being">
+  </section>
+
+  <!-- BACK HOME -->
+    <div class="back-wrapper">
+       <a href="index.html" class="back-home">
+           BACK TO HOME
+      </a>
+    </div>
+
+  <!-- HERO -->
+  <section class="hero">
+      <h1>Wood, Canvas & Keys</h1>
+
+      <div class="handwriting">
+          little things that bring me back to myself
+      </div>
+  </section>
+
+  <!-- MAIN CARDS -->
+  <section class="being-section">
+
+
+    <article class="being-card">
+      <div class="being-card-image">
+        <img src="Images/Menu/paint.png" alt="Painting">
+      </div>
+
+      <div class="card-content">
+        <span>Canvas & Colour</span>
+        <h2>Canvas</h2>
+
+        <p>
+          Sketches, colours, unfinished paintings, and the moments
+          where thoughts become shapes.
+        </p>
+
+        <a href="painting.html" class="read-link">Read More</a>
+      </div>
+    </article>
+
+    <article class="being-card">
+      <div class="being-card-image">
+        <img src="Images/Menu/piano.png" alt="Piano">
+      </div>
+
+      <div class="card-content">
+        <span>Keys & Silence</span>
+        <h2>Keys</h2>
+
+        <p>
+          Piano notes after a long day, familiar melodies,
+          and the soft silence between sounds.
+        </p>
+
+        <a href="music.html" class="read-link">Read More</a>
+      </div>
+    </article>
+
+    <article class="being-card">
+      <div class="being-card-image">
+        <img src="Images/Menu/interior.png" alt="Woodworking">
+      </div>
+
+      <div class="card-content">
+        <span>Wood & Grain</span>
+        <h2>Interior Design</h2>
+
+        <p>
+          Small pieces of wood, quiet tools, and the slow pleasure
+          of making something by hand.
+        </p>
+
+        <a href="wood.html" class="read-link">Read More</a>
+      </div>
+    </article>
+
+  </section>
+
+</body>
+</html>

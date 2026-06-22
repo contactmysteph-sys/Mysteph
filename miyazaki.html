@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bookshop | Coming Soon</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  min-height:100vh;
+  background:
+    linear-gradient(
+      rgba(62, 58, 68, 0.94),
+      rgba(26, 26, 47, 0.94)
+    );
+  font-family:'Montserrat', sans-serif;
+  color:#d6d7da;
+}
+
+.back-wrapper{
+  width:min(1120px,90%);
+  margin:28px auto 0;
+}
+
+.back-btn{
+  display:inline-block;
+  font-size:11px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:#9699a3;
+  text-decoration:none;
+  transition:0.3s ease;
+}
+
+.back-btn:hover{
+  opacity:0.7;
+  transform:translateX(-4px);
+}
+
+.coming-soon{
+  min-height:calc(100vh - 70px);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:40px 24px;
+}
+
+.soon-card{
+  width:min(520px,92%);
+  padding:54px 34px;
+  border-radius:24px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow:0 12px 35px rgba(0,0,0,0.12);
+  backdrop-filter:blur(8px);
+}
+
+.soon-label{
+  font-size:11px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#9da0aa;
+  margin-bottom:18px;
+}
+
+.soon-card h1{
+  font-family:'Caveat', cursive;
+  font-size:42px;
+  font-weight:500;
+  color:#d8d9dc;
+  margin-bottom:18px;
+}
+
+.soon-card p{
+  font-size:14px;
+  line-height:1.8;
+  color:#b9bbc2;
+  margin-bottom:8px;
+}
+
+.soon-card .ko{
+  font-size:13px;
+  color:#aeb0b8;
+}
+
+@media(max-width:576px){
+  .back-wrapper{
+    margin:22px auto 0;
+  }
+
+  .back-btn{
+    font-size:9px;
+  }
+
+  .soon-card{
+    padding:42px 24px;
+  }
+
+  .soon-card h1{
+    font-size:34px;
+  }
+
+  .soon-card p{
+    font-size:13px;
+  }
+
+  .soon-card .ko{
+    font-size:12px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+  <div class="back-wrapper">
+    <a href="japan1.html" class="back-btn">← Back to Japan</a>
+  </div>
+
+  <section class="coming-soon">
+    <div class="soon-card">
+
+      <div class="soon-label">MIYAZAKI</div>
+
+      <h1>Coming Soon</h1>
+
+      <p>This page is currently being prepared.<br>
+      It will be updated soon.</p>
+
+      <p class="ko">이 페이지는 아직 준비 중입니다.<br>
+      곧 업데이트될 예정입니다.</p>
+
+    </div>
+  </section>
+
+</body>
+</html>

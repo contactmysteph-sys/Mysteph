@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Healing Spaces | Space for Being</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Caveat:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Inter', sans-serif;
+      color:#2F3B4A;
+      background:#F5F2ED;
+      line-height:1.7;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    /* =========================
+       BANNER
+    ========================== */
+
+    .banner{
+      width:100%;
+      height:320px;
+      background:
+        linear-gradient(rgba(255,250,244,0.08), rgba(255,250,244,0.08)),
+        url("Images/Logo/space.png");
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+    }
+
+    .banner-text{
+      background:transparent;
+      padding:0;
+      backdrop-filter:none;
+    }
+
+    .banner-text span{
+      display:block;
+      font-size:11px;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      color:#7B8794;
+      margin-bottom:12px;
+    }
+
+    .banner-text h1{
+      font-family:'Cormorant Garamond', serif;
+      font-size:40px;
+      font-weight:600;
+      letter-spacing:2px;
+      color:#2F4A5C;
+      line-height:1;
+      margin-bottom:10px;
+    }
+
+    .banner-text p{
+      font-family:'Caveat', cursive;
+      font-size:25px;
+      color:#4D6C80;
+    }
+
+    .back-home{
+      width:min(1100px,90%);
+      margin:10px auto 0;
+    }
+
+    .back-home a{
+      color:#6B7D8A;
+      text-decoration:none;
+      font-size:14px;
+      letter-spacing:1px;
+      transition:0.3s;
+    }
+
+   .back-home a:hover{
+      color:#2F4A5C;
+    }
+
+    
+    /* =========================
+       SPACE CARDS
+    ========================== */
+
+    .section-title{
+      width:min(1050px,88%);
+      margin:0 auto 30px;
+      text-align:center;
+    }
+
+    .section-title span{
+      font-size:12px;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      color:#9A9FA5;
+    }
+
+    .section-title h2{
+      font-family:'Cormorant Garamond', serif;
+      font-size:20px;
+      font-weight:700;
+      color:#2F4A5C;
+      margin-top:8px;
+    }
+
+    .space-grid{
+      width:min(1050px,88%);
+      margin:0 auto 60px;
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:16px;
+    }
+
+    .space-card{
+      background:rgba(255,255,255,0.72);
+      border:1px solid rgba(47,59,74,0.12);
+      transition:0.35s ease;
+      overflow:hidden;
+    }
+
+    .space-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 18px 40px rgba(47,59,74,0.12);
+    }
+
+    .space-card img{
+      width:100%;
+      height:160px;
+      object-fit:cover;
+      display:block;
+    }
+
+    .space-card-text{
+      padding:26px 24px 30px;
+    }
+
+    .space-card-text .category{
+      font-size:10px;
+      letter-spacing:2.5px;
+      text-transform:uppercase;
+      color:#9A7D5C;
+      margin-bottom:12px;
+    }
+
+    .space-card-text h3{
+      font-family:'Cormorant Garamond', serif;
+      font-size:24px;
+      line-height:1.12;
+      font-weight:600;
+      color:#2F3B4A;
+      margin-bottom:14px;
+    }
+
+    .space-card-text p{
+      font-size:13px;
+      color:#6B7480;
+      line-height:1.75;
+      margin-bottom:20px;
+    }
+
+     /* =========================
+       INTRO
+    ========================== */
+
+    .intro{
+      width:min(780px,86%);
+      margin:30px auto 40px;
+      text-align:center;
+    }
+
+    .intro .small-title{
+      font-size:10px;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      color:#9A9FA5;
+      margin: bottom 10px;
+    }
+
+    .intro h2{
+      font-family:'Cormorant Garamond', serif;
+      font-size:35px;
+      font-weight:600;
+      color:#2F4A5C;
+      margin-bottom:10px;
+    }
+
+    .intro p{
+      font-size:14px;
+      color:#687580;
+      line-height:1.2;
+    }
+
+    .intro em{
+      display:block;
+      margin-top:14px;
+      font-family:'Caveat', cursive;
+      font-size:22px;
+      color:#6B7D8A;
+    }
+
+
+    /* =========================
+       FEATURED SPACE
+    ========================== */
+
+    .featured{
+      width:min(1050px,88%);
+      margin:0 auto 40px;
+      display:grid;
+      grid-template-columns:40% 60%;
+      background:rgba(255,255,255,0.68);
+      border:1px solid rgba(47,59,74,0.12);
+      box-shadow:0 18px 45px rgba(47,59,74,0.08);
+    }
+
+    .featured-image img{
+      width:100%;
+      height: 200px;
+      min-height: 0;
+      object-fit:cover;
+      display:block;
+    }
+
+    .featured-text{
+      padding:30px 40px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+
+    .featured-text .tag{
+      font-size:10px;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      color:#9A7D5C;
+      margin-bottom:12px;
+    }
+
+    .featured-text h2{
+      font-family:'Cormorant Garamond', serif;
+      font-size:30px;
+      line-height:1.08;
+      font-weight:600;
+      color:#2F3B4A;
+      margin-bottom:22px;
+    }
+
+    .featured-text p{
+      font-size:14px;
+      color:#687580;
+      margin-bottom:26px;
+    }
+
+    .read-more{
+      width:max-content;
+      font-size:11px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      border-bottom:1px solid #2F3B4A;
+      padding-bottom:5px;
+      color:#2F3B4A;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer{
+      padding:34px 0;
+      text-align:center;
+      font-size:12px;
+      color:#8B9298;
+      border-top:1px solid rgba(47,59,74,0.1);
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media(max-width:950px){
+      .featured{
+        grid-template-columns:1fr;
+      }
+
+      .space-grid{
+        grid-template-columns:repeat(2, 1fr);
+      }
+    }
+
+    @media(max-width:600px){
+      .banner{
+        height:280px;
+      }
+
+      .banner-text{
+        padding:28px 30px;
+      }
+
+      .banner-text h1{
+        font-size:42px;
+      }
+
+      .banner-text p{
+        font-size:22px;
+      }
+
+      .featured-text{
+        padding:38px 30px;
+      }
+
+      .featured-text h2{
+        font-size:34px;
+      }
+
+      .space-grid{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- BANNER -->
+  <section class="banner">
+    <div class="banner-text">
+      <span></span>
+      <h1></h1>
+      <p></p>
+    </div>
+  </section>
+
+  <div class="back-home">
+    <a href="index.html">← Back to Home</a>
+  </div>
+
+  <!-- INTRO -->
+  <section class="intro">
+    <div class="small-title">Spaces I return to in my memories</div>
+
+    <h2>Healing Spaces</h2>
+
+    <p>
+      Healing Spaces is a quiet collection of places I have loved —
+      bookstores, museums, libraries, aquariums, workshops,
+      and small corners that made me slow down for a while.
+    </p>
+
+  </section>
+
+  <section class="space-grid">
+
+    <article class="space-card">
+      <img src="Images/Menu/lib.jpg" alt="Library">
+      <div class="space-card-text">
+        <div class="category">Books & Corners</div>
+        <h3>A library for slow afternoons</h3>
+        <p>
+          A calm corner filled with books, silence,
+          and the comfort of being alone without feeling lonely.
+        </p>
+        <a href="bookshop.html" class="read-more">Read More</a>
+      </div>
+    </article>
+
+    <article class="space-card">
+      <img src="Images/londonmuseum.jpg" alt="Museum">
+      <div class="space-card-text">
+        <div class="category">Art & Design</div>
+        <h3>The museum that made me pause</h3>
+        <p>
+          A quiet afternoon surrounded by paintings,
+          soft shadows, and rooms that asked me to slow down.
+        </p>
+        <a href="mus.html" class="read-more">Read More</a>
+      </div>
+    </article>
+
+    <article class="space-card">
+      <img src="Images/Menu/jelly.png" alt="Aquarium">
+      <div class="space-card-text">
+        <div class="category">Underwater Calm</div>
+        <h3>Blue light beneath the surface</h3>
+        <p>
+          The slow movement of water and fish made the whole day
+          feel quieter than before.
+        </p>
+        <a href="aqua.html" class="read-more">Read More</a>
+      </div>
+    </article>
+
+    <article class="space-card">
+      <img src="Images/Menu/workshop.png" alt="Workshop">
+      <div class="space-card-text">
+        <div class="category">Makers & Crafts</div>
+        <h3>A small studio full of hands</h3>
+        <p>
+          Sawdust, tools, unfinished pieces,
+          and the joy of making something slowly by hand.
+        </p>
+        <a href="woodwork.html" class="read-more">Read More</a>
+      </div>
+    </article>
+
+
+  </section>
+
+  <footer>
+    © 2026 Space for Being · Healing Spaces
+  </footer>
+
+</body>
+</html>

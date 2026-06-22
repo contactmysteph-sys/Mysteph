@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Wood & Grain</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&family=Caveat:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Montserrat', sans-serif;
+      color:#2f3b4a;
+
+      background:
+        linear-gradient(rgba(246,242,235,0.88), rgba(246,242,235,0.88)),
+        url("Images/Background/wood-texture.jpg");
+
+      background-size:cover;
+      background-position:center;
+      background-attachment:fixed;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    img{
+      width:100%;
+      display:block;
+    }
+
+    /* HERO */
+
+    .wood-hero{
+      width:100%;
+      min-height:260px;
+      padding:40px 10px 30px;
+
+      background:
+        linear-gradient(rgba(255,255,255,0.58), rgba(255,255,255,0.78)),
+        url("Images/Menu/woodwork.jpg");
+
+      background-size:cover;
+      background-position:center;
+      text-align:center;
+    }
+
+    .wood-hero span{
+      display:block;
+      margin-bottom:18px;
+      font-size:12px;
+      letter-spacing:6px;
+      text-transform:uppercase;
+      color:#9a8062;
+    }
+
+    .wood-hero h1{
+      font-family:'Cormorant Garamond', serif;
+      font-size:30px;
+      font-weight:500;
+      color:#31476e;
+      margin-bottom:20px;
+    }
+
+    .wood-hero p{
+      max-width:800px;
+      margin:0 auto;
+      font-size:14px;
+      line-height:1.9;
+      color:#526070;
+    }
+
+    /* =========================
+       BACK BUTTON
+    ========================== */
+
+    .back-wrapper{
+      width:min(1120px,90%);
+      padding-top:40px;
+      margin:0 auto 10px;
+      text-align:left;
+    }
+
+    .back-btn{
+      display:inline-block;
+      font-size:11px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      color:#4a525f;
+      border-bottom:1px solid #31476E;
+      padding-bottom:4px;
+      transition:0.3s ease;
+    }
+
+    .back-btn:hover{
+      opacity:0.7;
+      transform:translateX(-4px);
+      padding-bottom:5px;
+    }
+
+
+    /* WRAPPER */
+
+    .wood-wrapper{
+      width:min(1200px,90%);
+      margin:30px auto;
+    }
+
+   
+    /* FEATURED */
+
+    .featured{
+      display:grid;
+      grid-template-columns:40% 60%;
+      gap:0;
+      align-items:center;
+
+      margin-bottom:10px;
+
+      background:rgba(255,255,255,0.76);
+      border:1px solid rgba(120,90,60,0.16);
+      box-shadow:0 18px 50px rgba(80,60,40,0.12);
+      overflow:hidden;
+    }
+
+    .featured img{
+      width:90%;
+      height:230px;
+      object-fit:cover;
+      margin:auto;
+      border:8px solid white;
+    }
+
+    .featured-text{
+      padding:20px;
+    }
+
+    .featured-text span{
+      font-size:13px;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      color:#a58a68;
+    }
+
+    .featured-text h2{
+      margin:18px 0;
+      font-family:'Cormorant Garamond', serif;
+      font-size:22px;
+      font-weight:500;
+      color:#31476e;
+    }
+
+    .featured-text p{
+      font-size:12px;
+      line-height:1.9;
+      color:#667181;
+      margin-bottom:20px;
+    }
+
+    .read-link{
+      display:inline-block;
+      font-size:11px;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      color:#31476e;
+      border-bottom:1px solid #31476e;
+      padding-bottom:5px;
+    }
+
+    /* SECTION TITLE */
+
+    .section-title{
+      text-align:center;
+      margin-bottom:20px;
+    }
+
+    .section-title span{
+      font-size:13px;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      color:#a58a68;
+    }
+
+    .section-title h2{
+      margin-top:12px;
+      font-family:'Cormorant Garamond', serif;
+      font-size:26px;
+      font-weight:500;
+      color:#31476e;
+    }
+
+    /* PINTEREST STYLE GRID */
+
+    .wood-grid{
+      columns:3;
+      column-gap:18px;
+      margin-bottom:60px;
+    }
+
+    .wood-card{
+      display:inline-block;
+      width:100%;
+      margin-bottom:14px;
+
+      background:rgba(255,255,255,0.82);
+      border:1px solid rgba(120,90,60,0.15);
+      box-shadow:0 14px 35px rgba(80,60,40,0.1);
+      overflow:hidden;
+
+      break-inside:avoid;
+      transition:0.35s ease;
+    }
+
+    .wood-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 20px 45px rgba(80,60,40,0.15);
+    }
+
+    .wood-card img{
+      height:auto;
+      object-fit:cover;
+    }
+
+    .wood-card-content{
+      padding: 15px;
+    }
+
+    .wood-card-content span{
+      font-size:10px;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      color:#a58a68;
+    }
+
+    .wood-card-content h3{
+      margin:12px 0;
+      font-family:'Cormorant Garamond', serif;
+      font-size:20px;
+      font-weight:500;
+      color:#31476e;
+    }
+
+    .wood-card-content p{
+      font-size:11px;
+      line-height:1.8;
+      color:#667181;
+    }
+
+    /* NOTE */
+
+    .wood-note{
+      text-align:center;
+      padding:20px 10px;
+      background:rgba(255,255,255,0.62);
+      border-top:1px solid rgba(120,90,60,0.15);
+      border-bottom:1px solid rgba(120,90,60,0.15);
+    }
+
+    .wood-note p{
+      max-width:700px;
+      margin:0 auto;
+      font-family:'Cormorant Garamond', serif;
+      font-size:14px;
+      line-height:1.7;
+      color:#31476e;
+    }
+
+    
+    /* RESPONSIVE */
+
+    @media(max-width:1000px){
+
+      .wood-grid{
+        columns:2;
+      }
+
+      .featured{
+        grid-template-columns:1fr;
+      }
+
+      .featured img{
+        height:280px;
+      }
+      
+    }
+
+    @media(max-width:650px){
+
+      .back-wrapper{
+        padding-top:0;
+        margin:12px auto 0;
+      }
+
+      .back-btn{
+        font-size:8px;
+        letter-spacing:1px;
+        padding-bottom:0;
+        border-bottom: none;
+        color: aliceblue;
+      }
+      
+      .wood-hero h1,
+      .featured-text h2,
+      .wood-card-content h3{
+         font-family:'Bitter', serif;
+      }
+      .wood-hero{
+         min-height:auto;
+         background-image:none !important;
+         background:rgba(42, 54, 68, 0.58);
+         padding:18px 16px 20px;
+      }
+
+      .wood-hero span{
+         margin-bottom:10px;
+         font-size:9px;
+         letter-spacing:4px;
+         color:#c9cdd3;
+      }
+      .wood-hero h1{
+        font-size:18px;
+        margin-bottom:12px;
+        color:#bfd5f2;
+      }
+
+      .wood-hero p{
+        font-size:8px;
+        line-height:1.3;
+        color:#c0c4c8;
+      }
+
+      .wood-grid{
+        columns:1;
+      }
+
+      .featured-text{
+        padding:16px 14px;
+      }
+
+     .featured-text span{
+       font-size:9px;
+       letter-spacing:3px;
+      }
+
+     .featured-text h2{
+       font-size:12px;
+       margin:10px 0 12px;
+       line-height:1.2;
+      }
+
+     .featured-text p{
+       font-size:11px;
+       line-height:1.8;
+       margin-bottom:0;
+      }
+
+      .section-title span{
+       display:none
+      }
+
+      .section-title h2{
+       background-color:#51667c;
+       font-size:16px;
+       margin-top:6px;
+       color:#c8cacb;
+       letter-spacing:5;
+       font-weight: 500px;
+       font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+      }
+
+      .wood-note{
+        max-width:700px;
+        margin:0 auto;
+        font-family:'bitter', serif;
+        font-size:10px;
+        line-height:157;
+        letter-spacing:2;
+        color:#131417;
+      
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="wood-hero">
+    <span>Wood & Grain</span>
+
+    <h1>Quiet Things Made by Hand</h1>
+
+    <p>
+      The simplae pleasure of shaping something with my hands.
+    </p>  
+    
+    <!-- BACK -->
+   <div class="back-wrapper">
+       <a href="hobby.html" class="back-btn">Back to Wood, Canvas, Keys</a>
+   </div>
+
+  </section>
+
+  <!-- MAIN -->
+  <main class="wood-wrapper">
+
+    <!-- FEATURED -->
+    <section class="featured">
+      <img src="Images/Menu/woodworking.png" alt="Woodworking project">
+
+      <div class="featured-text">
+        <span>My Dream</span>
+
+        <h2>Someday, I hope these dreams will take shape.</h2>
+
+        <p>
+          예전에 목공 배울 때 만들었던 소품, 가구 등이 꽤 많았는데..
+          어딘가 박혀 있을 사진들을 찾으면 업로드해야지. <br>
+          집 가까운 곳에 마지모우라는 공방이 있다는 것을 알게되어 몇 년 후 이곳 생활을 정리하고 들어가게 되면
+          <br>다시 시작해 보려고 한다. <br>그때가 되면 이 공간이 내 작품으로 채워지겠지?
+          <br> "가구 주문받습니다~"라고 홍보 글 올릴지도. 그때를 위해 미리 준비해 둔다.
+          <br>아래 이미지들은 내가 나중에 만들고 싶은 것들.
+        </p>
+
+        <a href="#" class="read-link"></a>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section>
+      <div class="section-title">
+        <span>Wood Notes</span>
+        <h2>Things I'd Love to Build Someday</h2>
+      </div>
+
+      <div class="wood-grid">
+
+        <article class="wood-card">
+          <img src="Images/Menu/table.png" alt="Wooden Table">
+          <div class="wood-card-content">
+            <span>Table</span>
+            <h3>Magazine rack</h3>
+            <p>
+              A small rack for magazines, books, and the quiet
+              moments of sitting down with a good read.
+            </p>
+          </div>
+        </article>
+
+        <article class="wood-card">
+          <img src="Images/Menu/console.png" alt="Console Table">
+          <div class="wood-card-content">
+            <span>Console Table</span>
+            <h3>Handcrafted Console Table</h3>
+            <p>
+              The quiet moments of coming home.
+            </p>
+          </div>
+        </article>
+
+        <article class="wood-card">
+          <img src="Images/Menu/closet.png" alt="Closet">
+          <div class="wood-card-content">
+            <span>Closet</span>
+            <h3>Built in Closet</h3>
+            <p>
+              The pleasure of organizing things by hand.
+            </p>
+          </div>
+        </article>
+
+        <article class="wood-card">
+          <img src="Images/Menu/kitchen.png" alt="Kitchen">
+          <div class="wood-card-content">
+            <span>Kitchen</span>
+            <h3>Built in Kitchen</h3>
+            <p>
+              A small tray for tea, candles,
+              and ordinary evening moments.
+            </p>
+          </div>
+        </article>
+
+        <article class="wood-card">
+          <img src="Images/Menu/bath.png" alt="Bathroom">
+          <div class="wood-card-content">
+            <span>Bathroom</span>
+            <h3>Bathroom Vanity</h3>
+            <p>
+              A quiet wooden vanity for morning routines,
+              soft light, and the small moments of getting ready.
+            </p>
+          </div>
+        </article>
+
+        <article class="wood-card">
+          <img src="Images/Menu/bench.png" alt="Bench">
+          <div class="wood-card-content">
+            <span>Bench</span>
+            <h3>Storage Bench</h3>
+            <p>
+              A small bench for sitting, storing, and the quiet
+              moments of putting on shoes.
+            </p>
+          </div>
+        </article>
+
+        <article class="wood-card">
+          <img src="Images/Menu/study.png" alt="Study">
+          <div class="wood-card-content">
+            <span>Study</span>
+            <h3>Study Room</h3>
+            <p>
+              A quiet study room for books, writing,
+              and the slow pleasure of learning.
+            </p>
+          </div>
+        </article>
+
+        <article class="wood-card">
+          <img src="Images/Menu/shelf.png" alt="WallShelf">
+          <div class="wood-card-content">
+            <span>Wall Shelf</span>
+            <h3>Handcrafted Wall Shelf</h3>
+            <p>
+              A simple shelf for small objects, books, plants,
+              and quiet corners.
+            </p>
+          </div>
+        </article>
+
+        <article class="wood-card">
+          <img src="Images/Menu/tool.png" alt="Tool organizer">
+          <div class="wood-card-content">
+            <span>Storage</span>
+            <h3>Tool Organizer</h3>
+            <p>
+              A small organizer for tools, screws..그저 부러운..
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- NOTE -->
+  <section class="wood-note">
+    <p>
+      “Wood reminds me that beautiful things do not always need to be rushed.”
+    </p>
+  </section>
+
+</body>
+</html>

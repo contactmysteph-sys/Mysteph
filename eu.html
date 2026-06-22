@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>EU / UK | Collected Moments</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      background:
+      linear-gradient(
+        rgba(246,245,242,0.95),
+        rgba(246,245,242,0.95)
+      );
+
+      background-size:cover;
+      background-attachment:fixed;
+      font-family:'Montserrat', sans-serif;
+      color:#2d3e52;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    img{
+      width:100%;
+      display:block;
+    }
+
+
+    .back-wrapper{
+      width:min(1120px,90%);
+      margin:22px auto 10px;
+      text-align:left;
+    }
+
+    .back-btn{
+      display:inline-block;
+      font-size:10px;
+      letter-spacing:0.7px;
+      text-transform:uppercase;
+      color:#31476E;
+      border-bottom:1px solid #31476E;
+      padding-bottom:4px;
+      transition:0.3s ease;
+    }
+
+    .back-btn:hover{
+      opacity:0.7;
+      transform:translateX(-4px);
+    }
+
+    .intro{
+      text-align:center;
+      padding:10px 5px 30px;
+    }
+
+    .intro h1{
+      font-family:'Cormorant Garamond', serif;
+      font-size:30px;
+      font-weight:600;
+      color:#31476E;
+      margin-bottom:12px;
+    }
+
+    .intro p{
+      font-size:11px;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      color:#7d8896;
+       margin-bottom:20px;
+    
+    }
+
+    .main-layout{
+      width:min(1450px,90%);
+      margin:auto;
+
+      display:grid;
+      grid-template-columns:48% 52%;
+      gap:40px;
+      align-items:start;
+
+      margin-bottom:60px;
+    }
+
+    .featured-image {
+      position:relative;
+      width:100%;
+      height:280px;
+      overflow:hidden;
+      border-radius:8px;
+      margin-bottom:24px;
+    }
+
+    .featured-image .slide{
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:0;
+      transition:opacity 4s ease;
+    }
+
+    .featured-image .slide.active{
+      opacity:1;
+    }
+
+    .featured-info span{
+      font-size:10px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      color:#8a94a3;
+    }
+
+    .featured-info h2{
+      font-family:'Cormorant Garamond', serif;
+      font-size:18px;
+      font-weight:600;
+      line-height:1.15;
+      margin:14px 0 18px;
+      color:#31476E;
+    }
+
+    .featured-info p{
+      font-size:14px;
+      line-height:1.5;
+      color:#566171;
+      max-width:540px;
+    }
+
+    .read-more{
+      display:inline-block;
+      margin-top:24px;
+      font-size:10px;
+      letter-spacing:1.5px;
+      text-transform:uppercase;
+      border-bottom:1px solid #31476E;
+      padding-bottom:5px;
+      transition:0.3s ease;
+    }
+
+    .read-more:hover{
+      opacity:0.6;
+    }
+
+    .region-title{
+      margin-bottom:10px;
+    }
+
+    .region-title h3{
+      font-family:'Cormorant Garamond', serif;
+      font-size:24px;
+      font-weight:700;
+      color:#31476E;
+      margin-bottom:10px;
+    }
+
+    .region-title p{
+      font-size:12px;
+      line-height:1.4;
+      color:#7d8896;
+    }
+
+    .region-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+
+    .region-card{
+      position:relative;
+      height:120px;
+      border-radius:8px;
+      overflow:hidden;
+    }
+
+    .region-card img{
+      height:100%;
+      object-fit:cover;
+      transition:0.6s ease;
+    }
+
+    .region-card:hover img{
+      transform:scale(1.05);
+    }
+
+    .region-overlay{
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,0.28);
+      display:flex;
+      align-items:flex-end;
+      border-bottom:none;
+      padding-bottom:0;
+    }
+
+    .region-overlay h4{
+      color:white;
+      font-family:'Cormorant Garamond', serif;
+      font-size:16px;
+      font-weight:500;
+      letter-spacing:1px;
+      margin-left: 5px;
+    }
+
+    @media(max-width:900px){
+
+      .main-layout{
+        grid-template-columns:1fr;
+        gap:70px;
+      }
+
+      .featured-image{
+        height:300px;
+      }
+    }
+
+    @media(max-width:600px){
+
+      .back-wrapper{
+        width:min(1120px,90%);
+        margin:0;
+        text-align:left;
+      }
+
+      .back-btn{
+        display:inline-block;
+        font-size:8px;
+        letter-spacing:0.5px;
+        text-transform:uppercase;
+
+      }
+
+      .back-btn:hover{
+         opacity:0.7;
+        transform:translateX(-4px);
+      }
+
+      .hero{
+         height:auto;
+         padding:20px 0 10px;
+      }
+
+
+
+     .intro{
+        padding:20px 10px 35px;
+      }
+      .intro h1{
+        font-size:28px;
+      }
+
+      .featured-info h2{
+        font-size:18px;
+      }
+
+      .region-grid{
+        grid-template-columns:1fr;
+      }
+
+      .featured-image{
+        height:320px;
+      }
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <section class="hero"></section>
+
+  <div class="back-wrapper">
+    <a href="collect.html" class="back-btn">
+      ← Back to Travel Collection
+    </a>
+  </div>
+
+  <section class="intro">
+
+    <h1>EU / UK</h1>
+
+    <p>
+      Old streets, soft skies, and quiet travel memories
+    </p>
+
+  </section>
+
+  <section class="main-layout">
+
+    <div class="featured-post">
+
+      <div class="featured-image">
+
+        <img src="Images/EU/uk.jpg" class="slide active" alt="UK">
+        <img src="Images/EU/malta.jpg" class="slide" alt="MALTA">
+        <img src="Images/EU/zurich.jpg" class="slide" alt="SWISS">
+
+      </div>
+
+      <div class="featured-info">
+
+        <span>Travel Memory</span>
+
+        <h2>
+          The Joy of Watching Life Unfold
+        </h2>
+
+        <p>
+          One of the things I always think about when traveling in Europe is 
+          how naturally the past coexists with the present. 
+          Centuries-old buildings, churches, and town squares remain part of daily life 
+          rather than being separated from it. 
+          I often feel a sense of admiration—not only for the beauty of these historic places, 
+          but also for the respect and care with which they are preserved. 
+          It reminds me that history is not something left behind, 
+          but something that continues to shape the present.
+        </p>
+
+        <a href="malta.html" class="read-more">
+          Read Journal
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="regions">
+
+      <div class="region-title">
+
+        <h3>Explore by Place</h3>
+
+        <p>
+          Places, memories, and quiet moments
+          gathered along the way.
+        </p>
+
+      </div>
+
+      <div class="region-grid">
+
+        <a href="#" class="region-card">
+          <img src="Images/EU/paris.jpg" alt="France">
+          <div class="region-overlay">
+            <h4>FRANCE</h4>
+          </div>
+        </a>
+
+        <a href="#" class="region-card">
+          <img src="Images/EU/zurich.jpg" alt="SWISS">
+          <div class="region-overlay">
+            <h4>SWISS</h4>
+          </div>
+        </a>
+
+        <a href="#" class="region-card">
+          <img src="Images/EU/malta.jpg" alt="Malta">
+          <div class="region-overlay">
+            <h4>MALTA</h4>
+          </div>
+        </a>
+
+        <a href="#" class="region-card">
+          <img src="Images/EU/groningen.jpg" alt="Netherlands">
+          <div class="region-overlay">
+            <h4>NETHERLANDS</h4>
+          </div>
+        </a>
+
+        <a href="#" class="region-card">
+          <img src="Images/EU/uk.jpg" alt="United Kingdom">
+          <div class="region-overlay">
+            <h4>UK</h4>
+          </div>
+        </a>
+
+        <a href="#" class="region-card">
+          <img src="Images/EU/london.jpg" alt="London">
+          <div class="region-overlay">
+            <h4>LONDON</h4>
+          </div>
+        </a>
+
+        <a href="#" class="region-card">
+          <img src="Images/EU/bristol.jpg" alt="Bristol">
+          <div class="region-overlay">
+            <h4>BRISTOL</h4>
+          </div>
+        </a>
+
+        <a href="#" class="region-card">
+          <img src="Images/EU/royal.jpg" alt="Royal Holloway">
+          <div class="region-overlay">
+            <h4>Royal Holloway</h4>
+          </div>
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <script>
+
+    const slides = document.querySelectorAll(".featured-image .slide");
+
+    let current = 0;
+
+    if(slides.length > 0){
+
+      setInterval(() => {
+
+        slides[current].classList.remove("active");
+
+        current = (current + 1) % slides.length;
+
+        slides[current].classList.add("active");
+
+      }, 12000);
+
+    }
+
+  </script>
+
+</body>
+</html>
