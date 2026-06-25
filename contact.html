@@ -176,6 +176,25 @@
       line-height:1.8;
     }
 
+      #formStatus{
+      margin-top:30px;
+      text-align:center;
+      font-size:15px;
+      color:#42566b;
+      line-height:1.8;
+      min-height:60px;
+      font-family:'Cormorant Garamond', serif;
+    }
+
+    #formStatus .signature{
+      margin-top:8px;
+      font-family:'Cormorant Garamond', serif;
+      font-size:18px;
+      color:#31476E;
+      letter-spacing:1px;
+      font-style:italic;
+    }
+
     .notes-list{
       margin-top:28px;
       display:flex;
@@ -437,7 +456,7 @@
 
         notesList.appendChild(item);
       });
-    }
+  
 
     guestForm.addEventListener('submit', async function(e){
       e.preventDefault();
@@ -465,7 +484,7 @@
             message: message,
             secret: secret
           }
-        ]);
+       ]);
 
       if(error){
         formStatus.textContent = 'Something went wrong. Please try again.';
@@ -475,19 +494,25 @@
       }
 
       formStatus.innerHTML = `
-        <h3>Thank you!</h3>
+        <h3>✨ Thank you.</h3>
+
         <p>
-          Your message has been saved successfully.<br>
-          I truly appreciate you taking the time to write.
-        </p>
-      `;
+         Your message has become<br>
+         a small part of this journey.
+       </p>
+
+       <p class="signature">
+          — Stephanie
+       </p>
+     `;
 
       guestForm.reset();
       submitButton.disabled = false;
       submitButton.textContent = 'Leave Note';
 
       loadNotes();
-    });
+     });
+    }
 
     loadNotes();
   </script>
