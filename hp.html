@@ -59,9 +59,21 @@ body{
 
 .hero-content h1{
   font-family:'Cormorant Garamond', serif;
-  font-size:64px;
+  font-size:40px;
   color:white;
   margin-top:12px;
+}
+
+.back-home{
+  display:inline-block;
+  margin-top:10px;
+  text-decoration:none;
+  font-size:12px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  margin-left:50px;
+  color:#31476E;
+  border-bottom:1px solid #31476E;
 }
 
 .container{
@@ -70,9 +82,17 @@ body{
 }
 
 .intro{
-  max-width:760px;
-  margin:auto;
-  text-align:center;
+  width:min(760px, 100%);
+   margin:0 auto;
+   text-align:center;
+   margin-top: 0;
+}
+  
+.intro h2{
+  font-family:'Cormorant Garamond', serif;
+  font-size:30px;
+  margin-bottom:20px;
+  font-weight: 600px;
 }
 
 .intro p{
@@ -90,20 +110,16 @@ body{
 
 .gallery-grid img{
   width:100%;
-  height:240px;
+  height:420px;
   object-fit:cover;
   border-radius:18px;
 }
 
 .hp-gallery{
-
   display:grid;
-
   grid-template-columns:
   repeat(3,1fr);
-
   gap:14px;
-
   margin-top:50px;
 }
 
@@ -118,7 +134,7 @@ body{
 .hp-gallery img:nth-child(2),
 .hp-gallery img:nth-child(3){
 
-  height:340px;
+  height:400px;
 }
 
 .hp-gallery img:nth-child(4){
@@ -135,21 +151,15 @@ body{
 }
 
 .note-box{
-  margin-top:60px;
+  margin-top:40px;
 
   background:rgba(255,255,255,0.65);
 
-  padding:40px;
+  padding:20px;
 
   border-radius:24px;
 
   text-align:center;
-}
-
-.note-box h2{
-  font-family:'Cormorant Garamond', serif;
-  font-size:38px;
-  margin-bottom:20px;
 }
 
 .note-box p{
@@ -157,38 +167,78 @@ body{
   color:#6d7785;
 }
 
-.back-home{
-  display:inline-block;
-
-  margin-top:40px;
-
-  text-decoration:none;
-
-  font-size:12px;
-  letter-spacing:3px;
-  text-transform:uppercase;
-
-  color:#31476E;
-
-  border-bottom:1px solid #31476E;
-}
-
 @media(max-width:768px){
 
   .hero{
-    height:240px;
+    height:140px;
+  }
+
+  .hero-content{
+    padding:0 20px;
+  }
+
+  .hero-content span{
+    font-size:10px;
+    letter-spacing:4px;
   }
 
   .hero-content h1{
-    font-size:42px;
+    font-size:26px;
+    margin-top:6px;
+  }
+
+  .back-home{
+    display:inline-block;
+    font-size:10px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    margin-left:20px;
+  }
+
+  .container{
+    width:88%;
+    margin:36px auto;
+  }
+
+  .intro{
+    max-width:100%;
+    margin:0 auto;
+    text-align:center;
+  }
+
+  .intro h2{
+    font-size:20px;
+    margin-bottom:16px;
+  }
+
+  .intro p{
+    font-size:12px;
+    line-height:1.8;
   }
 
   .gallery-grid{
-    grid-template-columns:1fr 1fr;
+    margin-top:38px;
+    grid-template-columns:repeat(2, 1fr);
+    gap:14px;
+  }
+
+  .gallery-grid img{
+    height:190px;
+    border-radius:16px;
+    object-fit:cover;
+  }
+
+  .note-box{
+    margin-top:32px;
+    padding:18px 16px;
+    border-radius:20px;
+  }
+
+  .note-box p{
+   display:none;
   }
 
 }
-
 </style>
 
 </head>
@@ -204,57 +254,52 @@ body{
 
 <h1>HP Party</h1>
 
-
   </div>
 
 </section>
-
-<div class="container">
-
-  <div class="intro">
-
-
-<p>
-  Not every memory becomes a story.
-  Some remain as photographs —
-  small celebrations, familiar faces,
-  and moments shared between ordinary working days.
-</p>
-
-
-  </div>
-
-  <div class="gallery-grid">
-
-
-<img src="Images/hp1.jpg">
-<img src="Images/hp2.jpg">
-<img src="Images/hp3.jpg">
-<img src="Images/hp6.png">
-<img src="Images/hp7.png">
-<img src="Images/hp8.jpg">
-
-
-  </div>
-
-  <div class="note-box">
-
-
-<h2>A Small Memory</h2>
-
-<p>
-  Living abroad often feels like a collection of small moments.
-  A dinner after work, a company celebration,
-  conversations that continue long after the music ends,
-  and friendships that quietly become part of everyday life.
-  Looking back, it is often these ordinary moments
-  that stay in memory the longest.
-</p>
-
-<a href="working.html" class="back-home">
-  Back to Working in Malaysia
+  
+<a href="gallery.html" class="back-home">
+  Back To Gallery
 </a>
 
+<div class="container">
+  <h2>A Small Memory</h2>
+
+<div class="intro">
+
+
+ <p>
+   Not every memory becomes a story.
+   Some remain as photographs —
+   small celebrations, familiar faces,
+   and moments shared between ordinary working days.
+ </p>
+
+
+  </div>
+
+ <div class="gallery-grid">
+
+   <img src="Images/hp/hp1.jpg">
+   <img src="Images/hp/hp3.jpg">
+   <img src="Images/hp/hp6.jpg">
+   <img src="Images/hp/hp4.png">
+   <img src="Images/hp/hp5.png">
+   <img src="Images/hp/hpe.jpg">
+ </div>
+  
+ <div class="note-box">
+
+   <h2>A Small Memory</h2>
+
+   <p>
+    Living abroad often feels like a collection of small moments.
+    A dinner after work, a company celebration,
+    conversations that continue long after the music ends,
+    and friendships that quietly become part of everyday life.
+    Looking back, it is often these ordinary moments
+    that stay in memory the longest.
+   </p>
 
   </div>
 
