@@ -201,12 +201,22 @@
       flex-direction:column;
     }
 
+     .notes-list{
+      margin-top:14px;
+      display:flex;
+      flex-direction:column;
+    }
+
     .note-item{
       padding:12px 10px;
       border-bottom:1px solid rgba(47,59,74,0.12);
       background:none;
       border-radius:0;
       box-shadow:none;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;   /* ← 중요 */
+      gap:4px;
     }
 
     .note-item strong{
@@ -214,7 +224,7 @@
       font-size:14px;
       font-weight:600;
       color:#2f3b4a;
-      margin-bottom:2px;
+      margin:0;
     }
 
     .note-item p{
@@ -222,7 +232,7 @@
       font-size:15px;
       line-height:1.45;
       color:#5b6572;
-      margin:2px 0 4px;
+      margin:0;
     }
 
     .note-date{
