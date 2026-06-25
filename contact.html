@@ -195,56 +195,55 @@
       font-style:italic;
     }
 
-    .notes-list{
-      margin-top:14px;
-      display:flex;
-      flex-direction:column;
-    }
-
-     .notes-list{
-      margin-top:14px;
-      display:flex;
-      flex-direction:column;
-    }
-
     .note-item{
-      padding:12px 10px;
-      border-bottom:1px solid rgba(47,59,74,0.12);
-      background:none;
-      border-radius:0;
-      box-shadow:none;
-      display:flex;
-      flex-direction:column;
-      align-items:flex-start;   /* ← 중요 */
-      gap:4px;
-    }
+       padding:12px 10px;
+       border-bottom:1px solid rgba(47,59,74,0.12);
+       background:none;
+       border-radius:0;
+       box-shadow:none;
 
-    .note-item strong{
-      font-family:'Merriweather', serif;
-      font-size:14px;
-      font-weight:600;
-      color:#2f3b4a;
-      margin:0;
-    }
+       display:flex;
+       flex-direction:column;
+       align-items:flex-start !important;
+       justify-content:flex-start !important;
+       gap:4px;
 
-    .note-item p{
-      text-align:left;
-      font-size:15px;
-      line-height:1.45;
-      color:#5b6572;
-      margin:0;
-    }
+       min-height:auto !important;
+       height:auto !important;
+     }
 
-    .note-date{
-      display:block;
-      margin-top:2px;
-      font-size:12px;
-      color:#8a94a3;
-      letter-spacing:1px;
-      text-transform:uppercase;
-    }
+     .note-item strong,
+     .note-item p,
+     .note-date{
+       width:100%;
+       display:block;
+       text-align:left !important;
+     }
 
-    @media (max-width:768px){
+     .note-item strong{
+       font-family:'Merriweather', serif;
+       font-size:14px;
+       font-weight:600;
+       color:#2f3b4a;
+       margin:0;
+     }
+
+     .note-item p{
+       font-size:15px;
+       line-height:1.45;
+       color:#5b6572;
+       margin:0;
+     }
+
+     .note-date{
+       margin-top:2px;
+       font-size:12px;
+       color:#8a94a3;
+       letter-spacing:1px;
+       text-transform:uppercase;
+     }
+      
+     @media (max-width:768px){
 
       html,
       body{
