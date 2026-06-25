@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin | Wandering with Steph</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Inter', sans-serif;
+  background:#f6f5f2;
+  color:#2F3B4A;
+  min-height:100vh;
+  line-height:1.7;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+.admin-wrap{
+  width:min(960px,90%);
+  margin:40px auto 80px;
+}
+
+.top-nav{
+  margin-bottom:30px;
+  font-size:12px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:#42566b;
+}
+
+.admin-header{
+  text-align:center;
+  margin-bottom:35px;
+}
+
+.admin-header h1{
+  font-family:'Playfair Display', serif;
+  font-size:32px;
+  color:#31476E;
+  margin-bottom:8px;
+}
+
+.admin-header p{
+  font-size:14px;
+  color:#6b7280;
+}
+
+.login-card,
+.admin-panel{
+  background:rgba(255,255,255,0.78);
+  border:1px solid rgba(47,59,74,0.12);
+  border-radius:24px;
+  padding:36px;
+  box-shadow:0 20px 60px rgba(30,40,50,0.10);
+}
+
+.login-form{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.login-form input{
+  width:100%;
+  border:1px solid rgba(47,59,74,0.18);
+  border-radius:16px;
+  padding:16px 20px;
+  font-size:14px;
+  background:white;
+  outline:none;
+}
+
+button{
+  border:none;
+  border-radius:999px;
+  padding:12px 28px;
+  background:#2F3B4A;
+  color:white;
+  font-size:13px;
+  letter-spacing:1px;
+  cursor:pointer;
+  transition:0.3s ease;
+}
+
+button:hover{
+  background:#3A4A5C;
+  transform:translateY(-2px);
+}
+
+button:disabled{
+  opacity:0.5;
+  cursor:not-allowed;
+}
+
+.status{
+  margin-top:18px;
+  text-align:center;
+  color:#6b7280;
+  font-size:13px;
+}
+
+.panel-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  margin-bottom:24px;
+}
+
+.panel-top h2{
+  font-family:'Playfair Display', serif;
+  font-size:24px;
+  color:#31476E;
+}
+
+.filter-bar{
+  display:flex;
+  gap:10px;
+  margin-bottom:24px;
+  flex-wrap:wrap;
+}
+
+.filter-btn{
+  background:rgba(47,59,74,0.08);
+  color:#42566b;
+  padding:9px 18px;
+  font-size:12px;
+}
+
+.filter-btn.active{
+  background:#2F3B4A;
+  color:white;
+}
+
+.notes-list{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.note-card{
+  background:rgba(255,255,255,0.88);
+  border:1px solid rgba(47,59,74,0.12);
+  border-radius:18px;
+  padding:22px 24px;
+}
+
+.note-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:14px;
+  margin-bottom:10px;
+}
+
+.note-name{
+  font-family:'Merriweather', serif;
+  font-size:17px;
+  color:#2f3b4a;
+  margin-bottom:4px;
+}
+
+.note-date{
+  font-size:11px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:#8a94a3;
+}
+
+.note-message{
+  font-size:15px;
+  color:#5b6572;
+  line-height:1.8;
+  white-space:pre-wrap;
+}
+
+.secret-label{
+  display:inline-block;
+  margin-top:10px;
+  padding:4px 10px;
+  border-radius:999px;
+  background:#ede7df;
+  color:#7a5b3e;
+  font-size:11px;
+  letter-spacing:1px;
+}
+
+.public-label{
+  display:inline-block;
+  margin-top:10px;
+  padding:4px 10px;
+  border-radius:999px;
+  background:#e7edf2;
+  color:#42566b;
+  font-size:11px;
+  letter-spacing:1px;
+}
+
+.delete-btn{
+  background:none;
+  color:#8a94a3;
+  padding:0;
+  font-size:12px;
+  border-radius:0;
+}
+
+.delete-btn:hover{
+  background:none;
+  color:#2F3B4A;
+  transform:none;
+}
+
+.hidden{
+  display:none;
+}
+
+@media(max-width:600px){
+  .admin-wrap{
+    width:90%;
+    margin:24px auto 60px;
+  }
+
+  .login-card,
+  .admin-panel{
+    padding:24px 18px;
+  }
+
+  .admin-header h1{
+    font-size:26px;
+  }
+
+  .panel-top{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .note-top{
+    flex-direction:column;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="admin-wrap">
+
+  <div class="top-nav">
+    <a href="index.html">← Back to Home</a>
+  </div>
+
+  <header class="admin-header">
+    <h1>Guestbook Manager</h1>
+    <p>Private space for Stephanie</p>
+  </header>
+
+  <section class="login-card" id="loginSection">
+    <form class="login-form" id="loginForm">
+      <input type="email" id="adminEmail" placeholder="Email" required>
+      <input type="password" id="adminPassword" placeholder="Password" required>
+      <button type="submit">Log In</button>
+    </form>
+    <p class="status" id="loginStatus"></p>
+  </section>
+
+  <section class="admin-panel hidden" id="adminPanel">
+    <div class="panel-top">
+      <div>
+        <h2>All Notes</h2>
+        <p id="countText">Loading...</p>
+      </div>
+      <button id="logoutBtn">Log Out</button>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="public">Public</button>
+      <button class="filter-btn" data-filter="secret">Secret</button>
+    </div>
+
+    <div class="notes-list" id="adminNotesList"></div>
+  </section>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = "https://rjwkshpolzhaawrdybjf.supabase.co";
+const SUPABASE_KEY = "sb_publishable_UqP9fGO5aGbYq6DteZFk-Q_G1s0XDgh";
+
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+const loginSection = document.getElementById('loginSection');
+const adminPanel = document.getElementById('adminPanel');
+const loginForm = document.getElementById('loginForm');
+const loginStatus = document.getElementById('loginStatus');
+const logoutBtn = document.getElementById('logoutBtn');
+const adminNotesList = document.getElementById('adminNotesList');
+const countText = document.getElementById('countText');
+const filterButtons = document.querySelectorAll('.filter-btn');
+
+let allNotes = [];
+let currentFilter = 'all';
+
+function escapeHTML(text){
+  return String(text || '')
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function formatDate(dateText){
+  return new Date(dateText).toLocaleDateString('en-US', {
+    year:'numeric',
+    month:'short',
+    day:'numeric'
+  });
+}
+
+async function checkSession(){
+  const { data } = await supabaseClient.auth.getSession();
+
+  if(data.session){
+    showAdmin();
+    loadAdminNotes();
+  }else{
+    showLogin();
+  }
+}
+
+function showAdmin(){
+  loginSection.classList.add('hidden');
+  adminPanel.classList.remove('hidden');
+}
+
+function showLogin(){
+  adminPanel.classList.add('hidden');
+  loginSection.classList.remove('hidden');
+}
+
+loginForm.addEventListener('submit', async function(e){
+  e.preventDefault();
+
+  loginStatus.textContent = 'Logging in...';
+
+  const email = document.getElementById('adminEmail').value.trim();
+  const password = document.getElementById('adminPassword').value;
+
+  const { error } = await supabaseClient.auth.signInWithPassword({
+    email: email,
+    password: password
+  });
+
+  if(error){
+    loginStatus.textContent = error.message;
+    return;
+  }
+
+  loginStatus.textContent = '';
+  showAdmin();
+  loadAdminNotes();
+});
+
+logoutBtn.addEventListener('click', async function(){
+  await supabaseClient.auth.signOut();
+  showLogin();
+});
+
+async function loadAdminNotes(){
+  const { data, error } = await supabaseClient
+    .from('guestbook')
+    .select('id, name, message, secret, created_at')
+    .order('created_at', { ascending:false });
+
+  if(error){
+    adminNotesList.innerHTML = '<p>Notes could not be loaded.</p>';
+    return;
+  }
+
+  allNotes = data || [];
+  renderNotes();
+}
+
+function renderNotes(){
+  let filtered = allNotes;
+
+  if(currentFilter === 'public'){
+    filtered = allNotes.filter(note => !note.secret);
+  }
+
+  if(currentFilter === 'secret'){
+    filtered = allNotes.filter(note => note.secret);
+  }
+
+  countText.textContent = `${filtered.length} note(s)`;
+
+  adminNotesList.innerHTML = '';
+
+  if(filtered.length === 0){
+    adminNotesList.innerHTML = '<p>No notes found.</p>';
+    return;
+  }
+
+  filtered.forEach(note => {
+    const card = document.createElement('div');
+    card.className = 'note-card';
+
+    card.innerHTML = `
+      <div class="note-top">
+        <div>
+          <div class="note-name">${escapeHTML(note.name)}</div>
+          <div class="note-date">${formatDate(note.created_at)}</div>
+        </div>
+        <button class="delete-btn" onclick="deleteNote(${note.id})">Delete</button>
+      </div>
+
+      <div class="note-message">${escapeHTML(note.message)}</div>
+
+      <span class="${note.secret ? 'secret-label' : 'public-label'}">
+        ${note.secret ? 'SECRET' : 'PUBLIC'}
+      </span>
+    `;
+
+    adminNotesList.appendChild(card);
+  });
+}
+
+filterButtons.forEach(button => {
+  button.addEventListener('click', function(){
+    filterButtons.forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+
+    currentFilter = button.dataset.filter;
+    renderNotes();
+  });
+});
+
+async function deleteNote(id){
+  const confirmDelete = confirm('Delete this note?');
+
+  if(!confirmDelete) return;
+
+  const { error } = await supabaseClient
+    .from('guestbook')
+    .delete()
+    .eq('id', id);
+
+  if(error){
+    alert(error.message);
+    return;
+  }
+
+  allNotes = allNotes.filter(note => note.id !== id);
+  renderNotes();
+}
+
+checkSession();
+</script>
+
+</body>
+</html>
