@@ -656,7 +656,7 @@
          return;
        }
 
-        notesList.innerHTML = '';
+       notesList.innerHTML = '';
 
        if(!data || data.length === 0){
          notesList.innerHTML = '<p style="text-align:center;color:#5b6572;">No public notes yet.</p>';
@@ -685,6 +685,11 @@
             : ''
           }
         `;
+         
+         notesList.appendChild(item);
+
+       });
+      }
   
       guestForm.addEventListener('submit', async function(e){
          e.preventDefault();
