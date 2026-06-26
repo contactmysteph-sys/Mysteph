@@ -206,76 +206,88 @@
       font-style:italic;
     }
 
-     .note-list,
-     #noteList{
-       width:100%;
-       margin-top:30px;
-       margin-bottom:70px;
-       display:flex;
-       flex-direction:column;
-     }
+    .notes-list,
+    #notesList{
+      width:100%;
+      margin-top:30px;
+      margin-bottom:90px;
+      display:flex;
+      flex-direction:column;
+    }
 
-     .note-item{
-       display:flex;
-       flex-direction:column;
-       align-items:flex-start;
-       gap:4px;
+    .note-item{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:4px;
 
-       padding:10px 8px !important;
-       margin:0;
+      padding:12px 8px !important;
+      margin:0;
 
-       border-bottom:1px solid rgba(47,59,74,0.15);
-       background:transparent;
-       box-shadow:none;
-       border-radius:0;
+      border-bottom:1px solid rgba(47,59,74,0.15);
+      background:transparent;
+      box-shadow:none;
+      border-radius:0;
 
-       min-height:0;
-       height:auto;
-     }
-     .note-item strong,
-     .note-item p,
-     .note-date{
-       width:100%;
-       display:block;
-       text-align:left !important;
-     }
+      min-height:0;
+      height:auto;
+    }
 
-     .note-item strong{
-       font-family:'Merriweather', serif;
-       font-size:11px;
-       font-weight:600;
-       color:#2f3b4a;
-       margin:0;
-     }
+    .note-item strong,
+    .note-item p,
+    .note-date{
+      width:100%;
+      display:block;
+      text-align:left !important;
+    }
 
-     .note-item p{
-       font-size:10px;
-       line-height:1.45;
-       color:#5b6572;
-       margin:0;
-     }
+   .note-item strong{
+     font-family:'Merriweather', serif;
+     font-size:13px;
+     font-weight:600;
+     color:#2f3b4a;
+     margin:0;
+   }
 
-     .note-date{
-       margin-top:2px;
-       font-size:10px;
-       color:#8a94a3;
-       letter-spacing:1px;
-       text-transform:uppercase;
-     }
+   .note-item p{
+     font-size:13px;
+     line-height:1.55;
+     color:#5b6572;
+     margin:0;
+   }
 
-     body,
-     .contact-card,
-     .note-list,
-     .note-item,
-     .thank-you-message{
-       user-select:none;
-     }
+  .note-date{
+     margin-top:2px;
+     font-size:11px;
+     color:#8a94a3;
+     letter-spacing:1px;
+     text-transform:uppercase;
+  }
 
-     input,
-     textarea{
-       user-select:text;
-     }
-      
+  .public-reply{
+     width:100%;
+     margin-top:10px;
+     padding:10px 12px;
+     border-left:2px solid rgba(49,71,110,0.35);
+     background:rgba(255,255,255,0.38);
+     border-radius:10px;
+  }
+
+  .public-reply span{
+     display:block;
+     font-size:10px;
+     letter-spacing:1.4px;
+     text-transform:uppercase;
+     color:#31476E;
+     margin-bottom:5px;
+  }
+
+ .public-reply p{
+   font-size:12px;
+   line-height:1.55;
+   color:#4f5b68;
+   margin:0;
+ }
      @media (max-width:768px){
 
       html,
