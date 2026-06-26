@@ -222,6 +222,47 @@ button:disabled{
   color:#2F3B4A;
   transform:none;
 }
+  
+.reply-box{
+  margin-top:18px;
+  padding-top:16px;
+  border-top:1px solid rgba(47,59,74,0.10);
+}
+
+.reply-box label{
+  display:block;
+  font-size:12px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:#31476E;
+  margin-bottom:8px;
+}
+
+.reply-box textarea{
+  width:100%;
+  min-height:80px;
+  border:1px solid rgba(47,59,74,0.16);
+  border-radius:14px;
+  padding:12px 14px;
+  font-family:'Inter', sans-serif;
+  font-size:13px;
+  color:#2F3B4A;
+  background:rgba(255,255,255,0.9);
+  resize:vertical;
+  outline:none;
+}
+
+.reply-btn{
+  margin-top:10px;
+  padding:9px 18px;
+  font-size:11px;
+}
+
+.reply-date{
+  margin-top:8px;
+  font-size:11px;
+  color:#8a94a3;
+}
 
 .hidden{
   display:none;
@@ -385,7 +426,7 @@ logoutBtn.addEventListener('click', async function(){
 async function loadAdminNotes(){
   const { data, error } = await supabaseClient
     .from('guestbook')
-    .select('id, name, message, secret, created_at')
+    .select('id, name, message, secret, created_at, reply, reply_at')
     .order('created_at', { ascending:false });
 
   if(error){
@@ -435,6 +476,20 @@ function renderNotes(){
       <span class="${note.secret ? 'secret-label' : 'public-label'}">
         ${note.secret ? 'SECRET' : 'PUBLIC'}
       </span>
+      <div class="reply-box">
+         <label>Stephanie replied</label>
+
+         <textarea id="reply-${note.id}" placeholder="Write a reply...">${escapeHTML(note.reply || '')}</textarea>
+
+         <button class="reply-btn" onclick="saveReply(${note.id})">
+           Save Reply
+         </button>
+        ${
+          note.reply_at
+          ? `<p class="reply-date">Last replied: ${formatDate(note.reply_at)}</p>`
+          : ''
+        }
+      </div>
     `;
 
     adminNotesList.appendChild(card);
@@ -468,6 +523,24 @@ async function deleteNote(id){
 
   allNotes = allNotes.filter(note => note.id !== id);
   renderNotes();
+}
+async function saveReply(id){
+  const replyText = document.getElementById(`reply-${id}`).value.trim();
+
+  const { error } = await supabaseClient
+    .from('guestbook')
+    .update({
+      reply: replyText || null,
+      reply_at: replyText ? new Date().toISOString() : null
+    })
+    .eq('id', id);
+
+  if(error){
+    alert(error.message);
+    return;
+  }
+
+  loadAdminNotes();
 }
 
 checkSession();
