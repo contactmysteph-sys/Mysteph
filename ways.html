@@ -1146,49 +1146,48 @@
     button.classList.add("active");
   }
 
-  showJourney("rail", document.querySelector(".journey-card"));
-
   const modal = document.getElementById('modal');
   const modalImg = document.getElementById('modal-img');
   const closeBtn = document.getElementById('close-btn');
 
-  showJourney("rail", document.querySelector(".journey-card"));
-
   if(closeBtn && modal){
-    closeBtn.addEventListener('click', () => {
-      modal.style.display = 'none';
-    });
+     closeBtn.addEventListener('click', () => {
+       modal.style.display = 'none';
+     });
   }
 
+ function openFromUrl(){
   const params = new URLSearchParams(window.location.search);
-  const journey = params.get("journey");
-  const place = params.get("place");
+  const targetJourney = params.get("journey");
+  const targetPlace = params.get("place");
 
-    if (journey) {
-
+    if(targetJourney && journeys[targetJourney]){
       const journeyBtn = document.querySelector(
-        `.journey-card[onclick*="${journey}"]`
-      );
+       `.journey-card[onclick*="${targetJourney}"]`
+    );
 
-      if (journeyBtn) {
-         showJourney(journey, journeyBtn);
+    if(journeyBtn){
+       showJourney(targetJourney, journeyBtn);
 
-      if (place) {
+      if(targetPlace){
+        const placeIndex = journeys[targetJourney].places.findIndex(place =>
+          place.name.toLowerCase() === targetPlace.toLowerCase()
+        );
 
-         const index = journeys[journey].places.findIndex(
-           p => p.name.toLowerCase() === place.toLowerCase()
-         );
-
-      if (index >= 0) {
-
-        const btn = document.querySelectorAll("#place-list button")[index];
-
-        showPlace(journey, index, btn);
-
+        if(placeIndex >= 0){
+          const placeBtn = document.querySelectorAll("#place-list button")[placeIndex];
+          showPlace(targetJourney, placeIndex, placeBtn);
+        }
       }
+
+      return;
     }
   }
+
+  showJourney("rail", document.querySelector(".journey-card"));
 }
+
+openFromUrl();
 
 </script>
 
