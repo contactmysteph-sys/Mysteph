@@ -204,23 +204,30 @@
       font-style:italic;
     }
 
-    .note-item{
-       padding:12px 10px;
-       border-bottom:1px solid rgba(47,59,74,0.12);
-       background:none;
-       border-radius:0;
-       box-shadow:none;
-
-       display:flex;
-       flex-direction:column;
-       align-items:flex-start !important;
-       justify-content:flex-start !important;
-       gap:4px;
-
-       min-height:auto !important;
-       height:auto !important;
+     .note-list,
+     #noteList{
+       display:block;
+       width:100%;
+       margin-top:30px;
      }
 
+     .note-item{
+       display:flex;
+       flex-direction:column;
+       align-items:flex-start;
+       gap:4px;
+
+       padding:10px 12px;
+       margin:0;
+
+       border-bottom:1px solid rgba(47,59,74,0.15);
+       background:transparent;
+       box-shadow:none;
+       border-radius:0;
+
+       min-height:0;
+       height:auto;
+     }
      .note-item strong,
      .note-item p,
      .note-date{
@@ -250,6 +257,19 @@
        color:#8a94a3;
        letter-spacing:1px;
        text-transform:uppercase;
+     }
+
+     body,
+     .contact-card,
+     .note-list,
+     .note-item,
+     .thank-you-message{
+       user-select:none;
+     }
+
+     input,
+     textarea{
+       user-select:text;
      }
       
      @media (max-width:768px){
