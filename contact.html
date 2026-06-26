@@ -655,65 +655,54 @@
       });
   
 
-    guestForm.addEventListener('submit', async function(e){
-      e.preventDefault();
-      window.getSelection().removeAllRanges();
+      guestForm.addEventListener('submit', async function(e){
+         e.preventDefault();
+         window.getSelection().removeAllRanges();
 
-      // 기존 submit 코드 계속...
-    });
-      const submitButton = guestForm.querySelector('button');
+         const submitButton = guestForm.querySelector('button');
+         const name = guestForm.name.value.trim();
+         const message = guestForm.message.value.trim();
+         const secret = guestForm.secret.checked;
 
-      const name = guestForm.name.value.trim();
-      const message = guestForm.message.value.trim();
-      const secret = guestForm.secret.checked;
+         if(!name || !message){
+            formStatus.textContent = 'Please write your name and message.';
+            return;
+         }
 
-      if(!name || !message){
-        formStatus.textContent = 'Please write your name and message.';
-        return;
-      }
+         formStatus.textContent = 'Sending...';
+         submitButton.disabled = true;
+         submitButton.textContent = 'Sending...';
 
-      formStatus.textContent = 'Sending...';
-      submitButton.disabled = true;
-      submitButton.textContent = 'Sending...';
+         const { error } = await supabaseClient
+          .from('guestbook')
+          .insert([
+            {
+              name: name,
+              message: message,
+              secret: secret
+            }
+          ]);
 
-      const { error } = await supabaseClient
-        .from('guestbook')
-        .insert([
-          {
-            name: name,
-            message: message,
-            secret: secret
-          }
-       ]);
+         if(error){
+           formStatus.textContent = 'Something went wrong. Please try again.';
+           submitButton.disabled = false;
+           submitButton.textContent = 'Leave Note';
+           return;
+         }
 
-      if(error){
-        formStatus.textContent = 'Something went wrong. Please try again.';
-        submitButton.disabled = false;
-        submitButton.textContent = 'Leave Note';
-        return;
-      }
+         formStatus.innerHTML = `
+             <h3>✨ Thank you.</h3>
+             <p>Your message has become a small part of this journey.</p>
+             <p class="signature">— Stephanie</p>
+        `;
 
-      formStatus.innerHTML = `
-        <h3>✨ Thank you.</h3>
+         guestForm.reset();
+         submitButton.disabled = false;
+         submitButton.textContent = 'Leave Note';
 
-        <p>
-         Your message has become a small part of this journey.
-       </p>
-
-       <p class="signature">
-          — Stephanie
-       </p>
-     `;
-
-      guestForm.reset();
-      submitButton.disabled = false;
-      submitButton.textContent = 'Leave Note';
-
-      loadNotes();
-     });
-    }
-
-    loadNotes();
+         loadNotes();
+      });
+  loadNotes();
   </script>
 
 </body>
