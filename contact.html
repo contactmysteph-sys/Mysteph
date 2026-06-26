@@ -200,7 +200,7 @@
     #formStatus .signature{
       margin-top:8px;
       font-family:'Cormorant Garamond', serif;
-      font-size:18px;
+      font-size:10px;
       color:#31476E;
       letter-spacing:1px;
       font-style:italic;
@@ -525,30 +525,31 @@
      }
 
      .public-reply{
-        width:100% !important;
-        margin-top:12px !important;
-        padding:12px 14px !important;
-        border-left:2px solid rgba(49,71,110,0.35) !important;
-        background:rgba(255,255,255,0.45) !important;
-        border-radius:12px !important;
-        text-align:left !important;
+         width:100%;
+         margin-top:14px;
+         padding:14px 16px;
+         background:rgba(255,255,255,0.55);
+         border:1px solid rgba(47,59,74,0.10);
+         border-radius:14px;
+        box-shadow:0 6px 16px rgba(47,59,74,0.04);
+        text-align:left;
      }
 
      .public-reply span{
-        display:block !important;
-        font-size:11px !important;
-        letter-spacing:1.5px !important;
-        text-transform:uppercase !important;
-        color:#31476E !important;
-        margin-bottom:6px !important;
+         display:block;
+         margin-bottom:8px;
+         font-size:11px;
+         letter-spacing:2px;
+         text-transform:uppercase;
+         color:#31476E;
+         font-weight:600;
      }
 
      .public-reply p{
-        font-size:13px !important;
-        line-height:1.6 !important;
-        color:#4f5b68 !important;
-        margin:0 !important;
-        text-align:left !important;
+         margin:0;
+         font-size:13px;
+         line-height:1.7;
+         color:#566170;
      }
        
      @media (max-width:768px){
@@ -835,7 +836,7 @@
     formStatus.innerHTML = `
       <h3>✨ Thank you.</h3>
       <p>Your message has become a small part of this journey.</p>
-      <p class="signature">— Stephanie</p>
+      <p class="signature">— Stephanie — </p>
     `;
 
     guestForm.reset();
