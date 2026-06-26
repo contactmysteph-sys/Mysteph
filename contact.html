@@ -623,40 +623,40 @@
     }
 
     async function loadNotes(){
-      const { data, error } = await supabaseClient
+       const { data, error } = await supabaseClient
         .from('guestbook')
         .select('name, message, created_at')
         .eq('secret', false)
         .order('created_at', { ascending:false });
 
-      if(error){
-        notesList.innerHTML = '<p style="text-align:center;color:#5b6572;">Notes could not be loaded.</p>';
-        return;
-      }
+       if(error){
+         notesList.innerHTML = '<p style="text-align:center;color:#5b6572;">Notes could not be loaded.</p>';
+         return;
+       }
 
-      notesList.innerHTML = '';
+        notesList.innerHTML = '';
 
-      if(!data || data.length === 0){
-        notesList.innerHTML = '<p style="text-align:center;color:#5b6572;">No public notes yet.</p>';
-        return;
-      }
+       if(!data || data.length === 0){
+         notesList.innerHTML = '<p style="text-align:center;color:#5b6572;">No public notes yet.</p>';
+         return;
+       }
 
-      data.forEach(note => {
-        const item = document.createElement('div');
-        item.className = 'note-item';
+       data.forEach(note => {
+         const item = document.createElement('div');
+         item.className = 'note-item';
 
-        const date = new Date(note.created_at).toLocaleDateString();
+         const date = new Date(note.created_at).toLocaleDateString();
 
-        item.innerHTML = `
-          <strong>${escapeHTML(note.name)}</strong>
-          <p>${escapeHTML(note.message)}</p>
-          <span class="note-date">${date}</span>
-        `;
+         item.innerHTML = `
+           <strong>${escapeHTML(note.name)}</strong>
+           <p>${escapeHTML(note.message)}</p>
+           <span class="note-date">${date}</span>
+         `;
 
-        notesList.appendChild(item);
-      });
+         notesList.appendChild(item);
+       });
+     }
   
-
       guestForm.addEventListener('submit', async function(e){
          e.preventDefault();
          window.getSelection().removeAllRanges();
@@ -696,7 +696,7 @@
              <h3>✨ Thank you.</h3>
              <p>Your message has become a small part of this journey.</p>
              <p class="signature">— Stephanie</p>
-        `;
+         `;
 
          guestForm.reset();
          submitButton.disabled = false;
