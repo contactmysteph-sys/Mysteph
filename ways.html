@@ -1160,7 +1160,37 @@
     });
   }
 
- </script>
+  const params = new URLSearchParams(window.location.search);
+  const journey = params.get("journey");
+  const place = params.get("place");
+
+    if (journey) {
+
+      const journeyBtn = document.querySelector(
+        `.journey-card[onclick*="${journey}"]`
+      );
+
+      if (journeyBtn) {
+         showJourney(journey, journeyBtn);
+
+      if (place) {
+
+         const index = journeys[journey].places.findIndex(
+           p => p.name.toLowerCase() === place.toLowerCase()
+         );
+
+      if (index >= 0) {
+
+        const btn = document.querySelectorAll("#place-list button")[index];
+
+        showPlace(journey, index, btn);
+
+      }
+    }
+  }
+}
+
+</script>
 
 </body>
 </html>
