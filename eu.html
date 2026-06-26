@@ -282,6 +282,21 @@
         grid-template-columns:1fr;
       }
 
+      .region-card{
+        position:relative;
+        height:225px;
+        border-radius:10px;
+        overflow:hidden;
+      }
+
+      .region-card.uk{
+        grid-column:1 / -1;
+        height:225px; /* 위 카드와 같은 높이 유지 */
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:18px 24px;
+      }
+
       .featured-image{
         height:320px;
       }
