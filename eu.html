@@ -189,15 +189,18 @@
 
     .region-card{
       position:relative;
-      height:180px;   /* 120 → 180 */
+      height:225px;
       border-radius:10px;
       overflow:hidden;
     }
 
     .region-card.uk{
       grid-column:1 / -1;
-      height:180px;
-     }
+      height:225px; /* 위 카드와 같은 높이 유지 */
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px 24px;
+    }
 
     .region-card img{
       height:100%;
@@ -314,7 +317,7 @@
 
       <div class="featured-image">
 
-        <img src="Images/eu/uk.jpg" class="slide active" alt="UK">
+        <img src="Images/eu/london.jpg" class="slide active" alt="UK">
         <img src="Images/eu/malta.jpg" class="slide" alt="MALTA">
         <img src="Images/eu/zurich.jpg" class="slide" alt="SWISS">
 
