@@ -578,7 +578,7 @@
         },
       ]
     },
-
+  
     island: {
       label: "By Ferry",
       title: "Island Hopping",
@@ -1156,39 +1156,36 @@
      });
   }
 
- function openFromUrl(){
+function openFromUrl(){
   const params = new URLSearchParams(window.location.search);
   const targetJourney = params.get("journey");
   const targetPlace = params.get("place");
 
-    if(targetJourney && journeys[targetJourney]){
-      const journeyBtn = document.querySelector(
-       `.journey-card[onclick*="${targetJourney}"]`
+  if(targetJourney && journeys[targetJourney]){
+    const journeyBtn = document.querySelector(
+      `.journey-card[onclick*="'${targetJourney}'"]`
     );
 
-    if(journeyBtn){
-       showJourney(targetJourney, journeyBtn);
+    showJourney(targetJourney, journeyBtn);
 
-      if(targetPlace){
-        const placeIndex = journeys[targetJourney].places.findIndex(place =>
-          place.name.toLowerCase() === targetPlace.toLowerCase()
-        );
+    if(targetPlace){
+      const placeIndex = journeys[targetJourney].places.findIndex(place =>
+        place.name.toLowerCase().trim() === targetPlace.toLowerCase().trim()
+      );
 
-        if(placeIndex >= 0){
-          const placeBtn = document.querySelectorAll("#place-list button")[placeIndex];
-          showPlace(targetJourney, placeIndex, placeBtn);
-        }
+      if(placeIndex >= 0){
+        const placeBtn = document.querySelectorAll("#place-list button")[placeIndex];
+        showPlace(targetJourney, placeIndex, placeBtn);
       }
-
-      return;
     }
+
+    return;
   }
 
   showJourney("rail", document.querySelector(".journey-card"));
 }
 
 openFromUrl();
-
 </script>
 
 </body>
