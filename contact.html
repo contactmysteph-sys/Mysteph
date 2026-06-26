@@ -421,7 +421,29 @@
         letter-spacing:1px;
         text-transform:uppercase;
       }
-      
+      .public-reply{
+        margin-top:12px;
+        padding:12px 14px;
+       border-left:2px solid rgba(49,71,110,0.35);
+       background:rgba(255,255,255,0.38);
+       border-radius:12px;
+      }
+
+     .public-reply span{
+        display:block;
+        font-size:11px;
+        letter-spacing:1.5px;
+        text-transform:uppercase;
+        color:#31476E;
+        margin-bottom:6px;
+     }
+
+     .public-reply p{
+        margin:0;
+        font-size:14px;
+        line-height:1.6;
+        color:#4f5b68;
+     }
       @media (max-width:768px){
 
       html,
@@ -625,7 +647,7 @@
     async function loadNotes(){
        const { data, error } = await supabaseClient
         .from('guestbook')
-        .select('name, message, created_at')
+        .select('name, message, created_at, reply, reply_at')
         .eq('secret', false)
         .order('created_at', { ascending:false });
 
@@ -647,15 +669,22 @@
 
          const date = new Date(note.created_at).toLocaleDateString();
 
-         item.innerHTML = `
-           <strong>${escapeHTML(note.name)}</strong>
-           <p>${escapeHTML(note.message)}</p>
-           <span class="note-date">${date}</span>
-         `;
+        item.innerHTML = `
+          <strong>${escapeHTML(note.name)}</strong>
+          <p>${escapeHTML(note.message)}</p>
+          <span class="note-date">${date}</span>
 
-         notesList.appendChild(item);
-       });
-     }
+          ${
+            note.reply
+            ? `
+              <div class="public-reply">
+                <span>Stephanie replied</span>
+                <p>${escapeHTML(note.reply)}</p>
+              </div>
+            `
+            : ''
+          }
+        `;
   
       guestForm.addEventListener('submit', async function(e){
          e.preventDefault();
