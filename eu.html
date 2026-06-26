@@ -242,31 +242,27 @@
 
     @media(max-width:600px){
 
-      .back-wrapper{
-        margin:0;
-        text-align:left;
+     .back-wrapper{
+       margin:0;
+       padding:8px 0 0;
+       text-align:left;
+     }
+
+     .back-btn{
+       display:inline-block;
+       font-size:8px;
+       letter-spacing:0.5px;
+       margin-left:20px;
+       margin-top:0;
       }
 
-      .back-btn{
-        display:inline-block;
-        font-size:8px;
-        letter-spacing:0.5px;
-        text-transform:uppercase;
-        margin-left:20px;
-        margin-top:10px;
+     .hero{
+       padding:6px 0 10px;  /* 20px → 6px */
+     }
 
-      }
-
-      .back-btn:hover{
-         opacity:0.7;
-        transform:translateX(-4px);
-      }
-
-      .hero{
-         height:auto;
-         padding:20px 0 10px;
-      }
-
+     .hero .back-wrapper{
+       transform:translateY(-12px);
+     }
 
      .intro{
         padding:20px 10px 35px;
