@@ -189,10 +189,15 @@
 
     .region-card{
       position:relative;
-      height:120px;
-      border-radius:8px;
+      height:180px;   /* 120 → 180 */
+      border-radius:10px;
       overflow:hidden;
     }
+
+    .region-card.uk{
+      grid-column:1 / -1;
+      height:180px;
+     }
 
     .region-card img{
       height:100%;
@@ -389,8 +394,8 @@
           </div>
         </a>
 
-        <a href="#" class="region-card">
-          <img src="Images/eu/london.jpg" alt="UK">
+        <a href="uk.html" class="region-card uk">
+          <img src="Images/eu/uk.jpg" alt="UK">
           <div class="region-overlay">
             <h4>UK</h4>
           </div>
