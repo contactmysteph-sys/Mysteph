@@ -329,7 +329,7 @@ button:disabled{
     <div class="filter-bar">
       <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="public">Public</button>
-      <button class="filter-btn" data-filter="secret">Secret</button>
+      <button class="filter-btn" data-filter=""></button>
     </div>
 
     <div class="notes-list" id="adminNotesList"></div>
@@ -442,11 +442,11 @@ function renderNotes(){
   let filtered = allNotes;
 
   if(currentFilter === 'public'){
-    filtered = allNotes.filter(note => !note.secret);
+    filtered = allNotes.filter(note => note.secret === false);
   }
 
   if(currentFilter === 'secret'){
-    filtered = allNotes.filter(note => note.secret);
+     filtered = allNotes.filter(note => note.secret === true);
   }
 
   countText.textContent = `${filtered.length} note(s)`;
