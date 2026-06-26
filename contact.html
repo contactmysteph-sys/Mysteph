@@ -637,7 +637,10 @@
 
     guestForm.addEventListener('submit', async function(e){
       e.preventDefault();
+      window.getSelection().removeAllRanges();
 
+      // 기존 submit 코드 계속...
+    });
       const submitButton = guestForm.querySelector('button');
 
       const name = guestForm.name.value.trim();
