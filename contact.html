@@ -626,120 +626,120 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <script>
-    const guestForm = document.getElementById('guestForm');
-    const formStatus = document.getElementById('formStatus');
-    const notesList = document.getElementById('notesList');
+  const guestForm = document.getElementById('guestForm');
+  const formStatus = document.getElementById('formStatus');
+  const notesList = document.getElementById('notesList');
 
-    const SUPABASE_URL = "https://rjwkshpolzhaawrdybjf.supabase.co";
-    const SUPABASE_KEY = "sb_publishable_UqP9fGO5aGbYq6DteZFk-Q_G1s0XDgh";
+  const SUPABASE_URL = "https://rjwkshpolzhaawrdybjf.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_UqP9fGO5aGbYq6DteZFk-Q_G1s0XDgh";
 
-    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-    function escapeHTML(text){
-      return text
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+  function escapeHTML(text){
+    return String(text || '')
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  async function loadNotes(){
+    const { data, error } = await supabaseClient
+      .from('guestbook')
+      .select('name, message, created_at, reply, reply_at')
+      .eq('secret', false)
+      .order('created_at', { ascending:false });
+
+    if(error){
+      notesList.innerHTML = '<p style="text-align:center;color:#5b6572;">Notes could not be loaded.</p>';
+      return;
     }
 
-    async function loadNotes(){
-       const { data, error } = await supabaseClient
-        .from('guestbook')
-        .select('name, message, created_at, reply, reply_at')
-        .eq('secret', false)
-        .order('created_at', { ascending:false });
+    notesList.innerHTML = '';
 
-       if(error){
-         notesList.innerHTML = '<p style="text-align:center;color:#5b6572;">Notes could not be loaded.</p>';
-         return;
-       }
+    if(!data || data.length === 0){
+      notesList.innerHTML = '<p style="text-align:center;color:#5b6572;">No public notes yet.</p>';
+      return;
+    }
 
-       notesList.innerHTML = '';
+    data.forEach(note => {
+      const item = document.createElement('div');
+      item.className = 'note-item';
 
-       if(!data || data.length === 0){
-         notesList.innerHTML = '<p style="text-align:center;color:#5b6572;">No public notes yet.</p>';
-         return;
-       }
+      const date = new Date(note.created_at).toLocaleDateString();
 
-       data.forEach(note => {
-         const item = document.createElement('div');
-         item.className = 'note-item';
+      item.innerHTML = `
+        <strong>${escapeHTML(note.name)}</strong>
+        <p>${escapeHTML(note.message)}</p>
+        <span class="note-date">${date}</span>
 
-         const date = new Date(note.created_at).toLocaleDateString();
+        ${
+          note.reply
+          ? `
+            <div class="public-reply">
+              <span>Stephanie replied</span>
+              <p>${escapeHTML(note.reply)}</p>
+            </div>
+          `
+          : ''
+        }
+      `;
 
-        item.innerHTML = `
-          <strong>${escapeHTML(note.name)}</strong>
-          <p>${escapeHTML(note.message)}</p>
-          <span class="note-date">${date}</span>
+      notesList.appendChild(item);
+    });
+  }
 
-          ${
-            note.reply
-            ? `
-              <div class="public-reply">
-                <span>Stephanie replied</span>
-                <p>${escapeHTML(note.reply)}</p>
-              </div>
-            `
-            : ''
-          }
-        `;
-         
-         notesList.appendChild(item);
+  guestForm.addEventListener('submit', async function(e){
+    e.preventDefault();
 
-       });
-      }
-  
-      guestForm.addEventListener('submit', async function(e){
-         e.preventDefault();
-         window.getSelection().removeAllRanges();
+    const submitButton = guestForm.querySelector('button');
 
-         const submitButton = guestForm.querySelector('button');
-         const name = guestForm.name.value.trim();
-         const message = guestForm.message.value.trim();
-         const secret = guestForm.secret.checked;
+    const name = guestForm.name.value.trim();
+    const message = guestForm.message.value.trim();
+    const secret = guestForm.secret.checked;
 
-         if(!name || !message){
-            formStatus.textContent = 'Please write your name and message.';
-            return;
-         }
+    if(!name || !message){
+      formStatus.textContent = 'Please write your name and message.';
+      return;
+    }
 
-         formStatus.textContent = 'Sending...';
-         submitButton.disabled = true;
-         submitButton.textContent = 'Sending...';
+    formStatus.textContent = 'Sending...';
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending...';
 
-         const { error } = await supabaseClient
-          .from('guestbook')
-          .insert([
-            {
-              name: name,
-              message: message,
-              secret: secret
-            }
-          ]);
+    const { error } = await supabaseClient
+      .from('guestbook')
+      .insert([
+        {
+          name: name,
+          message: message,
+          secret: secret
+        }
+      ]);
 
-         if(error){
-           formStatus.textContent = 'Something went wrong. Please try again.';
-           submitButton.disabled = false;
-           submitButton.textContent = 'Leave Note';
-           return;
-         }
+    if(error){
+      formStatus.textContent = 'Something went wrong. Please try again.';
+      submitButton.disabled = false;
+      submitButton.textContent = 'Leave Note';
+      return;
+    }
 
-         formStatus.innerHTML = `
-             <h3>✨ Thank you.</h3>
-             <p>Your message has become a small part of this journey.</p>
-             <p class="signature">— Stephanie</p>
-         `;
+    formStatus.innerHTML = `
+      <h3>✨ Thank you.</h3>
+      <p>Your message has become a small part of this journey.</p>
+      <p class="signature">— Stephanie</p>
+    `;
 
-         guestForm.reset();
-         submitButton.disabled = false;
-         submitButton.textContent = 'Leave Note';
+    guestForm.reset();
+    submitButton.disabled = false;
+    submitButton.textContent = 'Leave Note';
 
-         loadNotes();
-      });
+    loadNotes();
+  });
+
   loadNotes();
-  </script>
+</script>
 
 </body>
 </html>
