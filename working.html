@@ -603,7 +603,7 @@ function changeStory(direction){
   }
   
   document.getElementById("story-title").innerText = stories[currentStory].title;
-  document.getElementById("story-text").innerText = stories[currentStory].text;
+  document.getElementById("story-text").innerText = stories[currentStory].text.trim();
   const storyLink =
   document.getElementById("story-link");
 
