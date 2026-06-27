@@ -23,8 +23,7 @@ body{
     linear-gradient(
       rgba(227, 230, 225, 0.94),
       rgba(206,213,234,0.94)
-    ),
-    url("Images/papertexture.jpg");
+    );
 
   background-size:cover;
   background-attachment:fixed;
@@ -56,18 +55,19 @@ body{
 /* HERO */
 .hero{
   width:100%;
-  height:25vh;
   display:flex;
   justify-content:center;
   align-items:center;
   text-align:center;
+
+  padding:20px 0 55px;
 }
 
 .hero h1{
   font-family:'Cormorant Garamond', serif;
   font-size:28px;
   font-weight:600;
-  letter-spacing:3px;
+  letter-spacing:4px;
   color:#141118;
   margin-bottom:10px;
 }
@@ -111,7 +111,7 @@ body{
 }
 
 .feature-content{
-  padding:26px;
+  padding:30px;
 }
 
 .feature-label{
@@ -124,9 +124,9 @@ body{
 
 .feature-title{
   font-family:'Cormorant Garamond', serif;
-  font-size:22px;
+  font-size:18px;
   font-weight:500;
-  line-height:1.15;
+  line-height:1.5;
   margin-bottom:10px;
   color:#2f4663;
   white-space:nowrap;
@@ -134,7 +134,7 @@ body{
 
 .feature-text{
   font-size:14px;
-  line-height:1.6;
+  line-height:1.9;
   color:#5d6775;
   margin-bottom:10px;
 }
@@ -168,40 +168,32 @@ body{
   padding:30px;
 }
 
-.story-label{
-  font-size:11px;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  color:#8a94a3;
-  margin-bottom:16px;
-}
-
 .story-title{
   font-family:'Cormorant Garamond', serif;
-  font-size:24px;
-  font-weight:600;
+  font-size:22px;
+  font-weight:700;
   line-height:1.2;
   color:#2f4663;
-  margin-bottom:8px;
+  margin-bottom:10px;
 }
 
 .story-text{
   font-size:14px;
-  line-height:1.6;
+  line-height:1.7;
   color:#687384;
-  margin-bottom:10px;
-  white-space:pre-line;
+  margin-bottom:0;
+  white-space:normal;
 }
 
 
 .story-link{
   text-decoration:none;
   font-size:11px;
-  letter-spacing:2px;
+  letter-spacing:1.4px;
   text-transform:uppercase;
   color:#31476E;
   border-bottom:1px solid #31476E;
-  padding-bottom:4px;
+  padding-bottom:0;
 }
 
 /* ARROWS */
@@ -210,19 +202,15 @@ body{
   top:60%;
   transform:translateY(-50%);
   z-index:10;
-
   width:34px;
   height:34px;
   border:none;
   border-radius:50%;
-
   background:none;
   color:#505445;
-
   font-size:28px;
   line-height:1;
   cursor:pointer;
-
   box-shadow:0 6px 18px rgba(0,0,0,0.08);
 }
 
@@ -324,7 +312,7 @@ body{
 
 
   .story-content{
-    padding: 18px;
+    padding: 14px;
     
   }
 
@@ -356,7 +344,7 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:18px;
+    gap:12px;
     margin-top:14px;
   }
 
@@ -398,6 +386,12 @@ body{
 }
   
 </style>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token":"..."}'></script>
+<!-- End Cloudflare Web Analytics -->
+
 </head>
 
 <body>
@@ -420,7 +414,7 @@ body{
   <!-- LEFT FEATURE -->
   <article class="feature-card">
 
-    <img src="Images/working/trx.jpg"
+    <img src="Images/trx.jpg"
          alt="Working in Malaysia"
          class="feature-image">
 
@@ -436,12 +430,12 @@ body{
 
       <p class="feature-text">
 
-         Notes from my working life in Malaysia —
-         different work cultures, multicultural conversations,
-         unexpected lessons, and small reflections gathered
-         while learning how people collaborate across languages,
+        Notes from my working life in Malaysia —<br>
+        different work cultures, multicultural conversations,
+        <br>unexpected lessons, and small reflections gathered
+        <br>while learning how people collaborate across languages,
          backgrounds, and everyday routines.
-    </p>
+      </p>
 
     </div>
 
@@ -452,12 +446,7 @@ body{
 
     <article class="story-card">
       
-
       <div class="story-content">
-
-       <div class="story-label" id="story-label">
-         Work Life
-       </div>
 
        <h3 class="story-title" id="story-title">
          Working with Good People
@@ -497,21 +486,18 @@ const stories = [
     title: "Working with Good People",
     text: `
       When people ask me what I like most about working in Malaysia, they often expect me to talk about the food, the weather, or the opportunity to live abroad.
-
+     
       While those things are certainly part of the experience, the answer that comes to mind first is much simpler: the people.
-
+     
       I have been fortunate to work with colleagues who have made everyday work not only easier, but also more enjoyable.
-
+     
       Ram, my manager, leads with a calm confidence that creates trust. He gives people the space to do their work while always being available when guidance is needed. His experience, patience, and sense of humor have made a lasting impression on me.
-
-      Noriko has taught me that kindness and professionalism can coexist effortlessly. She approaches every situation with thoughtfulness and respect, and her quiet reliability is something I deeply admire.
-
-      Yuka brings warmth and positive energy to the team. Even during busy periods, she somehow manages to make the workplace feel lighter. Her encouragement and friendliness have often brightened ordinary workdays.
-
+     
+      Noriko is an incredibly smart and dependable colleague who has been a great support in my work. She has a remarkable eye for detail and often notices things that I might overlook, helping me avoid mistakes and improve the quality of my work. I truly appreciate her proactive attitude, willingness to collaborate, and the professionalism she brings to every task. Her dedication, reliability, and expertise have earned my sincere respect and admiration.
+     
+      As one of the younger members of our team, Yuka brings a calm presence and fresh energy to the workplace. She is always respectful, receptive to guidance, and willing to support her senior colleagues whenever needed. Her cooperative attitude and positive approach make working together enjoyable and help create a warm and harmonious team environment. I truly appreciate her kindness, reliability, and the positive spirit she brings to our team.
+     
       Living and working abroad can sometimes feel uncertain. There are unfamiliar places, different cultures, and moments when everything feels new. Having good colleagues makes those challenges much easier to navigate.
-
-      Looking back, I realize that some of my favorite memories of Malaysia are not connected to places or events, but to conversations, shared lunches, small jokes, and the people I have worked alongside.
-
       For that, I am truly grateful.
     `,
 
@@ -561,8 +547,6 @@ const stories = [
      Of course, misunderstandings occasionally happen. Different communication styles can sometimes create confusion. However, I found that patience, curiosity, and mutual respect usually solve most problems better than perfect language skills ever could.
 
      Working in a multicultural environment has made me more adaptable, more open-minded, and more aware of the many ways people can work together successfully.
-
-     Looking back, it is one of the experiences I value most about living and working in Malaysia.
    `,
 
      link: ""
@@ -616,10 +600,9 @@ function changeStory(direction){
   if(currentStory >= stories.length){
     currentStory = 0;
   }
-
-  document.getElementById("story-label").innerText = stories[currentStory].label;
+  
   document.getElementById("story-title").innerText = stories[currentStory].title;
-  document.getElementById("story-text").innerText = stories[currentStory].text;
+  document.getElementById("story-text").innerText = stories[currentStory].text.trim();
   const storyLink =
   document.getElementById("story-link");
 

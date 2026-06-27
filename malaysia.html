@@ -148,14 +148,14 @@
 
     .featured-info span{
       font-size:10px;
-      letter-spacing:2px;
+      letter-spacing:1px;
       text-transform:uppercase;
       color:#8a94a3;
     }
 
     .featured-info h2{
       font-family:'Cormorant Garamond', serif;
-      font-size:20px;
+      font-size:18px;
       font-weight:600;
       line-height:1.15;
       margin:14px 0 18px;
@@ -163,8 +163,8 @@
     }
 
     .featured-info p{
-      font-size:15px;
-      line-height:1.9;
+      font-size:14px;
+      line-height:1.5;
       color:#566171;
       max-width:540px;
     }
@@ -222,7 +222,7 @@
     }
 
     .region-title p{
-      font-size:12px;
+      font-size:11px;
       line-height:1.4;
       color:#7d8896;
     }
@@ -264,7 +264,7 @@
     .region-overlay h4{
       color:white;
       font-family:'Cormorant Garamond', serif;
-      font-size:20px;
+      font-size:15px;
       font-weight:500;
       letter-spacing:1px;
     }
@@ -286,6 +286,15 @@
     }
 
     @media(max-width:600px){
+    .back-wrapper{
+      text-align:left;
+    }
+
+    .back-btn{
+      font-size:9px;
+      letter-spacing:0.5px;
+    }
+
 
       .hero{
         height:36vh;
@@ -314,6 +323,11 @@
 
   </style>
 
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token":"..."}'></script>
+<!-- End Cloudflare Web Analytics -->
+
 </head>
 
 <body>
@@ -321,7 +335,7 @@
 
   <div class="back-wrapper">
     <a href="collect.html" class="back-btn">
-      ← Back to Travel
+      ← Back to Traval Collection
     </a>
   </div>
 
@@ -344,9 +358,9 @@
 
       <div class="featured-image">
 
-        <img src="Images/Malaysia/penang1.jpg" class="slide active" alt="Penang">
-        <img src="Images/Malaysia/tioman.jpg" class="slide" alt="Tioman">
-        <img src="Images/Malaysia/redang.jpg" class="slide" alt="Redang Island">
+        <img src="Images/malaysia/penang.jpg" class="slide active" alt="Penang">
+        <img src="Images/malaysia/tioman.jpg" class="slide" alt="Tioman">
+        <img src="Images/malaysia/redang.jpg" class="slide" alt="Redang Island">
 
       </div>
 
@@ -362,17 +376,16 @@
           관광으로 방문했을 때와 실제로 살아보는 말레이시아는
           전혀 다른 느낌이었다.
 
-          평일에는 일을 하고,
-          주말에는 작은 도시와 섬들을 찾아다니며
-          천천히 이 나라를 알아가는 중이다.
+         <p>평일에는 일을 하고,
+          시간이 나는 대로 작은 도시와 섬들을 찾아다니며
+          천천히 이 나라를 알아가는 중이다.</p>
 
-          여행지로 알려진 곳뿐 아니라
-          평범한 동네의 카페와 시장,
+         <p> 여행지로 알려지지 않은 로컬 맛집들을 찾아다니는 것,
           갑자기 쏟아지는 스콜까지도
           이제는 일상의 일부가 되었다.
         </p>
 
-        <a href="working.html" class="read-more">
+        <a href="malaysia.html" class="read-more">
           Read Journal
         </a>
 
@@ -384,28 +397,28 @@
         <div class="region-grid">
 
           <a href="#" class="region-card">
-            <img src="Images/Malaysia/kl.jpg" alt="Kuala Lumpur">
+            <img src="Images/malaysia/kl.jpg" alt="Kuala Lumpur">
             <div class="region-overlay">
               <h4>KUALA LUMPUR</h4>
             </div>
           </a>
 
           <a href="#" class="region-card">
-            <img src="Images/Malaysia/johor.jpg" alt="Johor Bahru">
+            <img src="Images/malaysia/johor.jpg" alt="Johor Bahru">
             <div class="region-overlay">
               <h4>JOHOR BAHRU</h4>
             </div>
           </a>
 
-          <a href="#" class="region-card">
-            <img src="Images/Malaysia/melaka.jpg" alt="Melaka">
+          <a href="ways.html?journey=boat&place=Malacca" class="region-card">
+            <img src="Images/malaysia/melaka.jpg" alt="Malacca">
             <div class="region-overlay">
               <h4>MELAKA</h4>
             </div>
           </a>
 
-          <a href="#" class="region-card">
-            <img src="Images/Malaysia/penang1.jpg" alt="Penang">
+          <a href="ways.html?journey=road&place=Penang" class="region-card">
+            <img src="Images/malaysia/penang.jpg" alt="Penang">
             <div class="region-overlay">
               <h4>PENANG</h4>
             </div>
@@ -435,57 +448,57 @@
 
       <div class="region-grid">
 
-        <a href="#" class="region-card">
-          <img src="Images/Malaysia/langkawi.jpg" alt="Langkawi">
+        <a href="ways.html?journey=island&place=Langkawi" class="region-card">
+          <img src="Images/malaysia/langkawi.jpg" alt="Langkawi">
           <div class="region-overlay">
             <h4>LANGKAWI</h4>
           </div>
         </a>
 
-        <a href="#" class="region-card">
-          <img src="Images/Malaysia/redang.jpg" alt="Redang Island">
+        <a href="ways.html?journey=island&place=Redang Island" class="region-card">
+          <img src="Images/malaysia/redang.jpg" alt="Redang Island">
           <div class="region-overlay">
             <h4>REDANG</h4>
           </div>
         </a>
 
-        <a href="#" class="region-card">
-          <img src="Images/Malaysia/tioman.jpg" alt="Tioman Island">
+        <a href="ways.html?journey=aircraft&place=Tioman Island" class="region-card">
+          <img src="Images/malaysia/tioman.jpg" alt="Tioman Island">
           <div class="region-overlay">
             <h4>TIOMAN</h4>
           </div>
         </a>
 
-        <a href="#" class="region-card">
-          <img src="Images/Malaysia/perhentian.jpg" alt="Perhentian Island">
+         <a href="ways.html?journey=island&place=Perhentian Island" class="region-card">
+          <img src="Images/malaysia/perhentian.jpg" alt="Perhentian Island">
           <div class="region-overlay">
             <h4>PERHENTIAN</h4>
           </div>
         </a>
 
-        <a href="#" class="region-card">
-          <img src="Images/Malaysia/cameron.jpg" alt="Cameron Highlands">
+        <a href="ways.html?journey=road&place=Cameron Highlands" class="region-card">
+          <img src="Images/malaysia/cameron.jpg" alt="Cameron Highlands">
           <div class="region-overlay">
             <h4>CAMERON</h4>
           </div>
         </a>
 
         <a href="#" class="region-card">
-          <img src="Images/Malaysia/desaru.jpg" alt="Desaru">
+          <img src="Images/malaysia/desaru.jpg" alt="Desaru">
           <div class="region-overlay">
             <h4>DESARU</h4>
           </div>
         </a>
 
         <a href="#" class="region-card">
-          <img src="Images/Malaysia/pulaubesar.jpg" alt="Pulau Besar">
+          <img src="Images/malaysia/pulaubesar.jpg" alt="Pulau Besar">
           <div class="region-overlay">
             <h4>PULAU BESAR</h4>
           </div>
         </a>
 
-        <a href="#" class="region-card">
-          <img src="Images/Malaysia/sandakan.jpg" alt="Sandakan">
+        <a href="ways.html?journey=boat&place=Sandakan" class="region-card">
+          <img src="Images/malaysia/sandakan.jpg" alt="Sandakan">
           <div class="region-overlay">
             <h4>SANDAKAN</h4>
           </div>

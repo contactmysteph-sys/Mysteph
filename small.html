@@ -51,6 +51,7 @@ a{
   background-position:center;
   border-bottom-left-radius:12px;
   border-bottom-right-radius:12px;
+  display:none;
 }
 
 /* INTRO */
@@ -141,11 +142,11 @@ a{
   height:36px;
   border:none;
   border-radius:50%;
-  background:rgba(255,255,255,0.78);
-  color:#858687;
+  background:transparent;
+  color:rgb(30, 30, 32);
   cursor:pointer;
   font-size:22px;
-  box-shadow:0 6px 18px rgba(0,0,0,0.12);
+  box-shadow:0 6px 18px;
 }
 
 .prev{ left:14px; }
@@ -180,17 +181,17 @@ a{
 
 .post-title{
   font-family:'Cormorant Garamond', serif;
-  font-size:20px;
-  font-weight:600;
+  font-size:16px;
+  font-weight:500;
   color:#243d68;
   margin-bottom:10px;
 }
 
 .post-body p{
   font-size:13px;
-  line-height:1.8;
+  line-height:1.2;
   color:#354a68;
-  margin-bottom:12px;
+  margin-bottom:10px;
 }
 
 /* RIGHT CARDS */
@@ -535,6 +536,12 @@ a{
   }
 }
 </style>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token":"..."}'></script>
+<!-- End Cloudflare Web Analytics -->
+
 </head>
 
 <body>
@@ -653,11 +660,11 @@ const posts = [
     date: "2026-04-20",
     title: "Clouds That Made Me Look Up",
     images: [
-      "Images/small/s22.jpg",
       "Images/small/s24.jpg",
-      "Images/small/s23.jpg"
+      "Images/small/s23.jpg",
     ],
-    body: `솜사탕 구름.
+    body: `
+      <p>솜사탕 구름.</p>
       <p>클리닉 다녀 오는 길.</p>
       <p>구름 모양 하나가 하루를 조금 부드럽게 만들었다.</p>
     `
@@ -700,18 +707,7 @@ const posts = [
       <p>이 나라에서는 어디서나 고양이를 볼 수 있는데, 길냥이 같지도 않다.</p>
     `
   },
-  {
-    date: "2026-05-13",
-    title: "Today",
-    images: [
-      "Images/small/s34.jpg",
-      "Images/small/s32.jpg",
-      "Images/small/s30.jpg"
-    ],
-    body: `
-      <p>나를 차분하게 하는 하늘.</p>
-    `
-  },
+ 
   {
     date: "2026-04-23",
     title: "Fluffy Clouds",
@@ -725,14 +721,15 @@ const posts = [
     `
   },
   {
-    date: "2026-04-20",
+    date: "2026-04-26",
     title: "Jibby East",
     images: [
       "Images/small/s8.jpg",
       "Images/small/s9.jpg",
     ],
     body: `
-      <p>걸어서 5분 거리에 있는 Cafe.</p>
+      <p>집에서 걸어서 5분 거리에 있는 Cafe.</p>
+      <p>식사도 서비스도 매우 훌륭.</p>
     `
   },
 
@@ -759,19 +756,6 @@ const posts = [
     ],
     body: `
       <p>Soft Evening Light.</p>
-    `
-  },
-
-  {
-    date: "2026",
-    title: "Hidden Corners",
-    images: [
-      "Images/small/s21.jpg",
-      "Images/small/s22.jpg",
-      "Images/small/s23.jpg"
-    ],
-    body: `
-      <p>익숙한 길에서도 가끔은 처음 보는 장면을 만난다.</p>
     `
   },
 
