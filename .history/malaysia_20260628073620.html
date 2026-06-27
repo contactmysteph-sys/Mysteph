@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Malaysia | Collected Moments</title>
+
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+
+      background:
+      linear-gradient(
+        rgba(246,245,242,0.95),
+        rgba(246,245,242,0.95)
+      ),
+      url("Images/papertexture.jpg");
+
+      background-size:cover;
+      background-attachment:fixed;
+
+      font-family:'Montserrat', sans-serif;
+      color:#2d3e52;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    img{
+      width:100%;
+      display:block;
+    }
+
+
+    /* =========================
+       BACK BUTTON
+    ========================== */
+
+    .back-wrapper{
+      width:min(1450px,90%);
+      margin:22px auto 10px;
+      text-align:left;
+    }
+
+    .back-btn{
+      display:inline-block;
+      font-size:11px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      color:#31476E;
+      border-bottom:1px solid #31476E;
+      padding-bottom:4px;
+      transition:0.3s ease;
+    }
+
+    .back-btn:hover{
+      opacity:0.7;
+      transform:translateX(-4px);
+    }
+
+    /* =========================
+       INTRO
+    ========================== */
+
+    .intro{
+      text-align:center;
+      padding:30px 10px 50px;
+    }
+
+    .intro h1{
+      font-family:'Cormorant Garamond', serif;
+      font-size:30px;
+      font-weight:600;
+      color:#31476E;
+      margin-bottom:12px;
+    }
+
+    .intro p{
+      font-size:11px;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      color:#7d8896;
+    }
+
+    /* =========================
+       MAIN LAYOUT
+    ========================== */
+
+    .main-layout{
+      width:min(1450px,90%);
+      margin:auto;
+
+      display:grid;
+      grid-template-columns:48% 52%;
+      gap:40px;
+      align-items:start;
+
+      margin-bottom:60px;
+    }
+
+    /* =========================
+       FEATURED POST
+    ========================== */
+
+    .featured-image{
+      position:relative;
+      width:100%;
+      height:280px;
+      overflow:hidden;
+      border-radius:8px;
+      margin-bottom:24px;
+    }
+
+    .featured-image .slide{
+      position:absolute;
+      top:0;
+      left:0;
+
+      width:100%;
+      height:100%;
+
+      object-fit:cover;
+
+      opacity:0;
+      transition:opacity 4s ease;
+    }
+
+    .featured-image .slide.active{
+      opacity:1;
+    }
+
+    .featured-info span{
+      font-size:10px;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      color:#8a94a3;
+    }
+
+    .featured-info h2{
+      font-family:'Cormorant Garamond', serif;
+      font-size:18px;
+      font-weight:600;
+      line-height:1.15;
+      margin:14px 0 18px;
+      color:#31476E;
+    }
+
+    .featured-info p{
+      font-size:14px;
+      line-height:1.5;
+      color:#566171;
+      max-width:540px;
+    }
+
+    .read-more{
+      display:inline-block;
+      margin-top:24px;
+      font-size:11px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      border-bottom:1px solid #31476E;
+      padding-bottom:5px;
+      transition:0.3s ease;
+    }
+
+    .read-more:hover{
+      opacity:0.6;
+    }
+
+    /* =========================
+       REGION SECTION
+    ========================== */
+
+    .left-regions{
+      margin-top:28px;
+    }
+
+   .left-regions .region-grid{
+     grid-template-columns:1fr 1fr;
+     gap:12px;
+    }
+
+   .left-regions .region-card{
+      height: 105px;
+    }
+
+   .right-regions .region-card{
+      height: 160px;
+    }
+
+    .right-regions .region-grid{
+      gap:28px;
+    }
+
+    .region-title{
+      margin-bottom:10px;
+    }
+
+    .region-title h3{
+      font-family:'Cormorant Garamond', serif;
+      font-size:18px;
+      font-weight:700;
+      color:#31476E;
+      margin-bottom:10px;
+    }
+
+    .region-title p{
+      font-size:11px;
+      line-height:1.4;
+      color:#7d8896;
+    }
+
+    .region-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+
+    .region-card{
+      position:relative;
+      border-radius:8px;
+      overflow:hidden;
+    }
+
+    .region-card img{
+      height:100%;
+      object-fit:cover;
+      transition:0.6s ease;
+    }
+
+    .region-card:hover img{
+      transform:scale(1.05);
+    }
+
+    .region-overlay{
+      position:absolute;
+      inset:0;
+
+      background:rgba(0,0,0,0.28);
+
+      display:flex;
+      align-items:flex-end;
+
+      padding:12px;
+    }
+
+    .region-overlay h4{
+      color:white;
+      font-family:'Cormorant Garamond', serif;
+      font-size:15px;
+      font-weight:500;
+      letter-spacing:1px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================== */
+
+    @media(max-width:900px){
+
+      .main-layout{
+        grid-template-columns:1fr;
+        gap:70px;
+      }
+
+      .featured-image{
+        height:300px;
+      }
+    }
+
+    @media(max-width:600px){
+    .back-wrapper{
+      text-align:left;
+    }
+
+    .back-btn{
+      font-size:9px;
+      letter-spacing:0.5px;
+    }
+
+
+      .hero{
+        height:36vh;
+      }
+
+      .intro{
+        padding:30px 10px 40px;
+      }
+
+      .intro h1{
+        font-size:28px;
+      }
+
+      .featured-info h2{
+        font-size:18px;
+      }
+
+      .region-grid{
+        grid-template-columns:1fr;
+      }
+
+      .featured-image{
+        height:320px;
+      }
+    }
+
+  </style>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token":"..."}'></script>
+<!-- End Cloudflare Web Analytics -->
+
+</head>
+
+<body>
+
+
+  <div class="back-wrapper">
+    <a href="collect.html" class="back-btn">
+      ← Back to Traval Collection
+    </a>
+  </div>
+
+  <!-- INTRO -->
+  <section class="intro">
+
+    <h1>MALAYSIA</h1>
+
+    <p>
+      Places that slowly became part of everyday life
+    </p>
+
+  </section>
+
+  <!-- MAIN LAYOUT -->
+  <section class="main-layout">
+
+    <!-- LEFT COLUMN -->
+    <div class="featured-post">
+
+      <div class="featured-image">
+
+        <img src="Images/malaysia/penang.jpg" class="slide active" alt="Penang">
+        <img src="Images/malaysia/tioman.jpg" class="slide" alt="Tioman">
+        <img src="Images/malaysia/redang.jpg" class="slide" alt="Redang Island">
+
+      </div>
+
+      <div class="featured-info">
+
+        <span>Malaysia · Living Abroad</span>
+
+        <h2>
+          Between Work and Weekend Escapes
+        </h2>
+
+        <p>
+          관광으로 방문했을 때와 실제로 살아보는 말레이시아는
+          전혀 다른 느낌이었다.
+
+         <p>평일에는 일을 하고,
+          시간이 나는 대로 작은 도시와 섬들을 찾아다니며
+          천천히 이 나라를 알아가는 중이다.</p>
+
+         <p> 여행지로 알려지지 않은 로컬 맛집들을 찾아다니는 것,
+          갑자기 쏟아지는 스콜까지도
+          이제는 일상의 일부가 되었다.
+        </p>
+
+        <a href="malaysia.html" class="read-more">
+          Read Journal
+        </a>
+
+      </div>
+
+      <!-- LEFT SMALL CARDS -->
+      <div class="regions left-regions">
+
+        <div class="region-grid">
+
+          <a href="#" class="region-card">
+            <img src="Images/malaysia/kl.jpg" alt="Kuala Lumpur">
+            <div class="region-overlay">
+              <h4>KUALA LUMPUR</h4>
+            </div>
+          </a>
+
+          <a href="#" class="region-card">
+            <img src="Images/malaysia/johor.jpg" alt="Johor Bahru">
+            <div class="region-overlay">
+              <h4>JOHOR BAHRU</h4>
+            </div>
+          </a>
+
+          <a href="ways.html?journey=boat&place=Malacca" class="region-card">
+            <img src="Images/malaysia/melaka.jpg" alt="Malacca">
+            <div class="region-overlay">
+              <h4>MELAKA</h4>
+            </div>
+          </a>
+
+          <a href="ways.html?journey=road&place=Penang" class="region-card">
+            <img src="Images/malaysia/penang.jpg" alt="Penang">
+            <div class="region-overlay">
+              <h4>PENANG</h4>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+    <!-- LEFT COLUMN END -->
+
+
+    <!-- RIGHT COLUMN -->
+    <div class="regions right-regions">
+
+      <div class="region-title">
+
+        <h3>Explore by Place</h3>
+
+        <p>
+          Cities, islands, cafés, and small places
+          collected while living in Malaysia.
+        </p>
+
+      </div>
+
+      <div class="region-grid">
+
+        <a href="ways.html?journey=island&place=Langkawi" class="region-card">
+          <img src="Images/malaysia/langkawi.jpg" alt="Langkawi">
+          <div class="region-overlay">
+            <h4>LANGKAWI</h4>
+          </div>
+        </a>
+
+        <a href="ways.html?journey=island&place=Redang Island" class="region-card">
+          <img src="Images/malaysia/redang.jpg" alt="Redang Island">
+          <div class="region-overlay">
+            <h4>REDANG</h4>
+          </div>
+        </a>
+
+        <a href="ways.html?journey=aircraft&place=Tioman Island" class="region-card">
+          <img src="Images/malaysia/tioman.jpg" alt="Tioman Island">
+          <div class="region-overlay">
+            <h4>TIOMAN</h4>
+          </div>
+        </a>
+
+         <a href="ways.html?journey=island&place=Perhentian Island" class="region-card">
+          <img src="Images/malaysia/perhentian.jpg" alt="Perhentian Island">
+          <div class="region-overlay">
+            <h4>PERHENTIAN</h4>
+          </div>
+        </a>
+
+        <a href="ways.html?journey=road&place=Cameron Highlands" class="region-card">
+          <img src="Images/malaysia/cameron.jpg" alt="Cameron Highlands">
+          <div class="region-overlay">
+            <h4>CAMERON</h4>
+          </div>
+        </a>
+
+        <a href="#" class="region-card">
+          <img src="Images/malaysia/desaru.jpg" alt="Desaru">
+          <div class="region-overlay">
+            <h4>DESARU</h4>
+          </div>
+        </a>
+
+        <a href="#" class="region-card">
+          <img src="Images/malaysia/pulaubesar.jpg" alt="Pulau Besar">
+          <div class="region-overlay">
+            <h4>PULAU BESAR</h4>
+          </div>
+        </a>
+
+        <a href="ways.html?journey=boat&place=Sandakan" class="region-card">
+          <img src="Images/malaysia/sandakan.jpg" alt="Sandakan">
+          <div class="region-overlay">
+            <h4>SANDAKAN</h4>
+          </div>
+        </a>
+
+      </div>
+
+    </div>
+    <!-- RIGHT COLUMN END -->
+
+  </section>
+
+  <script>
+
+    const slides = document.querySelectorAll(".featured-image .slide");
+
+    let current = 0;
+
+    if(slides.length > 0){
+
+      setInterval(() => {
+
+        slides[current].classList.remove("active");
+
+        current = (current + 1) % slides.length;
+
+        slides[current].classList.add("active");
+
+      }, 12000);
+
+    }
+
+  </script>
+
+</body>
+</html>

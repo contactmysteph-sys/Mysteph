@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Places I Like</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:#f6f5f2;
+  font-family:'Montserrat', sans-serif;
+  color:#2d3e52;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+.back-wrap{
+  width:min(1120px,90%);
+  margin:28px auto 0;
+}
+
+.back-link{
+  font-size:11px;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+  color:#5f718c;
+}
+
+.hero{
+  text-align:center;
+  padding:42px 20px 34px;
+}
+
+.hero span{
+  display:block;
+  font-size:11px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:#9aa4af;
+  margin-bottom:10px;
+}
+
+.hero h1{
+  font-family:'Cormorant Garamond', serif;
+  font-size:28px;
+  font-weight:500;
+  color:#31476E;
+}
+
+.hero p{
+  margin-top:12px;
+  font-size:12px;
+  letter-spacing:1px;
+  color:#7d8896;
+}
+
+.like-wrapper{
+  width:min(1120px,90%);
+  margin:0 auto 80px;
+}
+
+.place-layout{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px;
+  align-items:start;
+}
+
+.place-card{
+  background:rgba(255,255,255,0.72);
+  border-radius:26px;
+  padding:24px;
+  border:1px solid rgba(255,255,255,0.75);
+  box-shadow:0 16px 40px rgba(0,0,0,0.06);
+}
+
+.place-header{
+  margin-bottom:20px;
+  padding-bottom:14px;
+  border-bottom:1px solid rgba(49,71,110,0.08);
+}
+
+.place-header h3{
+  font-family:'Cormorant Garamond', serif;
+  font-size:20px;
+  font-weight:600;
+  color:#31476E;
+  margin-bottom:4px;
+}
+
+.place-header span{
+  display:block;
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#9aa4af;
+}
+
+.photo-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:10px;
+  margin-bottom:24px;
+}
+
+.photo-grid img{
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  display:block;
+  border-radius:14px;
+}
+
+.place-info span{
+  display:block;
+  font-size:10px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#9aa4af;
+  margin-bottom:5px;
+}
+
+
+.place-info p{
+  font-size:13px;
+  line-height:1.4;
+  color:#4f6075;
+  margin-bottom:2px;
+}
+
+.pager{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:28px;
+  margin-top:34px;
+}
+
+.pager button{
+  border:none;
+  background:transparent;
+  font-family:'Cormorant Garamond', serif;
+  font-size:32px;
+  color:#31476E;
+  cursor:pointer;
+}
+
+.page-count{
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#8a96a5;
+}
+
+@media(max-width:600px){
+ .back-wrap{
+   margin:18px auto 0;
+  }
+
+ .back-link{
+   font-size:8px;
+   letter-spacing:0.8px;
+   margin-left:6px;
+  }
+
+  .hero{
+    padding:20px 15px 16px;
+  }
+
+ .hero span{
+   font-size:9px;
+   letter-spacing:3px;
+   margin-bottom:6px;
+  }
+
+ .hero h1{
+   font-size:24px;
+   margin-top:0;
+   margin-bottom:0;
+   line-height:1.1;
+  }
+  .hero p{
+    display:none;
+  }
+
+}
+
+@media(max-width:900px){
+  .place-layout{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:600px){
+  .place-card{
+    padding:18px;
+  }
+
+  .photo-grid{
+     grid-template-columns:repeat(2,1fr);
+     gap:8px;
+  }
+
+  .photo-grid img{
+    height:120px;
+  }
+
+  .place-info p{
+    margin-bottom:2px;
+  }
+
+}
+</style>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token":"..."}'></script>
+<!-- End Cloudflare Web Analytics -->
+
+</head>
+</head>
+
+<body>
+
+<div class="back-wrap">
+  <a href="small.html" class="back-link">Back to Small Wonders</a>
+</div>
+
+<section class="hero">
+  <span>Favorite Places</span>
+  <h1>Places I Like</h1>
+  <p>small corners, quiet views, and places that stayed with me</p>
+</section>
+
+<main class="like-wrapper">
+
+  <section class="place-layout" id="placeLayout"></section>
+
+  <div class="pager">
+    <button onclick="movePage(-1)">‹</button>
+    <div class="page-count" id="pageCount"></div>
+    <button onclick="movePage(1)">›</button>
+  </div>
+
+</main>
+
+<script>
+const places = [
+  {
+    title:"A Quiet Corner",
+    location:"Kuala Lumpur",
+    date:"2024",
+
+    images:[
+      "Images/like/l1.jpg",
+      "Images/like/l2.jpg",
+      "Images/like/l4.jpg",
+      "Images/like/l6.jpg",
+      "Images/like/l5.jpg",
+      "Images/like/l3.jpg",
+    ],
+
+    body:`
+      <p>Gardens Mall </p>
+      <p> 휴식공간과 화장실은 KL에서 내가 가장 좋아하는 곳 중 하나이다.</p>
+      <p>화장실을 이용하기 위해서는 5링깃을 내야 하지만 비위생적인 공중 화장실의 스트레스에서 벗어날 수 있고
+        잠시 휴식을 취할 수도 있어 나한테는 너무나 감사한 공간.</p>
+      <p>무엇보다 유료이니 사람이 없어서 너무 좋다. </p>
+    `
+  },
+
+  {
+    title:"Weekend Walk",
+    location:"KL",
+    date:"2025-01-12",
+
+    images:[
+      "Images/like/bh1.jpg",
+      "Images/like/bh2.jpg",
+      "Images/like/bh3.jpg",
+      "Images/like/bh4.jpg",
+      "Images/like/bh5.jpg",
+      "Images/like/bh6.jpg",
+    ],
+
+    body:`
+      <p>Bamboo Hills</p>
+      <p>Grab을 타고 가다가 저기는 도대체 뭘까 궁금하여 검색을 통해 알게된 곳.</p>
+      <p>인공적이긴 하지만 깨끗한 물이 흐르는 초록 정원이 있는 테마 공원처럼 꾸며져 있다. 
+      <p>KL에서 꽤 평가가 좋은 식당들이 모여 있어 주말에 점심 겸 기분 전환하기 좋은, 이곳이 나에게는 작은 휴식처이다.</p>
+    `
+  },
+
+  {
+    title:"MORI KOHI",
+    location:"Kuala Lumpur",
+    date:"2023-07-02",
+
+    images:[
+      "Images/like/mori1.jpg",
+      "Images/like/mori2.jpg",
+      "Images/like/mori3.jpg",
+      "Images/like/mori4.jpg",
+      "Images/like/mori5.jpg",
+      "Images/like/mori6.jpg",
+    ],
+
+    body:`
+      <p>Japanese </p>
+      <p>도심 속에 숨겨진 비밀 장소 같은 곳</p>
+      <p>식사보다 밖에 앉아 조용히 커피 한 잔 하기 좋은 곳.</p>
+    `
+  },
+
+
+];
+
+let currentPage = 0;
+const perPage = 2;
+
+const placeLayout = document.getElementById("placeLayout");
+const pageCount = document.getElementById("pageCount");
+
+function renderPlaces(){
+  placeLayout.innerHTML = "";
+
+  const start = currentPage * perPage;
+  const currentPlaces = places.slice(start, start + perPage);
+
+  currentPlaces.forEach(place => {
+    placeLayout.innerHTML += `
+      <article class="place-card">
+
+        <div class="place-header">
+          <h3>${place.title}</h3>
+          <span>${place.location} · ${place.date}</span>
+        </div>
+
+        <div class="photo-grid">
+          ${place.images.map(img => `
+            <img src="${img}" alt="${place.title}" loading="lazy">
+          `).join("")}
+        </div>
+
+        <div class="place-info">
+          <span>${place.category}</span>
+          ${place.body}
+        </div>
+
+      </article>
+    `;
+  });
+
+  const totalPages = Math.ceil(places.length / perPage);
+  pageCount.innerText = `${currentPage + 1} / ${totalPages}`;
+}
+
+function movePage(step){
+  const totalPages = Math.ceil(places.length / perPage);
+
+  currentPage += step;
+
+  if(currentPage < 0){
+    currentPage = totalPages - 1;
+  }
+
+  if(currentPage >= totalPages){
+    currentPage = 0;
+  }
+
+  renderPlaces();
+}
+
+renderPlaces();
+</script>
+
+</body>
+</html>

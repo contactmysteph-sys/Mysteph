@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wandering with Steph</title>
+
+  <!-- Bootstrap -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600\&family=Inter:wght@300;400;500\&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600\&display=swap" rel="stylesheet">
+  <style>
+
+    /* =========================
+       RESET
+    ========================== */
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Inter', sans-serif;
+      background-size:cover;
+      background-position:center;
+      background-attachment:fixed;
+
+      min-height:100vh;
+      color:#2F3B4A;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+
+    /* =========================
+       NAVBAR
+    ========================== */
+    .navbar{
+
+      width:100%;
+      height: 100px;
+      overflow: visible;
+
+      position:relative;
+      top:0;
+      left:0;
+
+      z-index:1000;
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+
+      padding:0 40px;
+
+      background:linear-gradient(
+        135deg,
+        #2F3B4A 0%,
+        #576371 100%
+      );
+
+      box-shadow:0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    /* =========================
+       LEFT SIDE
+    ========================== */
+    .nav-left{
+
+      display:flex;
+      align-items:center;
+      flex:1;
+    }
+
+    /* 로고 */
+    .logo{
+      height: 90px; /* 네비게이션 바 높이에 맞춤 */
+      display:flex;
+      align-items:center;
+    }
+
+    .logo img{
+      height: 90px;
+      width:auto;
+      display:block;
+      object-fit:contain;
+    }
+
+    /* =========================
+       LEFT MENU
+    ========================== */
+    .left-menu{
+
+      display:flex;
+      align-items:center;
+      gap:22px;
+      list-style:none;
+      margin-left:20px;
+      overflow: visible;
+      position:relative;
+      top:10px;
+    }
+
+    /* =========================
+       NAV CENTER
+    ========================== */
+    .nav-center{
+
+      position:absolute;
+
+      left:50%;
+      transform:translateX(-50%);
+      color:rgba(255,255,255,0.92);
+      font-size: 15px;
+      font-family:'Cormorant Garamond', serif;
+      letter-spacing:0.5px;
+      font-weight:300;
+      white-space:nowrap;
+      pointer-events:none;
+    }
+
+    /* =========================
+       RIGHT MENU
+    ========================== */
+    .right-menu{
+
+      display:flex;
+      align-items:center;
+      gap:24px;
+      list-style:none;
+      margin-left:auto;
+      overflow:visible;
+      position:relative;
+      top:10px;
+    }
+
+    /* =========================
+       MENU STYLE
+    ========================== */
+    .left-menu li a,
+    .right-menu li a{
+
+      position:relative;
+      text-decoration:none;
+      color:#F5F7FA;
+      font-size:15px;
+      font-weight:500;
+      transition:0.3s ease;
+    }
+
+    /* underline */
+    .left-menu li a::after,
+    .right-menu li a::after{
+
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-8px;
+      width:0%;
+      height:2px;
+      background:#D8E2EC;
+      transition:0.3s ease;
+    }
+
+    .left-menu li a:hover::after,
+    .right-menu li a:hover::after{
+      width:100%;
+    }
+
+    .left-menu li a:hover,
+    .right-menu li a:hover{
+      color:#D8E2EC;
+    }
+
+    /* =========================
+       DROPDOWN
+    ========================== */
+    .dropdown-menu{
+      display: block !important;
+      position:absolute;
+      top:100%;
+      left:0;
+      margin-top: 10px;
+      min-width:220px;
+      background:white;
+      border-radius:14px;
+      padding:12px 0;
+      list-style:none;
+      box-shadow:0 10px 30px rgba(0,0,0,0.12);
+      opacity:0;
+      visibility:hidden;
+      transform:translateY(10px);
+      transition:0.3s ease;
+      z-index: index 99999;
+    }
+
+    /* hover 시 dropdown 표시 */
+    .dropdown:hover .dropdown-menu{
+
+      opacity:1;
+      visibility:visible;
+
+    }
+
+    /* dropdown link */
+    .dropdown-menu li a{
+
+      display:block;
+      padding:10px 15px;
+      color:#2F3B4A;
+      text-decoration:none;
+      font-size:12px;
+    }
+
+    .dropdown-menu li a:hover{
+
+      background:#EEF2F5;
+      padding-left:28px;
+    }
+
+    /* =========================
+       CONTENT
+    ========================== */
+    .content{
+
+      padding:60px 10px;
+      text-align:center;
+ 
+     flex:1;
+    }
+ 
+    .content h1{
+      font-size:20px;
+      color:#2F3B4A;
+      margin: 20px 0;
+    }
+    .description{
+      max-width:1000px;
+      margin:0 auto;
+      font-size:15px;
+      line-height:1.2;
+      color:#666; }
+
+ 
+
+    /* =========================
+       HERO HEADER
+    ========================== */
+    .hero{
+ 
+     width:100%;
+      min-height:240px;
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+      text-align:center;
+      overflow:visible;
+      position:relative;
+
+      background-image:url('Images/header.png');
+      background-size:100% auto;
+      background-position:center bottom;
+      background-repeat:no-repeat;
+   }
+      
+    /* HERO CONTENT */
+    .hero-content{
+
+      position:relative;
+      top: 20px;
+      z-index:2;
+      max-width:800px;
+      padding-top:20px;
+      color:rgb(63, 50, 50);
+      text-shadow:0 4px 20px rgba(0,0,0,0.35);
+    }
+
+
+    /* =========================
+       MAIN WRAPPER
+    ========================== */
+    .main-wrapper{
+
+      width:100%;
+
+      max-width:1300px;
+
+      margin:20px auto;
+
+      display:grid;
+
+      grid-template-columns:1fr 1fr;
+
+      gap:25px;
+    }
+ 
+    /* =========================
+       SECTION BOX
+    ========================== */
+    .section-box{
+
+       min-height:auto;
+       height:auto;
+
+      display:flex;
+      flex-direction:column;
+
+      /* 불루그레이 그라데이션 */
+
+      background: linear-gradient(
+        135deg,
+       rgba(239, 240, 240, 0.82),
+       rgba(226, 234, 247, 0.75)
+     );
+
+     backdrop-filter: blur(10px);
+
+     border-radius:30px;
+
+     padding: 25px 30px;
+     border:1px solid rgba(255,255,255,0.6);
+
+     box-shadow:
+     0 10px 40px rgba(0,0,0,0.08),
+     inset 0 1px 0 rgba(255,255,255,0.6);
+
+    }
+
+    /* =========================
+      SECTION TITLE
+    ========================== */
+    .section-title{
+
+      display:flex;
+       
+      align-items:center;
+      justify-content:center;
+
+      gap:20px;
+
+      margin-bottom:20px;
+      font-family:'Cormorant Garamond', serif;
+      font-size:20px;
+      font-weight:500;
+      color:#1E3157;
+      letter-spacing:0;
+
+    }
+ 
+    .section-title::before,
+    .section-title::after{
+       content:"";
+       width:100px;
+       height:2px;
+       background:#31476E;
+       opacity:0.7;
+    }
+
+    /* =========================
+       MENU LIST
+    ========================== */
+    .menu-list{
+       display:flex;
+       flex-direction:column;
+       gap: 10px;
+    }
+
+    /* =========================
+       MENU CARD
+    ========================== */
+    .menu-card{
+       display:flex;
+       align-items:center;
+       gap: 12px;
+
+       background:
+       linear-gradient(
+         135deg,
+         rgba(255,255,255,0.92),
+         rgba(245,247,251,0.86)
+       );
+
+       border-radius:22px;
+       padding:8px 14px;
+       min-height:auto;
+       border:1px solid rgba(255,255,255,0.85);
+       box-shadow:
+       0 8px 24px rgba(0,0,0,0.08),
+       inset 0 1px 0 rgba(255,255,255,0.8);
+
+       transition:0.35s ease;
+       position:relative;
+       overflow:hidden;
+    }
+
+    /* hover */
+    .menu-card:hover{
+
+     transform:translateY(-6px);
+
+     box-shadow:
+     0 16px 40px rgba(0,0,0,0.12),
+     inset 0 1px 0 rgba(255,255,255,0.8);
+
+    }
+ 
+    /* subtle light effect */
+    .menu-card::after{
+
+      content:"";
+
+      position:absolute;
+
+      top:0;
+      right:0;
+
+      width:180px;
+      height:100%;
+
+      background:
+      linear-gradient(
+        to left,
+        rgba(255,255,255,0.18),
+        transparent
+      );
+
+      pointer-events:none;
+    }
+
+    /* =========================
+       IMAGE
+    ========================== */
+    .menu-image{
+      width:60px;
+      height:60px;
+      object-fit:cover;
+      flex-shrink:0;
+      border-radius:10px;
+      flex-shrink:0;
+    }
+
+    /* divider */
+    .menu-divider{
+      width:1px;
+      height: 34px;
+
+      background:#CAD2DE;
+    }
+
+    /* =========================
+       MENU TITLE
+    ========================== */
+    .menu-title{
+      font-family:'Cormorant Garamond', serif;
+      font-size:18px;
+      font-weight:500;
+      color:#1E3157;
+      letter-spacing:0.3px;
+      line-height:1.2;
+    }
+
+    /* =========================
+       WELCOME / GUESTBOOK
+    ========================== */
+    .visit-note{
+     width:min(1280px,100%);
+     margin:20px auto 55px;
+
+     background:rgba(255,255,255,0.78);
+     backdrop-filter:blur(10px);
+     border:1px solid rgba(255,255,255,0.65);
+     border-radius:20px;
+
+     padding:24px 34px;
+     text-align:center;
+
+     box-shadow:0 12px 35px rgba(0,0,0,0.08);
+    }
+
+    .visit-note span{
+      display:block;
+      font-size:16px;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      color:#62666c;
+      margin-bottom:5px;
+    }
+
+    .visit-note h2{
+      font-family:'Cormorant Garamond', serif;
+      font-size:2px;
+      color:#1E3157;
+      margin-bottom:5px;
+    }
+
+    .visit-note p{
+      max-width:1180px;
+      margin:0 auto 12px;
+      font-size:14px;
+      line-height:1.2;
+      color:#111a23;
+    }
+
+    .note-btn{
+      display:inline-block;
+      padding:9px 22px;
+      border-radius:999px;
+      background:#2F3B4A;
+      color:white;
+      font-size:12px;
+      letter-spacing:1px;
+      transition:0.3s ease;
+    }
+
+    .note-btn:hover{
+      background:#3A4A5C;
+      transform:translateY(-3px);
+      color:white;
+    }
+
+    /* =========================
+        Minimal FOOTER
+    ========================== */
+    .footer{
+      background:#2F3B4A;
+      color:white;
+      padding:10px 10px;
+      text-align:center;
+    }
+ 
+    /* container */
+    .footer-content{
+      max-width:800px;
+      margin:0 auto;
+      }
+
+    /* title */
+    .footer h2{
+      font-size:15px;
+      margin-bottom:5px;
+      color:#E7EDF4;
+    }
+ 
+    /* text */
+    .footer p{
+      color:#D4DBE3;
+      line-height:1.2;
+      margin-bottom:4px;
+      font-size:12px;
+    }
+
+    /* Links */
+    .footer-links{
+      margin: 8px 0;
+      display:flex;
+      justify-content:center;
+      gap: 12px;
+      font-size:12px;
+    }
+
+   .footer-links a{
+      color:white;
+      text-decoration:none;
+      transition:0.3s ease;
+    }
+
+    .footer-links a:hover{
+      color:#DCE5EE;
+    }
+
+    /* copyright */
+    .copyright{
+      margin-top:5px;
+      font-size:11px;
+      color:#AEB8C3;
+    }
+ 
+    /* =========================
+       WELCOME / GUESTBOOK
+    ========================== */
+    .visit-note{
+     width:min(1280px,100%);
+     margin:20px auto 55px;
+
+     background:rgba(255,255,255,0.78);
+     backdrop-filter:blur(10px);
+     border:1px solid rgba(255,255,255,0.65);
+     border-radius:20px;
+
+     padding:24px 34px;
+     text-align:center;
+
+     box-shadow:0 12px 35px rgba(0,0,0,0.08);
+    }
+
+    .visit-note span{
+      display:block;
+      font-size:16px;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      color:#62666c;
+      margin-bottom:5px;
+    }
+
+    .visit-note h2{
+      font-family:'Cormorant Garamond', serif;
+      font-size:2px;
+      color:#1E3157;
+      margin-bottom:5px;
+    }
+
+    .visit-note p{
+      max-width:1180px;
+      margin:0 auto 12px;
+      font-size:14px;
+      line-height:1.2;
+      color:#111a23;
+    }
+
+    .note-btn{
+      display:inline-block;
+      padding:9px 22px;
+      border-radius:999px;
+      background:#2F3B4A;
+      color:white;
+      font-size:12px;
+      letter-spacing:1px;
+      transition:0.3s ease;
+    }
+
+    .note-btn:hover{
+      background:#3A4A5C;
+      transform:translateY(-3px);
+      color:white;
+    }
+
+    /* =========================
+        Minimal FOOTER
+    ========================== */
+    .footer{
+      background:#2F3B4A;
+      color:white;
+      padding:10px 10px;
+      text-align:center;
+    }
+ 
+    /* container */
+    .footer-content{
+      max-width:800px;
+      margin:0 auto;
+      }
+
+    /* title */
+    .footer h2{
+      font-size:15px;
+      margin-bottom:5px;
+      color:#E7EDF4;
+    }
+ 
+    /* text */
+    .footer p{
+      color:#D4DBE3;
+      line-height:1.2;
+      margin-bottom:4px;
+      font-size:12px;
+    }
+
+    /* Links */
+    .footer-links{
+
+      margin: 8px 0;
+
+      display:flex;
+      justify-content:center;
+      gap: 12px;
+      font-size:12px;
+    }
+
+   .footer-links a{
+      color:white;
+      text-decoration:none;
+      transition:0.3s ease;
+    }
+
+    .footer-links a:hover{
+      color:#DCE5EE;
+    }
+
+    /* copyright */
+    .copyright{
+      margin-top:5px;
+      font-size:11px;
+      color:#AEB8C3;
+    }
+    
+   /* =========================
+       RESPONSIVE
+    ========================== */
+    @media (max-width:768px){
+
+    .navbar{
+      height:auto;
+      padding:10px 0;
+      justify-content:center;
+    }
+
+    .nav-left{
+      justify-content:center;
+    }
+    .left-menu,
+    .right-menu{
+      display:none;
+    }
+
+    .logo,
+    .logo img{
+       height:62px;
+    }
+
+   .hero{
+     min-height:110px;
+     background-size:cover;
+     background-position:center;
+    }
+
+   .main-wrapper{
+     width:92%;
+     margin:16px auto;
+     padding:0;
+     grid-template-columns:1fr;
+     gap:14px;
+    }
+
+   .section-box{
+     padding:13px 12px;
+     border-radius:18px;
+    }
+
+   .section-title{
+     font-size:16px;
+     margin-bottom:10px;
+     gap:8px;
+     line-height:1.1;
+    }
+
+   .section-title::before,
+   .section-title::after{
+     width:28px;
+    }
+
+   .menu-list{
+     gap:6px;
+    }
+
+   .menu-card{
+     flex-direction:row;
+     text-align:left;
+     gap:8px;
+     padding:5px 8px;
+     border-radius:14px;
+    }
+
+   .menu-image{
+     width:46px;
+     height:46px;
+     object-fit:cover;
+    }
+
+   .menu-divider{
+     display:block;
+     height:26px;
+    }
+
+   .menu-title{
+     font-size:15px;
+     line-height:1.15;
+     font-weight:700;
+    }
+
+   .visit-note{
+     width:92%;
+     margin:16px auto 30px;
+     padding:16px 14px;
+    }
+
+   .visit-note span{
+     font-size:12px;
+    }
+
+   .visit-note p{
+     font-size:12px;
+     line-height:1.45;
+    }
+
+   .footer-links{
+     flex-wrap:wrap;
+    
+    }
+
+   }
+
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+    data-cf-beacon='{"token": "55f834166a704d60836e9328dcb11cdf"}'></script>
+<!-- End Cloudflare Web Analytics -->
+  
+</head>
+
+<body>
+
+  <!-- =========================
+       NAVBAR
+  ========================== -->
+  <nav class="navbar">
+
+    <!-- LEFT -->
+    <div class="nav-left">
+
+      <!-- LOGO -->
+      <div class="logo">
+        <img src="Images/giflogo.gif" alt="MY Steph Logo">
+      </div>
+
+      <!-- LEFT MENU -->
+      <ul class="left-menu">
+
+        <!-- Wandering -->
+        <li class="dropdown">
+
+          <a href="#">Wandering with Steph</a>
+
+          <ul class="dropdown-menu">
+
+            <li><a href="small.html">Small Wonders</a></li>
+
+            <li><a href="ways.html">Collected Moments</a></li>
+
+            <li><a href="gallery.html">Gallery</a></li>
+
+            <li><a href="working.html">Working Days</a></li>
+
+          </ul>
+
+        </li>
+
+        <!-- Space for Being -->
+        <li class="dropdown">
+
+          <a href="#">Space for Being</a>
+
+          <ul class="dropdown-menu">
+
+            <li><a href="hobby.html">wood, Canvas, Keys</a></li>
+
+            <li><a href="quiet.html">Quiet Pages</a></li>
+
+            <li><a href="healing.html">Healing Spaces</a></li>
+
+            <li><a href="mind.html">Mindful Moments</a></li>
+
+          </ul>
+
+        </li>
+
+      </ul>
+
+    </div>
+
+    <!-- CENTER TITLE -->
+    <div class="nav-center">
+    </div>
+
+    <!-- RIGHT MENU -->
+    <ul class="right-menu">
+
+      <!-- Language -->
+      <li class="dropdown">
+
+        <a href="#">Language</a>
+
+        <ul class="dropdown-menu">
+
+          <li><a href="#">Korean</a></li>
+          <li><a href="#">Japanese</a></li>
+          <li><a href="#">French</a></li>
+        </ul>
+
+      </li>
+
+      <li><a href="index.html">Home</a></li>
+      <li><a href="contact.html">Contact</a></li>
+
+    </ul>
+
+  </nav>
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+  <header class="hero">
+
+    <div class="hero-content">
+
+    </div>
+
+  </header>
+
+  <!-- =========================
+      MAIN CONTENT
+  ========================== -->
+ 
+  <main class="main-wrapper">
+     <!-- LEFT SECTION -->
+    <section class="section-box">
+
+      <h2 class="section-title">
+        Wandering with Steph
+      </h2>
+
+      <div class="menu-list">
+
+        <!-- CARD -->
+        <a href="small.html" class="menu-card">
+
+          <img src="Images/small.png"
+               alt="Small Wonders"
+               class="menu-image">
+
+          <div class="menu-divider"></div>
+
+          <div class="menu-title">
+            Small Wonders
+          </div>
+
+        </a>
+
+        <!-- CARD -->
+        <a href="ways.html" class="menu-card">
+
+          <img src="Images/collect.png"
+               alt="Collected Moments"
+               class="menu-image">
+
+          <div class="menu-divider"></div>
+
+          <div class="menu-title">
+            Collected Moments
+          </div>
+
+        </a>
+
+        <!-- CARD -->
+        <a href="gallery.html" class="menu-card">
+
+          <img src="Images/gallery.png"
+               alt="Gallery"
+               class="menu-image">
+
+          <div class="menu-divider"></div>
+
+          <div class="menu-title">
+            Gallery
+          </div>
+
+        </a>
+
+        <!-- CARD -->
+        <a href="working.html" class="menu-card">
+
+          <img src="Images/working.png"
+               alt="Working Days in Malaysia"
+               class="menu-image">
+
+          <div class="menu-divider"></div>
+
+          <div class="menu-title">
+            Working Days in Malaysia
+          </div>
+
+        </a>
+
+      </div>
+
+    </section>
+
+    <!-- RIGHT SECTION -->
+    <section class="section-box">
+
+      <h2 class="section-title">
+        Space for Being
+      </h2>
+
+      <div class="menu-list">
+
+        <!-- CARD -->
+        <a href="hobby.html" class="menu-card">
+
+          <img src="Images/wood.png"
+               alt="Wood, Canvas, Keys"
+               class="menu-image">
+
+          <div class="menu-divider"></div>
+
+          <div class="menu-title">
+            Wood, Canvas, Keys
+          </div>
+
+        </a>
+
+        <!-- CARD -->
+        <a href="quiet.html" class="menu-card">
+
+          <img src="Images/quiet.png"
+               alt="Quiet Pages"
+               class="menu-image">
+
+          <div class="menu-divider"></div>
+
+          <div class="menu-title">
+            Quiet Pages
+          </div>
+
+        </a>
+
+        <!-- CARD -->
+        <a href="healing.html" class="menu-card">
+
+          <img src="Images/healing.png"
+               alt="Healing Spaces"
+               class="menu-image">
+
+          <div class="menu-divider"></div>
+
+          <div class="menu-title">
+            Healing Spaces
+          </div>
+
+        </a>
+
+        <!-- CARD -->
+        <a href="mind.html" class="menu-card">
+
+          <img src="Images/mind.png"
+               alt="Mindful Moments"
+               class="menu-image">
+
+          <div class="menu-divider"></div>
+
+          <div class="menu-title">
+            Mindful Moments
+          </div>
+
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- =========================
+     VISIT NOTE
+  ========================== -->
+  <section class="visit-note">
+
+    <span>Welcome!</span>
+     <h2></h2>
+
+     <p>
+       Thank you for stopping by my little corner of the world.
+     </p>
+
+     <p>
+       If something here made you smile, pause, remember, or simply feel a little lighter, please click "Leave a Note" below and leave me a message.
+     </p>
+
+     <a href="contact.html" class="note-btn">
+       Leave a Note
+     </a>
+     
+
+  </section>
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+  <footer class="footer">
+ 
+    <div class="footer-content">
+
+     <h2>Soft Days with Steph</h2>
+
+     <p>
+      This website is a personal space where I share everyday moments and information, created for personal use rather than commercial purposes.
+     </p>
+
+     <div class="footer-links">
+
+       <a href="#">Instagram</a>
+       <a href="#">Pinterest</a>
+       <li><a href="contact.html">Contact</a></li>
+
+     </div>
+
+    <p class="copyright">
+      © 2026 MY Steph. All Rights Reserved.
+    </p>
+
+   </div>
+
+  </footer>
+
+</body>
+</html>

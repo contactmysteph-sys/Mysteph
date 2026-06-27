@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Essays on Slow Living</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:
+  linear-gradient(
+    rgba(246,245,242,0.45),
+    rgba(246,245,242,0.45)
+  ),
+  url("Images/cloudy.png");
+
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+
+  font-family:'Montserrat', sans-serif;
+  color:#2d2d2d;
+}
+
+/* BACK */
+
+.back-wrapper{
+  width:min(980px,90%);
+  margin:28px auto 0;
+}
+
+.back-btn{
+  display:inline-block;
+  text-decoration:none;
+  color:#42566b;
+  font-size:11px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  border-bottom:1px solid #42566b;
+  padding-bottom:4px;
+  transition:0.3s ease;
+}
+
+.back-btn:hover{
+  opacity:0.6;
+}
+
+/* HERO */
+
+.essay-hero{
+  width:min(980px,90%);
+  margin:30px auto 40px;
+  text-align:center;
+}
+
+.essay-label{
+  font-size:11px;
+  letter-spacing:5px;
+  text-transform:uppercase;
+  color:#8a98a8;
+  margin-bottom:18px;
+}
+
+.essay-hero h1{
+  font-family:'Cormorant Garamond', serif;
+  font-size:30px;
+  font-weight:500;
+  color:#2b3a49;
+  margin-bottom:18px;
+}
+
+.essay-hero p{
+  max-width:620px;
+  margin:0 auto;
+  font-size:14px;
+  line-height:2;
+  color:#666;
+}
+
+
+/* =========================
+   ESSAY NAVIGATION
+========================= */
+
+.essay-nav{
+
+  position:fixed;
+
+  top:50%;
+  transform:translateY(-50%);
+
+  border:none;
+  background:transparent;
+
+  color:rgba(49,71,110,0.28);
+
+  font-size:38px;
+
+  cursor:pointer;
+
+  transition:0.3s ease;
+
+  z-index:100;
+}
+
+.essay-nav:hover{
+
+  color:rgba(49,71,110,0.65);
+
+  transform:translateY(-50%) scale(1.08);
+}
+
+.prev{
+  left:28px;
+}
+
+.next{
+  right:28px;
+}
+
+/* ARTICLE */
+
+.article-wrap{
+   padding:60px 56px;
+   margin-top:20px;
+   margin-bottom:80px;
+
+   width:min(760px,90%);
+   margin-left:auto;
+   margin-right:auto;
+   background:rgba(221,217,217,0.88);
+   backdrop-filter:blur(10px);
+   border:1px solid rgba(185,181,181,0.45);
+   border-radius:26px;
+   box-shadow:0 24px 70px rgba(30,40,50,0.12);
+   box-shadow:0 24px 70px rgba(30,40,50,0.12);
+}
+
+.article-meta{
+  font-size:11px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:#8a98a8;
+  margin-bottom:20px;
+}
+
+.article-title{
+  font-family:'Cormorant Garamond', serif;
+  font-size:20px;
+  font-weight:600;
+  color:#2b3a49;
+  margin-bottom:10px;
+}
+
+.article-subtitle{
+  font-family:'Cormorant Garamond', serif;
+  font-size:14px;
+  font-style:italic;
+  color:#5f5754;
+  margin-bottom:20px;
+}
+
+.article-body p{
+  font-size:15px;
+  line-height:1.4;
+  color:#374151;
+  margin-bottom:24px;
+}
+
+.article-body .quote{
+  font-family:'Cormorant Garamond', serif;
+  font-size:18px;
+  line-height:1.2;
+  color:#31476e;
+
+  margin:42px 0;
+  padding-left:24px;
+  border-left:2px solid rgba(49,71,110,0.25);
+}
+
+.essay-divider{
+  width:70px;
+  height:1px;
+  background:#cfcfcf;
+  margin:48px 0;
+}
+
+.article-footer{
+  margin-top:20px;
+  font-size:12px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#8a98a8;
+}
+
+/* ESSAY INDEX */
+
+.essay-index{
+  padding:30px 20px;
+  margin-top:0;
+  margin-bottom:120px;
+
+  width:min(920px,86%);
+  margin-left:auto;
+  margin-right:auto;
+
+  background:rgba(224, 223, 223, 0.88);
+  backdrop-filter:blur(10px);
+
+  border:1px solid rgba(136, 130, 130, 0.45);
+  border-radius:18px;
+
+  box-shadow:0 20px 30px rgba(48, 50, 51, 0.12);
+}
+
+.essay-index h3{
+  font-family:'Cormorant Garamond', serif;
+  font-size:20px;
+  font-weight:500;
+  color:#1f3a60;
+  margin-bottom:10px;
+}
+
+.essay-list{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.essay-list button{
+  width:100%;
+  text-align:left;
+  border:none;
+  background:transparent;
+  padding:12px 0;
+  font-family:'Montserrat', sans-serif;
+  font-size:12px;
+  letter-spacing:0.8px;
+  color:#2f3b4a;
+  border-bottom:1px solid rgba(40,50,70,0.12);
+  cursor:pointer;
+}
+
+.essay-list button:hover{
+  color:#6f6c68;
+  padding-left:10px;
+}
+
+.essay-list a:hover{
+  opacity:0.7;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+  .back-wrapper{
+     width:min(980px,90%);
+     margin:20px auto 0;
+  }
+
+  .back-btn{
+    display:inline-block;
+    text-decoration:none;
+    font-size:9px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    border-bottom:none;
+    padding-bottom:0;
+  }
+
+  .back-btn:hover{
+    opacity:0.6;
+  }
+
+  .essay-hero{
+    margin:12px auto 8px;
+  }
+
+  .essay-hero h1{
+    font-size:22px;
+    color: #162636;
+  }
+
+  .essay-hero p{
+    display: none;
+  }
+
+  .reader-wrap{
+    margin-top:0;
+  }
+  
+  .feature-image{
+    height:260px;
+    margin-bottom:40px;
+  }
+
+  .article-wrap{
+    padding:45px 30px;
+  }
+
+  .article-title{
+    font-size:20px;
+  }
+
+  .article-subtitle{
+    font-size:14px;
+  }
+
+  .article-body p{
+    font-size:12px;
+  }
+
+  .essay-list a{
+    grid-template-columns:1fr;
+    gap:4px;
+  }
+
+  .essay-nav{
+    display:none;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BACK -->
+
+<div class="back-wrapper">
+  <a href="mind.html" class="back-btn">
+   Back to Home
+  </a>
+</div>
+
+<!-- HERO -->
+
+<section class="essay-hero">
+
+  <div class="essay-label">
+  </div>
+
+  <h1>
+    Essays on Slow Living
+  </h1>
+
+  <p>
+    Reflections on simple living, temporary homes,
+    and finding freedom in owning less.
+  </p>
+
+</section>
+
+
+<!-- ARTICLE -->
+  <button class="essay-nav prev">
+    &#10094;
+  </button>
+
+  <button class="essay-nav next">
+    &#10095;
+  </button>
+
+<main class="article-wrap">
+
+  <div class="article-meta" id="essay-meta"></div>
+
+  <h2 class="article-title" id="essay-title"></h2>
+
+  <div class="article-subtitle" id="essay-subtitle"></div>
+
+  <div class="article-body" id="essay-body"></div>
+
+  <div class="article-footer">
+    Written by Stephanie
+  </div>
+
+</main>
+
+<!-- ESSAY INDEX -->
+<section class="essay-index">
+
+  <h3>Essay Collection</h3>
+
+  <div class="essay-list">
+
+    <button onclick="showEssay('1')">
+      The Value of Doing Nothing
+    </button>
+
+    <button onclick="showEssay('2')">
+      A Habit of Looking Out the Window
+    </button>
+
+    <button onclick="showEssay('3')">
+      Healing Spaces
+    </button>
+
+    <button onclick="showEssay('4')">
+      The Gift of a Quiet Morning
+    </button>
+
+    <button onclick="showEssay('5')">
+      The Eyes of My Mom
+    </button>
+
+  </div>
+
+</section>
+
+<script>
+const essays = [
+   {
+     meta: "May 2026",
+
+     title: "Minimal Life",
+     subtitle: "Learning to live lightly, wherever I am.",
+
+     body: `
+        <p> There was a time when I believed that having more meant living better. 
+         A larger home, more furniture, more decorations, more things to fill empty spaces. 
+         Like many people, I thought comfort came from ownership. </p>
+        <p> But living abroad taught me something I had never expected. When you know that you may leave one day, 
+         you begin to look at your belongings differently. Every object becomes something you might eventually have to pack, carry, give away, or leave behind. </p>
+        <p> At first, that felt unsettling. I stopped buying things impulsively. 
+         I learned to ask myself a simple question before bringing something home. </p> 
+        <div class="quote"> Would I still want this<br> 
+         if I had to move again next year? 
+        </div>
+        <p> Most of the time, the answer was no. Over the years, my possessions became fewer, but strangely, my space felt richer. </p>
+        <p> The less I owned, the more attention I gave to the things I chose to keep. A favorite mug. 
+         A comfortable chair. A small lamp that makes the room feel warm in the evening. 
+         Each object earned its place. </p> 
+        <p> People often assume that minimal living means having less. For me, it became about appreciating more. 
+         More space to breathe. More room for quiet mornings. More freedom to leave when life asks me to. </p> 
+        <p> Perhaps that is why I spend so much time cleaning, organizing, and caring for the place I live. It is not my permanent home. 
+         In fact, that may be the very reason I treat it with greater care. </p> 
+        <p> A rented apartment, a temporary room, a place I may eventually leave — these spaces still hold my everyday life. 
+         They deserve attention. They deserve gratitude. </p> 
+        <p> Minimal living was never about empty shelves or perfectly organized drawers. 
+         It was about learning that peace does not come from owning more things. </p> 
+        <p> Sometimes, it comes from knowing that you already have enough. 
+         And when the time comes to leave, I hope I can close the door gently, carrying only what truly matters. </p>
+     `
+    },
+
+    {
+      meta: "April· 2026",
+
+      title: "The Value of Doing Nothing",
+
+      subtitle: "Finding meaning in unhurried moments.",
+
+      body: `
+       <p>
+         We often measure our days by what we accomplish.
+         Tasks completed, places visited, goals achieved.
+         It is easy to believe that a day must be productive to be meaningful.
+       </p>
+
+       <p>
+         Yet some of my favorite moments happen when nothing special is taking place.
+         Sitting quietly with a cup of coffee,
+         watching the light move across a room,
+         listening to distant rain outside the window.
+       </p>
+
+       <p>
+         In those moments,
+         there is nothing to prove and nowhere to rush.
+         The mind becomes quieter,
+         and the world feels a little wider.
+       </p>
+
+       <div class="quote">
+         Sometimes doing nothing<br>
+         is exactly what we need.
+      </div>
+
+      <p>
+         Rest is not wasted time.
+         It is space for thoughts to settle,
+         for gratitude to appear,
+         and for life to be noticed.
+      </p>
+
+      <p>
+         Perhaps the value of doing nothing
+         is that it reminds us that simply being here is enough.
+      </p>
+     `
+    },
+
+    {
+      meta: "April· 2026",
+
+      title: "A Habit of Looking Out the Window",
+
+      subtitle: "창밖을 바라보는 습관 .",
+
+      body: `
+       <p>
+         We often measure our days by what we accomplish.
+         Tasks completed, places visited, goals achieved.
+         It is easy to believe that a day must be productive to be meaningful.
+       </p>
+
+       <p>
+         Yet some of my favorite moments happen when nothing special is taking place.
+         Sitting quietly with a cup of coffee,
+         watching the light move across a room,
+         listening to distant rain outside the window.
+       </p>
+
+       <p>
+         In those moments,
+         there is nothing to prove and nowhere to rush.
+         The mind becomes quieter,
+         and the world feels a little wider.
+       </p>
+
+       <div class="quote">
+         Sometimes doing nothing<br>
+         is exactly what we need.
+      </div>
+
+      <p>
+         Rest is not wasted time.
+         It is space for thoughts to settle,
+         for gratitude to appear,
+         and for life to be noticed.
+      </p>
+
+      <p>
+         Perhaps the value of doing nothing
+         is that it reminds us that simply being here is enough.
+      </p>
+     `
+    },
+
+    {
+      meta: "May· 2026",
+
+      title: "Healing Spaces",
+
+      subtitle: "치유의 공간.",
+
+      body: `
+       <p>
+         We often measure our days by what we accomplish.
+         Tasks completed, places visited, goals achieved.
+         It is easy to believe that a day must be productive to be meaningful.
+       </p>
+
+       <p>
+         Yet some of my favorite moments happen when nothing special is taking place.
+         Sitting quietly with a cup of coffee,
+         watching the light move across a room,
+         listening to distant rain outside the window.
+       </p>
+
+       <p>
+         In those moments,
+         there is nothing to prove and nowhere to rush.
+         The mind becomes quieter,
+         and the world feels a little wider.
+       </p>
+
+       <div class="quote">
+         Sometimes doing nothing<br>
+         is exactly what we need.
+      </div>
+
+      <p>
+         Rest is not wasted time.
+         It is space for thoughts to settle,
+         for gratitude to appear,
+         and for life to be noticed.
+      </p>
+
+      <p>
+         Perhaps the value of doing nothing
+         is that it reminds us that simply being here is enough.
+      </p>
+     `
+    },
+
+    {
+      meta: "June· 2026",
+
+      title: "the Gift of a Quiet Morning",
+
+      subtitle: "새벽이 주는 선물.",
+
+      body: `
+       <p>
+         We often measure our days by what we accomplish.
+         Tasks completed, places visited, goals achieved.
+         It is easy to believe that a day must be productive to be meaningful.
+       </p>
+
+       <p>
+         Yet some of my favorite moments happen when nothing special is taking place.
+         Sitting quietly with a cup of coffee,
+         watching the light move across a room,
+         listening to distant rain outside the window.
+       </p>
+
+       <p>
+         In those moments,
+         there is nothing to prove and nowhere to rush.
+         The mind becomes quieter,
+         and the world feels a little wider.
+       </p>
+
+       <div class="quote">
+         Sometimes doing nothing<br>
+         is exactly what we need.
+      </div>
+
+      <p>
+         Rest is not wasted time.
+         It is space for thoughts to settle,
+         for gratitude to appear,
+         and for life to be noticed.
+      </p>
+
+      <p>
+         Perhaps the value of doing nothing
+         is that it reminds us that simply being here is enough.
+      </p>
+     `
+    },
+
+    {
+      meta: "June· 2026",
+
+      title: "The Eyes of My Mom",
+
+      subtitle: "엄마의 눈.",
+
+      body: `
+       <p>
+         We often measure our days by what we accomplish.
+         Tasks completed, places visited, goals achieved.
+         It is easy to believe that a day must be productive to be meaningful.
+       </p>
+
+       <p>
+         Yet some of my favorite moments happen when nothing special is taking place.
+         Sitting quietly with a cup of coffee,
+         watching the light move across a room,
+         listening to distant rain outside the window.
+       </p>
+
+       <p>
+         In those moments,
+         there is nothing to prove and nowhere to rush.
+         The mind becomes quieter,
+         and the world feels a little wider.
+       </p>
+
+       <div class="quote">
+         Sometimes doing nothing<br>
+         is exactly what we need.
+      </div>
+
+      <p>
+         Rest is not wasted time.
+         It is space for thoughts to settle,
+         for gratitude to appear,
+         and for life to be noticed.
+      </p>
+
+      <p>
+         Perhaps the value of doing nothing
+         is that it reminds us that simply being here is enough.
+      </p>
+     `
+    },
+];
+
+ let currentEssay = 0;
+
+function showEssay(index){
+  const essay = essays[index];
+
+  if(!essay){
+    console.log("No essay found:", index);
+    return;
+  }
+
+  currentEssay = index;
+
+  document.getElementById("essay-meta").innerText = essay.meta || "";
+  document.getElementById("essay-title").innerText = essay.title || "";
+  document.getElementById("essay-subtitle").innerText = essay.subtitle || "";
+  document.getElementById("essay-body").innerHTML = essay.body || "";
+}
+
+document.querySelector(".essay-nav.next").onclick = function(){
+  currentEssay = (currentEssay + 1) % essays.length;
+  showEssay(currentEssay);
+};
+
+document.querySelector(".essay-nav.prev").onclick = function(){
+  currentEssay = (currentEssay - 1 + essays.length) % essays.length;
+  showEssay(currentEssay);
+};
+
+showEssay(0);
+</script>
+
+</body>
+</html>

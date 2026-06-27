@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ways of Wandering</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&family=Caveat:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      background:
+        linear-gradient(rgba(246,245,242,0.95), rgba(246,245,242,0.95)),
+        url("Images/ways/rail.png");
+      background-size:cover;
+      background-attachment:fixed;
+      font-family:'Montserrat', sans-serif;
+      color:#2d3e52;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    img{
+      width:100%;
+      display:block;
+    }
+
+    .back-wrapper{
+      width:min(1200px,90%);
+      margin:24px auto 0;
+    }
+
+    .back-home{
+      display:inline-block;
+      font-size:11px;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      color:#31476E;
+      border-bottom:1px solid #31476E;
+      padding-bottom:5px;
+    }
+
+    .intro{
+      width:min(900px,90%);
+      margin:55px auto 45px;
+      text-align:center;
+    }
+
+    .intro span{
+      font-family:'Caveat', cursive;
+      font-size:36px;
+      letter-spacing:2.5px;
+      font-weight: 600;
+      color:#637c9e;
+    }
+
+    .intro h1{
+      margin-top:8px;
+      font-family:'Cormorant Garamond', serif;
+      font-size:24px;
+      color:#31476E;
+    }
+
+    .intro p{
+      margin-top:14px;
+      font-size:12px;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      color:#7d8896;
+    }
+
+    .journey-grid{
+      width:min(1200px,90%);
+      margin:0 auto 60px;
+
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:22px;
+    }
+
+    .journey-card{
+       
+      position:relative;
+      min-height:90px;
+      padding:18px;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      text-align:center;
+      overflow:hidden;
+
+      background:rgba(255,255,255,0.72);
+      border:1px solid rgba(49,71,110,0.22);
+      cursor:pointer;
+    }
+
+    .journey-card img{
+     position:absolute;
+     inset:0;
+     filter:none;
+     width:100%;
+     height:100%;
+
+     object-fit:cover;
+     opacity:0.45;
+
+     z-index:0;
+    }
+
+   .journey-card::after{
+     content:"";
+     position:absolute;
+     inset:0;
+
+     background:rgba(255,255,255,0.55);
+     z-index:1;
+    }
+
+   .journey-card-content{
+      position:relative;
+      z-index:2;
+    }
+
+    .journey-card:hover{
+      transform:translateY(-7px);
+      box-shadow:0 22px 55px rgba(49,71,110,0.14);
+    }
+
+    .journey-card.active{
+      border-color:#31476E;
+      box-shadow:0 0 0 1px rgba(49,71,110,0.25);
+      background:rgba(255,255,255,0.92);
+    }
+
+    .journey-card-content span{
+      font-size:10px;
+      letter-spacing:4px;
+      color:#4e607a;
+      font-size:11px;
+    }
+
+    .journey-card-content h3{
+      margin:12px 0 ;
+      color:#31476E;
+      font-weight:600;
+      font-family:'Plus Jakarta Sans', sans-serif;
+      font-size:16px;
+      font-weight:700;
+      letter-spacing:-0.5px;
+      margin-bottom:10px
+    }
+
+    .journey-card-content p{
+      font-size:13px;
+      line-height:1.8;
+      color:#566171;
+    }
+
+    .detail-section{
+      width:min(1200px,90%);
+      margin:0 auto 90px;
+
+      background:rgba(255,255,255,0.76);
+      border:1px solid rgba(49,71,110,0.14);
+      box-shadow:0 18px 50px rgba(49,71,110,0.08);
+
+      padding:42px;
+    }
+
+    .detail-top span{
+      font-size:11px;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      color:#8a94a3;
+    }
+
+    .detail-top h2{
+      margin:8px 0 16px;
+      font-family:'Cormorant Garamond', serif;
+      font-size:28px;
+      color:#31476E;
+    }
+
+    .detail-top p{
+      max-width:760px;
+      font-size:13px;
+      line-height:1.6;
+      color:#566171;
+      white-space:pre-line;
+    }
+
+    .place-list{
+      margin:28px 0;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .place-list span{
+      display:inline-block;
+      padding:9px 14px;
+      background:rgba(238,243,247,0.9);
+      border:1px solid rgba(49,71,110,0.12);
+      font-size:11px;
+      letter-spacing:1px;
+      color:#46566b;
+    }
+
+    .photo-grid{
+      margin-top:34px;
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:14px;
+    }
+
+    .photo-grid img{
+      width:100%;
+      object-fit:cover;
+      border-radius:4px;
+    }
+
+    /* 첫 번째, 두 번째 사진 */
+
+    .photo-grid img:nth-child(1),
+    .photo-grid img:nth-child(2){
+
+      grid-column:span 2;
+      height:280px;
+    }
+
+    /* 나머지 작은 사진 */
+
+    .photo-grid img:nth-child(n+3){
+      height:150px;
+    }
+
+    .photo-grid.small-grid{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:14px;
+    }
+
+    .photo-grid.small-grid img{
+      width:100%;
+      height:150px;
+      object-fit:cover;
+      border-radius:4px;
+    }
+
+    .small-grid img:nth-child(1),
+    .small-grid img:nth-child(2){
+      grid-column:auto;
+      height:150px;
+    }
+
+    .place-list button{
+      padding:9px 14px;
+      background:rgba(238,243,247,0.9);
+      border:1px solid rgba(49,71,110,0.12);
+      font-size:11px;
+      letter-spacing:1px;
+      color:#46566b;
+      cursor:pointer;
+    }
+
+    .place-list button.active{
+      background:#31476E;
+      color:white;
+      border-color:#31476E;
+    }
+
+    .note{
+      max-width:800px;
+      margin-top:40px;
+      padding-top:30px;
+      border-top:1px solid rgba(49,71,110,.15);
+      font-size:15px;
+      line-height:2;
+      color:#566171;
+      white-space:pre-line;
+    
+    }
+
+  @media(max-width:650px){
+
+    body{
+      background-attachment:scroll;
+    }
+
+    .back-wrapper{
+      width:88%;
+      margin:12px auto 0;
+    }
+ 
+    .back-home{
+      font-size:8px;
+      letter-spacing:1px;
+      padding-bottom:3px;
+    }
+
+    .intro{
+      width:88%;
+      margin:24px auto 16px;
+      padding:0;
+      text-align:center;
+    }
+
+    .intro span{
+      font-size:11px;
+      letter-spacing:3px;
+    }
+
+   .intro h1{
+     margin-top:6px;
+     font-size:18px;
+    }
+
+    .intro p{
+     display:none;
+    }
+
+   .journey-grid{
+     width:88%;
+     margin:0 auto 20px;
+     grid-template-columns:repeat(2, 1fr);
+     gap:5px;
+    }
+
+   .journey-card{
+     min-height:0;
+     height: 50px;
+     padding:4px;
+    }
+
+   .journey-card-content span{
+     display:none;
+    }
+
+   .journey-card-content h3{
+     margin:6px 0 0;
+     font-size:12px;
+     line-height:1.2;
+    }
+
+   .journey-card-content p{
+     display:none;
+    }
+
+   .detail-section{
+     width:88%;
+     margin:0 auto 30px;
+     padding:20px 12px;
+    }
+
+   .detail-top span{
+     font-size:9px;
+     letter-spacing:2px;
+    }
+
+   .detail-top h2{
+     margin:6px 0 10px;
+     font-size:16px;
+    }
+
+   .detail-top p{
+     display: none;
+    }
+
+   .place-list{
+     margin:20px 0;
+     gap:8px;
+    }
+
+    .place-list button,
+    .place-list span{
+     font-size:9px;
+     letter-spacing:1px;
+     padding:7px 10px;
+    }
+
+   .photo-grid,
+   .photo-grid.small-grid{
+     margin-top:24px;
+     display:grid;
+     grid-template-columns:repeat(2, 1fr);
+     gap:10px;
+    }
+
+   .photo-grid img,
+   .photo-grid img:nth-child(1),
+   .photo-grid img:nth-child(2),
+   .photo-grid img:nth-child(n+3),
+   .photo-grid.small-grid img,
+   .photo-grid.small-grid img:nth-child(1),
+   .photo-grid.small-grid img:nth-child(2){
+     grid-column:auto;
+     width:100%;
+     height:135px;
+     object-fit:cover;
+    }
+
+   .note{
+     margin-top:18px;
+     padding-top:20px;
+     font-size:12px;
+     line-height:1.4;
+     letter-spacing:0.8px;
+    }
+  }
+
+</style>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token":"..."}'></script>
+<!-- End Cloudflare Web Analytics -->
+
+</head>
+
+<body>
+
+  <div class="back-wrapper">
+    <a href="index.html" class="back-home">
+      ← BACK TO HOME
+    </a>
+  </div>
+
+  <section class="intro">
+    <span>Travel Collections</span>
+    <h1></h1>
+    <p>Roads, rails, seas, skies, and footsteps</p>
+  </section>
+
+  <section class="journey-grid">
+
+    <button class="journey-card active" onclick="showJourney('rail', this)">
+      <img src="Images/ways/train.png" alt="Rail Journeys">
+      <div class="journey-card-content">
+        <span>BY TRAIN</span>
+        <h3>Rail Journeys</h3>
+      </div>
+
+    </button>
+
+    <button class="journey-card" onclick="showJourney('island', this)">
+      <img src="Images/ways/hopping.png" alt="Island Hopping">
+      <div class="journey-card-content">
+        <span>BY BOAT</span>
+        <h3>Island Hopping</h3>
+      </div>
+    </button>
+
+    <button class="journey-card" onclick="showJourney('walking', this)">
+      <img src="Images/ways/walking.png" alt="Walking Cities">
+      <div class="journey-card-content">
+        <span>HOP-ON HOP-OFF</span>
+        <h3>Walking Cities</h3>
+      </div>
+    </button>
+
+    <button class="journey-card" onclick="showJourney('boat', this)">
+      <img src="Images/ways/cruise.png" alt="Boats and Cruises">
+      <div class="journey-card-content">
+        <span>BY FERRY</span>
+        <h3>Boats & Cruises</h3>
+      </div>
+    </button>
+
+    <button class="journey-card" onclick="showJourney('road', this)">
+      <img src="Images/ways/road.png" alt="Road Trips">
+      <div class="journey-card-content">
+        <span>BY CAR</span>
+        <h3>Road Trips</h3>
+      </div>
+    </button>
+
+    <button class="journey-card" onclick="showJourney('aircraft', this)">
+      <img src="Images/ways/aircraft.png" alt="Small Aircraft">
+      <div class="journey-card-content">
+        <span>BY SMALL PLANE</span>
+        <h3>Small Aircraft</h3>
+      </div>
+    </button>
+
+  </section>
+
+  <section class="detail-section" id="journey-detail">
+
+    <div class="detail-top">
+      <span id="detail-label">By Train</span>
+      <h2 id="detail-title">Rail Journeys</h2>
+      <p id="detail-desc">
+         Stories seen through train windows —
+        from Japanese local trains to quiet European rails.
+      </p>
+    </div>
+
+    <div class="place-list" id="place-list"></div>
+
+    <div class="photo-grid" id="photo-grid"></div>
+
+    <p class="note" id="detail-note"></p>
+
+  </section>
+
+  <script>
+    const journeys = {
+    rail: {
+      label: "By Train",
+      title: "Rail Journeys",
+      desc: `Stories seen through train windows`,
+      places: [
+        {
+          name: "Japan",
+          images: [
+            "Images/ways/nomori1.jpg",
+            "Images/ways/kana1.png",
+            "Images/ways/ampangman4.png",
+            "Images/ways/furano3.png",
+            "Images/ways/naga6.jpg",
+            "Images/ways/okinawa13.jpg",
+          ],
+          note: `테마가 있는 기차 여행.
+           일본 기차는 보는 것만으로도 하나의 즐거움이다.
+           지역, 도시를 대표하는 관광명소나 상품 홍보를 하고 있어 보는 재미가 있다.
+           지금이야 이나라 저 나라에서 그런 부분을 따라 하고 있지만 그 당시에는 신선했다.
+           기차 마니아인 나는 일본 여행을 할 때마다 기차와 버스를 기본으로 이동 경로를 계획한다.
+           첫 일본 여행지인 나가사키에서 하우스텐보스에 가는 기차는 객실은 평범했지만 한 시간 내내 바다를 보며 갈 수 있다는 점이 좋았는데 내게 바다는 동해 바다이기에 거기에 비하면 딱히 인상적이지는 않았다.
+           가장 인상에 남는 기차는 역시 '유후인노모리'다.
+           후쿠오카역에서 에키벤을 사서 기차 안에서 먹었는데 통일호 생각도 나고 즐거웠다. 기대했던 것보다 맛은 그닥..
+           기차역마다 다른 도시락 메뉴를 판매하니 호기심 천국인 나에게는 매우 유혹적이다.
+          신칸센은 매우 훌륭하지만 내가 원하는 아기자기한 재미를 주지는 못 했다.`
+        },
+        {
+          name: "EU",
+          images: [
+            "Images/ways/bristol.jpg",
+            "Images/ways/zurich.jpg",
+            "Images/ways/groningen.jpg",
+            "Images/ways/london.jpg",
+            "Images/ways/tgv.png",
+            "Images/ways/lt1.jpg",
+          ],
+          note: `Harry Potter 9 3/4 Platform.
+          처음 France 유학 시절 TGV를 처음 보았을 때 와.. 하고 감탄했던 기억이 있다.
+          신칸센과 같은 감상이다. 훌륭하다.. 끝.
+          Bristol에서 런던으로 돌아오는 기차가 비가 온다는 이유로 지연되어 예매해 둔 뮤지컬을 보지 못한 원한으로
+          영국 기차 운영 시스템에 대해 심히 감정이 좋지 않다.
+          다만 유럽의 기차역들은 정말 인상적이었다.
+          세월의 흔적이 보이는 건물과 기차역 내부의 구성이 매우 흥미로웠다.
+          특히 Zurich 역 내의 팝업스토어들은 신선한 경험이었다.`
+        },
+        {
+          name: "Malaysia",
+          images: [
+            "Images/ways/gombak.jpg",
+            "Images/ways/ipohstation.jpg",
+            "Images/ways/klsentral1.jpg",
+            "Images/ways/taiping.jpg",
+            "Images/ways/mtrain.jpg",
+            "Images/ways/station.jpg",
+          ],
+          note: `EST
+           Malaysia는 기차 여행이 매우 제한적이다.
+           기차도 내부 시설도 꽤 좋은 편인데 철도를 설치할 수 있는 한계가 있는 것인지 KL에서 3-4시간 걸리는 루트가 최대이다.
+           KTX 수준의 기차는 없다고 보면 된다.
+           그래도 기차를 타 보겠다며 기어코 갈 수 있는 곳을 찾아다녔다.
+           그러나 다섯 번의 여행 중 4번은 목적지가 중복되고 더 이상 갈 수 있는 곳이 없다.
+           기차 노선이 확대되면 여행할 수 있는 기회가 더 많아질 텐데.. 아쉽다.`
+        },
+      ]
+    },
+  
+    island: {
+      label: "By Ferry",
+      title: "Island Hopping",
+      desc: `Crossing the sea, one island at a time.`,
+      places: [
+        {
+          name: "Redang Island",
+          images: [
+
+             "Images/ways/redang1.jpg",
+             "Images/ways/redang2.jpg",
+             "Images/ways/redang3.jpg",
+             "Images/ways/redang4.jpg",
+             "Images/ways/redang5.jpg",
+             "Images/ways/redang6.jpg",
+          ],
+          note: `Stephanie's book 의 배경이 된 곳.
+           Lock down이 풀리고 국내 여행만 가능해졌을 때 교통수단이 가능한 곳을 골라 가게 된 곳.
+           사진은 엄청 근사하게 나왔으나 리조트는 너~무 낡았고 우리가 아는 편의 시설도 거의 없었다.
+           다만, 어딘지 모르게 내가 좋아하는 바다를 닮아 있어 편안함을 느꼈다.
+           지금은 용량 문제로 동영상까지 올리긴 어렵지만 언젠가 동영상 업로드가 가능해지면 Sunrise full 영상을 올리려고 한다.
+           우리나라에서는 그렇게 어렵게 한번 보는 것을.
+           오도 가도 못 하는 슬픈 시기였지만 그래도 많은 것을 깨닫게 해 준 소중한 시간이기도 하다.`
+        },
+
+        {
+          name: "Langkawi",
+          images: [
+             "Images/ways/lan1.jpg",
+             "Images/ways/lan2.jpg",
+             "Images/ways/lan3.jpg",
+             "Images/ways/lan4.jpg",
+             "Images/ways/lan5.jpg",
+             "Images/ways/lan6.jpg",
+          ],
+          note: `Paradise 101 Langkawi.
+          우리 집에 두 번이나 방문한 어린이 손님을 위해 선택한 곳.
+          처음에 선착장에 도착했을 때는 잘못 온 거 아닌가 싶게 이상한 곳이었는데 일단 배는 뜬다 하니 기다리면서 해변을 즐겼다.
+          갑자기 어떤 사람이 소리를 지르길래 저분은 어디가 아픈가? 했는데 옆에 있던 사람도 어딘가를 가리키며 소리를 지르기 시작했다.
+          그래서 호기심 천국인 내가 무슨 일인지 물었더니 고래가 보인다는 것이었다. 
+          우와! 어떻게든 한 번 봐야겠다고 아무리 눈을 부릅뜨고 바라봐도 살짝 뭔가 올라갔다가 내려가는 느낌만 있었을 뿐.
+          저 사람들은 저게 보인단 말인가? 고래가 나타났다는 것보다 그게 보인다는 사실이 더 신기했다.
+          그 시간에 그 섬에 있었다면 볼 수 있었을 텐데 하는 아쉬움이 남았으나 2년 후 다른 섬에서 보게 되어 그나마 다행.`
+        },
+
+        {
+          name: "Palau",
+          images: [
+            "Images/ways/palau7.jpg",
+            "Images/ways/palau6.jpg",
+            "Images/ways/palau9.jpg",
+            "Images/ways/palau10.jpg",
+            "Images/ways/palau11.jpg",
+            "Images/ways/palau1.jpg",
+          ],
+          note: `특가만 뜨면 바로 예약을 해 버리는 이 단순한 머리로 그때는 거의 알려지지 않았던 Palau 여행을 예약하고
+           아들의 담임 선생님에게 연락을 드렸다. 저희가 어디를 좀 가야 해서 학교를 이틀 정도 못 갈 것 같아요.
+           잠시 정적이 흐르고 담임 선생님께서 잠시 확인 좀 하고 연락드리겠다고 했다.
+           담임 선생님이 잠시 후 전화를 하셔서는 매우 난감해하며 "어머님, 교감 선생님한테 여쭤봤는데 죄송하지만 여행을 취소하시면 안 될까요?" 하셨다.
+           "암.. 저 이미 결제를 해 버렸는데요.." 처음 알았다. 고딩은 통보가 아니라 허락을 구해야 한다는 것을.
+           학교마다 다를 수도 있고 지금은 아닐 수도 있다.
+           암튼 그렇게 나는 고딩을 여행 간다고 학교에 안 보내는 무식한 엄마가 되어버렸다.
+           다행히 담임 선생님이 너무 좋은 분이어서 엄마들의 치마바람을 혐오하는 내가 초등학교 졸업식 이후 학교에 한 번도 찾아간 적이 없다는 것을 아시고 이메일 상담도 해 주시고 여러 가지 어려운 상황들을 이해해 주셔서 감사했다.
+           그분이 고3 담임이셨다면 우리 아들이 유학을 안 갔을지도 모르겠다.
+           그런 우여곡절을 겪고 도착한 팔라우.
+           세상에 이런 깡촌이 있을까. 지금은 많이 좋아졌을 거라 생각하지만 신호등이 없는(필요가 없어서) 비포장 도로에, 식당도 제대로 없는 그 곳에서 여기에 버려지면 그냥 죽겠구나 싶었다.
+           물 반 고기반이라는 가이드 말을 듣고 아들 혼자 밤낚시를 보냈는데 아들은 매우 불만 가득한 얼굴로 지쳐 돌아왔다.
+           한 마리도 못 잡았단다. 잡는 건 고사하고 구경도 못 했단다.
+           착한 가이드가 말도 안 했는데 비용을 돌려주었다. 애가 너무 실망하여 미안하다고.
+           앞으로의 일정이 심히 걱정이 되어 잠을 설쳤는데 둘째 날부터는 와~ 와~ 하며 감탄에 감탄을 거듭했다.
+           지금의 장비라면 바다 들어가서 엄청난 사진을 찍었을 텐데, 그 당시에는 가이드가 찍어 주는 사진이 전부였다.
+           지금도 잊지 못하는 그 아름다움.. 말로 표현할 수가 없다.
+           Jellyfish 호수-정말 신비롭고 아름다운 경험이었다.
+           대왕조개-가이드가 잠수를 하여 대왕조개 입 벌리는 것도 보여줬는데 그 크기가 어마어마했다.
+           그 외에도 엄청나게 다양하고 아름다운 물고기, 해양 생물, 산호. 
+           음식이고 숙소고 다 용서되고 스노클링이나 스쿠버다이빙을 좋아하는 사람이라면 꼭 가보라고 추천하고 싶다.`
+        },
+
+        {
+          name: "Fiji",
+          images: [
+            "Images/ways/fiji1.jpg",
+            "Images/ways/fiji3.jpg",
+            "Images/ways/fiji2.jpg",
+            "Images/ways/fiji5.jpg",
+            "Images/ways/fiji6.jpg",
+            "Images/ways/fiji8.jpg",
+          ],
+          note: `그곳엔 아무것도 없었다..
+          보트에서 현지 가이드들이 갑자기 탑승객들에게 각자 소개를 하란다. 많은 투어를 해 보았지만 이런 경험은 처음이라 신선했다.
+          '동양인 1인=나'에게 "너는 어디에서 왔니?" 모든 관심이 나에게 쏠려 몸 둘 바를 모르는 와중에 기타 치며 노래를 부르기 시작했다.
+          그래도 아는 올드 팝송만 불러주어 흥얼흥얼 배에 탄 모든 사람들이 같이 노래를 하며 신나게 스노클링 장소에 도착했다. 
+          배에서 친해진 뉴질랜드 꼬마들과 함께 기대하며 입수한 그 바다는.. 고요했다. 물론 물 밑은 고요한게 맞다. 
+          그러나 아무도 없었다. 니모도 노랑이도, 하다못해 늘 어느 바다에나 있는 꽁치 닮은 애들도 없었다. 
+          바닷속이 그렇게 심심한 건 처음 겪는 일이라 많이 당황했다. 
+          어이가 없는 와중에 가이드들도 민망했는지 무인도에 데려다 놓고 얕은 물에서 놀고 있는 아기 상어들을 구경하라 하여 
+          삼치 크기만 한 상어들을 본 것 외에는 아무것도 없었다.. 
+          Langkawi Island Hopping에서 갔던 그 섬에서는 그 아이들보다 훨씬 큰 상어들과 수영을 같이 했던 나는 음.. 아기들이구나 하고 끝. 
+          그 먼 곳을 물고기 보겠다고 갔는데.. 그렇게 허망하게 여행은 끝이 났다.`
+        },
+
+        {
+          name: "Hoian",
+          images: [
+            "Images/ways/ho2.jpg",
+            "Images/ways/ho3.jpg",
+            "Images/ways/ho1.jpg",
+            "Images/ways/ho5.jpg",
+            "Images/ways/ho4.jpg",
+            "Images/ways/ho6.jpg",
+          ],
+          note: `Hoian Island Hopping.
+          친구 부부는 다른 관광지를 보러 간다기에 나는 남의 나라 역사에 전혀 관심이 없을 뿐만 아니라 그들이 가겠다는 곳의 정보를 보니 
+          그늘도 없는 땡볕에서 걸어 다녀야 하는 코스여서 햇빛 알러지가 있는 나는 혼자 아일랜드 투어를 가기로 했다.
+          스토클링을 할 정도로 아름다운 바다는 아니어서 섬 투어하고 바닷가에서 느긋하게 책이나 읽고 오겠다는 생각으로 배에 올랐다. 
+          평화롭기는 했으나 무슨 놀이기구와 해상스포츠 기구들이 난무하여 그냥 그 분위기를 즐겼다.`
+        },     
+      ]
+    },
+  
+    walking: {
+      label: "Hop-on Hop-Off",
+      title: "Walking Cities",
+      desc: `Cities best discovered slowly —
+          through corners, cafés, small streets, and unexpected views.`,
+      places: [
+        {
+          name: "Okinawa",
+          images: [
+            "Images/ways/ryuku1.jpg",
+            "Images/ways/ryuku2.jpg",
+            "Images/ways/ryuku3.jpg",
+            "Images/ways/ryuku4.jpg",
+            "Images/ways/ryuku5.jpg",
+            "Images/ways/ryuku6.jpg",
+            "Images/ways/ryuku7.jpg",
+            "Images/ways/ryuku8.jpg",
+            "Images/ways/ryuku9.jpg",
+            "Images/ways/ryuku10.jpg",
+            "Images/ways/ryuku11.jpg",
+            "Images/ways/ryuku12.jpg",
+            "Images/ways/ryuku13.jpg",
+            "Images/ways/ryuku14.jpg",
+            "Images/ways/ryuku15.jpg",
+            "Images/ways/ryuku19.jpg",
+            "Images/ways/ryuku16.jpg",
+            "Images/ways/ryuku17.jpg",
+          ],
+          note: `현지투어의 재미.
+           언어가 통하지 않아 할 수 없이 선택했던 Beijing, Pattaya, Palau를 제외하고는 모든 일정을 내가 계획해서 간다. 
+           나는 계획을 세우는 그 과정을 즐긴다.
+           어느 지역을 방문하든 반나절 또는 하루 현지 투어를 일정에 넣는다. 
+           시간 절약도 되고 현지 가이드의 상세한 설명을 들으며 각지에서 또는 여러 국가에서 온 사람들과 함께 돌아다는 것도 하나의 즐거움이다.
+           일본은 현지 투어가 필요하지 않지만 Toyama와 Okinawa는 여행의 효율성을 위해 현지 투어를 선택했다.
+           Ryuku Mura에서 입구에 내려 주고 알아서 돌아다니다 오라 하기에 혼자서 천천히 여유롭게 내부 구경을 했다.
+           일반적인 일본 문화와는 다른 매력을 발견했고 여기저기 곳곳에 숨겨진 다 다른 모습을 한 Shisa들을 발견하는 것도 너무 재밌었다. 
+           그 귀여운 모습들이 아직도 기억에 남아 있다.
+           추라우미 수족관은 비교불가였으나 이제는 비슷한 규모, 비슷한 컨셉의 수족관들이 많아진 것 같다.
+           과자 공장? 같은 곳에서 제공해 준 도시락도 맛있었다. 오키나와에서 맛있게 먹은 음식은 그것뿐인 듯.`
+        },
+
+        {
+          name: "Hong Kong",
+          images: [
+            "Images/ways/hong1.jpg",
+            "Images/ways/hong2.jpg",
+            "Images/ways/hong3.jpg",
+            "Images/ways/hong4.jpg",
+            "Images/ways/hong5.jpg",
+            "Images/ways/hong6.jpg",
+            "Images/ways/hong7.jpg",
+            "Images/ways/hong8.jpg",
+            "Images/ways/hong9.jpg",
+            "Images/ways/hong10.jpg",
+
+
+          ],
+          note: `공존.
+           내 여행블로그를 보면서 이 사람은 돈이 많은가? 어떻게 이렇게 많은 곳을 다닐 수가 있었지? 하고 궁금할지도 모르겠다.
+           명품백도 비싼 옷도 관심이 없는 데다 화장품 알러지가 있어 화장품마저 안 사는 나의 유일한 사치는 여행이었다.
+           대부분의 여행은 어디 어디 취항기념 169,000원, 199,000원 이런 것들이다. 홍콩/마카오를 아들과 함께 그렇게 다녀왔다.
+           현지 버스 투어로 가이드 언니의 친절한 안내를 받아 여기저기 알차게 돌아다녔다. 
+           초상권과 지적재산권에 매우 민감한 나는 사람 나오는 사진을 이 웹사이트에서 사용하지 않는 것을 원칙으로 했고 
+           어쩔 수 없이 써야 하는 경우에는 동의를 얻거나 Blur처리를 했다. 
+           다만 이 가이드 언니는 공인?이라고 판단이 되고 이미 20여 년이 지난 사진이므로 이 사진이 문제가 될 일은 없을 것으로 보인다.
+           정말 극심한 빈곤층과 정말 부유한 부자들이 공존하며 그 작은 나라에서 비교되는 것에 놀라웠고 
+           가이드 언니의 가족들은 작은 아파트 하나에 8명이 모여 산다고 하여 다시 한번 놀랐다. 
+           후에 몰디브에 가서도 같은 얘기를 들었을 때 이 가이드 언니가 생각났다. 
+           유머러스하고 열정적인 그 가이드 덕분에 매우 기분 좋은 1일 투어가 되었음에 감사하며 행복하게 잘 살고 있기를 바란다.`
+        },
+    
+        {
+          name: "Amsterdam",
+          images: [
+            "Images/ways/am6.jpg",
+            "Images/ways/am4.jpg",
+            "Images/ways/am1.jpg",
+            "Images/ways/am5.jpg",
+            "Images/ways/am3.jpg",
+          ],
+          note: `Tram을 어느 카테고리에 넣을까 고민하다가 Hop-on Hop-off에 넣기로 했다.
+           런던에서 새벽비행기로 암스테르담에 도착해 Groningen에 갔다가 다시 런던으로 돌아가는 살인적인 일정이라 암스테르담을 제대로 볼 시간이 없었다.
+           공항 가는 기차 시간까지 시내 한번 둘러보는 것으로 하고 트램을 이용했다. 밤이라 사진이 별로 없는 것이 아쉽다.
+           나 따라다니느라 고생한 사촌동생에게 미안하고 아무 말 없이 잘 따라 준 것에 대해 감사한다.`
+        },
+      ]
+    },
+
+    boat: {
+      label: "By Boat",
+      title: "Boats & Cruises",
+      desc: `Slow movement over water —
+        from short island boats to future cruise memories.`,
+      places: [
+        {
+          name: "London",
+          images: [
+    
+            "Images/ways/london3.jpg",
+            "Images/ways/lc2.jpg",
+            "Images/ways/london1.jpg",
+            "Images/ways/london7.jpg",
+            "Images/ways/london5.jpg",
+            "Images/ways/london6.jpg",
+          ],
+          note: `시간이 부족하고 시내를 다 돌아보기 어려울 때 크루즈 여행을 추천한다.
+            강이나 바다에서 도시 전체를 바라보는 모습은 정말 색다르다. 출장차 갔던 Washington에서의 디너크루즈 이후
+            미술관, 수족관, 크루즈가 내 여행의 테마가 되었다.
+            아들 졸업식 때문에 간 런던에서 뜻밖에 훌륭한 크루즈를 만나 좋은 추억이 되었다. 
+            그러나 여전히 런던은 내게 최악의 도시.`
+        },
+
+        {
+          name: "Seattle",
+          images: [
+            "Images/ways/seattle1.png",
+            "Images/ways/seattle2.jpg",
+            "Images/ways/seattle3.jpg",
+            "Images/ways/seattle5.jpg",
+            "Images/ways/seattle6.jpg",
+            "Images/ways/seattle8.jpg",
+          ],
+          note: `여행지를 다른 시각에서 바라볼 수 있는 기회.
+           친구가 다니는 회사 본사가 Seattle에 있어 출장을 간다기에 따라나선 여행.
+           친구는 회사 일을 해야 해서 혼자 스타벅스 본점이 있는 마켓 골목을 걷다가 바닷가까지 간 김에 수족관에 들러 구경하고 크루즈까지 끝냄.
+           `
+        },
+
+        {
+          name: "New York",
+          images: [
+            "Images/ways/ny1.jpg",
+            "Images/ways/ny2.png",
+            "Images/ways/ny3.jpg",
+            "Images/ways/ny4.jpg",
+            "Images/ways/ny5.jpg",
+            "Images/ways/ny6.jpg",
+          ],
+          note: `A Musical Experience in the Heart of Broadway
+           아들 친구는 Washington에서, 아들은 Singapore에서 나는 한국에서 출발하여 집합.
+           영국에서 예매까지 해 놓고 못 본 한을 여기서 풀었다. 
+           뉴욕은 관심 1도 없지만 수준 높은 뮤지컬들을 언제나 볼 수 있다는 그 사실만은 참으로 부러웠다.
+           기회가 된다면 여유 있는 일정으로 극장마다 돌아다니며 뮤지컬만 보고 오면 좋겠다는 생각을 했다.
+           디너 크루즈는 그럭저럭 괜찮았다. 
+           어디에나 있는 프랑스인 부부가 옆자리에 앉아 있어 사진 찍어주는 오지랖도..
+           크루즈 경험을 쓴다는 것이 갑자기 뮤지컬로..ㅋ 뉴욕 여행기는 Travel Collection에서~.
+           `
+        },
+
+        {
+          name: "Singapore",
+          images: [
+            "Images/ways/nc1.jpg",
+            "Images/ways/nc3.jpg", 
+            "Images/ways/nc2.jpg",
+            "Images/ways/nc4.jpg",
+            "Images/ways/nc5.jpg",
+            "Images/ways/nc6.jpg",
+          ],
+          note: `더운 나라에선 걸으면 안 된다 라는 것이 내 철칙이라 저녁에 리버크루즈를 탔다.
+          그렇게 많이 싱가폴을 드나들었는데도 이런 걸 해본 적이 없었다는 것을 한참 후에야 알았다.
+          배를 타고 보는 싱가폴 랜드마크들은 또 다른 관전포인트. 싱가폴은 이제 그만! 이러다가도 또 가게 되는 현실이다.`
+        },
+
+        {
+          name: "Sandakan",
+          images: [
+            "Images/ways/san13.jpg",
+            "Images/ways/san2.jpg",
+            "Images/ways/san3.jpg",
+            "Images/ways/san5.jpg",
+            "Images/ways/san10.jpg",
+            "Images/ways/san1.jpg",
+          ],
+          note: `나는 집주인과 친하다. 많이 친하다. 
+          일 년에 한두 번은 밥을 같이 먹고 그때마다 남자친구와 동행하여 오는데, "르당 가서 거북이를 보고 싶었는데 못 봤엉" 그랬더니 
+          집주인 남자친구가 Sandakan에 가면 볼 수 있다고 추천을 하기에 그 말 한마디를 믿고 갔는데..
+          거북이 산란 시기에 맞춰 가야 한다는 것을, 그리고 2박 3일로는 부족하다는 것을 거기에 가서야 알았다.
+          호텔방에 짐을 풀고 나름 아기자기 예쁘게 꾸며진 카페거리를 걸으며 '오~ 시골답지 않게 잘 꾸며 놓았는 걸' 하며 감탄하던 순간, 
+          내 앞을 쓱 지나가는 검은 것을 보고 공포에 휩싸여 구경이고 뭐고 다 그만두고 호텔로 도망쳐왔다. 
+          3일 내내 어디서나 쥐를 보았다. 그렇게 많은 쥐를 보게 될 줄은 상상도 하지 못했다.
+          나는 쥐가 너무 끔찍하게 싫은 것을, 그래서 햄스터도 안 좋아하는 나에게 이건 무슨 악몽?
+          그래도 거기까지 간 시간과 비용을 생각하여 호텔 매니저와 딜을 했다. 
+          사람들이 모이지 않아 배가 못 나간다고 하여 "그럼 나 혼자 가면 얼마야?" 물어보았다. 돈도 없는 주제에.. 
+          여행 와서 호텔방에만 있어야 하는 내 처지가 안타까웠는지 아주 싼 값에 요트를 태워준다고 했다.
+          지금이야 있을 수 없는 일이겠지만 그래서 3만 원도 안 되는 금액으로 나 홀로 여행을 하게 되었으니..
+          너무 감사감사하며 이쁘게 생긴 요트에 올라타고 신나 하고 있는데 매니저와 호텔 직원까지 동승을 했다. 이건 뭐지?.. 
+          암튼 출발을 하여 와 좋다 막 그러고 있는데 주변 섬들을 한 바퀴를 돌아오는 길에 갑자기 시동이 꺼지고.. 
+          꺼지고 다시 켜고를 반복하면서 자기들끼리 뭐라 뭐라 하기에, 나 설마 여기서 호텔까지 헤엄쳐 가야 하는 거야? 하고 물으니 다들 웃으며 아니라고 하였으나 매우 불안했다.
+          나중에 알게 된 것은 그 보트가 문제가 있어 시운전해 보려고 다 같이 나온 것이고 나온 김에 나를 태웠다는..
+          어쩐지.. 그러거나 말거나 우울한 여행이 될뻔한 그 여행을 그렇게 또 하나의 에피소드를 만들고,
+          다시는 가지 않을 곳으로 낙인찍고 돌아왔다.`
+        },
+
+
+        {
+          name: "Nagasaki",
+          images: [
+            "Images/ways/nagasaki1.jpg",
+            "Images/ways/nagasaki3.jpg",
+            "Images/ways/nagasaki4.jpg",
+
+          ],
+          note: `Huis Ten Bosch로 갈 때는 나가사키에서 기차로 가고 거기에서 직접 공항까지 배를 타고 갈 수 있다는 것을 알게되어 시간이 아슬아슬함에도 모험을 했다.
+           배를 타고 공항에 간다는 것은, 공항에 Ferry 선착장이 있다는 것은 쉽게 얻을 수 없는 신선한 경험이기에.
+           사진이 부족하여 아들 사진까지 넣었는데.. 눈은 가렸으니 초상권 침해는 아니겠지?
+           비행기 놓칠까 봐 부랴부랴 공항에서 뛰어다녔는데 어라 게이트가 없다.. 이게 무슨? 
+           엄밀히 말하면 게이트 번호는 쓰여 있었다. 다만 거기에 가게 문 닫을 때 쓰는 셔터가 내려져 있었던 것.
+           너무 난감하여 주변을 둘러보자 한 외쿡인이 있어 너도 이 비행기 탈 거야? 하고 물어보니 그렇다 해서 
+           근데 뱅기가 없당 하고 말하니 자기도 매우 당황스럽다고 말하고 있는 중에 한 사람이 오더니 셔터를 올려주었다..
+           거기에 비행기가 있었다. "....." 이런 신박한 경험도 했더랬다. 
+           설마.. 혹은 그게 말이 되냐고 묻는다면 20년도 더 된 일이고 그 당시에는 나가사키 직항이 없다가 생긴 직후였다.
+           그러니 시비 걸지 마시길.
+           지금도 그 루트가 있는지는 모르겠다. 7년 전에 다시 갔을 때는 공항이 너무 다른 모습을 하고 있어서 깜짝 놀랐었다.`
+        },
+      
+        {
+          name: "Malta",
+          images: [
+            "Images/ways/malta1.jpg",
+            "Images/ways/malta15.jpg",
+            "Images/ways/malta3.jpg",
+            "Images/ways/malta7.jpg",
+            "Images/ways/malta8.jpg",
+            "Images/ways/malta10.jpg",
+          ],
+          note: `나는 바다를 안 보면 삶이 힘들어지는 사람이라 여행의 대부분은 바다를 보러 간다. 
+          내가 다녀 본 바다 중 가장 아름다운 곳을 꼽으라면.. 
+          바닷속이 너무 아름다운 곳-팔라우, 
+          아이들이랑 같이 니모와 총천연색 물고기들과 놀 수 있는 곳-괌/사이판, 
+          물색이 가장 아름다운 곳-울릉도/몰디브, 
+          그리고 끝이 없을 것 같이 바다만 볼 수 있는 Malta. 
+          다시 한번 갈 수 있는 기회가 있다면 단연코 Malta. 가성비 최고.`
+        },
+
+        {
+          name: "Australia",
+          images: [
+            "Images/ways/au1.jpg",
+            "Images/ways/au2.jpg",
+            "Images/ways/au3.jpg",
+            "Images/ways/au4.jpg",
+            "Images/ways/au5.jpg",
+            "Images/ways/au6.png",
+          ],
+          note: `빛바랜 사진들이 주는 아련함.
+           사진들을 정리하다 보니 너무 오래되어 빛이 바랜 예전 사진들이 있어 사진으로 찍어 외장하드에 옮기며
+           아련한 슬픔 같은 게 밀려왔다.
+           감당하기 벅찬 고통에서 도망치듯 떠난 곳에서 나도 아들도 많이 힘들었다.
+           그래도 순간순간 행복한 기억이 있음에 감사해야겠지.`
+        },
+
+        {
+          name: "Malacca",
+          images: [
+            "Images/ways/melaka5.jpg",
+            "Images/ways/melaka6.jpg",
+            "Images/ways/melaka1.jpg",
+            "Images/ways/melaka3.jpg",
+            "Images/ways/melaka7.jpg",
+            "Images/ways/melaka2.jpg",
+          ],
+          note:`Melaka River Cruise.
+          KL에서 한 시간 반 거리에 버스를 타고 이동이 가능하며 KL과는 다른 재미가 있기에
+          나 홀로 여행을 포함하여 한국에서 손님이 올 때마다 가게 되어 무려 방문 횟수가 10회인 곳.
+          딱히 할 것도 없는 곳이라 리버크루즈가 그나마 즐길거리인데,
+          여기가 한국인지 말레이시아인지 구분이 안될 정도로 한국 단체 여행객들이 많다.
+          Covid 시국에 처음 갔을 때는 유령도시 같았는데..
+          나의 어린이 친구와 헤엄치는 왕도마뱀을 보았을 때는 나도 신기해하며 좋아했으나 
+          Malacca 이제 그만~.`
+        },
+      ]
+    },
+
+    road: {
+      label: "By Car",
+      title: "Road Trips",
+      desc: `Journeys measured not only by distance, but by the roads, stops, and skies in between.`,
+      places: [
+        {
+          name: "Cameron Highlands",
+          images: [
+            "Images/ways/cameron.jpg",
+            "Images/ways/cameron3.jpg",
+            "Images/ways/cameron4.jpg",
+            "Images/ways/cameron5.jpg",
+            "Images/ways/cameron7.jpg",
+            "Images/ways/cameron8.jpg",
+          ],
+          note: `
+           Johor에 사는 친구네가 차를 산 기념으로 로드 트립을 한다기에 따라나섰다. 
+           대중 교통을 이용하기엔 불편한 곳이라 엄두를 못내고 있었는데 덕분에 좋은 경험을 할 수 있었다.
+           Thank you Andrew!
+          .`
+        },
+        {
+          name: "Ipoh",
+          images: [
+            "Images/ways/ipoh3.jpg",
+            "Images/ways/ipoh10.jpg",
+            "Images/ways/gopeng5.jpg",
+            "Images/ways/ipoh11.jpg",
+            "Images/ways/ipoh32.jpg",
+            "Images/ways/ipoh31.jpg",
+
+          ],
+          note: `한 마디로 요약하자면 배부른 여행.
+           딤섬 식당 투어라 해도 과언이 아닐 정도로 다양한 딤섬을 먹었다.`
+        },
+
+        {
+          name: "Penang",
+          images: [
+            "Images/ways/penang1.jpg",
+            "Images/ways/penang2.jpg",
+            "Images/ways/penang3.jpg",
+            "Images/ways/penang7.jpg",
+            "Images/ways/penang5.jpg",
+            "Images/ways/penang6.jpg",
+          ],
+          note: `너무나 달라진 모습에 시간의 흐름이 무서워졌다..
+           5년 전에 왔을 때와는 이건 뭐 새로운 도시를 만들었나 싶게 달라진 그 모습에 아 내가 본 것은 그저 일부분이었구나.
+           앞으로 어디 가서 내가 본 어디 어디는 이런 모습이었어 이런 말은 삼가야겠다고 생각했다.
+           평온하고 즐거웠을 여행이 산 지 1년밖에 안된 Gallexy Z flip 이 갑자기 이상 증세를 보여 프렌티안의 악몽이 떠오르고.
+           나는 왜 여행만 가면 휴대폰 사고가 나는가? 라며 패닉 상태에서 예정보다 일찍 먼저 그곳을 떠나올 수밖에 없었다. 
+           휴대폰이 문제가 생기면 인증이 안되고, 인증이 안되면 일을 못 하기에. 
+           휴대폰 없이 살고 싶어도 그것이 없이는 아무것도 할 수 없는 그런 세상이 되어버린 이 세상에서
+           갑자기 아날로그가 그리워졌다.`
+        }
+      ]
+    },
+
+    aircraft: {
+      label: "By Small Plane",
+      title: "Small Aircraft",
+      desc: `Tiny planes, wide skies,
+        and the strange excitement of landing somewhere remote.`,
+      places: [
+        {
+          name: "Vitoria Island",
+          images: [
+            "Images/ways/victoria1.png",
+            "Images/ways/victoria2.jpg",
+            "Images/ways/victoria4.jpg",
+            "Images/ways/victoria5.jpg",
+            "Images/ways/victoria6.jpg",
+            "Images/ways/victoria7.jpg",
+          ],
+          note: `Small planes make distance feel different.
+            전혀 계획에 없었는데 Alaska에 갈 수 없다는 걸 알게 된 내가 차선책으로 선택한 Canada Victoria Island.
+            조종사 포함 다섯 명이 타고 바다 위를 날았는데 그냥 그랬다. 바다가 너무 아름답고 그런 것은 아니었기에.
+            그런데 도착하는 순간, 내 선택이 신의 한 수였음을 깨달았다.
+            호주와 유럽을 섞어 놓은 듯한 분위기.
+            예쁜 곳이었다.`
+        },
+
+        {
+          name: "Tioman Island",
+          images: [
+            "Images/ways/tioman.jpg",
+            "Images/ways/tioman1.jpg",
+            "Images/ways/tioman4.jpg",
+            "Images/ways/tioman5.jpg",
+            "Images/ways/tioman7.jpg",
+            "Images/ways/tioman8.jpg",
+          ],
+          note: `10명이 탈 수 있는 경비행기라 몸무게까지 달고 탑승.
+           엔진이 내는 소음과 매연으로 속이 울렁거릴 때쯤 눈앞에 펼쳐진 아름다움에 입을 다물지 못했다.
+           그 경험은 정말 놀라웠고 Ferry 여행으로는 볼 수 없는 그 아름다움을 볼 수 있음에 모든 불편함을 용서했다.
+           다시 같은 루트로 가 보려 했으나 지금은 운행을 안 하는 것인지, 찾을 수가 없다.
+           바다에 뜬 해는 봤어도 바다에 뜬 달은 처음 보는지라 그저 감탄만 하고 있었다.
+           방갈로가 두 개 밖에 없는 작은 숙소에서 옆 방마저 비어 있어 나 혼자 그 바다를 독차지했다.
+           친절한 젊은 부부 오너 덕에 불편함을 감수하고 다시 방문하고 싶다는 생각을 하며 떠나왔다. 
+           갓난아기였던 그 집 딸은 지금쯤 바닷가를 뛰어다니고 있겠지.
+           아주 비싼 리조트를 가면 편의 시설이 있겠지만 그 돈을 주고 갈만한 곳은 아니라고 생각하고 
+           일반 작은 숙소들은 참.. 여러모로 열악하지만 내가 고른 그 숙소가 있는 바다만큼은 최고였다.`
+        },
+      ]
+    },
+
+   };
+
+
+  function showJourney(id, button){
+    const data = journeys[id];
+
+    document.getElementById("detail-label").innerText = data.label;
+    document.getElementById("detail-title").innerText = data.title;
+    document.getElementById("detail-desc").innerText = data.desc;
+
+    document.getElementById("place-list").innerHTML =
+      data.places.map((place, index) => `
+        <button
+          class="${index === 0 ? 'active' : ''}"
+          onclick="showPlace('${id}', ${index}, this)"
+        >
+          ${place.name}
+        </button>
+      `).join("");
+
+    showPlace(id, 0, document.querySelector("#place-list button"));
+
+    document.querySelectorAll(".journey-card").forEach(card => {
+      card.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    document.getElementById("journey-detail").scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
+
+  function showPlace(journeyId, placeIndex, button){
+    const place = journeys[journeyId].places[placeIndex];
+    const grid = document.getElementById("photo-grid");
+
+    grid.className =
+      place.layout === "small"
+        ? "photo-grid small-grid"
+        : "photo-grid";
+
+    grid.innerHTML =
+      place.images.map(img => `
+        <img src="${img}" alt="" loading="lazy" decoding="async">
+     `).join("");
+
+    document.querySelectorAll('#photo-grid img').forEach(img => {
+
+      img.addEventListener('click', () => {
+        if(modal && modalImg){
+          modal.style.display = 'flex';
+          modalImg.src = img.src;
+        }
+      });
+    });
+
+    document.getElementById("detail-note").innerText = place.note;
+
+    document.querySelectorAll("#place-list button").forEach(btn => {
+      btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+  }
+
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modal-img');
+  const closeBtn = document.getElementById('close-btn');
+
+  if(closeBtn && modal){
+     closeBtn.addEventListener('click', () => {
+       modal.style.display = 'none';
+     });
+  }
+
+function openFromUrl(){
+  const params = new URLSearchParams(window.location.search);
+  const targetJourney = params.get("journey");
+  const targetPlace = params.get("place");
+
+  if(targetJourney && journeys[targetJourney]){
+    const journeyBtn = document.querySelector(
+      `.journey-card[onclick*="'${targetJourney}'"]`
+    );
+
+    showJourney(targetJourney, journeyBtn);
+
+    if(targetPlace){
+      const placeIndex = journeys[targetJourney].places.findIndex(place =>
+        place.name.toLowerCase().trim() === targetPlace.toLowerCase().trim()
+      );
+
+      if(placeIndex >= 0){
+        const placeBtn = document.querySelectorAll("#place-list button")[placeIndex];
+        showPlace(targetJourney, placeIndex, placeBtn);
+      }
+    }
+
+    return;
+  }
+
+  showJourney("rail", document.querySelector(".journey-card"));
+}
+
+openFromUrl();
+</script>
+
+</body>
+</html>

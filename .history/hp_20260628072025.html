@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Company Moments | Wandering with Steph</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Montserrat',sans-serif;
+
+  background:
+  linear-gradient(
+    rgba(246,245,242,0.95),
+    rgba(246,245,242,0.95)
+  ),
+  url("Images/papertexture.jpg");
+
+  color:#2f4663;
+}
+
+.hero{
+  width:100%;
+  height:320px;
+
+  background-image:url("Images/hp/hp1.jpg");
+  background-size:cover;
+  background-position:center;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.hero-content{
+  text-align:center;
+}
+
+.hero-content span{
+  font-size:11px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:white;
+}
+
+.hero-content h1{
+  font-family:'Cormorant Garamond', serif;
+  font-size:40px;
+  color:white;
+  margin-top:12px;
+}
+
+.back-home{
+  display:inline-block;
+  margin-top:10px;
+  text-decoration:none;
+  font-size:12px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  margin-left:50px;
+  color:#31476E;
+  border-bottom:1px solid #31476E;
+}
+
+.container{
+  width:min(1100px,90%);
+  margin:70px auto;
+}
+
+.intro{
+  width:min(760px, 100%);
+   margin:0 auto;
+   text-align:center;
+   margin-top: 0;
+}
+  
+.intro h2{
+  font-family:'Cormorant Garamond', serif;
+  font-size:30px;
+  margin-bottom:20px;
+  font-weight: 600px;
+}
+
+.intro p{
+  line-height:2;
+  color:#667180;
+}
+
+.gallery-grid{
+  margin-top:60px;
+
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.gallery-grid img{
+  width:100%;
+  height:420px;
+  object-fit:cover;
+  border-radius:18px;
+}
+
+.hp-gallery{
+  display:grid;
+  grid-template-columns:
+  repeat(3,1fr);
+  gap:14px;
+  margin-top:50px;
+}
+
+.hp-gallery img{
+
+  width:100%;
+  border-radius:16px;
+  object-fit:cover;
+}
+
+.hp-gallery img:nth-child(1),
+.hp-gallery img:nth-child(2),
+.hp-gallery img:nth-child(3){
+
+  height:400px;
+}
+
+.hp-gallery img:nth-child(4){
+
+  grid-column:1 / span 3;
+
+  height:240px;
+}
+
+.hp-gallery img:nth-child(5),
+.hp-gallery img:nth-child(6){
+
+  height:220px;
+}
+
+.note-box{
+  margin-top:40px;
+
+  background:rgba(255,255,255,0.65);
+
+  padding:20px;
+
+  border-radius:24px;
+
+  text-align:center;
+}
+
+.note-box p{
+  line-height:2;
+  color:#6d7785;
+}
+
+@media(max-width:768px){
+
+  .hero{
+    height:140px;
+  }
+
+  .hero-content{
+    padding:0 20px;
+  }
+
+  .hero-content span{
+    font-size:10px;
+    letter-spacing:4px;
+  }
+
+  .hero-content h1{
+    font-size:26px;
+    margin-top:6px;
+  }
+
+  .back-home{
+    display:inline-block;
+    font-size:10px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    margin-left:20px;
+  }
+
+  .container{
+    width:88%;
+    margin:36px auto;
+  }
+
+  .intro{
+    max-width:100%;
+    margin:0 auto;
+    text-align:center;
+  }
+
+  .intro h2{
+    font-size:20px;
+    margin-bottom:16px;
+  }
+
+  .intro p{
+    font-size:12px;
+    line-height:1.8;
+  }
+
+  .gallery-grid{
+    margin-top:38px;
+    grid-template-columns:repeat(2, 1fr);
+    gap:14px;
+  }
+
+  .gallery-grid img{
+    height:190px;
+    border-radius:16px;
+    object-fit:cover;
+  }
+
+  .note-box{
+    margin-top:32px;
+    padding:18px 16px;
+    border-radius:20px;
+  }
+
+  .note-box p{
+   display:none;
+  }
+
+}
+</style>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token":"..."}'></script>
+<!-- End Cloudflare Web Analytics -->
+
+</head>
+
+<body>
+
+<section class="hero">
+
+  <div class="hero-content">
+    <span>Company Moments</span>
+    <h1>HP Party</h1>
+  </div>
+
+</section>
+  
+<a href="gallery.html" class="back-home">
+  Back To Gallery
+</a>
+
+<div class="container">
+
+ <div class="intro">
+    <h2>A Small Memory</h2>
+
+    <p>
+      Not every memory becomes a story.
+      Some remain as photographs —
+      small celebrations, familiar faces,
+      and moments shared between ordinary working days.
+    </p>
+  </div>
+
+ <div class="gallery-grid">
+
+   <img src="Images/hp/hp1.jpg">
+   <img src="Images/hp/hp3.jpg">
+   <img src="Images/hp/hp6.jpg">
+   <img src="Images/hp/hp4.png">
+   <img src="Images/hp/hp5.png">
+   <img src="Images/hp/hpe.jpg">
+ </div>
+  
+ <div class="note-box">
+
+   <p>
+    Looking back, it is often these ordinary moments
+    that stay in memory the longest.
+   </p>
+
+  </div>
+
+</div>
+
+</body>
+</html>

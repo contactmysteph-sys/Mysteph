@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Canvas & Colour</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Inter', sans-serif;
+      background:#f6f4ef;
+      color:#2F3B4A;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    /* HERO */
+    .painting-hero{
+      width:100%;
+      height:80px;
+      padding:30px 10px 20px;
+      text-align:center;
+    }
+
+    .painting-hero span{
+      display:block;
+      margin-bottom:12px;
+
+      font-size:14px;
+      letter-spacing:6px;
+      text-transform:uppercase;
+      color:#8f9f83;
+    }
+
+    .painting-hero h1{
+      font-family:Georgia, serif;
+      font-size:28px;
+      font-weight:400;
+      color:#31476e;
+      margin-bottom:50px;
+    }
+
+
+    /* =========================
+       BACK BUTTON
+    ========================== */
+    .back-wrapper{
+      width:min(1100px,90%);
+      margin:55px auto 0;
+    }
+
+    .back-btn{
+      display:inline-block;
+      font-size:11px;
+      letter-spacing:0.8px;
+      text-transform:uppercase;
+      color:#5f718c;
+    }
+
+    .back-btn:hover{
+      opacity:0.65;
+    }
+
+    /* PAGE WRAPPER */
+    .painting-wrapper{
+      width:min(1100px,90%);
+      margin:35px auto;
+    }
+
+   
+    /* FEATURED */
+    .featured{
+      display:grid;
+      grid-template-columns:0.9fr 1.1fr;
+      gap:10px;
+      align-items:center;
+      margin-top:0;
+      margin-bottom:30px;
+      background:rgba(255,255,255,0.74);
+      border:1px solid rgba(49,71,110,0.12);
+      box-shadow:0 18px 50px rgba(49,71,110,0.08);
+    }
+
+    .featured-text{
+      padding:36px;
+    }
+
+    .featured-text span{
+      font-size:11px;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      color:#8f9f83;
+    }
+
+    .featured-text h2{
+      font-family:Georgia, serif;
+      font-size:20px;
+      font-weight:400;
+      color:#31476e;
+      margin:12px 0;
+    }
+
+    .featured-text p{
+      font-size:13px;
+      line-height:1.4;
+      color:#667181;
+      margin-bottom:10px;
+    }
+
+    .featured img{
+      width:100%;
+      height:280px;
+      object-fit:contain;
+      display:relative;
+    }
+
+    .read-link{
+      font-size:11px;
+      letter-spacing:1.2px;
+      text-transform:uppercase;
+      color:#31476e;
+      border-bottom:1px solid #31476e;
+      padding-bottom:4px;
+    }
+
+    /* SMALL CARDS */
+    .section-title{
+      text-align:center;
+      margin-bottom:32px;
+    }
+
+
+    .section-title h2{
+      font-family:Georgia, serif;
+      font-size:20px;
+      font-weight:500;
+      color:#31476e;
+      margin-top:20px;
+      letter-spacing:3px;
+    }
+
+    .painting-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:20px;
+      margin-bottom:80px;
+    }
+
+    .painting-card{
+      background:rgba(255,255,255,0.78);
+      border:1px solid rgba(49,71,110,0.12);
+      box-shadow:0 14px 35px rgba(49,71,110,0.07);
+      overflow:hidden;
+      transition:0.3s ease;
+    }
+
+    .painting-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 20px 45px rgba(49,71,110,0.12);
+    }
+
+    .painting-card img{
+      width:100%;
+      height:300px;
+      display:block;
+    }
+
+    .painting-card-content{
+      padding:10px;
+    }
+
+    .painting-card-content span{
+      font-size:12px;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      color:#8f9f83;
+    }
+
+
+    /* NOTE */
+    .painting-note{
+      text-align:center;
+      padding:30px 10px;
+      background:rgba(255,255,255,0.62);
+      border-top:1px solid rgba(49,71,110,0.12);
+      border-bottom:1px solid rgba(49,71,110,0.12);
+    }
+
+    .painting-note p{
+      max-width:700px;
+      margin:0 auto;
+      font-family:Georgia, serif;
+      font-size:18px;
+      line-height:1.8;
+      color:#31476e;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+
+      .back-wrapper{
+        padding:8px 0 0;
+        margin:0 auto;
+      }
+
+      .back-btn{
+        font-size:8px;
+        letter-spacing:0.8px;
+      }
+
+      .featured{
+        grid-template-columns:1fr;
+      }
+
+      .painting-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+      }
+      
+      .painting-wrapper{
+        margin:16px auto;
+      }
+
+      .painting-hero{
+        width:100%;
+        height:auto;
+        padding:18px 5px 10px;
+        text-align:center;
+        margin-bottom: 0;
+        background:#556073;
+      }
+
+      .painting-hero span{
+        font-size:10px;
+      }
+      .painting-hero h1{
+        font-size:20px;
+        margin-bottom:0;
+        color:#ebf1e8;
+      }
+   
+      .painting-card img{
+        height:160px;
+        object-fit:cover;
+      }
+
+      .painting-card-content{
+        padding:8px;
+        min-height:40px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+      }
+
+      .painting-card-content span{
+        font-size:9px;
+        letter-spacing:2px;
+        text-align:center;
+      }
+
+      .featured{
+        grid-template-columns:1fr;
+        margin-top:0;
+        margin-bottom:22px;
+      }
+
+      
+      .section-title{
+        background:#5f7389;
+        padding:6px 10px;
+        text-align:center;
+        margin-bottom:20px;
+      }
+
+      .section-title h2{
+        font-family:'Montserrat', sans-serif;
+        font-size:14px;
+        color:#ffffff;
+        letter-spacing:2px;
+        margin:0;
+        font-weight:400;
+      }
+
+
+      .painting-card-content span{
+        font-size:8px;
+        letter-spacing:2px;
+        text-transform:uppercase;
+        color:#555853;
+      }
+
+      .painting-note p{
+        font-size:10px;
+        line-height:1.4;
+      }
+
+
+    }
+  </style>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token":"..."}'></script>
+<!-- End Cloudflare Web Analytics -->
+
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="painting-hero">
+    <span>Creative Corners</span>
+
+    <h1>Art, Decor & Quiet Creations</h1>
+
+  </section>
+
+  <!-- BACK BUTTON -->
+  <div class="back-wrapper">
+    <a href="hobby.html" class="back-btn">
+       Back to Canvas
+    </a>
+  </div>
+
+  <!-- MAIN -->
+  <main class="painting-wrapper">
+
+    <!-- FEATURED -->
+    <section class="featured">
+      <div class="featured-text">
+        <span>Featured Note</span>
+
+        <h2>Creating My Quiet Place</h2>
+
+        <p>
+         This space began with a simple desire:
+         to slow down and find a little peace.<br>
+
+         Painting, music, and creating with my hands became gentle companions through busy days and restless thoughts.
+
+         <br>The pieces collected here are not only things I made,
+         but moments that helped me find my way back to myself.
+
+        </p>
+
+        <a href="quiet.html?date=May%2013%202026" class="read-link">Read Note</a>
+      </div>
+
+      <img src="Images/ART/painting.png" alt="Painting and sketchbook">
+    </section>
+
+
+    <!-- GALLERY -->
+    <section>
+      <div class="section-title">
+        <span></span>
+        <h2>Things I've Made</h2>
+      </div>
+
+      <div class="painting-grid">
+
+        <article class="painting-card">
+          <img src="Images/ART/c1.png" alt="colour">
+
+          <div class="painting-card-content">
+            <span>COLOUR</span>
+            <h3></h3>
+            <p>
+            </p>
+          </div>
+        </article>
+
+        <article class="painting-card">
+          <img src="Images/ART/c2.png" alt="Colour">
+
+          <div class="painting-card-content">
+            <span>COLOUR</span>
+            <h3></h3>
+            <p>
+            </p>
+          </div>
+        </article>
+
+        <article class="painting-card">
+          <img src="Images/ART/c3.jpg" alt="COLOUR">
+
+          <div class="painting-card-content">
+            <span>COLOUR</span>
+            <p>
+            </p>
+          </div>
+        </article>
+
+        <article class="painting-card">
+          <img src="Images/ART/p1.png" alt="PAINTING">
+
+          <div class="painting-card-content">
+            <span>PAINTING</span>
+            <p>
+            </p>
+          </div>
+        </article>
+
+        <article class="painting-card">
+          <img src="Images/ART/p2.png" alt="PAINTING">
+
+          <div class="painting-card-content">
+            <span>PAINTING</span>
+            <p>
+            </p>
+          </div>
+        </article>
+
+        <article class="painting-card">
+          <img src="Images/ART/p3.png" alt="PAINTING">
+
+          <div class="painting-card-content">
+            <span>PAINTING</span>
+            <p>
+            </p>
+          </div>
+        </article>
+
+        <article class="painting-card">
+          <img src="Images/ART/p4.png" alt="PAINTING">
+
+          <div class="painting-card-content">
+            <span>PAINTING</span>
+            <p>
+            </p>
+          </div>
+        </article>
+
+        <article class="painting-card">
+          <img src="Images/ART/p5.png" alt="PAINTING">
+
+          <div class="painting-card-content">
+            <span>PAINTING</span>
+            <p>
+            </p>
+          </div>
+        </article>
+
+        <article class="painting-card">
+          <img src="Images/ART/p6.png" alt="PAINTING">
+
+          <div class="painting-card-content">
+            <span>PAINTING</span>
+            <p>
+            </p>
+          </div>
+
+        </article>
+
+        <article class="painting-card">
+          <img src="Images/ART/p7.png" alt="PAINTING">
+
+          <div class="painting-card-content">
+            <span>PAINTING</span>
+            <p>
+            </p>
+          </div>
+
+        </article>
+
+        <article class="painting-card">
+          <img src="Images/ART/p8.png" alt="PAINTING">
+
+          <div class="painting-card-content">
+            <span>PAINTING</span>
+            <p>
+            </p>
+          </div>
+
+        </article>
+
+        <article class="painting-card">
+          <img src="Images/ART/p9.png" alt="PAINTING">
+
+          <div class="painting-card-content">
+            <span>PAINTING</span>
+            <p>
+            </p>
+          </div>
+
+        </article>
+
+        <article class="painting-card">
+          <img src="Images/ART/p10.png" alt="PAINTING">
+
+          <div class="painting-card-content">
+            <span>PAINTING</span>
+            <p>
+            </p>
+          </div>
+
+        </article>
+
+        <article class="painting-card">
+          <img src="Images/ART/p11.png" alt="PAINTING">
+
+          <div class="painting-card-content">
+            <span>PAINTING</span>
+            <p>
+            </p>
+          </div>
+
+        </article>
+
+        <article class="painting-card">
+          <img src="Images/ART/p12.png" alt="PAINTING">
+
+          <div class="painting-card-content">
+            <span>PAINTING</span>
+            <p>
+            </p>
+          </div>
+
+        </article>
+
+        <article class="painting-card">
+          <img src="Images/ART/f1.png" alt="Folk Art Painting">
+
+          <div class="painting-card-content">
+            <span>Folk Art Painting</span>
+            <p>
+            </p>
+          </div>
+
+        </article>
+
+        <article class="painting-card">
+          <img src="Images/ART/f2.jpg" alt="Folk Art Painting">
+
+          <div class="painting-card-content">
+            <span>Folk Art Painting</span>
+            <p>
+            </p>
+          </div>
+
+        </article>
+
+        <article class="painting-card">
+          <img src="Images/ART/f3.png" alt="Folk Art Painting">
+
+          <div class="painting-card-content">
+            <span>Folk Art Painting</span>
+            <h3></h3>
+            <p>
+            </p>
+          </div>
+
+        </article>
+
+        <article class="painting-card">
+          <img src="Images/ART/f4.jpg" alt="Folk Art Painting">
+
+          <div class="painting-card-content">
+            <span>Folk Art Painting</span>
+            <p>
+
+            </p>
+          </div>
+
+        </article>
+
+        <article class="painting-card">
+          <img src="Images/ART/f7.jpg" alt="Folk Art Painting">
+
+          <div class="painting-card-content">
+            <span>Folk Art Painting</span>
+            <h3></h3>
+            <p>
+            </p>
+          </div>
+
+        </article>
+
+
+        </article>
+
+        <article class="painting-card">
+          <img src="Images/ART/f5.png" alt="Folk Art Painting">
+
+          <div class="painting-card-content">
+            <span>Folk Art Painting</span>
+            <h3></h3>
+            <p>
+            </p>
+          </div>
+
+        </article>
+
+        <article class="painting-card">
+          <img src="Images/ART/cr1.png" alt="Craft">
+
+          <div class="painting-card-content">
+            <span>CRAFT</span>
+            <h3></h3>
+            <p>
+            </p>
+          </div>
+
+        </article>
+
+        <article class="painting-card">
+          <img src="Images/ART/cr2.png" alt="Craft">
+
+          <div class="painting-card-content">
+            <span>CRAFT</span>
+            <h3></h3>
+            <p>
+            </p>
+          </div>
+
+        </article>
+
+        <article class="painting-card">
+          <img src="Images/ART/cr3.png" alt="Craft">
+
+          <div class="painting-card-content">
+            <span>CRAFT</span>
+            <h3></h3>
+            <p>
+            </p>
+          </div>
+
+        </article>
+          
+        <article class="painting-card">
+           <img src="Images/ART/cr4.png" alt="Craft">
+
+           <div class="painting-card-content">
+             <span>CRAFT</span>
+             <h3></h3>
+             <p>
+             </p>
+           </div>
+
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- NOTE -->
+  <section class="painting-note">
+    <p>
+      “Painting gives quiet thoughts a place to become visible.”
+    </p>
+  </section>
+
+</body>
+</html>
