@@ -601,8 +601,7 @@ function changeStory(direction){
   if(currentStory >= stories.length){
     currentStory = 0;
   }
-
-  document.getElementById("story-label").innerText = stories[currentStory].label;
+  
   document.getElementById("story-title").innerText = stories[currentStory].title;
   document.getElementById("story-text").innerText = stories[currentStory].text;
   const storyLink =
