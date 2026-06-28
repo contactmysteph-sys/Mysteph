@@ -1247,6 +1247,32 @@
         `translate(${currentX}px, ${currentY}px) scale(${zoomLevel})`;
   });
 
+  modalImg.addEventListener('mousedown', (e) => {
+     if(zoomLevel <= 1) return;
+
+        isDragging = true;
+
+        startX = e.clientX - currentX;
+        startY = e.clientY - currentY;
+
+        modalImg.style.cursor = "grabbing";
+     });
+
+  document.addEventListener('mousemove', (e) => {
+    if(!isDragging) return;
+
+      currentX = e.clientX - startX;
+      currentY = e.clientY - startY;
+
+      modalImg.style.transform =
+       `translate(${currentX}px, ${currentY}px) scale(${zoomLevel})`;
+  });
+
+  document.addEventListener('mouseup', () => {
+     isDragging = false;
+     modalImg.style.cursor = "grab";
+  });
+
 
 function openFromUrl(){
   const params = new URLSearchParams(window.location.search);
