@@ -307,18 +307,30 @@
     }
 
     .modal img {
-      max-width: 70%;
-      max-height: 80%;
+      max-width: 78%;
+      max-height: 82%;
       border-radius: 10px;
+      animation: zoomIn 0.25s ease;
     }
 
-    .close-btn {
-      position: absolute;
-      top: 24px;
-      right: 32px;
-      color: white;
-      font-size: 34px;
-      cursor: pointer;
+   @keyframes zoomIn {
+     from {
+       transform: scale(0.92);
+       opacity: 0;
+      }
+     to {
+       transform: scale(1);
+       opacity: 1;
+      }
+   }
+
+   .close-btn {
+     position: absolute;
+     top: 24px;
+     right: 32px;
+     color: white;
+     font-size: 34px;
+     cursor: pointer;
     }
 
   @media(max-width:650px){
