@@ -294,28 +294,25 @@
       white-space:pre-line;
     
     }
-    /* LIGHTBOX */
-    .lightbox {
-     display: none;
-     position: fixed;
-     z-index: 9999;
-     inset: 0;
-     background: rgba(0,0,0,0.85);
-     justify-content: center;
-     align-items: center;
+
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
     }
 
-    .lightbox img {
-     max-width: 90%;
-     max-height: 85%;
-     border-radius: 10px;
+    .modal img {
+      max-width: 90%;
+      max-height: 85%;
+      border-radius: 10px;
     }
 
-    .lightbox.active {
-      display: flex;
-    }
-
-    .lightbox-close {
+    .close-btn {
       position: absolute;
       top: 24px;
       right: 32px;
@@ -1221,8 +1218,13 @@ function openFromUrl(){
   showJourney("rail", document.querySelector(".journey-card"));
 }
 
-openFromUrl();</script>
+openFromUrl();
 
+</script>
+<div id="modal" class="modal">
+  <span id="close-btn" class="close-btn">&times;</span>
+  <img id="modal-img" src="" alt="">
+</div>
 
 </body>
 </html>
