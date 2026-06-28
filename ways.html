@@ -1179,8 +1179,10 @@
 
       img.addEventListener('click', () => {
         if(modal && modalImg){
-          modal.style.display = 'flex';
-          modalImg.src = img.src;
+         zoomLevel = 1;
+         modal.style.display = 'flex';
+         modalImg.src = img.src;
+         modalImg.style.transform = `scale(${zoomLevel})`;
         }
       });
     });
@@ -1216,6 +1218,11 @@
     }
   });
 
+  modal.addEventListener('click', (e) => {
+    if(e.target === modal){
+       modal.style.display = 'none';
+    }
+  });
 
 function openFromUrl(){
   const params = new URLSearchParams(window.location.search);
