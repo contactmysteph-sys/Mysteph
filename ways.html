@@ -1199,6 +1199,7 @@
   const modal = document.getElementById('modal');
   const modalImg = document.getElementById('modal-img');
   const closeBtn = document.getElementById('close-btn');
+  let zoomLevel = 1;
 
   if(closeBtn && modal){
      closeBtn.addEventListener('click', () => {
@@ -1218,11 +1219,20 @@
     }
   });
 
-  modal.addEventListener('click', (e) => {
-    if(e.target === modal){
-       modal.style.display = 'none';
-    }
+  modalImg.addEventListener('wheel', (e) => {
+     e.preventDefault();
+
+     if(e.deltaY < 0){
+       zoomLevel += 0.15;
+      }  else {
+        zoomLevel -= 0.15;
+      }
+
+      zoomLevel = Math.max(0.5, Math.min(zoomLevel, 3));
+
+      modalImg.style.transform = `scale(${zoomLevel})`;
   });
+
 
 function openFromUrl(){
   const params = new URLSearchParams(window.location.search);
