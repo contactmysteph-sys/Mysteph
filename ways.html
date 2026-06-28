@@ -1179,13 +1179,21 @@
 
       img.addEventListener('click', () => {
         if(modal && modalImg){
+
          zoomLevel = 1;
+         currentX = 0;
+         currentY = 0;
+
          modal.style.display = 'flex';
          modalImg.src = img.src;
-         modalImg.style.transform = `scale(${zoomLevel})`;
-        }
-      });
-    });
+
+         modalImg.style.transform =
+          `translate(${currentX}px, ${currentY}px) scale(${zoomLevel})`;
+  
+      }
+   });
+ 
+});
 
     document.getElementById("detail-note").innerText = place.note;
 
@@ -1200,6 +1208,11 @@
   const modalImg = document.getElementById('modal-img');
   const closeBtn = document.getElementById('close-btn');
   let zoomLevel = 1;
+  let isDragging = false;
+  let startX = 0;
+  let startY = 0;
+  let currentX = 0;
+  let currentY = 0;
 
   if(closeBtn && modal){
      closeBtn.addEventListener('click', () => {
@@ -1230,7 +1243,8 @@
 
       zoomLevel = Math.max(0.5, Math.min(zoomLevel, 3));
 
-      modalImg.style.transform = `scale(${zoomLevel})`;
+      modalImg.style.transform =
+        `translate(${currentX}px, ${currentY}px) scale(${zoomLevel})`;
   });
 
 
