@@ -1,0 +1,30 @@
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  z-index:9999;
+  justify-content:center;
+  align-items:center;
+}
+
+.modal img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:12px;
+  cursor:grab;
+  user-select:none;
+}
+
+.close-btn{
+  position:absolute;
+  top:24px;
+  right:32px;
+  color:#fff;
+  font-size:34px;
+  cursor:pointer;
+}
+
+.zoomable{
+  cursor:zoom-in;
+}
