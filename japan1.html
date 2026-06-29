@@ -446,6 +446,8 @@
         data-cf-beacon='{"token":"..."}'></script>
 <!-- End Cloudflare Web Analytics -->
 
+<link rel="stylesheet" href="css/image-viewer.css">
+
 </head>
 
 <body>
@@ -1267,6 +1269,13 @@ document.addEventListener('mouseup', () => {
   modalImg.style.cursor = 'grab';
 });
 </script>
+
+<div id="modal" class="modal">
+  <span id="close-btn" class="close-btn">&times;</span>
+  <img id="modal-img" src="" alt="">
+</div>
+
+<script src="js/image-viewer.js"></script>
 
 </body>
 </html>
