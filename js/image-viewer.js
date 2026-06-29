@@ -23,14 +23,14 @@ function resetImage(){
 
 function openImage(img){
   const group =
-    img.closest('.city-detail, .place-card, .restaurant-card, .gallery-section, section');
+    img.closest('.city-detail, .place-card, .restaurant-card, .gallery-section');
 
   currentImages = Array.from(
    group
     ? group.querySelectorAll('.zoomable, .photo-grid img, .photo-row img')
     : document.querySelectorAll('.zoomable, .photo-grid img, .photo-row img')
   );
-  
+
   currentIndex = currentImages.indexOf(img);
 
   resetImage();
