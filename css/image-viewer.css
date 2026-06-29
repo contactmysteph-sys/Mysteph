@@ -28,3 +28,29 @@
 .zoomable{
   cursor:zoom-in;
 }
+
+.modal-nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  border:none;
+  background:rgba(255,255,255,0.08);
+  color:#fff;
+  font-size:46px;
+  width:48px;
+  height:64px;
+  cursor:pointer;
+  border-radius:12px;
+}
+
+.modal-nav.prev{
+  left:28px;
+}
+
+.modal-nav.next{
+  right:28px;
+}
+
+.modal-nav:hover{
+  background:rgba(255,255,255,0.18);
+}
