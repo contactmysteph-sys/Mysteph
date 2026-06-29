@@ -9,18 +9,22 @@ let startY = 0;
 let currentX = 0;
 let currentY = 0;
 
-document.querySelectorAll('.zoomable').forEach(img => {
-  img.addEventListener('click', () => {
-    zoomLevel = 1;
-    currentX = 0;
-    currentY = 0;
+function openImage(src){
+  zoomLevel = 1;
+  currentX = 0;
+  currentY = 0;
 
-    modal.style.display = 'flex';
-    modalImg.src = img.src;
+  modal.style.display = 'flex';
+  modalImg.src = src;
 
-    modalImg.style.transform =
-      `translate(0px, 0px) scale(1)`;
-  });
+  modalImg.style.transform =
+    `translate(0px, 0px) scale(1)`;
+}
+
+document.addEventListener('click', (e) => {
+  if(e.target.classList.contains('zoomable')){
+    openImage(e.target.src);
+  }
 });
 
 closeBtn.addEventListener('click', () => {
