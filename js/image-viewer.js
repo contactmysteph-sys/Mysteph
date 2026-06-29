@@ -1,6 +1,8 @@
 const modal = document.getElementById('modal');
 const modalImg = document.getElementById('modal-img');
 const closeBtn = document.getElementById('close-btn');
+const prevBtn = document.getElementById('modal-prev');
+const nextBtn = document.getElementById('modal-next');
 
 let zoomLevel = 1;
 let isDragging = false;
@@ -9,23 +11,48 @@ let startY = 0;
 let currentX = 0;
 let currentY = 0;
 
-function openImage(src){
+let currentImages = [];
+let currentIndex = 0;
+
+function resetImage(){
   zoomLevel = 1;
   currentX = 0;
   currentY = 0;
+  modalImg.style.transform = `translate(0px, 0px) scale(1)`;
+}
+
+function openImage(img){
+  currentImages = Array.from(document.querySelectorAll(
+    '.zoomable, .photo-grid img, .photo-row img'
+  ));
+
+  currentIndex = currentImages.indexOf(img);
+
+  resetImage();
 
   modal.style.display = 'flex';
-  modalImg.src = src;
+  modalImg.src = img.src;
+}
 
-  modalImg.style.transform =
-    `translate(0px, 0px) scale(1)`;
+function showImage(index){
+  if(currentImages.length === 0) return;
+
+  if(index < 0){
+    index = currentImages.length - 1;
+  }
+
+  if(index >= currentImages.length){
+    index = 0;
+  }
+
+  currentIndex = index;
+  resetImage();
+  modalImg.src = currentImages[currentIndex].src;
 }
 
 document.addEventListener('click', (e) => {
-  if(
-    e.target.matches('.zoomable, .photo-grid img, .photo-row img')
-  ){
-    openImage(e.target.src);
+  if(e.target.matches('.zoomable, .photo-grid img, .photo-row img')){
+    openImage(e.target);
   }
 });
 
@@ -39,9 +66,29 @@ modal.addEventListener('click', (e) => {
   }
 });
 
+prevBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  showImage(currentIndex - 1);
+});
+
+nextBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  showImage(currentIndex + 1);
+});
+
 document.addEventListener('keydown', (e) => {
+  if(modal.style.display !== 'flex') return;
+
   if(e.key === 'Escape'){
     modal.style.display = 'none';
+  }
+
+  if(e.key === 'ArrowLeft'){
+    showImage(currentIndex - 1);
+  }
+
+  if(e.key === 'ArrowRight'){
+    showImage(currentIndex + 1);
   }
 });
 
