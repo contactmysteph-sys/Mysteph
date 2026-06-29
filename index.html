@@ -463,12 +463,27 @@
        MENU TITLE
     ========================== */
     .menu-title{
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+
       font-family:'Cormorant Garamond', serif;
       font-size:18px;
       font-weight:500;
       color:#1E3157;
       letter-spacing:0.3px;
       line-height:1.2;
+    }
+
+    .updated-badge{
+      font-family:'Montserrat', sans-serif;
+      font-size:9px;
+      font-weight:400;
+      letter-spacing:0.8px;
+      color:#8a96a5;
+      white-space:nowrap;
     }
 
     /* =========================
@@ -937,17 +952,10 @@
 
         <!-- CARD -->
         <a href="small.html" class="menu-card">
-
-          <img src="Images/small.png"
-               alt="Small Wonders"
-               class="menu-image">
-
-          <div class="menu-divider"></div>
-
           <div class="menu-title">
-            Small Wonders
-          </div>
-
+           <span>Small Wonders</span>
+           <span class="updated-badge">Updated · Jun 29</span>
+         </div>
         </a>
 
         <!-- CARD -->
