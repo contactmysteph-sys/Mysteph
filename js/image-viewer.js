@@ -22,7 +22,9 @@ function openImage(src){
 }
 
 document.addEventListener('click', (e) => {
-  if(e.target.classList.contains('zoomable')){
+  if(
+    e.target.matches('.zoomable, .photo-grid img, .photo-row img')
+  ){
     openImage(e.target.src);
   }
 });
