@@ -386,7 +386,7 @@ function renderPlaces(){
 
         <div class="photo-grid">
           ${place.images.map(img => `
-            <img src="${img}" alt="${place.title}" loading="lazy">
+            <img src="${img}" alt="${place.title}" loading="lazy" class="zoomable">
           `).join("")}
         </div>
 
