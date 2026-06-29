@@ -642,6 +642,15 @@
     const message = guestForm.message.value.trim();
     const secret = guestForm.secret.checked;
 
+    const spamWords = ['seo', 'visibility', 'engagement', 'quick chat', 'increase traffic'];
+
+      if(spamWords.some(word => message.toLowerCase().includes(word))){
+         formStatus.textContent = 'Your message could not be submitted.';
+         submitButton.disabled = false;
+         submitButton.textContent = 'Leave Note';
+         return;
+      }
+
     if(!name || !message){
       formStatus.textContent = 'Please write your name and message.';
       return;
