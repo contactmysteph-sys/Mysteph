@@ -167,6 +167,38 @@ a{
   color:#8a96a5;
 }
 
+/* IMAGE MODAL */
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  z-index:9999;
+  justify-content:center;
+  align-items:center;
+}
+
+.modal img{
+  max-width:80%;
+  max-height:85%;
+  border-radius:10px;
+  cursor:grab;
+  user-select:none;
+}
+
+.close-btn{
+  position:absolute;
+  top:24px;
+  right:32px;
+  color:#fff;
+  font-size:34px;
+  cursor:pointer;
+}
+
+.photo-grid img{
+  cursor:zoom-in;
+}
+
 @media(max-width:600px){
  .back-wrap{
    margin:18px auto 0;
