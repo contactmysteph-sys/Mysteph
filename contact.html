@@ -238,61 +238,68 @@
       text-align:left !important;
     }
 
-   .note-item strong{
-     font-family:'Merriweather', serif;
-     font-size:13px;
-     font-weight:600;
-     color:#15181b;
-     margin:0;
-   }
+    .note-item strong{
+      font-family:'Merriweather', serif;
+      font-size:13px;
+      font-weight:600;
+      color:#15181b;
+      margin:0;
+    }
 
-   .note-item p{
-     font-size:13px;
-     line-height:1.55;
-     color:#24292e;
-     margin:0;
-   }
+    .note-item p{
+      font-size:13px;
+      line-height:1.55;
+      color:#24292e;
+      margin:0;
+    }
 
-  .note-date{
-     margin-top:2px;
-     font-size:11px;
-     color:#3e4145;
-     letter-spacing:1px;
-     text-transform:uppercase;
-  }
+    .note-date{
+      margin-top:2px;
+      font-size:11px;
+      color:#3e4145;
+      letter-spacing:1px;
+      text-transform:uppercase;
+    }
 
-  .public-reply{
-     width:100%;
-     margin-top:8px;
-     padding:6px 10px;
-     background:transparent;
-  }
+   .public-reply{
+      width:100%;
+      margin-top:8px;
+      padding:6px 10px;
+      background:transparent;
+    }
 
-  .public-reply span{
-     color:#7b8798 !important;
-     font-size:10px !important;
-     letter-spacing:2px !important;
-     font-weight:600 !important;
-  }
+    .public-reply span{
+      color:#7b8798 !important;
+      font-size:10px !important;
+      letter-spacing:2px !important;
+      font-weight:600 !important;
+    }
 
-  .public-reply p{
+    .public-reply p{
        font-size:11px !important;
        line-height:1.6 !important;
        color:#4f5b68 !important;
        margin:0;
-  }
+    }
     
-  #formStatus{
+    #formStatus{
       margin-top:14px !important;
       margin-bottom:0 !important;
       min-height:0 !important;
-  }
+    }
 
-  .notes-list,
-  #notesList{
-     margin-top:8px !important;
-     margin-bottom:90px !important;
-  }
+    .notes-list,
+    #notesList{
+      margin-top:8px !important;
+      margin-bottom:90px !important;
+    }
+
+   .secret-note{
+      color:#7b8794;
+      font-size:13px;
+      letter-spacing:0.5px;
+      font-style:italic;
+    }
     
     @media (max-width:768px){
 
@@ -590,8 +597,7 @@
   async function loadNotes(){
     const { data, error } = await supabaseClient
       .from('guestbook')
-      .select('name, message, created_at, reply, reply_at')
-      .eq('secret', false)
+      .select('name, message, created_at, reply, reply_at, secret')
       .order('created_at', { ascending:false });
 
     if(error){
@@ -613,21 +619,27 @@
       const date = new Date(note.created_at).toLocaleDateString();
 
       item.innerHTML = `
-        <strong>${escapeHTML(note.name)}</strong>
-        <p>${escapeHTML(note.message)}</p>
+         <strong>${escapeHTML(note.name)}</strong>
+
+         ${
+          note.secret
+          ? `<p class="secret-note">🔒 Private note</p>`
+          : `<p>${escapeHTML(note.message)}</p>`
+        }
+
         <span class="note-date">${date}</span>
 
         ${
           note.reply
           ? `
             <div class="public-reply">
-              <span>Stephanie replied</span>
-              <p>${escapeHTML(note.reply)}</p>
+             <span>Stephanie replied</span>
+             <p>${escapeHTML(note.reply)}</p>
             </div>
           `
-          : ''
-        }
-      `;
+        : ''
+      }
+   `;
 
       notesList.appendChild(item);
     });
