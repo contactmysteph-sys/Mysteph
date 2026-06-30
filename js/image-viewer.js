@@ -24,7 +24,7 @@ function resetImage(){
 
 function openImage(img){
   const group =
-    img.closest('.city-detail, .place-card, .restaurant-card, .gallery-section')
+    img.closest('.city-detail, .place-card, .restaurant-card, .gallery-section, .detail-section')
     || document;
 
   currentImages = Array.from(
@@ -39,21 +39,19 @@ function openImage(img){
   }
 
   resetImage();
-
   modal.style.display = 'flex';
   modalImg.src = img.src;
+}
+
+function closeImage(){
+  modal.style.display = 'none';
 }
 
 function showImage(index){
   if(currentImages.length === 0) return;
 
-  if(index < 0){
-    index = currentImages.length - 1;
-  }
-
-  if(index >= currentImages.length){
-    index = 0;
-  }
+  if(index < 0) index = currentImages.length - 1;
+  if(index >= currentImages.length) index = 0;
 
   currentIndex = index;
   resetImage();
@@ -66,13 +64,11 @@ document.addEventListener('click', (e) => {
   }
 });
 
-closeBtn.addEventListener('click', () => {
-  modal.style.display = 'none';
-});
+closeBtn.addEventListener('click', closeImage);
 
 modal.addEventListener('click', (e) => {
   if(e.target === modal){
-    modal.style.display = 'none';
+    closeImage();
   }
 });
 
@@ -89,28 +85,15 @@ nextBtn.addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => {
   if(modal.style.display !== 'flex') return;
 
-  if(e.key === 'Escape'){
-    modal.style.display = 'none';
-  }
-
-  if(e.key === 'ArrowLeft'){
-    showImage(currentIndex - 1);
-  }
-
-  if(e.key === 'ArrowRight'){
-    showImage(currentIndex + 1);
-  }
+  if(e.key === 'Escape') closeImage();
+  if(e.key === 'ArrowLeft') showImage(currentIndex - 1);
+  if(e.key === 'ArrowRight') showImage(currentIndex + 1);
 });
 
 modalImg.addEventListener('wheel', (e) => {
   e.preventDefault();
 
-  if(e.deltaY < 0){
-    zoomLevel += 0.15;
-  } else {
-    zoomLevel -= 0.15;
-  }
-
+  zoomLevel += e.deltaY < 0 ? 0.15 : -0.15;
   zoomLevel = Math.max(0.5, Math.min(zoomLevel, 3));
 
   modalImg.style.transform =
