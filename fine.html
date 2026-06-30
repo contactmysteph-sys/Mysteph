@@ -369,6 +369,28 @@ a{
   cursor:zoom-in;
 }
 
+.modal-nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(255,255,255,0.75);
+  border:none;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  font-size:34px;
+  cursor:pointer;
+  z-index:10;
+}
+
+.modal-nav.prev{
+  left:30px;
+}
+
+.modal-nav.next{
+  right:30px;
+}
+
 </style>
 <link rel="stylesheet" href="css/image-viewer.css">
 </head>
@@ -825,13 +847,8 @@ function movePage(step){
 }
 
 renderRestaurants();
-</script>
-<div id="modal" class="modal">
-  <span id="close-btn" class="close-btn">&times;</span>
-  <img id="modal-img" src="" alt="">
-</div>
 
-<script>
+
 const modal = document.getElementById('modal');
 const modalImg = document.getElementById('modal-img');
 const closeBtn = document.getElementById('close-btn');
