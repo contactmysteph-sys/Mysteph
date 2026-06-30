@@ -23,15 +23,19 @@ function resetImage(){
 
 function openImage(img){
   const group =
-    img.closest('.city-detail, .place-card, .restaurant-card, .gallery-section');
+    img.closest('.city-detail, .place-card, .restaurant-card, .gallery-section')
+    || document;
 
   currentImages = Array.from(
-   group
-    ? group.querySelectorAll('.zoomable, .photo-grid img, .photo-row img')
-    : document.querySelectorAll('.zoomable, .photo-grid img, .photo-row img')
+    group.querySelectorAll('.zoomable, .photo-grid img, .photo-row img')
   );
 
   currentIndex = currentImages.indexOf(img);
+
+  if(currentIndex === -1){
+    currentImages = [img];
+    currentIndex = 0;
+  }
 
   resetImage();
 
