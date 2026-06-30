@@ -1,5 +1,3 @@
-console.log(prevBtn);
-console.log(nextBtn);
 
 const modal = document.getElementById('modal');
 const modalImg = document.getElementById('modal-img');
