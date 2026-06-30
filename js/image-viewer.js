@@ -28,7 +28,7 @@ function openImage(img){
     || document;
 
   currentImages = Array.from(
-    group.querySelectorAll('.zoomable, .photo-grid img, .photo-row img')
+    group.querySelectorAll('.zoomable, .photo-grid img, .photo-row img, .diary-gallery img')
   );
 
   currentIndex = currentImages.indexOf(img);
@@ -59,7 +59,7 @@ function showImage(index){
 }
 
 document.addEventListener('click', (e) => {
-  if(e.target.matches('.zoomable, .photo-grid img, .photo-row img')){
+  if(e.target.matches('.zoomable, .photo-grid img, .photo-row img, .diary-gallery img')){
     openImage(e.target);
   }
 });
