@@ -9,8 +9,8 @@
 }
 
 .modal img{
-  max-width:90%;
-  max-height:90%;
+  max-width:72%;
+  max-height:82vh;
   border-radius:12px;
   cursor:grab;
   user-select:none;
@@ -30,25 +30,27 @@
 }
 
 .modal-nav{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
+  display:block !important;
+  position:fixed !important;
+  top:50% !important;
+  transform:translateY(-50%) !important;
   border:none;
-  background:rgba(255,255,255,0.08);
-  color:#fff;
-  font-size:46px;
-  width:48px;
-  height:64px;
+  background:rgba(255,255,255,0.8);
+  color:#111;
+  font-size:34px;
+  width:44px;
+  height:44px;
+  border-radius:50%;
   cursor:pointer;
-  border-radius:12px;
+  z-index:999999 !important;
 }
 
 .modal-nav.prev{
-  left:28px;
+  left:24px;
 }
 
 .modal-nav.next{
-  right:28px;
+  right:24px;
 }
 
 .modal-nav:hover{
