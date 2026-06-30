@@ -1201,48 +1201,28 @@
   }
 
   function showPlace(journeyId, placeIndex, button){
-    const place = journeys[journeyId].places[placeIndex];
-    const grid = document.getElementById("photo-grid");
+  const place = journeys[journeyId].places[placeIndex];
+  const grid = document.getElementById("photo-grid");
 
-    grid.className =
-      place.layout === "small"
-        ? "photo-grid small-grid"
-        : "photo-grid";
+      grid.className =
+        place.layout === "small"
+         ? "photo-grid small-grid"
+         : "photo-grid";
 
-    grid.innerHTML =
-      place.images.map(img => `
-        <img src="${img}" alt="" loading="lazy" decoding="async">
-     `).join("");
+      grid.innerHTML =
+        place.images.map(img => `
+          <img src="${img}" alt="" loading="lazy" decoding="async">
+       `).join("");
 
-    document.querySelectorAll('#photo-grid img').forEach(img => {
+      document.getElementById("detail-note").innerText = place.note;
 
-      img.addEventListener('click', () => {
-        if(modal && modalImg){
+      document.querySelectorAll("#place-list button").forEach(btn => {
+        btn.classList.remove("active");
+      });
 
-         zoomLevel = 1;
-         currentX = 0;
-         currentY = 0;
-
-         modal.style.display = 'flex';
-         modalImg.src = img.src;
-
-         modalImg.style.transform =
-          `translate(${currentX}px, ${currentY}px) scale(${zoomLevel})`;
-  
-      }
-   });
- 
-});
-
-    document.getElementById("detail-note").innerText = place.note;
-
-    document.querySelectorAll("#place-list button").forEach(btn => {
-      btn.classList.remove("active");
-    });
-
-    button.classList.add("active");
+      button.classList.add("active");
   }
-
+ 
 
 function openFromUrl(){
   const params = new URLSearchParams(window.location.search);
