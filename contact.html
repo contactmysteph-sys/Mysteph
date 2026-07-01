@@ -628,6 +628,11 @@
   const formStatus = document.getElementById('formStatus');
   const notesList = document.getElementById('notesList');
 
+  const pagination = document.getElementById('pagination');
+
+  const NOTES_PER_PAGE = 5;
+  let currentPage = 1;
+
   const SUPABASE_URL = "https://rjwkshpolzhaawrdybjf.supabase.co";
   const SUPABASE_KEY = "sb_publishable_UqP9fGO5aGbYq6DteZFk-Q_G1s0XDgh";
 
@@ -660,7 +665,11 @@
       return;
     }
 
-    data.forEach(note => {
+    const start = (currentPage - 1) * NOTES_PER_PAGE;
+    const end = start + NOTES_PER_PAGE;
+    const pageNotes = data.slice(start, end);
+
+    pageNotes.forEach(note => {
       const item = document.createElement('div');
       item.className = 'note-item';
 
@@ -690,6 +699,7 @@
 
       notesList.appendChild(item);
     });
+    renderPagination(data.length);
   }
 
   function renderPagination(totalNotes){
