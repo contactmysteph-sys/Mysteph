@@ -314,6 +314,41 @@
      color:rgba(255,255,255,0.55);
     }
 
+    .pagination{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:10px;
+      margin:30px 0 70px;
+      font-size:12px;
+      letter-spacing:0.8px;
+    }
+
+    .pagination button{
+      border:none;
+      background:none;
+      color:#6d7684;
+      cursor:pointer;
+      padding:2px 6px;
+      font-family:'Inter', sans-serif;
+      transition:.25s;
+    }
+
+    .pagination button:hover{
+      color:#2F3B4A;
+    }
+
+    .pagination button.active{
+      color:#2F3B4A;
+      font-weight:600;
+      border-bottom:1px solid #2F3B4A;
+    }
+
+    .pagination button:disabled{
+      opacity:.35;
+      cursor:default;
+    }
+
     @media (max-width:768px){
 
     html,
@@ -655,6 +690,55 @@
 
       notesList.appendChild(item);
     });
+  }
+
+  function renderPagination(totalNotes){
+
+     const totalPages = Math.ceil(totalNotes / NOTES_PER_PAGE);
+
+     pagination.innerHTML = '';
+
+     const prev = document.createElement('button');
+     prev.textContent = '← Previous';
+     prev.disabled = currentPage === 1;
+
+     prev.onclick = () => {
+       currentPage--;
+       loadNotes();
+     };
+
+     pagination.appendChild(prev);
+
+     for(let i=1;i<=totalPages;i++){
+
+     const btn = document.createElement('button');
+
+        btn.textContent = i;
+
+     if(i===currentPage){
+        btn.classList.add('active');
+      }
+
+      btn.onclick = () => {
+        currentPage = i;
+        loadNotes();
+      };
+
+      pagination.appendChild(btn);
+    }
+
+    const next = document.createElement('button');
+
+    next.textContent = 'Next →';
+
+    next.disabled = currentPage === totalPages;
+
+    next.onclick = () => {
+      currentPage++;
+      loadNotes();
+    };
+
+    pagination.appendChild(next);
   }
 
   guestForm.addEventListener('submit', async function(e){
