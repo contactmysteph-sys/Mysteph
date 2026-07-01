@@ -269,9 +269,9 @@
     }
 
     .public-reply span{
-      color:#7b8798 !important;
+      color:#2b313a !important;
       font-size:10px !important;
-      letter-spacing:2px !important;
+      letter-spacing:1px !important;
       font-weight:600 !important;
     }
 
@@ -295,10 +295,14 @@
     }
 
    .secret-note{
-      color:#7b8794;
+      margin:12px 0;
+      padding:12px 16px;
+      border-radius:12px;
+      background:rgba(255,255,255,.45);
+      color:#6d7684;
       font-size:13px;
-      letter-spacing:0.5px;
       font-style:italic;
+      text-align:center;
     }
     
     .secret-badge{
@@ -630,8 +634,6 @@
 
       item.innerHTML = `
         <strong>${escapeHTML(note.name)}</strong>
-        ${note.secret ? '<span class="secret-badge">🔒 Secret</span>' : ''}
-
         ${
           note.secret
             ? `<p class="secret-note">🔒 Private note</p>`
