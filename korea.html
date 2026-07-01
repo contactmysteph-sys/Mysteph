@@ -1,147 +1,976 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bookshop | Coming Soon</title>
+  <title>Korea | Wandering with Steph</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&family=Caveat:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Montserrat', sans-serif;
+      background:
+        linear-gradient(rgba(246,245,241,0.94), rgba(246,245,241,0.94));
+      background-size:cover;
+      background-attachment:fixed;
+      color:#2f3b4a;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    img{
+      width:100%;
+      display:block;
+    }
+    
+    
+    /* BACK */
+
+    .back-wrapper{
+      width:min(1120px,90%);
+      margin:24px auto 0;
+    }
+
+    .back-btn{
+      display:inline-block;
+      font-size:11px;
+      letter-spacing:0.7px;
+      text-transform:uppercase;
+      color:#31476E;
+      border-bottom:1px solid #31476E;
+      padding-bottom:4px;
+      transition:0.3s ease;
+    }
+
+    .back-btn:hover{
+      opacity:0.7;
+      transform:translateX(-4px);
+    }
+
+    /* INTRO */
+
+    .country-intro{
+      width:min(760px,88%);
+      margin:20px auto 20px;
+      text-align:center;
+    }
+
+    .country-intro h1{
+      font-family:'Cormorant Garamond', serif;
+      font-size:30px;
+      font-weight:600;
+      color:#31476E;
+      margin-bottom:12px;
+    }
+
+    .country-intro .handwriting{
+      font-family:'Caveat', cursive;
+      font-size:14px;
+      color:#8fa2bc;
+      margin-bottom:10px;
+    }
+
+   .country-intro h2{
+      font-family:'Cormorant Garamond', serif;
+      font-size:16px;
+      font-weight:600;
+      color:#31476e;
+      margin-bottom:12px;
+    }
+
+   .country-intro p{
+      font-size:12px;
+      line-height:1.9;
+      color:#5b6575;
 }
 
-body{
-  min-height:100vh;
-  background:
-    linear-gradient(
-      rgba(62, 58, 68, 0.94),
-      rgba(26, 26, 47, 0.94)
-    );
-  font-family:'Montserrat', sans-serif;
-  color:#d6d7da;
-}
+    /* FEATURED CITIES */
 
-.back-wrapper{
-  width:min(1120px,90%);
-  margin:28px auto 0;
-}
+    .featured-cities{
+      width:min(1050px,90%);
+      margin:0 auto 62px;
 
-.back-btn{
-  display:inline-block;
-  font-size:11px;
-  letter-spacing:1px;
-  text-transform:uppercase;
-  color:#9699a3;
-  text-decoration:none;
-  transition:0.3s ease;
-}
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:22px;
+    }
 
-.back-btn:hover{
-  opacity:0.7;
-  transform:translateX(-4px);
-}
+    .city-card{
+      background:rgba(255,255,255,0.76);
+      border:1px solid rgba(49,71,110,0.16);
+      box-shadow:0 16px 38px rgba(49,71,110,0.08);
+      transition:0.35s ease;
+    }
 
-.coming-soon{
-  min-height:calc(100vh - 70px);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:40px 24px;
-}
+    .city-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 22px 48px rgba(49,71,110,0.14);
+    }
 
-.soon-card{
-  width:min(520px,92%);
-  padding:54px 34px;
-  border-radius:24px;
-  background:rgba(255,255,255,0.06);
-  border:1px solid rgba(255,255,255,0.08);
-  box-shadow:0 12px 35px rgba(0,0,0,0.12);
-  backdrop-filter:blur(8px);
-}
+    .city-card img{
+      height:120px;
+      object-fit:cover;
+    }
 
-.soon-label{
-  font-size:11px;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  color:#9da0aa;
-  margin-bottom:18px;
-}
+    .city-card-content{
+      padding:22px;
+    }
 
-.soon-card h1{
-  font-family:'Caveat', cursive;
-  font-size:42px;
-  font-weight:500;
-  color:#d8d9dc;
-  margin-bottom:18px;
-}
+    .city-card-content span{
+      font-size:10px;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      color:#9aa3af;
+    }
 
-.soon-card p{
-  font-size:14px;
-  line-height:1.8;
-  color:#b9bbc2;
-  margin-bottom:8px;
-}
+    .city-card-content h3{
+      font-family:'Cormorant Garamond', serif;
+      font-size:27px;
+      font-weight:500;
+      color:#31476e;
+      margin:7px 0 8px;
+    }
 
-.soon-card .ko{
-  font-size:13px;
-  color:#aeb0b8;
-}
+    .city-card-content p{
+      font-size:12.5px;
+      line-height:1.8;
+      color:#5f6978;
+    }
 
-@media(max-width:576px){
-  .back-wrapper{
-    margin:22px auto 0;
-  }
+    /* CITY PHOTO INDEX */
 
-  .back-btn{
-    font-size:9px;
-  }
+    .city-photo-index{
+      width:min(1120px,90%);
+      margin:0 auto 80px;
+      padding-top:46px;
+      border-top:1px solid rgba(49,71,110,0.18);
+      text-align:center;
+    }
 
-  .soon-card{
-    padding:42px 24px;
-  }
+    .city-photo-index h2{
+      font-family:'Cormorant Garamond', serif;
+      font-size:22px;
+      font-weight:500;
+      color:#31476e;
+      margin-bottom:6px;
+    }
 
-  .soon-card h1{
-    font-size:34px;
-  }
+    .city-photo-index .sub{
+      font-family:'Caveat', cursive;
+      font-size:16px;
+      color:#8fa2bc;
+      margin-bottom:30px;
+    }
 
-  .soon-card p{
-    font-size:13px;
-  }
+    .city-mini-grid{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:16px;
+    }
 
-  .soon-card .ko{
-    font-size:12px;
-  }
-}
-</style>
+    .mini-city-card{
+      background:rgba(255,255,255,0.72);
+      border:1px solid rgba(49,71,110,0.15);
+      box-shadow:0 12px 28px rgba(49,71,110,0.07);
+      overflow:hidden;
+      transition:0.3s ease;
+    }
+
+    .mini-city-card:hover{
+      transform:translateY(-5px);
+      box-shadow:0 18px 40px rgba(49,71,110,0.13);
+    }
+
+    .mini-city-card img{
+      height:115px;
+      object-fit:cover;
+    }
+
+    .mini-city-card span{
+      display:block;
+      padding:12px 8px;
+      font-size:12px;
+      letter-spacing:1.4px;
+      color:#31476e;
+      background:rgba(255,255,255,0.82);
+    }
+
+    /* CITY DETAIL */
+
+    .city-details{
+      width:min(1120px,90%);
+      margin:0 auto 90px;
+    }
+
+    .city-detail{
+      padding:46px 0;
+      border-top:1px solid rgba(49,71,110,0.16);
+      scroll-margin-top:40px;
+    }
+
+    .city-detail h2{
+      font-family:'Cormorant Garamond', serif;
+      font-size:24px;
+      font-weight:500;
+      color:#31476e;
+      margin-bottom:8px;
+    }
+
+    .city-detail p{
+      font-size:13px;
+      line-height:1.9;
+      color:#5b6575;
+      max-width:720px;
+      margin-bottom:22px;
+    }
+
+    .travel-blog-link{
+      display:inline-block;
+      margin-left:12px;
+      font-size:12px;
+      letter-spacing:1.5px;
+      text-transform:uppercase;
+      text-decoration:none;
+      color:#2f4668;
+      border-bottom:1px solid rgba(47,70,104,0.45);
+    }
+
+    .travel-blog-link:hover{
+      color:#8a6f3d;
+      border-bottom-color:#8a6f3d;
+    }
+
+    .photo-row{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:14px;
+    }
+
+    .photo-row img{
+      height:180px;
+      object-fit:cover;
+      border-radius:8px;
+    }
+
+    .footer-note{
+      width:min(700px,90%);
+      margin:0 auto 70px;
+      text-align:center;
+      font-size:11px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      color:#9aa3af;
+    }
+
+    .modal{
+      display:none;
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.85);
+      z-index:9999;
+
+      justify-content:center;
+      align-items:center;
+    }
+
+    .modal img{
+      max-width:65%;
+      max-height:75%;
+      border-radius:10px;
+      cursor:grab;
+      user-select:none;
+    }
+
+    .close-btn{
+      position:absolute;
+      top:24px;
+      right:32px;
+      color:#fff;
+      font-size:34px;
+      cursor:pointer;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:900px){
+
+      .featured-cities{
+        grid-template-columns:1fr;
+      }
+
+      .city-mini-grid{
+        grid-template-columns:repeat(2, 1fr);
+      }
+
+      .photo-row{
+        grid-template-columns:1fr 1fr;
+      }
+
+    }
+
+    @media(max-width:520px){
+     .back-wrapper{
+       margin: 0;
+      }
+
+     .back-btn{
+       font-size:8px;
+       letter-spacing:0.5px;
+       border-bottom:none;
+       padding-bottom:0;
+       margin-top: 10px;
+      }
+
+      .country-intro{
+        margin-top: 10px;
+        text-align:center;
+      }
+
+      .country-intro h1{
+        font-size:18px;
+        margin-bottom:2px;
+      }
+
+      .country-intro .handwriting{
+        display:none;    
+      }
+
+      .country-intro h2{
+        font-size:12px;
+      }
+
+      .country-intro p{
+        display:none;
+      } 
+      
+    .city-photo-index{
+      margin:0 auto 20px;
+      padding-top:8px;
+      text-align:center;
+    }
+
+    .city-photo-index h2{
+      font-size:14px;
+      margin-bottom:8px;
+    }
+
+   .city-mini-grid{
+     width:100%;
+     display:grid;
+     grid-template-columns:repeat(3, 1fr);
+     gap:3px;
+    }
+
+   .mini-city-card{
+     overflow:hidden;
+     background:white;
+    }
+
+   .mini-city-card img{
+     width:100%;
+     height:34px;
+     object-fit:cover;
+     display:block;
+    }
+
+   .mini-city-card span{
+     display:block;
+     padding:4px 2px;
+     font-size:7px;
+     letter-spacing:1px;
+     line-height:1.1;
+    }
+
+
+   .city-details{
+      width:84%;
+      margin:0 auto 50px;
+    }
+
+   .city-detail{
+      padding:28px 0;
+    }
+
+    .city-detail h2{
+      font-size:20px;
+      margin-bottom:10px;
+    }
+
+    .city-detail p{
+      font-size:12px;
+      line-height:1.7;
+      margin-bottom:16px;
+    }
+
+    .photo-row{
+      grid-template-columns:repeat(2, 1fr);
+      gap:10px;
+     }
+
+    .photo-row img{
+      width:100%;
+      height:150px;
+      display:block;
+      object-fit:cover;
+      border-radius:8px;
+     }
+
+
+     .footer-note{
+       display: none;
+      }
+
+    }
+  </style>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token":"..."}'></script>
+<!-- End Cloudflare Web Analytics -->
+
+<link rel="stylesheet" href="css/image-viewer.css">
+
 </head>
 
 <body>
 
+  <!-- BACK -->
   <div class="back-wrapper">
-    <a href="collect.html" class="back-btn">← Back to KOREA</a>
+    <a href="collect.html" class="back-btn">
+      ← Back to Travel Collection
+    </a>
   </div>
 
-  <section class="coming-soon">
-    <div class="soon-card">
+  <!-- INTRO -->
+  <section class="country-intro">
+    <h1>Korea</h1>
+ 
+   <div class="handwriting"></div>
 
-      <div class="soon-label">KOREA</div>
+   <h2>Memories of joy, sadness, and everything in between.</h2>
 
-      <h1>Coming Soon</h1>
+    <p>
+      It brings back a different moment—some filled with joy, others with quiet sadness, all of them becoming part of my story.
+    </p>
 
-      <p>This page is currently being prepared.<br>
-      It will be updated soon.</p>
+  </section>
 
-      <p class="ko">이 페이지는 아직 준비 중입니다.<br>
-      곧 업데이트될 예정입니다.</p>
+
+  <!-- CITY PHOTO INDEX -->
+  <section class="city-photo-index">
+
+    <h2>City Photo Index</h2>
+    <div class="sub">small windows into places I have walked through</div>
+
+    <div class="city-mini-grid">
+
+      <a href="#suwon" class="mini-city-card">
+        <img src="Images/korea/suwon.jpg" alt="Suwon" loading="lazy">
+        <span>Suwon</span>
+      </a>
+
+      <a href="#yangyang" class="mini-city-card">
+        <img src="Images/korea/yang.jpg" alt="Yangyang" loading="lazy">
+        <span>Yangyang</span>
+      </a>
+
+      <a href="#kyoungju" class="mini-city-card">
+        <img src="Images/korea/kyoungju.jpg" alt="Kyoungju" loading="lazy">
+        <span>Kyoungju</span>
+      </a>
+
+      <a href="#chuncheon" class="mini-city-card">
+        <img src="Images/korea/chuncheon.jpg" alt="Chuncheon" loading="lazy">
+        <span>Chuncheon</span>
+      </a>
+
+      <a href="#namhae" class="mini-city-card">
+        <img src="Images/korea/nam1.jpg" alt="Namhae" loading="lazy">
+        <span>Namhae</span>
+      </a>
+
+      <a href="#busan" class="mini-city-card">
+        <img src="Images/korea/busan10.jpg" alt="Busan" loading="lazy">
+        <span>Busan</span>
+      </a>
+
+      <a href="#pyeongchang" class="mini-city-card">
+        <img src="Images/korea/pyoung1.jpg" alt="Pyoungchang" loading="lazy">
+        <span>Pyoungchang</span>
+      </a>
+
+      <a href="#samcheok" class="mini-city-card">
+        <img src="Images/korea/sam29.jpg" alt="Samcheok" loading="lazy">
+        <span>Samcheok</span>
+      </a>
+
+      <a href="#uleungdo" class="mini-city-card">
+        <img src="Images/korea/ul1.jpg" alt="Uleungdo" loading="lazy">
+        <span>Uleungdo</span>
+      </a>
+
+      <a href="#jeju" class="mini-city-card">
+        <img src="Images/korea/jeju.jpg" alt="Jeju Island" loading="lazy">
+        <span>Jeju Island</span>
+      </a>
+
+      <a href="#mungyoung" class="mini-city-card">
+        <img src="Images/korea/mun1.jpg" alt="Mungyoung" loading="lazy">
+        <span>Mungyoung</span>
+      </a>
+
+      <a href="#sogcho" class="mini-city-card">
+        <img src="Images/korea/sogcho1.jpg" alt="Sogcho" loading="lazy">
+        <span>Sogcho</span>
+      </a>
+
+      <a href="#jeongsun" class="mini-city-card">
+        <img src="Images/korea/jeong1.jpg" alt="Jeongsun" loading="lazy">
+        <span>Jeongsun</span>
+      </a>
+
+      <a href="#jinbu" class="mini-city-card">
+        <img src="Images/korea/jinbu8.jpg" alt="Jinbu" loading="lazy">
+        <span>Jinbu</span>
+      </a>
+
+      <a href="#incheon" class="mini-city-card">
+        <img src="Images/korea/incheon.jpg" alt="Incheon" loading="lazy">
+        <span>Incheon</span>
+      </a>
 
     </div>
+
   </section>
+
+  <!-- CITY DETAILS -->
+  <section class="city-details">
+
+    <section id="suwon" class="city-detail">
+      <h2>Nagasaki</h2>
+      <p class="place-desc">
+        <a href="" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+        <img src="Images/korea/suwon.jpg" alt="Suwon" loading="lazy">
+        <img src="Images/korea/suwon.jpg" alt="Suwon" loading="lazy">
+        <img src="Images/korea/suwon.jpg" alt="Suwon" loading="lazy">
+        <img src="Images/korea/suwon.jpg" alt="Suwon" loading="lazy">
+        <img src="Images/korea/suwon.jpg" alt="Suwon" loading="lazy">
+        <img src="Images/korea/suwon.jpg" alt="Suwon" loading="lazy">
+
+      </div>
+    </section>
+
+    
+    <section id="yangyang" class="city-detail">
+      <h2>Yangyang</h2>
+      <p class="place-desc">
+        <a href="" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+
+      <div class="photo-row">
+        <img src="Images/korea/yang2.jpg" alt="Yangyang" loading="lazy">
+        <img src="Images/korea/yang3.jpg" alt="Yangyang" loading="lazy">
+        <img src="Images/korea/yang4.jpg" alt="Yangyang" loading="lazy">
+        <img src="Images/korea/yang5.jpg" alt="Yangyang" loading="lazy">
+        <img src="Images/korea/yang6.jpg" alt="Yangyang" loading="lazy">
+        <img src="Images/korea/yang7.jpg" alt="Yangyang" loading="lazy">
+        <img src="Images/korea/yang9.jpg" alt="Yangyang" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="" class="city-detail">
+      <h2>Gyeomgju</h2>
+      <p class="place-desc">
+        <a href="" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+
+      <div class="photo-row">
+        <img src="Images/korea/geong1.jpg" alt="Gyeongju" loading="lazy">
+        <img src="Images/korea/ky1.jpg" alt="Gyeongju" loading="lazy">
+        <img src="Images/korea/ky2.jpg" alt="Gyeongju" loading="lazy">
+        <img src="Images/korea/ky3.jpg" alt="Gyeongju" loading="lazy">
+        <img src="Images/korea/ky4.jpg" alt="Gyeongju" loading="lazy">
+        <img src="Images/korea/ky5.jpg" alt="Gyeongju" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="chuncheon" class="city-detail">
+      <h2>Chuncheon</h2>
+       <p class="place-desc">
+        <a href="" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+
+      <div class="photo-row">
+        <img src="Images/korea/chun2.jpg" alt="Chuncheon" loading="lazy">
+        <img src="Images/korea/chun12.jpg" alt="Chuncheon" loading="lazy">
+        <img src="Images/korea/chun11.jpg" alt="Chuncheon" loading="lazy">
+        <img src="Images/korea/chun6.jpg" alt="Chuncheon" loading="lazy">
+        <img src="Images/korea/chun7.jpg" alt="Chuncheon" loading="lazy">
+        <img src="Images/korea/chun9.jpg" alt="Chuncheon" loading="lazy">
+
+
+      </div>
+    </section>
+
+    <section id="gapyeong" class="city-detail">
+      <h2>Gapyeong</h2>
+      <p class="place-desc">
+        <a href="" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+
+      <div class="photo-row">
+        <img src="Images/korea/ga5.jpg" alt="Chuncheon" loading="lazy">
+        <img src="Images/korea/ga6.jpg" alt="Chuncheon" loading="lazy">
+        <img src="Images/korea/ga1.jpg" alt="Chuncheon" loading="lazy">
+        <img src="Images/korea/ga2.jpg" alt="Chuncheon" loading="lazy">
+        <img src="Images/korea/ga3.jpg" alt="Chuncheon" loading="lazy">
+        <img src="Images/korea/ga4.jpg" alt="Chuncheon" loading="lazy">
+        <img src="Images/korea/ga10.jpg" alt="Chuncheon" loading="lazy">
+        <img src="Images/korea/ga11.jpg" alt="Chuncheon" loading="lazy">
+
+
+      </div>
+    </section>
+
+    <section id="mungyeong" class="city-detail">
+      <h2>Mungyeong</h2>
+       <p class="place-desc">
+        <a href="" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+       </p>
+      <div class="photo-row">
+        <img src="Images/korea/mun1.jpg" alt="Mungyeong" loading="lazy">
+        <img src="Images/korea/mun2.jpg" alt="Mungyeong" loading="lazy">
+        <img src="Images/korea/mun1.jpg" alt="Mungyeong" loading="lazy">
+        <img src="Images/korea/mun2.jpg" alt="Mungyeong" loading="lazy">
+        <img src="Images/korea/mun1.jpg" alt="Mungyeong" loading="lazy">
+        <img src="Images/korea/mun2.jpg" alt="Mungyeong" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="jeongsun" class="city-detail">
+      <h2>Jeongsun</h2>
+      <p class="place-desc">
+         <a href="" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+
+      <div class="photo-row">
+        <img src="Images/korea/jeong1.jpg" alt="Jeongsun" loading="lazy">
+        <img src="Images/korea/jeong4.jpg" alt="Jeongsun" loading="lazy">
+        <img src="Images/korea/jeong2.jpg" alt="Jeongsun" loading="lazy">
+        <img src="Images/korea/jeong3.jpg" alt="Jeongsun" loading="lazy">
+        <img src="Images/korea/jeong5.jpg" alt="Jeongsun" loading="lazy">
+        <img src="Images/korea/jeong6.jpg" alt="Jeongsun" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="jinbu" class="city-detail">
+      <h2>Jinbu</h2>
+      <p class="place-desc">
+        <a href="" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+     </p>
+      <div class="photo-row">
+        <img src="Images/korea/jinbu6.jpg" alt="Jinbu" loading="lazy">
+        <img src="Images/korea/jinbu8.jpg" alt="Jinbu" loading="lazy">
+        <img src="Images/korea/jinbu9.jpg" alt="Jinbu" loading="lazy">
+        <img src="Images/korea/jinbu4.jpg" alt="Jinbu" loading="lazy">
+        <img src="Images/korea/jinbu10.jpg" alt="Jinbu" loading="lazy">
+        <img src="Images/korea/jinbu11.jpg" alt="Jinbu" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="namhae" class="city-detail">
+      <h2>Namhae</h2>
+      <p class="place-desc">
+        <a href="" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+     </p>
+      <div class="photo-row">
+        <img src="Images/korea/nam1.jpg" alt="Namhae" loading="lazy">
+        <img src="Images/korea/nam2.jpg" alt="Namhae" loading="lazy">
+        <img src="Images/korea/nam3.jpg" alt="Namhae" loading="lazy">
+        <img src="Images/korea/nam4.jpg" alt="Namhae" loading="lazy">
+        <img src="Images/korea/nam5.jpg" alt="Namhae" loading="lazy">
+        <img src="Images/korea/nam7.jpg" alt="Namhae" loading="lazy">
+        <img src="Images/korea/nam8.jpg" alt="Namhae" loading="lazy">
+        <img src="Images/korea/nam9.jpg" alt="Namhae" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="mookho" class="city-detail">
+      <h2>Mookho</h2>
+      <p class="place-desc">
+        <a href="" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+     </p>
+
+      <div class="photo-row">
+        <img src="Images/korea/mook1.jpg" alt="Mookho" loading="lazy">
+        <img src="Images/korea/mook3.jpg" alt="Mookho" loading="lazy">
+        <img src="Images/korea/mook4.jpg" alt="Mookho" loading="lazy">
+        <img src="Images/korea/mook6.jpg" alt="Mookho" loading="lazy">
+        <img src="Images/korea/mook7.jpg" alt="Mookho" loading="lazy">
+        <img src="Images/korea/mook10.jpg" alt="Mookho" loading="lazy">
+
+
+      </div>
+    </section>
+
+    <section id="akita" class="city-detail">
+      <h2>Akita</h2>
+      <p class="place-desc">
+        <a href="akita.html" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+        <img src="Images/japan/akita.jpg" alt="Akita" loading="lazy">
+        <img src="Images/japan/akita1.jpg" alt="Akita" loading="lazy">
+        <img src="Images/japan/akita6.jpg" alt="Akita" loading="lazy">
+        <img src="Images/japan/akita4.jpg" alt="Akita" loading="lazy">
+        <img src="Images/japan/akita5.jpg" alt="Akita" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="jeju" class="city-detail">
+      <h2>Jeju</h2>
+      <p class="place-desc">
+        <a href="" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+        <img src="Images/korea/jeju.jpg" alt="Jeju" loading="lazy">
+        <img src="Images/korea/jeju1.jpg" alt="Jeju" loading="lazy">
+        <img src="Images/korea/jeju3.jpg" alt="Jeju" loading="lazy">
+        <img src="Images/korea/jeju6.jpg" alt="Jeju" loading="lazy">
+        <img src="Images/korea/jeju8.jpg" alt="Jeju" loading="lazy">
+        <img src="Images/korea/jeju9.png" alt="Jeju" loading="lazy">
+        <img src="Images/korea/hae1.jpg" alt="Jeju" loading="lazy">
+        <img src="Images/korea/hae3.jpg" alt="Jeju" loading="lazy">
+        <img src="Images/korea/hae8.jpg" alt="Jeju" loading="lazy">
+        <img src="Images/korea/hae10.jpg" alt="Jeju" loading="lazy">
+
+      </div>
+    </section>
+
+
+    <section id="pyeongchang" class="city-detail">
+      <h2>Pyeongchang</h2>
+      <p class="place-desc">
+        <a href="" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+        <img src="Images/korea/pyung1.jpg" alt="Pyeongchang" loading="lazy">
+        <img src="Images/korea/pyung2.jpg" alt="Pyeongchang" loading="lazy">
+        <img src="Images/korea/pyung3.jpg" alt="Pyeongchang" loading="lazy">
+        <img src="Images/korea/pyung4.jpg" alt="Pyeongchang" loading="lazy">
+        <img src="Images/korea/pyung5.jpg" alt="Pyeongchang" loading="lazy">
+      </div>
+    </section>
+
+    <section id="busan" class="city-detail">
+      <h2>Busan</h2>
+      <p class="place-desc">
+        <a href="" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+         <img src="Images/korea/busan1.jpg" alt="Busan" loading="lazy">
+         <img src="Images/korea/busan3.jpg" alt="Busan" loading="lazy">
+         <img src="Images/korea/busan4.jpg" alt="Busan" loading="lazy">
+         <img src="Images/korea/busan5.jpg" alt="Busan" loading="lazy">
+         <img src="Images/korea/busan8.jpg" alt="Busan" loading="lazy">
+         <img src="Images/korea/busan10.jpg" alt="Busan" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="uleungdo" class="city-detail">
+      <h2>Uleungdo</h2>
+      <p class="place-desc">
+        <a href="" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+         <img src="Images/korea/ul2.jpg" alt="Uleungdo" loading="lazy">
+         <img src="Images/korea/ul3.jpg" alt="Uleungdo" loading="lazy">
+         <img src="Images/korea/ul6.jpg" alt="Uleungdo" loading="lazy">
+         <img src="Images/korea/ul7.jpg" alt="Uleungdo" loading="lazy">
+         <img src="Images/korea/ul8.jpg" alt="Uleungdo" loading="lazy">
+         <img src="Images/korea/ul9.jpg" alt="Uleungdo" loading="lazy">
+         <img src="Images/korea/ul5.jpg" alt="Uleungdo" loading="lazy">
+         <img src="Images/korea/ul10.jpg" alt="Uleungdo" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="samcheok" class="city-detail">
+      <h2>Samcheok</h2>
+      <p class="place-desc">
+        <a href="" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+        <img src="Images/korea/sam28.jpg" alt="Samcheok" loading="lazy">
+        <img src="Images/korea/sam29.jpg" alt="Samcheok" loading="lazy">
+        <img src="Images/korea/sam26.jpg" alt="Samcheok" loading="lazy">
+        <img src="Images/korea/sam24.jpg" alt="Samcheok" loading="lazy">
+        <img src="Images/korea/sam11.jpg" alt="Samcheok" loading="lazy">
+        <img src="Images/korea/sam15.jpg" alt="Samcheok" loading="lazy">
+        <img src="Images/korea/sam16.jpg" alt="Samcheok" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="jangho" class="city-detail">
+      <h2>Jangho</h2>
+      <p class="place-desc">
+        <a href="" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+        <img src="Images/korea/jangho8.jpg" alt="Jangho" loading="lazy">
+        <img src="Images/korea/jangho5.jpg" alt="Jangho" loading="lazy">
+        <img src="Images/korea/jangho6.jpg" alt="Jangho" loading="lazy">
+        <img src="Images/korea/jangho2.jpg" alt="Jangho" loading="lazy">
+        <img src="Images/korea/jangho3.jpg" alt="Jangho" loading="lazy">
+        <img src="Images/korea/jangho9.jpg" alt="Jangho" loading="lazy">
+
+      </div>
+    </section>
+
+    <section id="solbeach" class="city-detail">
+      <h2>Sol Beach</h2>
+      <p class="place-desc">
+        <a href="" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+        <img src="Images/korea/sol10.jpg" alt="Sol Beach" loading="lazy">
+        <img src="Images/korea/sol6.jpg" alt="Sol Beach" loading="lazy">
+        <img src="Images/korea/sol5.jpg" alt="Sol Beach" loading="lazy">
+        <img src="Images/korea/sol4.jpg" alt="Sol Beach" loading="lazy">
+        <img src="Images/korea/sol9.jpg" alt="Sol Beach" loading="lazy">
+        <img src="Images/korea/sol7.jpg" alt="Sol Beach" loading="lazy">
+        <img src="Images/korea/sol12.jpg" alt="Sol Beach" loading="lazy">
+        <img src="Images/korea/sol14.jpg" alt="Sol Beach" loading="lazy">
+        <img src="Images/korea/sol17.jpg" alt="Sol Beach" loading="lazy">
+        <img src="Images/korea/sol18.jpg" alt="Sol Beach" loading="lazy">
+        <img src="Images/korea/sol22.jpg" alt="Sol Beach" loading="lazy">
+        <img src="Images/korea/sol20.jpg" alt="Sol Beach" loading="lazy">
+        <img src="Images/korea/sol21.jpg" alt="Sol Beach" loading="lazy">
+        <img src="Images/korea/sol23.jpg" alt="Sol Beach" loading="lazy">
+
+
+      </div>
+    </section>
+
+    <section id="micheongol" class="city-detail">
+      <h2>Micheongol</h2>
+      <p class="place-desc">
+        <a href="" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+         <img src="Images/korea/yangmi2.jpg" alt="Micheongol" loading="lazy">
+         <img src="Images/korea/yangmi3.jpg" alt="Micheongol" loading="lazy">
+         <img src="Images/korea/yangmi5.jpg" alt="Micheongol" loading="lazy">
+         <img src="Images/korea/yangmi4.jpg" alt="Micheongol" loading="lazy">
+         <img src="Images/korea/yangmi1.jpg" alt="Micheongol" loading="lazy">
+         <img src="Images/korea/yang9.jpg" alt="Micheongol" loading="lazy">
+
+      </div>
+
+    </section>
+
+    <section id="incheon" class="city-detail">
+      <h2>Incheon</h2>
+      <p class="place-desc">
+        <a href="" class="travel-blog-link">
+           Read Travel Blog
+       </a>
+      </p>
+      <div class="photo-row">
+         <img src="Images/korea/in1.jpg" alt="Incheon" loading="lazy">
+         <img src="Images/korea/in3.jpg" alt="Incheon" loading="lazy">
+         <img src="Images/korea/in4.jpg" alt="Incheon" loading="lazy">
+         <img src="Images/korea/in5.jpg" alt="Incheon" loading="lazy">
+         <img src="Images/korea/in6.jpg" alt="Incheon" loading="lazy">
+         <img src="Images/korea/in2.jpg" alt="Incheon" loading="lazy">
+         <img src="Images/korea/in7.jpg" alt="Incheon" loading="lazy">
+
+      </div>
+    </section>
+    
+  </section>
+
+<div class="footer-note">
+    Wandering with Steph · Korea Archive
+</div>
+
+
+
+<div id="modal" class="modal">
+  <button id="modal-prev" class="modal-nav prev">‹</button>
+  <span id="close-btn" class="close-btn">&times;</span>
+  <img id="modal-img" src="" alt="">
+  <button id="modal-next" class="modal-nav next">›</button>
+</div>
+
+<script src="js/image-viewer.js"></script>
 
 </body>
 </html>
