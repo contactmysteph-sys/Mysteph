@@ -301,6 +301,16 @@
       font-style:italic;
     }
     
+    .secret-badge{
+     display:inline-block;
+     margin-left:8px;
+     padding:2px 8px;
+     border-radius:20px;
+     background:#ececec;
+     font-size:11px;
+     color:#666;
+    }
+
     @media (max-width:768px){
 
     html,
@@ -619,27 +629,28 @@
       const date = new Date(note.created_at).toLocaleDateString();
 
       item.innerHTML = `
-         <strong>${escapeHTML(note.name)}</strong>
+        <strong>${escapeHTML(note.name)}</strong>
+        ${note.secret ? '<span class="secret-badge">🔒 Secret</span>' : ''}
 
-         ${
+        ${
           note.secret
-          ? `<p class="secret-note">🔒 Private note</p>`
-          : `<p>${escapeHTML(note.message)}</p>`
+            ? `<p class="secret-note">🔒 Private note</p>`
+            : `<p>${escapeHTML(note.message)}</p>`
         }
 
         <span class="note-date">${date}</span>
 
-        ${
+       ${
           note.reply
-          ? `
+           ? `
             <div class="public-reply">
-             <span>Stephanie replied</span>
-             <p>${escapeHTML(note.reply)}</p>
-            </div>
+              <span>Stephanie replied</span>
+              <p>${escapeHTML(note.reply)}</p>
+           </div>
           `
-        : ''
-      }
-   `;
+          : ''
+        }
+     `;
 
       notesList.appendChild(item);
     });
