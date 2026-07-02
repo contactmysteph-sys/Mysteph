@@ -24,14 +24,13 @@ function resetImage(){
 
 function openImage(img){
   const group =
-    const group =
     img.closest('[data-slider]')
     || img.closest('.library-card')
     || img.closest('.city-detail, .place-card, .restaurant-card, .gallery-section, .detail-section')
     || document;
 
   currentImages = Array.from(
-    group.querySelectorAll('.zoomable, .photo-grid img, .photo-row img, .diary-gallery img')
+    group.querySelectorAll('img.zoomable')
   );
 
   currentIndex = currentImages.indexOf(img);
@@ -62,7 +61,7 @@ function showImage(index){
 }
 
 document.addEventListener('click', (e) => {
-  if(e.target.matches('.zoomable, .photo-grid img, .photo-row img, .diary-gallery img')){
+  if(e.target.matches('img.zoomable')){
     openImage(e.target);
   }
 });
