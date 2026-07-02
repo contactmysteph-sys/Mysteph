@@ -23,7 +23,6 @@ function resetImage(){
 
 function openImage(img){
   const group =
-    const group =
     img.closest('[data-slider]')
     || img.closest('.library-card')
     || img.closest('.city-detail, .place-card, .restaurant-card, .gallery-section, .detail-section')
