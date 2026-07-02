@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,11 +31,9 @@
       width:100%;
       height:155px;
       padding:32px 10px 20px;
-
       background:
         linear-gradient(rgba(255,255,255,0.58), rgba(255,255,255,0.82)),
-        url("Images/healing/lib1.jpg");
-
+        url("Images/library/bookshop-hero.jpg");
       background-size:cover;
       background-position:center 45%;
       text-align:center;
@@ -120,14 +118,113 @@
     }
 
     /* =========================
+       BOOKSHOP CARDS
+    ========================== */
+    .library-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:20px;
+      margin-bottom:65px;
+    }
+
+    .library-card{
+      background:rgba(255,255,255,0.84);
+      border:1px solid rgba(92,76,56,0.14);
+      box-shadow:0 14px 35px rgba(92,76,56,0.07);
+      overflow:hidden;
+      transition:0.3s ease;
+    }
+
+    .library-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 20px 45px rgba(92,76,56,0.12);
+    }
+
+    .book-slider{
+      position:relative;
+      height:230px;
+      overflow:hidden;
+      background:#e7e1d7;
+    }
+
+    .book-slider img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:none;
+    }
+
+    .book-slider img.active{
+      display:block;
+    }
+
+    .slide-btn{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      width:30px;
+      height:30px;
+      border:none;
+      border-radius:50%;
+      background:rgba(255,255,255,0.72);
+      color:#3f4d3a;
+      font-size:18px;
+      cursor:pointer;
+    }
+
+    .slide-btn.prev{
+      left:10px;
+    }
+
+    .slide-btn.next{
+      right:10px;
+    }
+
+    .slide-count{
+      position:absolute;
+      right:10px;
+      bottom:10px;
+      padding:4px 8px;
+      border-radius:20px;
+      background:rgba(255,255,255,0.72);
+      color:#7b6a55;
+      font-size:10px;
+      letter-spacing:1px;
+    }
+
+    .library-card-content{
+      padding:18px;
+    }
+
+    .library-card-content span{
+      font-size:11px;
+      letter-spacing:1.4px;
+      text-transform:uppercase;
+      color:#7b6a55;
+    }
+
+    .library-card-content h3{
+      font-family:Georgia, serif;
+      font-size:16px;
+      font-weight:400;
+      color:#3f4d3a;
+      margin:10px 0;
+    }
+
+    .library-card-content p{
+      font-size:13px;
+      line-height:1.6;
+      color:#6f7167;
+      letter-spacing:0.6px;
+    }
+
+    /* =========================
        FEATURED
     ========================== */
     .featured{
       display:grid;
       grid-template-columns:1.05fr 0.95fr;
-      gap:0;
       align-items:center;
-
       margin-bottom:85px;
       background:rgba(255,255,255,0.78);
       border:1px solid rgba(92,76,56,0.14);
@@ -168,94 +265,6 @@
       margin-bottom:8px;
     }
 
-    .read-link{
-      font-size:11px;
-      letter-spacing:3px;
-      text-transform:uppercase;
-      color:#3f4d3a;
-      border-bottom:1px solid #3f4d3a;
-      padding-bottom:4px;
-    }
-
-    /* =========================
-       SECTION TITLE
-    ========================== */
-    .section-title{
-      text-align:center;
-      margin-bottom:35px;
-    }
-
-    .section-title span{
-      font-size:14px;
-      letter-spacing:5px;
-      text-transform:uppercase;
-      color:#7b6a55;
-    }
-
-    .section-title h2{
-      font-family:Georgia, serif;
-      font-size:32px;
-      font-weight:400;
-      color:#3f4d3a;
-      margin-top:12px;
-    }
-
-    /* =========================
-       LIBRARY CARDS
-    ========================== */
-    .library-grid{
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0, 1fr));
-      gap:20px;
-      margin-bottom:60px;
-    }
-
-    .library-card{
-      background:rgba(255,255,255,0.84);
-      border:1px solid rgba(92,76,56,0.14);
-      box-shadow:0 14px 35px rgba(92,76,56,0.07);
-      overflow:hidden;
-      transition:0.3s ease;
-    }
-
-    .library-card:hover{
-      transform:translateY(-6px);
-      box-shadow:0 20px 45px rgba(92,76,56,0.12);
-    }
-
-    .library-card img{
-      width:100%;
-      height:220px;
-      object-fit:cover;
-      display:block;
-    }
-
-    .library-card-content{
-      padding:18px;
-    }
-
-    .library-card-content span{
-      font-size:11px;
-      letter-spacing:1.4px;
-      text-transform:uppercase;
-      color:#7b6a55;
-    }
-
-    .library-card-content h3{
-      font-family:Georgia, serif;
-      font-size:16px;
-      font-weight:400;
-      color:#3f4d3a;
-      margin:10px 0;
-    }
-
-    .library-card-content p{
-      font-size:13px;
-      line-height:1.6;
-      color:#6f7167;
-      letter-spacing:0.6px;
-    }
-
     /* =========================
        NOTE
     ========================== */
@@ -280,7 +289,6 @@
        RESPONSIVE
     ========================== */
     @media(max-width:900px){
-
       body{
         display:flex;
         flex-direction:column;
@@ -324,9 +332,24 @@
         display:none;
       }
 
-      .library-card img{
-        height:170px;
-        object-fit:cover;
+      .intro{
+        padding:22px 10px 30px;
+      }
+
+      .intro h2{
+        font-size:16px;
+      }
+
+      .intro p{
+        font-size:10px;
+      }
+
+      .library-grid{
+        grid-template-columns:1fr;
+      }
+
+      .book-slider{
+        height:190px;
       }
 
       .featured{
@@ -335,7 +358,6 @@
 
       .featured-text span{
         font-size:10px;
-        margin-top:0;
       }
 
       .featured-text h2{
@@ -346,32 +368,11 @@
         font-size:10px;
       }
 
-      .read-link{
-        display:none;
-      }
-
-      .library-grid{
-        grid-template-columns:1fr;
-      }
-
-      .intro h2{
-        font-size:16px;
-        font-weight:500;
-        color:#3f4d3a;
-        margin-bottom:14px;
-      }
-
       .library-note p{
-        max-width:700px;
-        margin:0 auto;
         font-size:8px;
-        line-height:1.5;
-        color:#3f4d3a;
       }
-
     }
   </style>
-
 </head>
 
 <body>
@@ -379,9 +380,7 @@
   <!-- HERO -->
   <section class="library-hero">
     <span>Bookshop Corners</span>
-
     <h1>Quiet Shelves & Little Escapes</h1>
-
     <p>
       Bookshops I wandered into, shelves that made me pause,
       and quiet corners where time seemed to slow down.
@@ -390,54 +389,84 @@
 
   <!-- BACK BUTTON -->
   <div class="back-wrapper">
-    <a href="healing.html" class="back-btn">
-      Back to Healing
-    </a>
+    <a href="healing.html" class="back-btn">Back to Healing</a>
   </div>
 
   <!-- MAIN -->
   <main class="library-wrapper">
 
-    <!-- CARDS -->
-    <section>
+    <!-- INTRO -->
+    <section class="intro">
+      <h2>A small archive of bookshops</h2>
+      <p>
+        Bookshops and libraries I found in Korea, Malaysia, and other cities abroad.
+        Not many photos, but enough to remember the quiet feeling of each place.
+      </p>
+    </section>
 
+    <!-- BOOKSHOP CARDS -->
+    <section>
       <div class="library-grid">
 
+        <!-- KOREA -->
         <article class="library-card">
-          <img src="Images/healing/lib2.jpg" alt="Bookshop memory">
+          <div class="book-slider" data-slider>
+            <img src="Images/library/korea01.jpg" alt="Korea bookshop 1" class="active">
+            <img src="Images/library/korea02.jpg" alt="Korea bookshop 2">
+            <img src="Images/library/korea03.jpg" alt="Korea bookshop 3">
+            <button class="slide-btn prev" type="button" onclick="moveSlide(this, -1)">‹</button>
+            <button class="slide-btn next" type="button" onclick="moveSlide(this, 1)">›</button>
+            <span class="slide-count">1 / 3</span>
+          </div>
 
           <div class="library-card-content">
-            <span>Bookshop</span>
-            <h3>A quiet place to wander</h3>
+            <span>Korea</span>
+            <h3>Bookshops from home</h3>
             <p>
-              서점은 꼭 책을 사지 않아도 좋은 곳이다.<br>
-              천천히 걷고, 표지를 보고, 문장 하나에 잠시 멈추는 시간.
+              한국에서 만난 서점들.<br>
+              익숙한 언어와 책장 사이에서 마음이 편안해지는 순간들.
             </p>
           </div>
         </article>
 
+        <!-- MALAYSIA -->
         <article class="library-card">
-          <img src="Images/healing/lib3.jpg" alt="Bookshelf">
+          <div class="book-slider" data-slider>
+            <img src="Images/library/malaysia01.jpg" alt="Malaysia bookshop 1" class="active">
+            <img src="Images/library/malaysia02.jpg" alt="Malaysia bookshop 2">
+            <img src="Images/library/malaysia03.jpg" alt="Malaysia bookshop 3">
+            <button class="slide-btn prev" type="button" onclick="moveSlide(this, -1)">‹</button>
+            <button class="slide-btn next" type="button" onclick="moveSlide(this, 1)">›</button>
+            <span class="slide-count">1 / 3</span>
+          </div>
 
           <div class="library-card-content">
-            <span>Shelves</span>
-            <h3>Between pages</h3>
+            <span>Malaysia</span>
+            <h3>Quiet shelves nearby</h3>
             <p>
-              책장 사이를 걸으면 마음이 조금 조용해진다.<br>
-              어쩌면 내가 좋아하는 건 책보다 그 공간의 공기일지도 모른다.
+              말레이시아에서 들른 서점들.<br>
+              덥고 분주한 하루 속에서 잠시 숨을 고르게 해준 공간.
             </p>
           </div>
         </article>
 
+        <!-- ABROAD -->
         <article class="library-card">
-          <img src="Images/healing/lib4.jpg" alt="Reading corner">
+          <div class="book-slider" data-slider>
+            <img src="Images/library/abroad01.jpg" alt="Bookshop abroad 1" class="active">
+            <img src="Images/library/abroad02.jpg" alt="Bookshop abroad 2">
+            <img src="Images/library/abroad03.jpg" alt="Bookshop abroad 3">
+            <button class="slide-btn prev" type="button" onclick="moveSlide(this, -1)">‹</button>
+            <button class="slide-btn next" type="button" onclick="moveSlide(this, 1)">›</button>
+            <span class="slide-count">1 / 3</span>
+          </div>
 
           <div class="library-card-content">
-            <span>Reading Corner</span>
-            <h3>Small moments of rest</h3>
+            <span>Abroad</span>
+            <h3>Bookshops in other cities</h3>
             <p>
-              낯선 도시에서 만난 작은 서점.<br>
-              잠시 머물렀을 뿐인데 오래 기억에 남는 곳들이 있다.
+              여행 중 우연히 만난 서점들.<br>
+              오래 머물지 않아도 이상하게 오래 기억나는 장소들.
             </p>
           </div>
         </article>
@@ -445,25 +474,13 @@
       </div>
     </section>
 
-    <!-- INTRO -->
-    <section class="intro">
-      <h2>A small archive of bookshops</h2>
-
-      <p>
-        This page is for bookshops, shelves, reading corners,
-        and the quiet feeling I find when I am surrounded by books.
-      </p>
-    </section>
-
     <!-- FEATURED -->
     <section class="featured">
-      <img src="Images/healing/lib5.jpg" alt="Bookshop">
+      <img src="Images/library/bookshop-hero.jpg" alt="Bookshop corner">
 
       <div class="featured-text">
-        <span>Featured Memory</span>
-
+        <span>Bookshop Note</span>
         <h2>A place where time slows down</h2>
-
         <p>
           Some places do not need to be famous.
           A few shelves, soft light, and a quiet afternoon are enough.
@@ -471,8 +488,6 @@
         <p>
           책이 많은 공간에 있으면 이상하게 마음이 천천히 가라앉는다.
         </p>
-
-        <a href="#" class="read-link"></a>
       </div>
     </section>
 
@@ -480,10 +495,26 @@
 
   <!-- NOTE -->
   <section class="library-note">
-    <p>
-      “A bookshop is a quiet door to somewhere else.”
-    </p>
+    <p>“A bookshop is a quiet door to somewhere else.”</p>
   </section>
+
+  <script>
+    function moveSlide(button, direction){
+      const slider = button.closest('[data-slider]');
+      const images = slider.querySelectorAll('img');
+      const count = slider.querySelector('.slide-count');
+
+      let currentIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
+      images[currentIndex].classList.remove('active');
+
+      let nextIndex = currentIndex + direction;
+      if(nextIndex < 0) nextIndex = images.length - 1;
+      if(nextIndex >= images.length) nextIndex = 0;
+
+      images[nextIndex].classList.add('active');
+      count.textContent = `${nextIndex + 1} / ${images.length}`;
+    }
+  </script>
 
 </body>
 </html>
