@@ -301,6 +301,29 @@
       cursor:pointer;
     }
 
+    .modal-nav{
+      position:fixed;
+      top:50%;
+      transform:translateY(-50%);
+      border:none;
+      background:rgba(255,255,255,0.8);
+      color:#111;
+      font-size:34px;
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      cursor:pointer;
+      z-index:10000;
+    }
+
+    .modal-nav.prev{
+      left:24px;
+    }
+
+    .modal-nav.next{
+      right:24px;
+    }
+
 
     /* =========================
        RESPONSIVE
@@ -389,15 +412,16 @@
         font-size:8px;
       }
     }
+
   </style>
+
+<link rel="stylesheet" href="css/image-viewer.css">
 </head>
 
 <!-- Cloudflare Web Analytics -->
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
         data-cf-beacon='{"token":"..."}'></script>
 <!-- End Cloudflare Web Analytics -->
-
-<link rel="stylesheet" href="css/image-viewer.css">
 
 <body>
 
@@ -433,9 +457,9 @@
         <!-- KOREA -->
         <article class="library-card">
           <div class="book-slider" data-slider>
-            <img src="Images/healing/lib1.jpg" alt="Korea bookshop 1" class="active">
-            <img src="Images/healing/lib2.jpg" alt="Korea bookshop 2">
-            <img src="Images/healing/lib3.jpg" alt="Korea bookshop 3">
+            <img src="Images/healing/lib1.jpg" alt="Korea bookshop 1" class="active zoomable">
+            <img src="Images/healing/lib2.jpg" alt="Korea bookshop 2" class="active zoomable">
+            <img src="Images/healing/lib3.jpg" alt="Korea bookshop 3" class="active zoomable">
             <button class="slide-btn prev" type="button" onclick="moveSlide(this, -1)">‹</button>
             <button class="slide-btn next" type="button" onclick="moveSlide(this, 1)">›</button>
           </div>
@@ -453,9 +477,9 @@
         <!-- MALAYSIA -->
         <article class="library-card">
           <div class="book-slider" data-slider>
-            <img src="Images/healing/lib12.jpg" alt="Malaysia bookshop 1" class="active">
-            <img src="Images/healing/lib13.jpg" alt="Malaysia bookshop 2">
-            <img src="Images/healing/lib14.jpg" alt="Malaysia bookshop 3">
+            <img src="Images/healing/lib12.jpg" alt="Malaysia bookshop 1" class="active zoomable">
+            <img src="Images/healing/lib13.jpg" alt="Malaysia bookshop 2" class="active zoomable">
+            <img src="Images/healing/lib14.jpg" alt="Malaysia bookshop 3" class="active zoomable">
             <button class="slide-btn prev" type="button" onclick="moveSlide(this, -1)">‹</button>
             <button class="slide-btn next" type="button" onclick="moveSlide(this, 1)">›</button>
           </div>
@@ -473,9 +497,9 @@
         <!-- ABROAD -->
         <article class="library-card">
           <div class="book-slider" data-slider>
-            <img src="Images/healing/lib.jpg" alt="Bookshop abroad 1" class="active">
-            <img src="Images/healing/lib10.jpg" alt="Bookshop abroad 2">
-            <img src="Images/healing/lib8.jpg" alt="Bookshop abroad 3">
+            <img src="Images/healing/lib.jpg" alt="Bookshop abroad 1" class="active zoomable">
+            <img src="Images/healing/lib10.jpg" alt="Bookshop abroad 2" class="active zoomable">
+            <img src="Images/healing/lib8.jpg" alt="Bookshop abroad 3" class="active zoomable">
             <button class="slide-btn prev" type="button" onclick="moveSlide(this, -1)">‹</button>
             <button class="slide-btn next" type="button" onclick="moveSlide(this, 1)">›</button>
           </div>
@@ -520,10 +544,9 @@
   </section>
 
   <script>
-    function moveSlide(button, direction){
+   function moveSlide(button, direction){
       const slider = button.closest('[data-slider]');
       const images = slider.querySelectorAll('img');
-      const count = slider.querySelector('.slide-count');
 
       let currentIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
       images[currentIndex].classList.remove('active');
@@ -533,7 +556,6 @@
       if(nextIndex >= images.length) nextIndex = 0;
 
       images[nextIndex].classList.add('active');
-      count.textContent = `${nextIndex + 1} / ${images.length}`;
     }
   </script>
 
