@@ -1,4 +1,3 @@
-
 const modal = document.getElementById('modal');
 const modalImg = document.getElementById('modal-img');
 const closeBtn = document.getElementById('close-btn');
