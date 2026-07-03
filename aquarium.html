@@ -168,24 +168,17 @@
       box-shadow:0 18px 50px rgba(49,71,110,0.08);
     }
 
-    .detail-top span{
-      font-size:10px;
-      letter-spacing:4px;
-      text-transform:uppercase;
-      color:#8a94a3;
-    }
-
     .detail-top h2{
       margin:8px 0 12px;
       font-family:'Cormorant Garamond', serif;
-      font-size:28px;
+      font-size:22px;
       font-weight:500;
       color:#31476E;
     }
 
     .detail-top p{
       max-width:760px;
-      font-size:12px;
+      font-size:16px;
       line-height:1.7;
       color:#566171;
       white-space:pre-line;
@@ -461,13 +454,6 @@
   </section>
 
   <section class="detail-section" id="journey-detail">
-    <div class="detail-top">
-      <span id="detail-label">Aquarium</span>
-      <h2 id="detail-title"></h2>
-      <p id="detail-desc"></p>
-    </div>
-
-    <div class="place-list" id="place-list"></div>
     <div class="photo-grid" id="photo-grid"></div>
     <p class="note" id="detail-note"></p>
   </section>
@@ -627,7 +613,6 @@
       const data = journeys[id];
       if(!data) return;
 
-      document.getElementById("detail-label").innerText = data.label || "Aquarium";
       document.getElementById("detail-title").innerText = data.title;
       document.getElementById("detail-desc").innerText = data.desc || "";
 
@@ -642,7 +627,7 @@
           </button>
         `).join("");
 
-      showPlace(id, 0, document.querySelector("#place-list button"));
+      showPlace(id, 0);
 
       document.querySelectorAll(".journey-card").forEach(card => {
         card.classList.remove("active");
@@ -661,11 +646,6 @@
 
       document.getElementById("detail-note").innerText = place.note || "";
 
-      document.querySelectorAll("#place-list button").forEach(btn => {
-        btn.classList.remove("active");
-      });
-
-      if(button) button.classList.add("active");
     }
 
     function openFromUrl(){
