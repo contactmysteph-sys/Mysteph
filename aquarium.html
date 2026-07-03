@@ -39,6 +39,8 @@
     img{
       width:100%;
       display:block;
+      -webkit-user-drag:none;
+      user-select:none;
     }
 
     .back-wrapper{
@@ -93,6 +95,8 @@
     }
 
     .journey-grid{
+      width:min(1200px,90%);
+      margin:0 auto 34px;
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:18px;
@@ -424,7 +428,7 @@
       </div>
     </button>
 
-    <button class="journey-card active" type="button" onclick="showJourney('curaumi', this)">
+    <button class="journey-card" type="button" onclick="showJourney('churaumi', this)">
       <img src="Images/healing/oki2.jpg" alt=" Churaumi Aquarium">
       <div class="journey-card-content">
         <span>Churaumi Aquarium</span>
@@ -432,7 +436,7 @@
       </div>
     </button>
 
-    <button class="journey-card active" type="button" onclick="showJourney('sumida', this)">
+    <button class="journey-card" type="button" onclick="showJourney('sumida', this)">
       <img src="Images/healing/sky1.jpg" alt=" Sumida Aquarium">
       <div class="journey-card-content">
         <span>Sumida Aquarium</span>
@@ -468,6 +472,7 @@
 
   <section class="detail-section" id="journey-detail">
     <div class="detail-top">
+      <span id="detail-label">Aquarium</span>
       <h2 id="detail-title"></h2>
       <p id="detail-desc"></p>
     </div>
@@ -632,7 +637,7 @@
       const data = journeys[id];
       if(!data) return;
 
-      document.getElementById("detail-label").innerText = data.label;
+      document.getElementById("detail-label").innerText = data.label || "Aquarium";
       document.getElementById("detail-title").innerText = data.title;
       document.getElementById("detail-desc").innerText = data.desc || "";
 
@@ -699,7 +704,7 @@
         return;
       }
 
-      showJourney("japan", document.querySelector(".journey-card"));
+      showJourney("oga", document.querySelector(".journey-card"));
     }
 
     openFromUrl();
@@ -713,6 +718,20 @@
   </div>
 
   <script src="js/image-viewer.js"></script>
+
+  <script>
+    document.addEventListener("contextmenu", function(e){
+      if(e.target.tagName === "IMG"){
+        e.preventDefault();
+      }
+    });
+
+    document.addEventListener("dragstart", function(e){
+      if(e.target.tagName === "IMG"){
+        e.preventDefault();
+      }
+    });
+  </script>
 
 </body>
 </html>
