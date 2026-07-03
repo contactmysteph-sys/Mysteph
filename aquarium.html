@@ -295,6 +295,58 @@
     
     }
 
+     .modal{
+      display:none;
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.85);
+      z-index:9999;
+
+      justify-content:center;
+      align-items:center;
+    }
+
+    .modal img{
+      max-width:65%;
+      max-height:75%;
+      border-radius:10px;
+      cursor:grab;
+      user-select:none;
+    }
+
+    .close-btn{
+      position:absolute;
+      top:24px;
+      right:32px;
+      color:#fff;
+      font-size:34px;
+      cursor:pointer;
+    }
+
+    .modal-nav{
+      position:fixed;
+      top:50%;
+      transform:translateY(-50%);
+      border:none;
+      background:rgba(255,255,255,0.8);
+      color:#111;
+      font-size:34px;
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      cursor:pointer;
+      z-index:10000;
+    }
+
+    .modal-nav.prev{
+      left:24px;
+    }
+
+    .modal-nav.next{
+      right:24px;
+    }
+
+
 
    @keyframes zoomIn {
      from {
