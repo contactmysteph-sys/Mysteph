@@ -177,52 +177,20 @@
       box-shadow:0 18px 50px rgba(49,71,110,0.08);
     }
 
-    .detail-top span{
-      font-size:10px;
-      letter-spacing:4px;
-      text-transform:uppercase;
-      color:#8a94a3;
-    }
-
     .detail-top h2{
       margin:8px 0 12px;
       font-family:'Cormorant Garamond', serif;
-      font-size:28px;
+      font-size:22px;
       font-weight:500;
       color:#31476E;
     }
 
     .detail-top p{
       max-width:760px;
-      font-size:12px;
+      font-size:14px;
       line-height:1.7;
       color:#566171;
       white-space:pre-line;
-    }
-
-    .place-list{
-      margin:26px 0;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-    }
-
-    .place-list button{
-      padding:8px 13px;
-      background:rgba(238,243,247,0.9);
-      border:1px solid rgba(49,71,110,0.12);
-      font-size:10px;
-      letter-spacing:1px;
-      color:#46566b;
-      cursor:pointer;
-      transition:0.25s ease;
-    }
-
-    .place-list button:hover,
-    .place-list button.active{
-      background:#31476E;
-      color:white;
-      border-color:#31476E;
     }
 
     .photo-grid{
@@ -357,11 +325,6 @@
         padding:20px 12px;
       }
 
-      .detail-top span{
-        font-size:9px;
-        letter-spacing:2px;
-      }
-
       .detail-top h2{
         margin:6px 0 8px;
         font-size:17px;
@@ -374,12 +337,6 @@
       .place-list{
         margin:18px 0;
         gap:8px;
-      }
-
-      .place-list button{
-        font-size:9px;
-        letter-spacing:1px;
-        padding:7px 10px;
       }
 
       .photo-grid{
@@ -421,7 +378,7 @@
 
   <section class="journey-grid">
     <button class="journey-card active" type="button" onclick="showJourney('oga', this)">
-      <img src="Images/healing/oga1.jpg" alt=" OGA Aquarium">
+      <img src="Images/healing/lana6.jpg" alt=" OGA Aquarium">
       <div class="journey-card-content">
         <span>OGA Aquarium</span>
         <h3>OGA</h3>
@@ -429,7 +386,7 @@
     </button>
 
     <button class="journey-card" type="button" onclick="showJourney('churaumi', this)">
-      <img src="Images/healing/okia2.jpg" alt=" Churaumi Aquarium">
+      <img src="Images/healing/lana6.jpg" alt=" Churaumi Aquarium">
       <div class="journey-card-content">
         <span>Churaumi Aquarium</span>
         <h3>OKINAWA</h3>
@@ -437,7 +394,7 @@
     </button>
 
     <button class="journey-card" type="button" onclick="showJourney('sumida', this)">
-      <img src="Images/healing/sky1.jpg" alt=" Sumida Aquarium">
+      <img src="Images/healing/lana6.jpg" alt=" Sumida Aquarium">
       <div class="journey-card-content">
         <span>Sumida Aquarium</span>
         <h3>TOKYO</h3>
@@ -453,7 +410,7 @@
     </button>
   
     <button class="journey-card" type="button" onclick="showJourney('sealife', this)">
-      <img src="Images/healing/sea9.jpg" alt="Sealife Aquarium">
+      <img src="Images/healing/lana6.jpg" alt="Sealife Aquarium">
       <div class="journey-card-content">
         <span>Sealife Aquarium</span>
         <h3>LONDON</h3>
@@ -461,7 +418,7 @@
     </button>
 
     <button class="journey-card" type="button" onclick="showJourney('langkawi', this)">
-      <img src="Images/healing/lana1.jpg" alt="Underwater World">
+      <img src="Images/healing/lana6.jpg" alt="Underwater World">
       <div class="journey-card-content">
         <span>Underwater World</span>
         <h3>LANGKAWI</h3>
@@ -472,7 +429,6 @@
 
   <section class="detail-section" id="journey-detail">
     <div class="detail-top">
-      <span id="detail-label">Aquarium</span>
       <h2 id="detail-title"></h2>
       <p id="detail-desc"></p>
     </div>
@@ -486,7 +442,7 @@
     const journeys = {
       oga: {
         title: "OGA Aquarium",
-        desc: "Oga, Japan",
+        desc: "OGA, Japan",
         places: [
           {
             name: "Oga",
@@ -511,7 +467,7 @@
 
       churaumi: {
         title: "Churaumi Aquarium",
-        desc: "Okinawa, Japan",
+        desc: "OKINAWA, Japan",
         places: [   
           {
             name: "Okinawa",
@@ -536,7 +492,7 @@
 
       sumida: {
         title: "Sumida Aquarium",
-        desc: "Tokyo, Japan",
+        desc: "TOKYO, Japan",
         places: [ 
           {
             name: "Tokyo",
@@ -562,7 +518,7 @@
       
       seattle: {
         title: "Seattle Aquarium",
-        desc: "Seattle, USA",
+        desc: "SEATTLE, USA",
         places: [
           {
             name: "Seattle",
@@ -587,7 +543,7 @@
 
       langkawi: {
         title: "Underwater World Aquarium",
-        desc: "Langkawi, Malaysia",
+        desc: "LANGKAWI, Malaysia",
         places: [
           {
             name: "Langkawi",
@@ -612,7 +568,7 @@
 
       sealife: {
         title: "Sealife Aquarium",
-        desc: "London, UK",
+        desc: "LONDON, UK",
         places: [
           {
             name: "London",
