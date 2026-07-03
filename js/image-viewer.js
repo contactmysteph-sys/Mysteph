@@ -125,3 +125,10 @@ document.addEventListener('mouseup', () => {
   isDragging = false;
   modalImg.style.cursor = 'grab';
 });
+
+
+document.addEventListener("contextmenu", function(e){
+  if(e.target.tagName === "IMG"){
+    e.preventDefault();
+  }
+});
