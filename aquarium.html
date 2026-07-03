@@ -637,24 +637,24 @@
     }
 
     function openFromUrl(){
+    
       const params = new URLSearchParams(window.location.search);
       const targetJourney = params.get("journey");
-      const targetPlace = params.get("place");
 
       if(targetJourney && journeys[targetJourney]){
         const journeyBtn = document.querySelector(
-          `.journey-card[onclick*="'${targetJourney}'"]`
+         `.journey-card[onclick*="'${targetJourney}'"]`
         );
 
         showJourney(targetJourney, journeyBtn);
-
+        return;
       }
 
-        return;
+      showJourney("oga", document.querySelector(".journey-card"));
     }
 
     openFromUrl();
-    
+
   </script>
 
   <div id="modal" class="modal">
