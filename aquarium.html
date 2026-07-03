@@ -609,51 +609,50 @@
       },
     };
 
-    function showJourney(id, button){
-        const data = journeys[id];
-        if(!data) return;
+  function showJourney(id, button){
+     const data = journeys[id];
+     if(!data) return;
 
-        document.getElementById("detail-title").innerText = data.title;
-        document.getElementById("detail-desc").innerText = data.desc || "";
+     document.getElementById("detail-title").innerText = data.title;
+     document.getElementById("detail-desc").innerText = data.desc || "";
 
-        showPlace(id, 0);
+     showPlace(id, 0);
 
-        document.querySelectorAll(".journey-card").forEach(card => {
-        card.classList.remove("active");
-      });
+     document.querySelectorAll(".journey-card").forEach(card => {
+       card.classList.remove("active");
+    });
 
-       if(button) button.classList.add("active");
-    }
-    
-    function showPlace(journeyId, placeIndex){
-       const place = journeys[journeyId].places[placeIndex];
-       const grid = document.getElementById("photo-grid");
+    if(button) button.classList.add("active");
+  }
 
-       grid.innerHTML = place.images.map(img => `
-         <img class="zoomable" src="${img}" alt="" loading="lazy" decoding="async">
-       `).join("");
+  function showPlace(journeyId, placeIndex){
+     const place = journeys[journeyId].places[placeIndex];
+     const grid = document.getElementById("photo-grid");
 
-       document.getElementById("detail-note").innerText = place.note || "";
-    }
+     grid.innerHTML = place.images.map(img => `
+        <img class="zoomable" src="${img}" alt="" loading="lazy" decoding="async">
+     `).join("");
 
-    function openFromUrl(){
-    
-      const params = new URLSearchParams(window.location.search);
-      const targetJourney = params.get("journey");
+     document.getElementById("detail-note").innerText = place.note || "";
+  }
 
-      if(targetJourney && journeys[targetJourney]){
+  function openFromUrl(){
+     const params = new URLSearchParams(window.location.search);
+     const targetJourney = params.get("journey");
+
+     if(targetJourney && journeys[targetJourney]){
         const journeyBtn = document.querySelector(
          `.journey-card[onclick*="'${targetJourney}'"]`
-        );
+      );
 
-        showJourney(targetJourney, journeyBtn);
-        return;
-      }
-
-      showJourney("oga", document.querySelector(".journey-card"));
+      showJourney(targetJourney, journeyBtn);
+      return;
     }
 
-    openFromUrl();
+    showJourney("oga", document.querySelector(".journey-card"));
+  }
+
+  openFromUrl();
 
   </script>
 
