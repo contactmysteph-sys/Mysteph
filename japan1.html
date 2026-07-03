@@ -308,6 +308,29 @@
       cursor:pointer;
     }
 
+    .modal-nav{
+      position:fixed;
+      top:50%;
+      transform:translateY(-50%);
+      border:none;
+      background:rgba(255,255,255,0.8);
+     color:#111;
+     font-size:34px;
+     width:44px;
+     height:44px;
+     border-radius:50%;
+     cursor:pointer;
+     z-index:10000;
+    }
+
+    .modal-nav.prev{
+     left:24px;
+    }
+
+    .modal-nav.next{
+      right:24px;
+    }
+
     /* MOBILE */
 
     @media(max-width:900px){
@@ -1181,8 +1204,6 @@
 <div class="footer-note">
     Wandering with Steph · Japan Archive
 </div>
-
-
 
 <div id="modal" class="modal">
   <button id="modal-prev" class="modal-nav prev">‹</button>
