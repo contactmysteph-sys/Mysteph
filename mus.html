@@ -1,147 +1,662 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bookshop | Coming Soon</title>
+  <title>Aquariums</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
 
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+  <link rel="stylesheet" href="css/image-viewer.css">
 
-body{
-  min-height:100vh;
-  background:
-    linear-gradient(
-      rgba(62, 58, 68, 0.94),
-      rgba(26, 26, 47, 0.94)
-    );
-  font-family:'Montserrat', sans-serif;
-  color:#d6d7da;
-}
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
 
-.back-wrapper{
-  width:min(1120px,90%);
-  margin:28px auto 0;
-}
+    body{
+      min-height:100vh;
+      background:
+        linear-gradient(rgba(246,250,250,0.88), rgba(246,250,250,0.9)),
+        url("Images/healing/lonm3.jpg");
+      background-size:cover;
+      background-position:center;
+      background-attachment:fixed;
+      font-family:'Montserrat', sans-serif;
+      color:#2d3e52;
+    }
 
-.back-btn{
-  display:inline-block;
-  font-size:11px;
-  letter-spacing:1px;
-  text-transform:uppercase;
-  color:#9699a3;
-  text-decoration:none;
-  transition:0.3s ease;
-}
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
 
-.back-btn:hover{
-  opacity:0.7;
-  transform:translateX(-4px);
-}
+    img{
+      width:100%;
+      display:block;
+    }
 
-.coming-soon{
-  min-height:calc(100vh - 70px);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:40px 24px;
-}
+    .back-wrapper{
+      width:min(1200px,90%);
+      margin:18px auto 0;
+    }
 
-.soon-card{
-  width:min(520px,92%);
-  padding:54px 34px;
-  border-radius:24px;
-  background:rgba(255,255,255,0.06);
-  border:1px solid rgba(255,255,255,0.08);
-  box-shadow:0 12px 35px rgba(0,0,0,0.12);
-  backdrop-filter:blur(8px);
-}
+    .back-home{
+      display:inline-block;
+      font-size:10px;
+      letter-spacing:1.3px;
+      text-transform:uppercase;
+      color:#31476E;
+      border-bottom:1px solid rgba(49,71,110,0.5);
+      padding-bottom:4px;
+    }
 
-.soon-label{
-  font-size:11px;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  color:#9da0aa;
-  margin-bottom:18px;
-}
+    .back-home:hover{
+      opacity:0.65;
+    }
 
-.soon-card h1{
-  font-family:'Caveat', cursive;
-  font-size:42px;
-  font-weight:500;
-  color:#d8d9dc;
-  margin-bottom:18px;
-}
+    .intro{
+      width:min(900px,90%);
+      margin:46px auto 34px;
+      text-align:center;
+    }
 
-.soon-card p{
-  font-size:14px;
-  line-height:1.8;
-  color:#b9bbc2;
-  margin-bottom:8px;
-}
+    .intro span{
+      font-family:'Quicksand', sans-serif;
+      font-size:34px;
+      letter-spacing:2px;
+      font-weight:600;
+      color:#637c9e;
+    }
 
-.soon-card .ko{
-  font-size:13px;
-  color:#aeb0b8;
-}
+    .intro h1{
+      margin-top:8px;
+      font-family:'Cormorant Garamond', serif;
+      font-size:25px;
+      font-weight:500;
+      color:#31476E;
+      letter-spacing:0.5px;
+    }
 
-@media(max-width:576px){
-  .back-wrapper{
-    margin:22px auto 0;
-  }
+    .intro p{
+      max-width:620px;
+      margin:14px auto 0;
+      font-size:11px;
+      line-height:1.7;
+      letter-spacing:1.4px;
+      color:#728094;
+    }
 
-  .back-btn{
-    font-size:9px;
-  }
+    .journey-grid{
+      width:min(1000px,90%);
+      margin:0 auto 50px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+      gap:16px;
+    }
 
-  .soon-card{
-    padding:42px 24px;
-  }
+    .journey-card{
+      position:relative;
+      min-height:92px;
+      padding:16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      overflow:hidden;
+      background:rgba(255,255,255,0.72);
+      border:1px solid rgba(49,71,110,0.22);
+      cursor:pointer;
+      transition:0.3s ease;
+    }
 
-  .soon-card h1{
-    font-size:34px;
-  }
+    .journey-card img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:0.42;
+      z-index:0;
+    }
 
-  .soon-card p{
-    font-size:13px;
-  }
+    .journey-card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(255,255,255,0.56);
+      z-index:1;
+    }
 
-  .soon-card .ko{
-    font-size:12px;
-  }
-}
-</style>
+    .journey-card-content{
+      position:relative;
+      z-index:2;
+    }
+
+    .journey-card:hover{
+      transform:translateY(-5px);
+      box-shadow:0 18px 45px rgba(49,71,110,0.12);
+    }
+
+    .journey-card.active{
+      border-color:#31476E;
+      box-shadow:0 0 0 1px rgba(49,71,110,0.25);
+      background:rgba(255,255,255,0.92);
+    }
+
+    .journey-card-content span{
+      display:block;
+      font-size:10px;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      color:#4e607a;
+    }
+
+    .journey-card-content h3{
+      margin-top:10px;
+      font-family:'Quicksand', sans-serif;
+      font-size:16px;
+      font-weight:600;
+      color:#31476E;
+      letter-spacing:0.3px;
+    }
+
+    .detail-section{
+      width:min(1200px,90%);
+      margin:0 auto 80px;
+      padding:38px;
+      background:rgba(255,255,255,0.78);
+      border:1px solid rgba(49,71,110,0.14);
+      box-shadow:0 18px 50px rgba(49,71,110,0.08);
+    }
+
+    .detail-top span{
+      font-size:10px;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      color:#8a94a3;
+    }
+
+    .detail-top h2{
+      margin:8px 0 12px;
+      font-family:'Cormorant Garamond', serif;
+      font-size:28px;
+      font-weight:500;
+      color:#31476E;
+    }
+
+    .detail-top p{
+      max-width:760px;
+      font-size:12px;
+      line-height:1.7;
+      color:#566171;
+      white-space:pre-line;
+    }
+
+    .place-list{
+      margin:26px 0;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .place-list button{
+      padding:8px 13px;
+      background:rgba(238,243,247,0.9);
+      border:1px solid rgba(49,71,110,0.12);
+      font-size:10px;
+      letter-spacing:1px;
+      color:#46566b;
+      cursor:pointer;
+      transition:0.25s ease;
+    }
+
+    .place-list button:hover,
+    .place-list button.active{
+      background:#31476E;
+      color:white;
+      border-color:#31476E;
+    }
+
+    .photo-grid{
+      margin-top:28px;
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:14px;
+    }
+
+    .photo-grid img{
+      height:150px;
+      object-fit:cover;
+      border-radius:4px;
+      cursor:zoom-in;
+    }
+
+    .note{
+      max-width:820px;
+      margin-top:34px;
+      padding-top:26px;
+      border-top:1px solid rgba(49,71,110,.15);
+      font-size:13px;
+      line-height:1.8;
+      color:#566171;
+      white-space:pre-line;
+    }
+
+    .modal{
+      display:none;
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.85);
+      z-index:9999;
+      justify-content:center;
+      align-items:center;
+    }
+
+    .modal img{
+      max-width:68vw;
+      max-height:82vh;
+      border-radius:10px;
+      cursor:grab;
+      user-select:none;
+    }
+
+    .close-btn{
+      position:absolute;
+      top:24px;
+      right:32px;
+      color:#fff;
+      font-size:34px;
+      cursor:pointer;
+      z-index:10000;
+    }
+
+    .modal-nav{
+      position:fixed;
+      top:50%;
+      transform:translateY(-50%);
+      border:none;
+      background:rgba(255,255,255,0.8);
+      color:#111;
+      font-size:34px;
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      cursor:pointer;
+      z-index:10000;
+    }
+
+    .modal-nav.prev{ left:18px; }
+    .modal-nav.next{ right:18px; }
+
+    @media(max-width:650px){
+      body{
+        background-attachment:scroll;
+      }
+
+      .back-wrapper{
+        width:88%;
+        margin:12px auto 0;
+      }
+
+      .back-home{
+        font-size:8px;
+        letter-spacing:1px;
+        padding-bottom:3px;
+      }
+
+      .intro{
+        width:88%;
+        margin:26px auto 18px;
+      }
+
+      .intro span{
+        font-size:23px;
+        letter-spacing:1.5px;
+      }
+
+      .intro h1{
+        font-size:17px;
+      }
+
+      .intro p{
+        display:none;
+      }
+
+      .journey-grid{
+        width:88%;
+        margin:0 auto 22px;
+        grid-template-columns:repeat(2, 1fr);
+        gap:7px;
+      }
+
+      .journey-card{
+        min-height:56px;
+        padding:6px;
+      }
+
+      .journey-card-content span{
+        display:none;
+      }
+
+      .journey-card-content h3{
+        margin-top:0;
+        font-size:12px;
+      }
+
+      .detail-section{
+        width:88%;
+        margin:0 auto 34px;
+        padding:20px 12px;
+      }
+
+      .detail-top span{
+        font-size:9px;
+        letter-spacing:2px;
+      }
+
+      .detail-top h2{
+        margin:6px 0 8px;
+        font-size:17px;
+      }
+
+      .detail-top p{
+        display:none;
+      }
+
+      .place-list{
+        margin:18px 0;
+        gap:8px;
+      }
+
+      .place-list button{
+        font-size:9px;
+        letter-spacing:1px;
+        padding:7px 10px;
+      }
+
+      .photo-grid{
+        margin-top:22px;
+        grid-template-columns:repeat(2, 1fr);
+        gap:10px;
+      }
+
+      .photo-grid img{
+        height:135px;
+      }
+
+      .note{
+        margin-top:18px;
+        padding-top:18px;
+        font-size:11px;
+        line-height:1.5;
+      }
+
+      .modal img{
+        max-width:82vw;
+        max-height:78vh;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
   <div class="back-wrapper">
-    <a href="healing.html" class="back-btn">← Back to Healing Spaces</a>
+    <a href="healing.html" class="back-home">← Back To Healing Spaces</a>
   </div>
 
-  <section class="coming-soon">
-    <div class="soon-card">
-
-      <div class="soon-label">MUSEUM</div>
-
-      <h1>Coming Soon</h1>
-
-      <p>This page is currently being prepared.<br>
-      It will be updated soon.</p>
-
-      <p class="ko">이 페이지는 아직 준비 중입니다.<br>
-      곧 업데이트될 예정입니다.</p>
-
-    </div>
+  <section class="intro">
+    <span>MUSEUMS</span>
+    <h1>Quiet Spaces, Endless Discoveries</h1>
+    <p>Every visit leaves behind another memory worth keeping.</p>
   </section>
+
+  <section class="journey-grid">
+    <button class="journey-card active" type="button" onclick="showJourney('aomori', this)">
+      <img src="Images/healing/lana6.jpg" alt="Aomori">
+      <div class="journey-card-content">
+        <span>Aomori,Japan</span>
+        <h3>Towada Art Center</h3>
+      </div>
+    </button>
+
+    <button class="journey-card" type="button" onclick="showJourney('benessehouse', this)">
+      <img src="Images/healing/lana6.jpg" alt="Benesse House">
+      <div class="journey-card-content">
+        <span>Japan</span>
+        <h3>Benesse House</h3>
+      </div>
+    </button>
+  </section>
+
+  <section class="detail-section" id="journey-detail">
+    <div class="detail-top">
+      <span id="detail-label">Aquarium</span>
+      <h2 id="detail-title"></h2>
+      <p id="detail-desc"></p>
+    </div>
+
+    <div class="place-list" id="place-list"></div>
+    <div class="photo-grid" id="photo-grid"></div>
+    <p class="note" id="detail-note"></p>
+  </section>
+
+  <script>
+    const journeys = {
+      japan: {
+        label: "Aquarium",
+        title: "Japan",
+        desc: "Quiet blue spaces from Japan.",
+        places: [
+          {
+            name: "Oga",
+            images: [
+              "Images/healing/oga1.jpg",
+              "Images/healing/oga12.jpg",
+              "Images/healing/oga4.jpg",
+              "Images/healing/oga5.jpg",
+              "Images/healing/oga6.jpg",
+              "Images/healing/oga7.jpg",
+              "Images/healing/oga9.jpg",
+              "Images/healing/oga11.jpg",
+              "Images/healing/oga13.jpg",
+              "Images/healing/oga14.jpg",
+              "Images/healing/oga15.jpg",
+              "Images/healing/oga16.jpg"
+            ],
+            note: `고요한 움직임이 주는 안정감.`
+          },
+          {
+            name: "Okinawa",
+            images: [
+              "Images/healing/okia2.jpg",
+              "Images/healing/okia3.jpg",
+              "Images/healing/okia4.jpg",
+              "Images/healing/okia5.jpg",
+              "Images/healing/okia6.jpg",
+              "Images/healing/okia10.jpg",
+              "Images/healing/okia16.jpg",
+              "Images/healing/okia18.jpg",
+              "Images/healing/okia19.jpg",
+              "Images/healing/okia21.jpg",
+              "Images/healing/okia23.jpg",
+              "Images/healing/okia24.jpg",
+            ],
+            note: `압도적인 규모와 아름다운 배경.`
+          },
+          {
+            name: "Tokyo",
+            images: [
+              "Images/healing/sky1.jpg",
+              "Images/healing/sky3.jpg",
+              "Images/healing/sky4.jpg",
+              "Images/healing/sky15.jpg",
+              "Images/healing/sky5.jpg",
+              "Images/healing/sky6.jpg",
+              "Images/healing/sky7.jpg",
+              "Images/healing/sky8.jpg",
+              "Images/healing/sky11.jpg",
+              "Images/healing/sky12.jpg",
+              "Images/healing/sky16.jpg",
+              "Images/healing/sky13.jpg",
+        
+            ],
+            note: `Skytree.`
+          }
+        ]
+      },
+
+      overseas: {
+        label: "Aquarium",
+        title: "Overseas",
+        desc: "Aquarium memories from other places.",
+        places: [
+          {
+            name: "Seattle",
+            images: [
+              "Images/healing/sea1.jpg",
+              "Images/healing/sea2.jpg",
+              "Images/healing/sea3.jpg",
+              "Images/healing/sea8.jpg",
+              "Images/healing/sea5.jpg",
+              "Images/healing/sea6.jpg",
+              "Images/healing/sea7.jpg",
+              "Images/healing/sea10.jpg",
+              "Images/healing/sea4.png",
+              "Images/healing/sea9.jpg",
+              "Images/healing/sea11.jpg",
+              "Images/healing/sea12.jpg",
+            ],
+            note: `Seattle Aquarium.`
+          },
+          {
+            name: "Langkawi",
+            images: [
+              "Images/healing/lana3.jpg",
+              "Images/healing/lana4.jpg",
+              "Images/healing/lana5.jpg",
+              "Images/healing/lana6.jpg",
+              "Images/healing/lana7.jpg",
+              "Images/healing/lana8.jpg",
+              "Images/healing/lana9.jpg",
+              "Images/healing/lana11.jpg",
+              "Images/healing/lana14.jpg",
+              "Images/healing/lana13.jpg",
+              "Images/healing/lana1.jpg",
+              "Images/healing/lana2.jpg",
+            ],
+            note: `Langkawi. 어린이 손님과 즐거운 추억 만들기.`
+          },
+          {
+            name: "London",
+            images: [
+              "Images/healing/lona11.jpg",
+              "Images/healing/lona2.jpg",
+              "Images/healing/lona3.jpg",
+              "Images/healing/lona17.jpg",
+              "Images/healing/lona18.jpg",
+              "Images/healing/lona19.jpg",
+              "Images/healing/lona21.jpg",
+              "Images/healing/lona8.jpg",
+        
+            ],
+            note: `런던.`
+          }
+        ]
+      }
+    };
+
+    function showJourney(id, button){
+      const data = journeys[id];
+      if(!data) return;
+
+      document.getElementById("detail-label").innerText = data.label;
+      document.getElementById("detail-title").innerText = data.title;
+      document.getElementById("detail-desc").innerText = data.desc || "";
+
+      document.getElementById("place-list").innerHTML =
+        data.places.map((place, index) => `
+          <button
+            type="button"
+            class="${index === 0 ? 'active' : ''}"
+            onclick="showPlace('${id}', ${index}, this)"
+          >
+            ${place.name}
+          </button>
+        `).join("");
+
+      showPlace(id, 0, document.querySelector("#place-list button"));
+
+      document.querySelectorAll(".journey-card").forEach(card => {
+        card.classList.remove("active");
+      });
+
+      if(button) button.classList.add("active");
+    }
+
+    function showPlace(journeyId, placeIndex, button){
+      const place = journeys[journeyId].places[placeIndex];
+      const grid = document.getElementById("photo-grid");
+
+      grid.innerHTML = place.images.map(img => `
+        <img class="zoomable" src="${img}" alt="" loading="lazy" decoding="async">
+      `).join("");
+
+      document.getElementById("detail-note").innerText = place.note || "";
+
+      document.querySelectorAll("#place-list button").forEach(btn => {
+        btn.classList.remove("active");
+      });
+
+      if(button) button.classList.add("active");
+    }
+
+    function openFromUrl(){
+      const params = new URLSearchParams(window.location.search);
+      const targetJourney = params.get("journey");
+      const targetPlace = params.get("place");
+
+      if(targetJourney && journeys[targetJourney]){
+        const journeyBtn = document.querySelector(
+          `.journey-card[onclick*="'${targetJourney}'"]`
+        );
+
+        showJourney(targetJourney, journeyBtn);
+
+        if(targetPlace){
+          const placeIndex = journeys[targetJourney].places.findIndex(place =>
+            place.name.toLowerCase().trim() === targetPlace.toLowerCase().trim()
+          );
+
+          if(placeIndex >= 0){
+            const placeBtn = document.querySelectorAll("#place-list button")[placeIndex];
+            showPlace(targetJourney, placeIndex, placeBtn);
+          }
+        }
+
+        return;
+      }
+
+      showJourney("japan", document.querySelector(".journey-card"));
+    }
+
+    openFromUrl();
+  </script>
+
+  <div id="modal" class="modal">
+    <button id="modal-prev" class="modal-nav prev" type="button">‹</button>
+    <span id="close-btn" class="close-btn">&times;</span>
+    <img id="modal-img" src="" alt="">
+    <button id="modal-next" class="modal-nav next" type="button">›</button>
+  </div>
+
+  <script src="js/image-viewer.js"></script>
 
 </body>
 </html>
