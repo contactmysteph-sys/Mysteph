@@ -418,26 +418,62 @@
   </section>
 
   <section class="journey-grid">
-    <button class="journey-card active" type="button" onclick="showJourney('japan', this)">
-      <img src="Images/healing/lana6.jpg" alt="Japan Aquarium">
+    <button class="journey-card active" type="button" onclick="showJourney('oga', this)">
+      <img src="Images/healing/oga1.jpg" alt=" OGA Aquarium">
       <div class="journey-card-content">
-        <span>Aquarium</span>
-        <h3>Japan</h3>
+        <span>OGA Aquarium</span>
+        <h3>OGA</h3>
       </div>
     </button>
 
-    <button class="journey-card" type="button" onclick="showJourney('overseas', this)">
-      <img src="Images/healing/lana6.jpg" alt="Overseas Aquarium">
+    <section class="journey-grid">
+    <button class="journey-card active" type="button" onclick="showJourney('okinawa', this)">
+      <img src="Images/healing/oki2.jpg" alt=" Churaumi Aquarium">
       <div class="journey-card-content">
-        <span>Aquarium</span>
-        <h3>Overseas</h3>
+        <span>Churaumi Aquarium</span>
+        <h3>OKINAWA</h3>
       </div>
     </button>
+
+    <section class="journey-grid">
+    <button class="journey-card active" type="button" onclick="showJourney('sumida', this)">
+      <img src="Images/healing/sky1.jpg" alt=" Sumida Aquarium">
+      <div class="journey-card-content">
+        <span>Sumida Aquarium</span>
+        <h3>TOKYO</h3>
+      </div>
+    </button>
+
+    <button class="journey-card" type="button" onclick="showJourney('seattle', this)">
+      <img src="Images/healing/lana6.jpg" alt="Seattle Aquarium">
+      <div class="journey-card-content">
+        <span>Seattle Aquarium</span>
+        <h3>SEATTLE</h3>
+      </div>
+    </button>
+  
+    <button class="journey-card" type="button" onclick="showJourney('london', this)">
+      <img src="Images/healing/sea9.jpg" alt="Sealife Aquarium">
+      <div class="journey-card-content">
+        <span>Sealife Aquarium</span>
+        <h3>LONDON</h3>
+      </div>
+    </button>
+
+    <button class="journey-card" type="button" onclick="showJourney('langkawi', this)">
+      <img src="Images/healing/lana1.jpg" alt="Underwater World">
+      <div class="journey-card-content">
+        <span>Underwater World</span>
+        <h3>LANGKAWI</h3>
+      </div>
+    </button>
+
+
+
   </section>
 
   <section class="detail-section" id="journey-detail">
     <div class="detail-top">
-      <span id="detail-label">Aquarium</span>
       <h2 id="detail-title"></h2>
       <p id="detail-desc"></p>
     </div>
@@ -449,10 +485,9 @@
 
   <script>
     const journeys = {
-      japan: {
-        label: "Aquarium",
-        title: "Japan",
-        desc: "Quiet blue spaces from Japan.",
+      oga: {
+        title: "OGA Aquarium",
+        desc: "Oga, Japan",
         places: [
           {
             name: "Oga",
@@ -472,6 +507,13 @@
             ],
             note: `고요한 움직임이 주는 안정감.`
           },
+        ],
+      },
+
+      churaumi: {
+        title: "Churaumi Aquarium",
+        desc: "Okinawa, Japan",
+        places: [   
           {
             name: "Okinawa",
             images: [
@@ -490,6 +532,13 @@
             ],
             note: `압도적인 규모와 아름다운 배경.`
           },
+        ],
+      }
+
+      sumida: {
+        title: "Sumida Aquarium",
+        desc: "Tokyo, Japan",
+        places: [ 
           {
             name: "Tokyo",
             images: [
@@ -508,14 +557,13 @@
         
             ],
             note: `Skytree.`
-          }
-        ]
+          },
+        ],
       },
-
-      overseas: {
-        label: "Aquarium",
-        title: "Overseas",
-        desc: "Aquarium memories from other places.",
+      
+      seattle: {
+        title: "Seattle Aquarium",
+        desc: "Seattle, USA",
         places: [
           {
             name: "Seattle",
@@ -535,6 +583,13 @@
             ],
             note: `Seattle Aquarium.`
           },
+        ],
+      },
+
+      langkawi: {
+        title: "Underwater World Aquarium",
+        desc: "Langkawi, Malaysia",
+        places: [
           {
             name: "Langkawi",
             images: [
@@ -553,6 +608,13 @@
             ],
             note: `Langkawi. 어린이 손님과 즐거운 추억 만들기.`
           },
+        ],
+      },
+
+      sealife: {
+        title: "Sealife Aquarium",
+        desc: "London, UK",
+        places: [
           {
             name: "London",
             images: [
@@ -567,9 +629,9 @@
         
             ],
             note: `런던.`
-          }
-        ]
-      }
+          },
+        ],
+      },
     };
 
     function showJourney(id, button){
