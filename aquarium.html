@@ -610,42 +610,30 @@
     };
 
     function showJourney(id, button){
-      const data = journeys[id];
-      if(!data) return;
+        const data = journeys[id];
+        if(!data) return;
 
-      document.getElementById("detail-title").innerText = data.title;
-      document.getElementById("detail-desc").innerText = data.desc || "";
+        document.getElementById("detail-title").innerText = data.title;
+        document.getElementById("detail-desc").innerText = data.desc || "";
 
-      document.getElementById("place-list").innerHTML =
-        data.places.map((place, index) => `
-          <button
-            type="button"
-            class="${index === 0 ? 'active' : ''}"
-            onclick="showPlace('${id}', ${index}, this)"
-          >
-            ${place.name}
-          </button>
-        `).join("");
+        showPlace(id, 0);
 
-      showPlace(id, 0);
-
-      document.querySelectorAll(".journey-card").forEach(card => {
+        document.querySelectorAll(".journey-card").forEach(card => {
         card.classList.remove("active");
       });
 
-      if(button) button.classList.add("active");
+       if(button) button.classList.add("active");
     }
+    
+    function showPlace(journeyId, placeIndex){
+       const place = journeys[journeyId].places[placeIndex];
+       const grid = document.getElementById("photo-grid");
 
-    function showPlace(journeyId, placeIndex, button){
-      const place = journeys[journeyId].places[placeIndex];
-      const grid = document.getElementById("photo-grid");
+       grid.innerHTML = place.images.map(img => `
+         <img class="zoomable" src="${img}" alt="" loading="lazy" decoding="async">
+       `).join("");
 
-      grid.innerHTML = place.images.map(img => `
-        <img class="zoomable" src="${img}" alt="" loading="lazy" decoding="async">
-      `).join("");
-
-      document.getElementById("detail-note").innerText = place.note || "";
-
+       document.getElementById("detail-note").innerText = place.note || "";
     }
 
     function openFromUrl(){
@@ -660,24 +648,13 @@
 
         showJourney(targetJourney, journeyBtn);
 
-        if(targetPlace){
-          const placeIndex = journeys[targetJourney].places.findIndex(place =>
-            place.name.toLowerCase().trim() === targetPlace.toLowerCase().trim()
-          );
-
-          if(placeIndex >= 0){
-            const placeBtn = document.querySelectorAll("#place-list button")[placeIndex];
-            showPlace(targetJourney, placeIndex, placeBtn);
-          }
-        }
-
-        return;
       }
 
-      showJourney("oga", document.querySelector(".journey-card"));
+        return;
     }
 
     openFromUrl();
+    
   </script>
 
   <div id="modal" class="modal">
