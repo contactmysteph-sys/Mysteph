@@ -93,11 +93,9 @@
     }
 
     .journey-grid{
-      width:min(1000px,90%);
-      margin:0 auto 50px;
       display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
-      gap:16px;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
     }
 
     .journey-card{
@@ -426,8 +424,7 @@
       </div>
     </button>
 
-    <section class="journey-grid">
-    <button class="journey-card active" type="button" onclick="showJourney('okinawa', this)">
+    <button class="journey-card active" type="button" onclick="showJourney('curaumi', this)">
       <img src="Images/healing/oki2.jpg" alt=" Churaumi Aquarium">
       <div class="journey-card-content">
         <span>Churaumi Aquarium</span>
@@ -435,7 +432,6 @@
       </div>
     </button>
 
-    <section class="journey-grid">
     <button class="journey-card active" type="button" onclick="showJourney('sumida', this)">
       <img src="Images/healing/sky1.jpg" alt=" Sumida Aquarium">
       <div class="journey-card-content">
@@ -452,7 +448,7 @@
       </div>
     </button>
   
-    <button class="journey-card" type="button" onclick="showJourney('london', this)">
+    <button class="journey-card" type="button" onclick="showJourney('sealife', this)">
       <img src="Images/healing/sea9.jpg" alt="Sealife Aquarium">
       <div class="journey-card-content">
         <span>Sealife Aquarium</span>
@@ -467,8 +463,6 @@
         <h3>LANGKAWI</h3>
       </div>
     </button>
-
-
 
   </section>
 
@@ -533,7 +527,7 @@
             note: `압도적인 규모와 아름다운 배경.`
           },
         ],
-      }
+      },
 
       sumida: {
         title: "Sumida Aquarium",
