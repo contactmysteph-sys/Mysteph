@@ -205,9 +205,8 @@
 
     .note-header{
       display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:2px;
+      align-items:baseline;
+       gap:8px;
     }
 
     .note-header strong{
@@ -216,8 +215,8 @@
     }
 
     .note-date{
-      font-size:12px;
-      color:#8a8a8a;
+       font-size:11px;
+       color:#9aa1ab;
     }
 
     .notes-list,
@@ -685,7 +684,7 @@
       item.innerHTML = `
          <div class="note-header">
            <strong>${escapeHTML(note.name)}</strong>
-           <span class="note-date">${date}</span>
+           <span class="note-date">| ${date}</span>
          </div>
 
       ${
