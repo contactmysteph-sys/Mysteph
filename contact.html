@@ -535,7 +535,7 @@
       display:inline !important;
       margin:0 !important;
       font-size:11px !important;
-      color:#aac0df !important;
+      color:#2b3441 !important;
       letter-spacing:0 !important;
     }
      .public-reply{
@@ -555,7 +555,7 @@
       font-size:9px;
       letter-spacing:1px;
       text-transform:uppercase;
-      color:#4f5b68;
+      color:#6a787e;
       font-weight:600;
     }
 
@@ -563,7 +563,7 @@
       margin:0;
       font-size:11px;
       line-height:1.55;
-      color:#4f5b68;
+      color:#52606f;
     }
   }
 
@@ -687,8 +687,8 @@
       item.innerHTML = `
          <div class="note-header">
            <strong>${escapeHTML(note.name)}</strong>
+           <span class="note-date">| ${date}</span>
          </div>
-
       ${
          note.secret
            ? `<p class="secret-note">🔒 Private note</p>`
