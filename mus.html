@@ -23,7 +23,7 @@
       min-height:100vh;
       background:
         linear-gradient(rgba(246,250,250,0.88), rgba(246,250,250,0.9)),
-        url("Images/healing/lonm3.jpg");
+        url("Images/healing/lonm1.jpg");
       background-size:cover;
       background-position:center;
       background-attachment:fixed;
@@ -39,6 +39,8 @@
     img{
       width:100%;
       display:block;
+      -webkit-user-drag:none;
+      user-select:none;
     }
 
     .back-wrapper{
@@ -83,21 +85,12 @@
       letter-spacing:0.5px;
     }
 
-    .intro p{
-      max-width:620px;
-      margin:14px auto 0;
-      font-size:11px;
-      line-height:1.7;
-      letter-spacing:1.4px;
-      color:#728094;
-    }
-
     .journey-grid{
-      width:min(1000px,90%);
-      margin:0 auto 50px;
+      width:min(1200px,90%);
+      margin:0 auto 34px;
       display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
-      gap:16px;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
     }
 
     .journey-card{
@@ -175,24 +168,17 @@
       box-shadow:0 18px 50px rgba(49,71,110,0.08);
     }
 
-    .detail-top span{
-      font-size:10px;
-      letter-spacing:4px;
-      text-transform:uppercase;
-      color:#8a94a3;
-    }
-
     .detail-top h2{
       margin:8px 0 12px;
       font-family:'Cormorant Garamond', serif;
-      font-size:28px;
+      font-size:22px;
       font-weight:500;
       color:#31476E;
     }
 
     .detail-top p{
       max-width:760px;
-      font-size:12px;
+      font-size:16px;
       line-height:1.7;
       color:#566171;
       white-space:pre-line;
@@ -412,241 +398,305 @@
   </div>
 
   <section class="intro">
-    <span>MUSEUMS</span>
-    <h1>Quiet Spaces, Endless Discoveries</h1>
-    <p>Every visit leaves behind another memory worth keeping.</p>
+    <span>Museums</span>
+    <h1></h1>
   </section>
 
   <section class="journey-grid">
-    <button class="journey-card active" type="button" onclick="showJourney('aomori', this)">
-      <img src="Images/healing/lana6.jpg" alt="Aomori">
+    <button class="journey-card active" type="button" onclick="showJourney('towada', this)">
+      <img src="Images/healing/lonm1.jpg" alt=" Towada Art Center">
       <div class="journey-card-content">
-        <span>Aomori,Japan</span>
-        <h3>Towada Art Center</h3>
+        <span>Towada Art Center</span>
+        <h3>Aomori, Japan</h3>
       </div>
     </button>
 
-    <button class="journey-card" type="button" onclick="showJourney('benessehouse', this)">
-      <img src="Images/healing/lana6.jpg" alt="Benesse House">
+    <button class="journey-card" type="button" onclick="showJourney('osaka', this)">
+      <img src="Images/healing/lonm1.jpg" alt=" Osaka Museum">
       <div class="journey-card-content">
-        <span>Japan</span>
-        <h3>Benesse House</h3>
+        <span>Osaka Museum</span>
+        <h3>Osaka, Japan</h3>
       </div>
     </button>
+
+    <button class="journey-card" type="button" onclick="showJourney('benesse', this)">
+      <img src="Images/healing/lonm1.jpg" alt=" Benesse House">
+      <div class="journey-card-content">
+        <span>Benesse House </span>
+        <h3>Noshima, Japan</h3>
+      </div>
+    </button>
+
+    <button class="journey-card" type="button" onclick="showJourney('okayama', this)">
+      <img src="Images/healing/lonm1.jpg" alt=" Okayama City Museum">
+      <div class="journey-card-content">
+        <span>Okayama City Museum</span>
+        <h3>Okayama, Japan</h3>
+      </div>
+    </button>
+
+    <button class="journey-card" type="button" onclick="showJourney('osaka', this)">
+      <img src="Images/healing/lonm1.jpg" alt="Osaka Museum">
+      <div class="journey-card-content">
+        <span>Osaka Museum</span>
+        <h3>Osaka, Japan</h3>
+      </div>
+    </button>
+
+    <button class="journey-card" type="button" onclick="showJourney('oita', this)">
+      <img src="Images/healing/lonm1.jpg" alt="Oita Museum of Art">
+      <div class="journey-card-content">
+        <span>Oita Museum of Art</span>
+        <h3>Oita, Japan</h3>
+      </div>
+    </button>
+  
+    <button class="journey-card" type="button" onclick="showJourney('london', this)">
+      <img src="Images/healing/lonm1.jpg" alt="London Museum">
+      <div class="journey-card-content">
+        <span>London Museum</span>
+        <h3>LONDON</h3>
+      </div>
+    </button>
+
+    <button class="journey-card" type="button" onclick="showJourney('seoulartcenter', this)">
+      <img src="Images/healing/lana6.jpg" alt="Seoul Art Center">
+      <div class="journey-card-content">
+        <span>Seoul Art Center</span>
+        <h3>SEOUL, KOREA</h3>
+      </div>
+    </button>
+
   </section>
 
   <section class="detail-section" id="journey-detail">
+
     <div class="detail-top">
-      <span id="detail-label">Aquarium</span>
-      <h2 id="detail-title"></h2>
+       <h2 id="detail-title"></h2>
       <p id="detail-desc"></p>
     </div>
 
-    <div class="place-list" id="place-list"></div>
     <div class="photo-grid" id="photo-grid"></div>
+
     <p class="note" id="detail-note"></p>
+
   </section>
 
   <script>
     const journeys = {
-      japan: {
-        label: "Aquarium",
-        title: "Japan",
-        desc: "Quiet blue spaces from Japan.",
+      towada: {
+        title: "Towada Art Center",
+        desc: "AOMORI, Japan",
         places: [
           {
-            name: "Oga",
+            name: "Towada Art Center",
             images: [
-              "Images/healing/oga1.jpg",
-              "Images/healing/oga12.jpg",
-              "Images/healing/oga4.jpg",
-              "Images/healing/oga5.jpg",
-              "Images/healing/oga6.jpg",
-              "Images/healing/oga7.jpg",
-              "Images/healing/oga9.jpg",
-              "Images/healing/oga11.jpg",
-              "Images/healing/oga13.jpg",
-              "Images/healing/oga14.jpg",
-              "Images/healing/oga15.jpg",
-              "Images/healing/oga16.jpg"
+              "Images/healing/towada3.jpg",
+              "Images/healing/towada4.jpg",
+              "Images/healing/towada2.jpg",
+              "Images/healing/towada4.jpg",
+              "Images/healing/towada5.jpg",
+              "Images/healing/towada6.jpg",
+              "Images/healing/towada7.jpg",
+              "Images/healing/towada1.jpg",
             ],
             note: `고요한 움직임이 주는 안정감.`
           },
-          {
-            name: "Okinawa",
-            images: [
-              "Images/healing/okia2.jpg",
-              "Images/healing/okia3.jpg",
-              "Images/healing/okia4.jpg",
-              "Images/healing/okia5.jpg",
-              "Images/healing/okia6.jpg",
-              "Images/healing/okia10.jpg",
-              "Images/healing/okia16.jpg",
-              "Images/healing/okia18.jpg",
-              "Images/healing/okia19.jpg",
-              "Images/healing/okia21.jpg",
-              "Images/healing/okia23.jpg",
-              "Images/healing/okia24.jpg",
-            ],
-            note: `압도적인 규모와 아름다운 배경.`
-          },
-          {
-            name: "Tokyo",
-            images: [
-              "Images/healing/sky1.jpg",
-              "Images/healing/sky3.jpg",
-              "Images/healing/sky4.jpg",
-              "Images/healing/sky15.jpg",
-              "Images/healing/sky5.jpg",
-              "Images/healing/sky6.jpg",
-              "Images/healing/sky7.jpg",
-              "Images/healing/sky8.jpg",
-              "Images/healing/sky11.jpg",
-              "Images/healing/sky12.jpg",
-              "Images/healing/sky16.jpg",
-              "Images/healing/sky13.jpg",
-        
-            ],
-            note: `Skytree.`
-          }
-        ]
+        ],
       },
 
-      overseas: {
-        label: "Aquarium",
-        title: "Overseas",
-        desc: "Aquarium memories from other places.",
+      benesse: {
+        title: "Benesse House",
+        desc: "Naoshima, Japan",
+        places: [   
+          {
+            name: "Benesse House",
+            images: [
+              "Images/healing/benesse2.jpg",
+              "Images/healing/benesse11.jpg",
+              "Images/healing/benesse3.jpg",
+              "Images/healing/benesse4.jpg",
+              "Images/healing/benesse9.jpg",
+              "Images/healing/benesse10.jpg",
+              "Images/healing/benesse12.jpg",
+              "Images/healing/benesse15.jpg",
+              "Images/healing/benesse16.jpg",
+              "Images/healing/benesse17.jpg",
+              "Images/healing/benesse12.jpg",
+              "Images/healing/benesse14.jpg",
+            ],
+            note: `섬 하나를 미술관으로 만든 그들의 아이디어에 감동.`
+          },
+        ],
+      },
+
+      osaka: {
+        title: "Osaka Museum",
+        desc: "Osaka, Japan",
+        places: [ 
+          {
+            name: "Osaka",
+            images: [
+              "Images/healing/osam1.jpg",
+              "Images/healing/osam2.jpg",
+              "Images/healing/osam3.jpg",
+              "Images/healing/osam4.jpg",
+              "Images/healing/osam5.jpg",
+              "Images/healing/osam6.jpg",
+              "Images/healing/osam7.jpg",
+              "Images/healing/osam8.jpg",
+              "Images/healing/osam11.jpg",
+              "Images/healing/osam12.jpg",
+              "Images/healing/osam16.jpg",
+              "Images/healing/osam13.jpg",
+        
+            ],
+            note: `Osaka Museum.`
+          },
+        ],
+      },
+      
+      oita: {
+        title: "Oita Museum of Art",
+        desc: "Oita, Japan",
         places: [
           {
-            name: "Seattle",
+            name: "Oita",
             images: [
-              "Images/healing/sea1.jpg",
-              "Images/healing/sea2.jpg",
-              "Images/healing/sea3.jpg",
-              "Images/healing/sea8.jpg",
-              "Images/healing/sea5.jpg",
-              "Images/healing/sea6.jpg",
-              "Images/healing/sea7.jpg",
-              "Images/healing/sea10.jpg",
-              "Images/healing/sea4.png",
-              "Images/healing/sea9.jpg",
-              "Images/healing/sea11.jpg",
-              "Images/healing/sea12.jpg",
+              "Images/healing/oitam1.jpg",
+              "Images/healing/oitam2.jpg",
+              "Images/healing/oitam3.jpg",
+              "Images/healing/oitam4.jpg",
+              "Images/healing/oitam5.jpg",
+              "Images/healing/oitam6.jpg",
+              "Images/healing/oitam7.jpg",
+              "Images/healing/oitam8.jpg",
+              "Images/healing/oitam9.jpg",
             ],
-            note: `Seattle Aquarium.`
+            note: `Oita Museum of Art.`
           },
+        ],
+      },
+
+      oka: {
+        title: "Okayama City Museum",
+        desc: "Okayama, Japan",
+        places: [
           {
-            name: "Langkawi",
+            name: "Okayama",
             images: [
-              "Images/healing/lana3.jpg",
-              "Images/healing/lana4.jpg",
-              "Images/healing/lana5.jpg",
-              "Images/healing/lana6.jpg",
-              "Images/healing/lana7.jpg",
-              "Images/healing/lana8.jpg",
-              "Images/healing/lana9.jpg",
-              "Images/healing/lana11.jpg",
-              "Images/healing/lana14.jpg",
-              "Images/healing/lana13.jpg",
-              "Images/healing/lana1.jpg",
-              "Images/healing/lana2.jpg",
+              "Images/healing/oka1.jpg",
+              "Images/healing/oka2.jpg",
+              "Images/healing/oka4.jpg",
+              "Images/healing/oka5.jpg",
+              "Images/healing/oka6.jpg",
+              "Images/healing/oka7.jpg",
+              "Images/healing/oka8.jpg",
+              "Images/healing/oka9.jpg",
             ],
-            note: `Langkawi. 어린이 손님과 즐거운 추억 만들기.`
+            note: `Okayama City Museum.`
           },
+        ],
+      },
+
+      london: {
+        title: "London Museum",
+        desc: "London, UK",
+        places: [
           {
             name: "London",
             images: [
-              "Images/healing/lona11.jpg",
-              "Images/healing/lona2.jpg",
-              "Images/healing/lona3.jpg",
-              "Images/healing/lona17.jpg",
-              "Images/healing/lona18.jpg",
-              "Images/healing/lona19.jpg",
-              "Images/healing/lona21.jpg",
-              "Images/healing/lona8.jpg",
+              "Images/healing/lonm1.jpg",
+              "Images/healing/lonm2.jpg",
+              "Images/healing/lonm3.jpg",
+              "Images/healing/lonm10.jpg",
+              "Images/healing/lonm4.jpg",
+              "Images/healing/lonm5.jpg",
+              "Images/healing/lonm6.jpg",
+              "Images/healing/lonm7.jpg",
+              "Images/healing/lonm8.jpg",
+              "Images/healing/lonm9.jpg",
         
             ],
             note: `런던.`
-          }
-        ]
-      }
+          },
+        ],
+      },
+
+      seoulartcenter: {
+        title: "Seoul Art Center",
+        desc: "Seoul, South Korea",
+        places: [
+          {
+            name: "Seoul",
+            images: [
+              "Images/healing/seoul1.jpg",
+              "Images/healing/seoul2.jpg",
+              "Images/healing/seoul3.jpg",
+              "Images/healing/seoul4.jpg",
+              "Images/healing/seoul5.jpg",
+              "Images/healing/seoul6.jpg",
+              "Images/healing/seoul7.jpg",
+              "Images/healing/seoul8.jpg",
+              "Images/healing/seoul9.jpg",
+              "Images/healing/seoul10.jpg",
+              "Images/healing/seoul11.jpg",
+              "Images/healing/seoul2.jpg",
+            ],
+            note: `Seoul Art Center. 
+            콘서트, 연극, 미술 전시 등 온갖 공연들을 관람할 수 있는 유일한 곳.
+            회사에서 억지로 보라 했던 오페라를 제외하곤 나의 꿈의 공간이다.`
+          },
+        ],
+    
+      },
     };
 
-    function showJourney(id, button){
-      const data = journeys[id];
-      if(!data) return;
+  function showJourney(id, button){
+     const data = journeys[id];
+     if(!data) return;
 
-      document.getElementById("detail-label").innerText = data.label;
-      document.getElementById("detail-title").innerText = data.title;
-      document.getElementById("detail-desc").innerText = data.desc || "";
+     document.getElementById("detail-title").innerText = data.title;
+     document.getElementById("detail-desc").innerText = data.desc || "";
 
-      document.getElementById("place-list").innerHTML =
-        data.places.map((place, index) => `
-          <button
-            type="button"
-            class="${index === 0 ? 'active' : ''}"
-            onclick="showPlace('${id}', ${index}, this)"
-          >
-            ${place.name}
-          </button>
-        `).join("");
+     showPlace(id, 0);
 
-      showPlace(id, 0, document.querySelector("#place-list button"));
+     document.querySelectorAll(".journey-card").forEach(card => {
+       card.classList.remove("active");
+    });
 
-      document.querySelectorAll(".journey-card").forEach(card => {
-        card.classList.remove("active");
-      });
+    if(button) button.classList.add("active");
+  }
 
-      if(button) button.classList.add("active");
-    }
+  function showPlace(journeyId, placeIndex){
+     const place = journeys[journeyId].places[placeIndex];
+     const grid = document.getElementById("photo-grid");
 
-    function showPlace(journeyId, placeIndex, button){
-      const place = journeys[journeyId].places[placeIndex];
-      const grid = document.getElementById("photo-grid");
-
-      grid.innerHTML = place.images.map(img => `
+     grid.innerHTML = place.images.map(img => `
         <img class="zoomable" src="${img}" alt="" loading="lazy" decoding="async">
-      `).join("");
+     `).join("");
 
-      document.getElementById("detail-note").innerText = place.note || "";
+     document.getElementById("detail-note").innerText = place.note || "";
+  }
 
-      document.querySelectorAll("#place-list button").forEach(btn => {
-        btn.classList.remove("active");
-      });
+  function openFromUrl(){
+     const params = new URLSearchParams(window.location.search);
+     const targetJourney = params.get("journey");
 
-      if(button) button.classList.add("active");
-    }
-
-    function openFromUrl(){
-      const params = new URLSearchParams(window.location.search);
-      const targetJourney = params.get("journey");
-      const targetPlace = params.get("place");
-
-      if(targetJourney && journeys[targetJourney]){
+     if(targetJourney && journeys[targetJourney]){
         const journeyBtn = document.querySelector(
-          `.journey-card[onclick*="'${targetJourney}'"]`
-        );
+         `.journey-card[onclick*="'${targetJourney}'"]`
+      );
 
-        showJourney(targetJourney, journeyBtn);
-
-        if(targetPlace){
-          const placeIndex = journeys[targetJourney].places.findIndex(place =>
-            place.name.toLowerCase().trim() === targetPlace.toLowerCase().trim()
-          );
-
-          if(placeIndex >= 0){
-            const placeBtn = document.querySelectorAll("#place-list button")[placeIndex];
-            showPlace(targetJourney, placeIndex, placeBtn);
-          }
-        }
-
-        return;
-      }
-
-      showJourney("japan", document.querySelector(".journey-card"));
+      showJourney(targetJourney, journeyBtn);
+      return;
     }
 
-    openFromUrl();
+    showJourney("oga", document.querySelector(".journey-card"));
+  }
+
+  openFromUrl();
+
   </script>
 
   <div id="modal" class="modal">
@@ -657,6 +707,20 @@
   </div>
 
   <script src="js/image-viewer.js"></script>
+
+  <script>
+    document.addEventListener("contextmenu", function(e){
+      if(e.target.tagName === "IMG"){
+        e.preventDefault();
+      }
+    });
+
+    document.addEventListener("dragstart", function(e){
+      if(e.target.tagName === "IMG"){
+        e.preventDefault();
+      }
+    });
+  </script>
 
 </body>
 </html>
