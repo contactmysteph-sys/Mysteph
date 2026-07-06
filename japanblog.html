@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Japan Blog</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/image-viewer.css">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:
+    linear-gradient(rgba(246,245,242,0.95), rgba(246,245,242,0.95)),
+    url("Images/ways/rail.png");
+  background-size:cover;
+  background-attachment:fixed;
+  font-family:'Montserrat', sans-serif;
+  color:#2d3e52;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+img{
+  width:100%;
+  display:block;
+}
+
+/* BACK */
+
+.back-home{
+  display:inline-block;
+  font-size:11px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:#31476E;
+  border-bottom:1px solid #31476E;
+  padding-bottom:5px;
+  margin-left:9%;
+  margin-top:36px;
+}
+
+/* INTRO */
+
+.intro{
+  width:min(900px,90%);
+  margin:48px auto 38px;
+  text-align:center;
+}
+
+.intro span{
+  font-family:'Caveat', cursive;
+  font-size:36px;
+  letter-spacing:2.5px;
+  font-weight:600;
+  color:#637c9e;
+}
+
+.intro h1{
+  margin-top:8px;
+  font-family:'Cormorant Garamond', serif;
+  font-size:28px;
+  color:#31476E;
+}
+
+.intro p{
+  margin-top:14px;
+  font-size:11px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#7d8896;
+}
+
+/* MAIN SECTION */
+
+.detail-section{
+  width:min(1200px,90%);
+  margin:0 auto 90px;
+  background:rgba(255,255,255,0.78);
+  border:1px solid rgba(49,71,110,0.14);
+  box-shadow:0 18px 50px rgba(49,71,110,0.08);
+  padding:42px;
+}
+
+.detail-top span{
+  font-size:11px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#8a94a3;
+}
+
+.detail-top h2{
+  margin:8px 0 16px;
+  font-family:'Cormorant Garamond', serif;
+  font-size:30px;
+  color:#31476E;
+}
+
+.detail-top p{
+  max-width:760px;
+  font-size:13px;
+  line-height:1.6;
+  color:#566171;
+}
+
+/* CITY BUTTONS */
+
+.place-list{
+  margin:28px 0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+}
+
+.place-list button{
+  padding:7px 12px;
+  background:rgba(238,243,247,0.9);
+  border:1px solid rgba(49,71,110,0.12);
+  font-size:10px;
+  letter-spacing:1px;
+  color:#46566b;
+  cursor:pointer;
+}
+
+.place-list button.active{
+  background:#31476E;
+  color:white;
+  border-color:#31476E;
+}
+
+/* PHOTO GRID */
+
+.photo-grid{
+  margin-top:34px;
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:14px;
+}
+
+.photo-grid img{
+  width:100%;
+  object-fit:cover;
+  border-radius:4px;
+}
+
+.photo-grid img:nth-child(1),
+.photo-grid img:nth-child(2){
+  grid-column:span 2;
+  height:280px;
+}
+
+.photo-grid img:nth-child(n+3){
+  height:150px;
+}
+
+/* NOTE */
+
+.note{
+  max-width:800px;
+  margin-top:40px;
+  padding-top:30px;
+  border-top:1px solid rgba(49,71,110,.15);
+  font-size:14px;
+  line-height:2;
+  color:#566171;
+  white-space:pre-line;
+}
+
+/* MOBILE */
+
+@media(max-width:650px){
+
+  body{
+    background-attachment:scroll;
+  }
+
+  .back-home{
+    font-size:8px;
+    letter-spacing:1px;
+    padding-bottom:3px;
+    margin-left:6%;
+    margin-top:18px;
+  }
+
+  .intro{
+    width:88%;
+    margin:24px auto 18px;
+  }
+
+  .intro span{
+    font-size:24px;
+    letter-spacing:2px;
+  }
+
+  .intro h1{
+    margin-top:6px;
+    font-size:18px;
+  }
+
+  .intro p{
+    display:none;
+  }
+
+  .detail-section{
+    width:88%;
+    margin:0 auto 30px;
+    padding:20px 12px;
+  }
+
+  .detail-top span{
+    font-size:9px;
+    letter-spacing:2px;
+  }
+
+  .detail-top h2{
+    margin:6px 0 10px;
+    font-size:18px;
+  }
+
+  .detail-top p{
+    display:none;
+  }
+
+  .place-list{
+    margin:20px 0;
+    gap:6px;
+  }
+
+  .place-list button{
+    font-size:9px;
+    letter-spacing:0.8px;
+    padding:7px 9px;
+  }
+
+  .photo-grid{
+    margin-top:22px;
+    grid-template-columns:repeat(2, 1fr);
+    gap:10px;
+  }
+
+  .photo-grid img,
+  .photo-grid img:nth-child(1),
+  .photo-grid img:nth-child(2),
+  .photo-grid img:nth-child(n+3){
+    grid-column:auto;
+    height:135px;
+    object-fit:cover;
+  }
+
+  .note{
+    margin-top:18px;
+    padding-top:20px;
+    font-size:12px;
+    line-height:1.5;
+    letter-spacing:0.5px;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<a href="index.html" class="back-home">← BACK TO HOME</a>
+
+<section class="intro">
+  <span>Japan Blog</span>
+  <h1>Small memories from Japanese cities</h1>
+  <p>Trains, streets, cafés, temples, books, aquariums, and quiet corners</p>
+</section>
+
+<section class="detail-section" id="japan-detail">
+
+  <div class="detail-top">
+    <span>Japan</span>
+    <h2 id="city-title">Tokyo</h2>
+    <p id="city-desc">
+      Small memories collected from cities across Japan.
+    </p>
+  </div>
+
+  <div class="place-list" id="city-list"></div>
+
+  <div class="photo-grid" id="photo-grid"></div>
+
+  <p class="note" id="city-note"></p>
+
+</section>
+
+<script>
+const cities = [
+  {
+    name: "Tokyo",
+    desc: "A city of lights, bookstores, small cafés, and endless walking.",
+    images: [
+      "Images/japan/tokyo1.jpg",
+      "Images/japan/tokyo2.jpg",
+      "Images/japan/tokyo3.jpg",
+      "Images/japan/tokyo4.jpg",
+      "Images/japan/tokyo5.jpg",
+      "Images/japan/tokyo6.jpg"
+    ],
+    note: `Tokyo memories.
+
+여기에 Tokyo 글을 넣으면 돼.`
+  },
+
+  {
+    name: "Kyoto",
+    desc: "Quiet streets, old temples, and slow afternoons.",
+    images: [
+      "Images/japan/kyoto1.jpg",
+      "Images/japan/kyoto2.jpg",
+      "Images/japan/kyoto3.jpg",
+      "Images/japan/kyoto4.jpg",
+      "Images/japan/kyoto5.jpg",
+      "Images/japan/kyoto6.jpg"
+    ],
+    note: `Kyoto memories.
+
+여기에 Kyoto 글을 넣으면 돼.`
+  },
+
+  {
+    name: "Osaka",
+    desc: "Food, lights, and familiar energy.",
+    images: [
+      "Images/japan/osaka1.jpg",
+      "Images/japan/osaka2.jpg",
+      "Images/japan/osaka3.jpg",
+      "Images/japan/osaka4.jpg"
+    ],
+    note: `Osaka memories.`
+  },
+
+  {
+    name: "Fukuoka",
+    desc: "A familiar starting point for many Japan memories.",
+    images: [
+      "Images/japan/fukuoka1.jpg",
+      "Images/japan/fukuoka2.jpg",
+      "Images/japan/fukuoka3.jpg"
+    ],
+    note: `Fukuoka memories.`
+  },
+
+  {
+    name: "Nagasaki",
+    desc: "Old streets, sea views, and early Japan memories.",
+    images: [
+      "Images/japan/nagasaki1.jpg",
+      "Images/japan/nagasaki2.jpg",
+      "Images/japan/nagasaki3.jpg"
+    ],
+    note: `Nagasaki memories.`
+  },
+
+  {
+    name: "Okinawa",
+    desc: "Different colors, different air, and a slower island mood.",
+    images: [
+      "Images/japan/okinawa1.jpg",
+      "Images/japan/okinawa2.jpg",
+      "Images/japan/okinawa3.jpg",
+      "Images/japan/okinawa4.jpg"
+    ],
+    note: `Okinawa memories.`
+  },
+
+  {
+    name: "Sapporo",
+    desc: "Northern light, wide streets, and winter memories.",
+    images: [
+      "Images/japan/sapporo1.jpg",
+      "Images/japan/sapporo2.jpg",
+      "Images/japan/sapporo3.jpg"
+    ],
+    note: `Sapporo memories.`
+  },
+
+  {
+    name: "Hakone",
+    desc: "Hot springs, mountains, museums, and quiet views.",
+    images: [
+      "Images/japan/hakone1.jpg",
+      "Images/japan/hakone2.jpg",
+      "Images/japan/hakone3.jpg"
+    ],
+    note: `Hakone memories.`
+  },
+
+  {
+    name: "Kobe",
+    desc: "A city between mountain and sea.",
+    images: [
+      "Images/japan/kobe1.jpg",
+      "Images/japan/kobe2.jpg",
+      "Images/japan/kobe3.jpg"
+    ],
+    note: `Kobe memories.`
+  },
+
+  {
+    name: "Nara",
+    desc: "Old temples, deer, and quiet paths.",
+    images: [
+      "Images/japan/nara1.jpg",
+      "Images/japan/nara2.jpg",
+      "Images/japan/nara3.jpg"
+    ],
+    note: `Nara memories.`
+  }
+];
+
+function renderCityButtons(){
+  const cityList = document.getElementById("city-list");
+
+  cityList.innerHTML = cities.map((city, index) => `
+    <button
+      class="${index === 0 ? 'active' : ''}"
+      onclick="showCity(${index}, this)"
+    >
+      ${city.name}
+    </button>
+  `).join("");
+}
+
+function showCity(index, button){
+  const city = cities[index];
+
+  document.getElementById("city-title").innerText = city.name;
+  document.getElementById("city-desc").innerText = city.desc;
+  document.getElementById("city-note").innerText = city.note;
+
+  document.getElementById("photo-grid").innerHTML =
+    city.images.map(img => `
+      <img src="${img}" alt="${city.name}" loading="lazy" decoding="async">
+    `).join("");
+
+  document.querySelectorAll("#city-list button").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  button.classList.add("active");
+}
+
+renderCityButtons();
+showCity(0, document.querySelector("#city-list button"));
+</script>
+
+<div id="modal" class="modal">
+  <button id="modal-prev" class="modal-nav prev">‹</button>
+  <span id="close-btn" class="close-btn">&times;</span>
+  <img id="modal-img" src="" alt="">
+  <button id="modal-next" class="modal-nav next">›</button>
+</div>
+
+<script src="js/image-viewer.js"></script>
+
+</body>
+</html>
