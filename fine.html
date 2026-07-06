@@ -826,6 +826,7 @@ const perPage = 2;
 
 const restaurantLayout = document.getElementById("restaurantLayout");
 const pageCount = document.getElementById("pageCount");
+restaurants.sort((a, b) => new Date(b.date) - new Date(a.date));
 
 function renderRestaurants(){
   restaurantLayout.innerHTML = "";
