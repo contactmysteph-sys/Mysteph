@@ -1138,5 +1138,24 @@
 
   </footer>
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".updated-badge").forEach(badge => {
+    const text = badge.textContent.trim();
+    const match = text.match(/Updated\s*·\s*(.+)/);
+
+    if (!match) return;
+
+    const date = new Date(match[1] + ", 2026");
+    const today = new Date();
+
+    const diffDays = (today - date) / (1000 * 60 * 60 * 24);
+
+    if (diffDays > 7) {
+      badge.style.display = "none";
+    }
+  });
+});
+</script>
 </body>
 </html>
