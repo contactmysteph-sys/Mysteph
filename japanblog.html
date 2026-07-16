@@ -808,13 +808,20 @@ function renderCityButtons(){
   const cityList = document.getElementById("city-list");
 
   const publishedCities = cities.filter(city => city.published);
-    <button
-      class="${index === 0 ? 'active' : ''}"
-      onclick="showCity(${index}, this)"
-    >
-      ${city.name}
-    </button>
-  `).join("");
+  cityList.innerHTML = cities
+    .map((city, index) => {
+
+       if (!city.published) return "";
+
+       return `
+         <button
+           class="${index === 0 ? "active" : ""}"
+           onclick="showCity(${index}, this)">
+           ${city.name}
+         </button>
+      `;
+    })
+    .join("");
 }
 
 function showCity(index, button){
