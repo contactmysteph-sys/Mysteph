@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Maldives Journal</title>
+
+  <!-- GOOGLE FONTS -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&display=swap" rel="stylesheet">
+ 
+  <style>
+  *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+  }
+
+  body{
+    background:
+      radial-gradient(circle at top left, rgba(205,218,230,0.35), transparent 40%),
+      radial-gradient(circle at bottom right, rgba(222,228,234,0.35), transparent 40%),
+      linear-gradient(rgba(236,240,244,0.96), rgba(246,245,242,0.96));
+    background-size:cover;
+    background-attachment:fixed;
+    font-family:'Montserrat', sans-serif;
+    color:#2d3e52;
+  }
+
+  a{
+    text-decoration:none;
+    color:inherit;
+  }
+
+  img{
+    width:100%;
+    display:block;
+  }
+
+  /* BACK BUTTON */
+
+  .back-wrapper{
+    width:min(1120px,90%);
+    margin:0;
+    text-align:left;
+  }
+
+  .back-btn{
+    display:inline-block;
+    padding-bottom:4px;
+    font-size:11px;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+    color:#31476E;
+    border-bottom:1px solid #31476E;
+    transition:0.3s ease;
+    margin-left: 40px;
+    margin-top: 5px;
+  }
+
+  .back-btn:hover{
+    opacity:0.7;
+    transform:translateX(-4px);
+  }
+
+  /* HERO */
+
+  .hero{
+    width:100%;
+    height:38vh;
+    background-image:url("Images/maldive/5.jpg");
+    background-size:cover;
+    background-position:center;
+    position:relative;
+  }
+
+  .hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.18);
+  }
+
+  .hero-content{
+    position:absolute;
+    bottom:28px;
+    left:50%;
+    transform:translateX(-50%);
+    width:min(1120px,90%);
+    z-index:2;
+    color:white;
+  }
+
+  .hero-content span{
+    font-size:10px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+  }
+
+  .hero-content h1{
+    margin-top:10px;
+    max-width:520px;
+    font-family:'Cormorant Garamond', serif;
+    font-size:20px;
+    font-weight:400;
+    line-height:1.1;
+  }
+
+  /* BREADCRUMB */
+
+  .breadcrumb{
+    width:min(1100px,90%);
+    margin:18px auto 0;
+    font-size:12px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:#8A97A5;
+  }
+
+  .breadcrumb a{
+    color:#8A97A5;
+  }
+
+  .breadcrumb a:hover{
+    color:#2F4A5C;
+  }
+
+  .breadcrumb span{
+    margin:0 4px;
+  }
+
+  /* PHOTO DIARY */
+
+  .photo-diary{
+    width:min(1400px,92%);
+    margin:70px auto 45px;
+    display:grid;
+    grid-template-columns:45% 55%;
+    gap:28px;
+  }
+
+  .diary-gallery,
+  .diary-writing{
+    background:linear-gradient(rgba(255,255,255,0.88), rgba(245,248,250,0.88));
+    border-radius:4px;
+    box-shadow:
+      0 8px 20px rgba(0,0,0,0.04),
+      0 22px 55px rgba(49,71,110,0.08);
+    animation:fadeUp 0.9s ease both;
+  }
+
+  /* LEFT PHOTO FRAME */
+
+  .diary-gallery{
+    position:relative;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    padding:34px;
+    border:1px solid rgba(49,71,110,0.22);
+  }
+
+  .diary-gallery img{
+    height:145px;
+    object-fit:cover;
+    border-radius:2px;
+    filter:saturate(0.9) contrast(0.95);
+  }
+
+  .diary-gallery .big-photo{
+    grid-column:1 / -1;
+    height:210px;
+  }
+
+  .diary-gallery .wide-photo{
+    grid-column:1 / -1;
+    height:180px;
+  }
+
+  .photo-note,
+  .travel-note{
+    font-family:'Caveat', cursive;
+    color:#637c9e;
+  }
+
+  .photo-note{
+    grid-column:1 / -1;
+    margin-bottom:4px;
+    font-size:26px;
+    color:#566882;
+  }
+
+  /* RIGHT DIARY CARD */
+
+  .diary-writing{
+    position:sticky;
+    top:40px;
+    min-height:100%;
+    max-width:700px;
+    padding:30px 60px;
+    border:1px solid rgba(49,71,110,0.16);
+    animation-duration:1.1s;
+  }
+
+  .travel-note{
+    margin-top:0;
+    font-size:22px;
+  }
+
+  .diary-writing span{
+    display:block;
+    margin-bottom:14px;
+    font-size:11px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:#8a94a3;
+  }
+
+  .diary-writing h1{
+    margin:12px 0 15px;
+    font-family:'Cormorant Garamond', serif;
+    font-size:20px;
+    color:#31476E;
+    font-weight:400
+  }
+
+  .diary-writing p{
+    margin-top:10px;
+    white-space:pre-line;
+    font-size:14px;
+    line-height:1.6;
+    color:#46566b;
+    font-weight:500;
+  }
+  
+   
+  /* =========================
+     ANIMATION
+  ========================== */
+
+  @keyframes fadeUp{
+    from{
+     opacity:0;
+     transform:translateY(18px);
+    }
+
+    to{
+     opacity:1;
+     transform:translateY(0);
+    }
+  }
+  
+  /* =========================
+     MOBILE
+  ========================== */
+
+  @media(max-width:768px){
+
+   .back-wrapper{
+     margin:22px auto 10px;
+     text-align:left;
+    }
+
+   .back-btn{
+     font-size:8px;
+     letter-spacing:0.7px;
+     border-bottom:none;
+     padding-bottom:0;
+    }
+
+    .hero{
+     height:20vh;
+    }
+
+   .hero h1{
+      font-size:12px;
+      margin-bottom: 0;
+    }
+
+   .hero span{
+      font-size:8px;
+      margin-bottom: 3px;
+    }
+
+    .hero-content{
+      bottom:10px;
+    }
+
+    .hero-content span{
+      display: none;
+    }
+
+   .photo-diary{
+      grid-template-columns:1fr;
+      margin:20px auto 35px;
+      gap:20px;
+    }
+
+   .diary-gallery{
+      padding:22px;
+      gap:10px;
+    }
+
+   .diary-gallery img{
+      height:135px;
+    }
+
+    .diary-writing{
+     padding:24px 24px;
+    }
+
+    .travel-note{
+     margin-top:0;
+     font-size:14px;
+    }
+
+    .diary-writing span{
+      font-size:10px;
+      letter-spacing:1px;
+    }
+
+    .diary-writing h1{
+      font-size:14px;
+    }
+
+   .diary-writing p{
+     margin-top:0;
+     white-space:pre-line;
+     font-size:12px;
+     line-height:1.5;
+    }
+
+
+  }
+    
+ </style>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token":"..."}'></script>
+<!-- End Cloudflare Web Analytics -->
+
+
+<link rel="stylesheet" href="css/image-viewer.css">
+
+</head>
+
+<body>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <span>Indonesia · 2026</span>
+
+      <h1>
+        Relaxing in a small Island: A Journey to Batam, Indonesia
+      </h1>
+
+    </div>
+
+  </section>
+
+  <div class="back-wrapper">
+     <a href="ap.html" class="back-btn">
+       ← Back to ASIA-PACIFIC
+     </a>
+  </div>
+
+  <!-- PHOTO DIARY -->
+  <section class="photo-diary">
+
+    <!-- GALLERY -->
+
+    <div class="diary-gallery">
+
+      <div class="photo-note">
+         Familiarizing with the local culture and enjoying massage sessions in Batam.
+      </div>
+
+      <img src="Images/ap/ba1.jpg" alt="Indonesia">
+      <img src="Images/ap/ba3.jpg" alt="Indonesia">
+      <img src="Images/ap/ba18.jpg" alt="indonesia">
+      <img src="Images/ap/ba2.jpg" alt="Indonesia">
+      <img src="Images/ap/ba4.jpg" alt="Indonesia">
+      <img src="Images/ap/ba5.jpg" alt="Indonesia">
+      <img src="Images/ap/ba7.jpg" alt="Indonesia">
+      <img src="Images/ap/ba22.jpg" alt="Indonesia">
+      <img src="Images/ap/ba23.jpg" alt="Indonesia">
+      <img src="Images/ap/ba24.png" alt="Indonesia">
+
+    </div>
+
+    <!-- DIARY WRITING -->
+    <div class="diary-writing">
+
+      <div class="travel-note">Travel Notes</div>  
+      <span>Indonesia · 2026</span>
+      <h1>내게 주는 휴식 여행</h1>
+
+       <p>
+         Website 제작을 하고 배포 및 도메인 연결을 완료한 후, 두 달간의 긴장감과 피로를 풀기 위해 휴식 여행을 떠났다.
+         <br>원래는 친구와 태국 여행을 계획했으나 친구 회사 업무로 인해 취소되어 일정을 변경했다.
+         <br>아주 오래전에 Singapore에서 Bintan 섬을 다녀온 적이 있었는데 그 당시 초딩이었던 아들도 좋아할 만큼 훌륭했었다. 
+         <br>이번에는 KL에서 Batam 섬으로 가는 항공이 저렴하여 Batam 섬으로 여행을 결정했다.
+         <br> Batam까지의 비행시간은 한 시간이 채 걸리지 않아 매우 편리했다.
+         <br> 기대감에 부풀어 Batam 공항에 도착했는데.. 이게 뭔 일? 한국인은 비자 비용을 내라 한다. 무려 170링깃이나.
+         <br>거기에 온라인 입국신고를 해야 하는데 검색하니 가장 먼저 뜨는 사이트가 사기 사이트였다.
+         <br>Immigration 직원에게 "왜 너희 나라는 입국신고서 신청하는데 돈을 받지?"라고 물어보지 않았더라면 USD90을 뜯길뻔했다.
+         무서븐 세상.
+         <br>다음 일정이 ferry를 타고 Singapore에 가는 것이었기에 다른 일정은 생각하지도 않았고 딱히 볼 것도 없었다.
+         <br>호텔에 도착해서 유일하게 한 일은 Massage 받기. 
+         <br>역시 기대를 저버리지 않았다.
+         <br>그동안 쌓였던 피로가 풀리는 느낌이었다. 말레이시아에서는 단 한 번도 만족할만한 Massage를 받아본 적이 없었는데 역시 인도네시아는 달랐다.
+         <br>웰컴 초콜릿에 오가닉 주스까지 제공하는 호텔에 매우 흡족했으나 가격은 물가 대비 비싼 편이었다.
+         <br>호텔에서 저녁식사와 아침 식사를 해결하며 그저 나의 수면제인 CNN & BBC 뉴스를 들으며 잠을 자는 것만으로도 충분히 만족스러웠다.
+         <br>같은 이슬람 문화권인데도 인도네시아는 조금 다른 문화가 있다. 친절하고 웃는 얼굴로 맞이해 주는 것에 편한함을 느꼈다.
+         <br>전체적으로 만족스러운 여행이었으나 배보다 배꼽이 큰 여행 경비로 계속 삥 뜯기는 기분이 들었다.
+         <br>그래도 정말 오랜만에 피로를 풀었으니 그 값을 치렀다고 생각하고 기분 좋게 싱가폴로 향했다.
+        </p>
+
+   </div>
+
+<div id="modal" class="modal">
+  <button id="modal-prev" class="modal-nav prev">‹</button>
+  <span id="close-btn" class="close-btn">&times;</span>
+  <img id="modal-img" src="" alt="">
+  <button id="modal-next" class="modal-nav next">›</button>
+</div>
+
+<script src="js/image-viewer.js"></script>
+
+</body>
+
+</html>
