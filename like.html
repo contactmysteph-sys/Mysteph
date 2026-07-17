@@ -167,6 +167,24 @@ a{
   color:#8a96a5;
 }
 
+.read-more{
+  margin-top:18px;
+}
+
+.read-more a{
+  display:inline-block;
+  color:#566f9b;
+  text-decoration:none;
+  font-size:0.95rem;
+  font-weight:600;
+  transition:.25s;
+}
+
+.read-more a:hover{
+  color:#2d4b73;
+  letter-spacing:.05em;
+}
+
 /* IMAGE MODAL */
 .modal{
   display:none;
@@ -317,6 +335,35 @@ a{
 <script>
 const places = [
   {
+    title:"My place",
+    location:"Kuala Lumpur",
+    date:"2026-07-13",
+
+    images:[
+      "Images/like/rid1.jpg",
+      "Images/like/rid2.jpg",
+      "Images/like/rid3.jpg",
+      "Images/like/rid4.jpg",
+      "Images/like/rid5.jpg",
+      "Images/like/rid6.jpg",
+      "Images/like/rid7.jpg",
+      "Images/like/rid8.jpg",
+      "Images/like/rid9.jpg",
+    ],
+
+    body:`
+      <p>The Ridge</p>
+      <p>The most favorate place I like</p>
+      <p>내가 가장 좋아하는 나의 공간 </p>
+      <p>그 무엇보다 이곳에서 바라보는 하늘과 풍경이 나를 행복하게 한다.</p> 
+      <p>이곳이 있었기에 Covid 시국도, 일도 무사히 버텨낼 수 있었다.</p>
+      <p>돈 많다고 자랑하는 사람도, 잘 났다고 하는 사람도 부럽지 않다.</p>
+      <p>나는 매일매일 이렇게 풍부한 색감과 다양한 변화를 보여주는 이 공간에 산다.</p>
+    `
+    link:"quiet.html"
+  },
+
+  {
     title:"KIN BALI",
     location:"JOHOR BAHRU",
     date:"2026-07-11",
@@ -436,8 +483,14 @@ function renderPlaces(){
         </div>
 
         <div class="place-info">
-          <span>${place.category}</span>
+          <span>${place.category ?? ""}</span>
           ${place.body}
+
+          ${place.link ? `
+             <p class="read-more">
+               <a href="${place.link}">Read More →</a>
+             </p>
+          ` : ""}
         </div>
 
       </article>
