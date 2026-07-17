@@ -670,12 +670,11 @@
 
     notes.sort((a, b) => {
 
-      // 대표 글은 항상 맨 위
-         if (a.featured) return -1;
-         if (b.featured) return 1;
+         if ((a.featured ?? false) !== (b.featured ?? false)) {
+           return (b.featured ?? false) - (a.featured ?? false);
+          }
 
-      // 나머지는 최신순
-      return new Date(b.date) - new Date(a.date);
+          return new Date(b.date) - new Date(a.date);
 
     });
 
