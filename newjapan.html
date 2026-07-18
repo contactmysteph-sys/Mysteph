@@ -1,72 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Japan | Wandering with Steph</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    min-height:100vh;
+
+    background:
+        linear-gradient(
+        rgba(246,250,250,.88),
+        rgba(246,250,250,.90)
+        ),
+        url("Images/healing/lonm1.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+
+    font-family:'Montserrat', sans-serif;
+    color:#31476E;
+}
+
+img{
+    width:100%;
+    display:block;
+    user-select:none;
+    -webkit-user-drag:none;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/*==============================
+BACK
+==============================*/
+
+.back-wrapper{
+
+    width:min(1200px,90%);
+    margin:18px auto 0;
+}
+
+.back-home{
+
+    display:inline-block;
+
+    font-size:10px;
+    letter-spacing:1.4px;
+    text-transform:uppercase;
+
+    color:#31476E;
+
+    border-bottom:1px solid rgba(49,71,110,.45);
+
+    padding-bottom:4px;
+
+    transition:.25s;
+}
+
+.back-home:hover{
+
+    opacity:.65;
+}
+
+/*==============================
+INTRO
+==============================*/
+
+.intro{
+
+    width:min(900px,90%);
+    margin:50px auto 35px;
+
+    text-align:center;
+}
+
+.intro span{
+
+    display:block;
+
+    font-family:'Quicksand',sans-serif;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    letter-spacing:2px;
+
+    color:#6d86a4;
+}
+
+.intro h1{
+
+    margin-top:10px;
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:42px;
+
+    font-weight:500;
+
+    color:#31476E;
+}
+
+.intro p{
+
+    margin-top:18px;
+
+    font-size:15px;
+
+    line-height:1.8;
+
+    color:#657487;
+}
+
+/*==============================
+MAP
+==============================*/
+
+.map-section{
+
+    width:min(1200px,90%);
+    margin:0 auto 90px;
+
+    text-align:center;
+}
+
+.map-wrapper{
+
+    position:relative;
+
+    display:inline-block;
+
+    width:100%;
+
+    max-width:900px;
+}
+
+.japan-map{
+
+    width:100%;
+
+    display:block;
+
+    filter:drop-shadow(0 18px 35px rgba(49,71,110,.10));
+}
+
+/*==============================
+CITY LINK
+==============================*/
+
+.city{
+
+    position:absolute;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50%;
+
+    text-decoration:none;
+
+    transition:.25s;
+}
+
+.city span{
+
+    position:absolute;
+
+    top:-28px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    white-space:nowrap;
+
+    font-size:11px;
+
+    letter-spacing:.5px;
+
+    color:#31476E;
+
+    opacity:0;
+
+    transition:.25s;
+}
+
+.city::before{
+
+   content:"";
+
+    width:12px;
+    height:12px;
+
+    border-radius:50%;
+
+    background:#31476E;
+
+    border:2px solid white;
+
+    box-shadow:0 0 0 4px rgba(49,71,110,.15);
+
+    transition:.25s;
+}
+
+.city:hover::before{
+
+  transform:scale(1.35);
+
+    background:#87A2C6;
+
+    box-shadow:0 0 0 8px rgba(49,71,110,.18);
+}
+
+/* ==========================
+   CITY POSITION
+========================== */
+
+.aomori{
+    top:17%;
+    left:72%;
+}
+
+.tokyo{
+    top:47%;
+    left:79%;
+}
+
+.kyoto{
+    top:56%;
+    left:67%;
+}
+
+.osaka{
+    top:59%;
+    left:65%;
+}
+
+.okayama{
+    top:63%;
+    left:58%;
+}
+
+.naoshima{
+    top:66%;
+    left:57%;
+}
+
+.hiroshima{
+    top:67%;
+    left:50%;
+}
+
+.fukuoka{
+    top:74%;
+    left:34%;
+}
+
+.oita{
+    top:72%;
+    left:43%;
+}
+
+.saga{
+    top:73%;
+    left:30%;
+}
+
+/*==============================
+BOTTOM TEXT
+==============================*/
+
+.map-note{
+
+    margin-top:30px;
+
+    font-size:12px;
+
+    letter-spacing:2px;
+
+    color:#7c8797;
+
+    text-transform:uppercase;
+}
+
+/*==============================
+MOBILE
+==============================*/
+
+@media(max-width:650px){
+
+body{
+
+    background-attachment:scroll;
+}
+
+.back-wrapper{
+
+    width:88%;
+}
+
+.back-home{
+
+    font-size:8px;
+}
+
+.intro{
+
+    width:88%;
+
+    margin:30px auto 22px;
+}
+
+.intro span{
+
+    font-size:13px;
+}
+
+.intro h1{
+
+    font-size:28px;
+}
+
+.intro p{
+
+    font-size:13px;
+
+    line-height:1.6;
+}
+
+.map-section{
+
+    width:92%;
+}
+
+.map-wrapper{
+
+    max-width:100%;
+}
+
+.map-note{
+
+    font-size:10px;
+
+    line-height:1.6;
+}
+
+.city{
+
+    width:16px;
+    height:16px;
+}
+
+.city::before{
+
+    width:9px;
+    height:9px;
+}
+}
+
+</style>
+
+</head>
 <body>
 
-  <div class="back-wrapper">
+<div class="back-wrapper">
     <a href="travel.html" class="back-home">
-      ← Back to Travel
+        ← Back To Travel
     </a>
-  </div>
-
-  <section class="hero">
-
-      <div class="hero-text">
-          <span>Travel Journal</span>
-          <h1>Japan</h1>
-          <p>
-              Every place holds a story.<br>
-              Click a city to continue the journey.
-          </p>
-      </div>
-
-  </section>
+</div>
 
 
-  <main class="map-section">
+<section class="intro">
 
-      <div class="map-wrapper">
+    <span>Travel Journal</span>
 
-          <img
-              src="Images/japan/japan-map.png"
-              alt="Japan Map"
-              class="japan-map"
-          >
+    <h1>Japan</h1>
 
-          <!-- Aomori -->
-          <a class="city aomori"
-             href="japanblog.html?city=aomori"
-             aria-label="Aomori"></a>
+    <p>
+        Every place holds a story.<br>
+        Click a city to continue the journey.
+    </p>
 
-          <!-- Hokkaido -->
-          <a class="city hokkaido"
-             href="japanblog.html?city=hokkaido"
-             aria-label="Hokkaido"></a>
+</section>
 
-          <!-- Tokyo -->
-          <a class="city tokyo"
-             href="japanblog.html?city=tokyo"
-             aria-label="Tokyo"></a>
 
-          <!-- Kyoto -->
-          <a class="city kyoto"
-             href="japanblog.html?city=kyoto"
-             aria-label="Kyoto"></a>
+<section class="map-section">
 
-          <!-- Okayama -->
-          <a class="city okayama"
-             href="japanblog.html?city=okayama"
-             aria-label="Okayama"></a>
+<div class="map-wrapper">
 
-          <!-- Osaka -->
-          <a class="city osaka"
-             href="japanblog.html?city=osaka"
-             aria-label="Osaka"></a>
+<img
+src="Images/japan/japan-map.png"
+alt="Japan Map"
+class="japan-map">
 
-          <!-- Naoshima -->
-          <a class="city naoshima"
-             href="japanblog.html?city=naoshima"
-             aria-label="Naoshima"></a>
 
-      </div>
+<!-- ===========================
+CITY LINKS
+=========================== -->
 
-  </main>
 
-</body>
+<a href="japanblog.html?city=aomori"
+class="city aomori">
+
+</a>
+
+
+<a href="japanblog.html?city=tokyo"
+class="city tokyo">
+
+
+</a>
+
+
+<a href="japanblog.html?city=kyoto"
+class="city kyoto">
+
+</a>
+
+
+<a href="japanblog.html?city=osaka"
+class="city osaka">
+
+
+</a>
+
+
+<a href="japanblog.html?city=okayama"
+class="city okayama">
+
+
+</a>
+
+
+<a href="japanblog.html?city=naoshima"
+class="city naoshima">
+
+
+</a>
+
+
+<a href="japanblog.html?city=hiroshima"
+class="city hiroshima">
+
+
+</a>
+
+
+<a href="japanblog.html?city=fukuoka"
+class="city fukuoka">
+
+
+</a>
+
+
+<a href="japanblog.html?city=oita"
+class="city oita">
+
+
+</a>
+
+
+<a href="japanblog.html?city=saga"
+class="city saga">
+
+
+</a>
+
+</div>
+
+
+<p class="map-note">
+
+Click a city to explore the stories.
+
+</p>
+
+</section>
+
+
