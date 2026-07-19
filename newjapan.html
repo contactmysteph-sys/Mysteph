@@ -27,8 +27,8 @@ body{
 
     background:
         linear-gradient(
-        rgba(168, 169, 170, 0.88),
-        rgba(217, 219, 219, 0.9)
+        rgba(120, 121, 123, 0.88),
+        rgba(134, 145, 175, 0.9)
         );
 
     background-size:cover;
@@ -64,18 +64,14 @@ BACK
 .back-home{
 
     display:inline-block;
-
     font-size:10px;
     letter-spacing:1.4px;
     text-transform:uppercase;
-
     color:#31476E;
-
     border-bottom:1px solid rgba(49,71,110,.45);
-
     padding-bottom:4px;
-
     transition:.25s;
+    margin-left: 20px;
 }
 
 .back-home:hover{
@@ -90,47 +86,34 @@ INTRO
 .intro{
 
     width:min(900px,90%);
-    margin:50px auto 35px;
-
+    margin:10px auto 10px;
     text-align:center;
 }
 
 .intro span{
 
     display:block;
-
     font-family:'Quicksand',sans-serif;
-
     font-size:15px;
-
     font-weight:600;
-
     letter-spacing:2px;
-
-    color:#6d86a4;
+    color:#32363b;
 }
 
 .intro h1{
-
     margin-top:10px;
-
     font-family:'Cormorant Garamond',serif;
-
     font-size:42px;
-
     font-weight:500;
-
     color:#31476E;
+    display:none;
 }
 
 .intro p{
-
+    display:none;
     margin-top:18px;
-
     font-size:15px;
-
     line-height:1.8;
-
     color:#657487;
 }
 
@@ -148,21 +131,222 @@ MAP
 .map-wrapper{
 
     position:relative;
-
     display:inline-block;
 
-    width:100%;
+    width:90%;
+    max-width:1500px;
+    padding:0;
+    border-radius:32px;
+    background:rgba(255,255,255,.26);
+    overflow:hidden;
 
-    max-width:900px;
 }
 
-.japan-map{
+.japan-map {
 
+    width: 100%;
+    display: block;
+
+    filter: drop-shadow(
+        0 18px 35px rgba(49,71,110,.10)
+    );
+}
+
+.map-wrapper::before{
+
+    content:"";
+    position:absolute;
+    inset:18px;
+    border-radius:24px;
+    border:1px solid rgba(255,255,255,.45);
+    pointer-events:none;
+    display:none;
+}
+
+
+.route-lines{
+
+    position:absolute;
+    inset:0;
     width:100%;
+    height:100%;
+    pointer-events:none;
+}
 
-    display:block;
+.route-lines line{
 
-    filter:drop-shadow(0 18px 35px rgba(49,71,110,.10));
+    stroke:#6f7d8f;
+    stroke-width:1.4;
+    stroke-dasharray:7 8;
+    opacity:.45;
+}
+
+/* ==========================
+   CITY POSITION (Map Matched)
+========================== */
+
+/* ---------- Hokkaido ---------- */
+
+.otaru{
+    top: 14%;
+    left: 67%;
+}
+
+.sapporo{
+    top: 15%;
+    left: 68.5%;
+}
+
+.furano{
+    top: 13%;
+    left: 70%;
+}
+
+.abashiri{
+    top: 11%;
+    left: 79%;
+}
+
+/* ---------- Tohoku ---------- */
+
+.aomori{
+    top: 28%;
+    left: 68%;
+}
+
+.sendai{
+    top: 41%;
+    left: 69%;
+}
+
+
+/* ---------- Hokuriku ---------- */
+
+.kanazawa{
+    top: 52%;
+    left: 51%;
+}
+
+.toyama{
+    top: 50.5%;
+    left: 54.5%;
+}
+
+.tateyama{
+    top: 51.5%;
+    left: 56%;
+}
+
+/* ---------- Kanto ---------- */
+
+.tokyo{
+    top: 56.5%;
+    left: 65%;
+}
+
+.yokohama{
+    top: 56.5%;
+    left: 63.5%;
+}
+
+.hakone{
+    top: 59.5%;
+    left: 60.5%;
+}
+
+.shizuoka{
+    top: 60%;
+    left: 59%;
+}
+
+/* ---------- Kansai ---------- */
+
+.kyoto{
+    top: 60%;
+    left: 49.3%;
+}
+
+.kobe{
+    top: 61%;
+    left: 46%;
+}
+
+.osaka{
+    top: 62%;
+    left: 47.5%;
+}
+
+/* ---------- Chugoku ---------- */
+
+.okayama{
+    top: 61.5%;
+    left: 43.5%;
+}
+
+.naoshima{
+    top: 63%;
+    left: 44%;
+}
+
+/* ---------- Shikoku ---------- */
+
+.kochi{
+    top: 69.5%;
+    left: 40%;
+}
+
+/* ---------- Kyushu ---------- */
+
+.fukuoka{
+    top: 67.5%;
+    left: 26.5%;
+}
+
+.saga{
+    top: 69%;
+    left: 25.5%;
+}
+
+.imari{
+    top: 69%;
+    left: 24%;
+}
+
+.sasebo{
+    top: 71%;
+    left: 23%;
+}
+
+.nagasaki{
+    top: 73%;
+    left: 23%;
+}
+
+.yufuin{
+    top: 68.5%;
+    left: 29%;
+}
+
+.beppu{
+    top: 67.5%;
+    left: 30.5%;
+}
+
+.oita{
+    top: 68%;
+    left: 31.5%;
+}
+
+.miyazaki{
+    top: 79%;
+    left: 30%;
+}
+
+/* ---------- Okinawa ---------- */
+
+.okinawa{
+    top: 83%;
+    left: 84%;
 }
 
 /*==============================
@@ -172,238 +356,72 @@ CITY LINK
 .city{
 
     position:absolute;
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
-    width:18px;
-
-    height:18px;
-
+    width:9px;
+    height:9px;
     border-radius:50%;
-
     text-decoration:none;
-
     transition:.25s;
-}
-
-.city span{
-
-    position:absolute;
-
-    top:-28px;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    white-space:nowrap;
-
-    font-size:11px;
-
-    letter-spacing:.5px;
-
-    color:#31476E;
-
-    opacity:0;
-
-    transition:.25s;
+    transform: translate(-50%, -50%);
 }
 
 .city::before{
 
-   content:"";
+    content:"";
 
-    width:12px;
-    height:12px;
+    width:9px;
+    height:9px;
 
-    border-radius:50%;
+    background:#3a4455;
+    border-radius:50% 50% 50% 0;
 
-    background:#31476E;
-
-    border:2px solid white;
-
-    box-shadow:0 0 0 4px rgba(49,71,110,.15);
-
-    transition:.25s;
+    transform:rotate(-45deg);
 }
 
 .city:hover::before{
 
-  transform:scale(1.35);
-
+    transform: scale(1.8);
     background:#87A2C6;
-
-    box-shadow:0 0 0 8px rgba(49,71,110,.18);
-}
-
-/* ==========================
-   CITY POSITION
-========================== */
-
-/* Hokkaido */
-
-.sapporo{
-    top:6%;
-    left:78%;
-}
-
-.otaru{
-    top:7%;
-    left:75%;
-}
-
-.furano{
-    top:8%;
-    left:82%;
-}
-
-.abashiri{
-    top:7%;
-    left:92%;
 }
 
 
-/* Tohoku */
+.city::after {
 
-.aomori{
-    top:17%;
-    left:72%;
+    content: attr(data-name);
+
+    position: absolute;
+
+    top: -18px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: #101b29;
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 16px;
+    font-weight: 600;
+    white-space: nowrap;
+
+    opacity: 0;
+
+    transition: .25s;
+
+    pointer-events: none;
 }
 
+.city:hover::after{
 
-/* Hokuriku */
+    opacity: 1;
 
-.kanazawa{
-    top:39%;
-    left:59%;
+    top: -28px;
+
+    transform: translateX(-50%) scale(1.05);
 }
-
-.toyama{
-    top:37%;
-    left:63%;
-}
-
-.tateyama{
-    top:35%;
-    left:66%;
-}
-
-
-/* Kanto */
-
-.tokyo{
-    top:47%;
-    left:79%;
-}
-
-.yokohama{
-    top:49%;
-    left:77%;
-}
-
-.hakone{
-    top:51%;
-    left:73%;
-}
-
-
-/* Chubu */
-
-.shizuoka{
-    top:52%;
-    left:75%;
-}
-
-
-/* Kansai */
-
-.kyoto{
-    top:56%;
-    left:67%;
-}
-
-.osaka{
-    top:59%;
-    left:65%;
-}
-
-.kobe{
-    top:60%;
-    left:62%;
-}
-
-
-/* Chugoku */
-
-.okayama{
-    top:63%;
-    left:58%;
-}
-
-
-/* Shikoku */
-
-.naoshima{
-    top:66%;
-    left:57%;
-}
-
-.kochi{
-    top:74%;
-    left:56%;
-}
-
-
-/* Kyushu */
-
-.fukuoka{
-    top:74%;
-    left:34%;
-}
-
-.saga{
-    top:73%;
-    left:30%;
-}
-
-.imari{
-    top:71%;
-    left:28%;
-}
-
-.nagasaki{
-    top:74%;
-    left:23%;
-}
-
-.sasebo{
-    top:71%;
-    left:25%;
-}
-
-.oita{
-    top:72%;
-    left:43%;
-}
-
-.beppu{
-    top:71%;
-    left:44%;
-}
-
-.yufuin{
-    top:69%;
-    left:41%;
-}
-
-.miyazaki{
-    top:82%;
-    left:49%;
-}
+ 
 
 /*==============================
 BOTTOM TEXT
@@ -511,7 +529,8 @@ body{
 
 <section class="intro">
 
-    <span>Travel Journal</span>
+    <span></span>
+
 
 </section>
 
@@ -521,158 +540,79 @@ body{
 <div class="map-wrapper">
 
 <img
-src="Images/jmap.png"
+src="Images/jmap5.png"
 alt="Japan Map"
 class="japan-map">
+
+<div class="compass">
+
+
+    <div class="compass-circle">
+
+        <span class="north"></span>
+        <span class="south"></span>
+        <span class="east"></span>
+        <span class="west"></span>
+
+        <div class="compass-star">
+
+            <div class="needle north-needle"></div>
+            <div class="needle south-needle"></div>
+            <div class="needle east-needle"></div>
+            <div class="needle west-needle"></div>
+
+        </div>
+
+    </div>
+
+    <p></p>
+
+</div>
 
 
 <!-- ===========================
 CITY LINKS
 =========================== -->
 
-<a href="japanblog.html?city=nagasaki"
-class="city nagasaki">
 
-</a>
+<a href="japanblog.html?city=nagasaki" class="city nagasaki" data-name="Nagasaki"></a>
+<a href="japanblog.html?city=sasebo" class="city sasebo" data-name="Sasebo"></a>
+<a href="japanblog.html?city=kanazawa" class="city kanazawa" data-name="Kanazawa"></a>
+<a href="japanblog.html?city=toyama" class="city toyama" data-name="Toyama"></a>
+<a href="japanblog.html?city=tateyama" class="city tateyama" data-name="Tateyama"></a>
 
-<a href="japanblog.html?city=sasebo"
-class="city sasebo">
+<a href="japanblog.html?city=tokyo" class="city tokyo" data-name="Tokyo"></a>
+<a href="japanblog.html?city=yokohama" class="city yokohama" data-name="Yokohama"></a>
+<a href="japanblog.html?city=hakone" class="city hakone" data-name="Hakone"></a>
 
-</a>
+<a href="japanblog.html?city=kyoto" class="city kyoto" data-name="Kyoto"></a>
+<a href="japanblog.html?city=kobe" class="city kobe" data-name="Kobe"></a>
+<a href="japanblog.html?city=osaka" class="city osaka" data-name="Osaka"></a>
 
-<a href="japanblog.html?city=kanazawa"
-class="city kanazawa">
+<a href="japanblog.html?city=okayama" class="city okayama" data-name="Okayama"></a>
+<a href="japanblog.html?city=naoshima" class="city naoshima" data-name="Naoshima"></a>
 
-</a>
+<a href="japanblog.html?city=sapporo" class="city sapporo" data-name="Sapporo"></a>
+<a href="japanblog.html?city=furano" class="city furano" data-name="Furano"></a>
+<a href="japanblog.html?city=abashiri" class="city abashiri" data-name="Abashiri"></a>
+<a href="japanblog.html?city=otaru" class="city otaru" data-name="Otaru"></a>
 
-<a href="japanblog.html?city=toyama"
-class="city toyama">
+<a href="japanblog.html?city=aomori" class="city aomori" data-name="Aomori"></a>
+<a href="japanblog.html?city=sendai" class="city sendai" data-name="Sendai"></a>
 
-</a>
+<a href="japanblog.html?city=shizuoka" class="city shizuoka" data-name="Shizuoka"></a>
 
-<a href="japanblog.html?city=tateyama"
-class="city tateyama">
+<a href="japanblog.html?city=imari" class="city imari" data-name="Imari"></a>
 
-</a>
+<a href="japanblog.html?city=kochi" class="city kochi" data-name="Kochi"></a>
 
-
-<a href="japanblog.html?city=tokyo"
-class="city tokyo">
-
-</a>
-
-<a href="japanblog.html?city=yokohama"
-class="city yokohama">
-
-</a>
-
-<a href="japanblog.html?city=hakone"
-class="city hakone">
-
-</a>
-
-
-<a href="japanblog.html?city=kyoto"
-class="city kyoto">
-
-</a>
-
-<a href="japanblog.html?city=kobe"
-class="city kobe">
-
-</a>
-
-<a href="japanblog.html?city=osaka"
-class="city osaka">
-
-</a>
-
-
-<a href="japanblog.html?city=okayama"
-class="city okayama">
-
-</a>
-
-
-<a href="japanblog.html?city=naoshima"
-class="city naoshima">
-
-</a>
-
-<a href="japanblog.html?city=sapporo"
-class="city sapporo">
-
-</a>
-
-<a href="japanblog.html?city=furano"
-class="city furano">
-
-</a>
-
-<a href="japanblog.html?city=abashiri"
-class="city abashiri">
-
-</a>
-
-<a href="japanblog.html?city=otaru"
-class="city otaru">
-
-</a>
-
-<a href="japanblog.html?city=aomori"
-class="city aomori">
-
-</a>
-
-<a href="japanblog.html?city=shizuoka"
-class="city shizuoka">
-
-</a>
-
-<a href="japanblog.html?city=imari"
-class="city imari">
-
-</a>
-
-
-<a href="japanblog.html?city=kochi"
-class="city kochi">
-
-</a>
-
-
-<a href="japanblog.html?city=oita"
-class="city oita">
-
-</a>
-
-<a href="japanblog.html?city=beppu"
-class="city beppu">
-
-</a>
-
-<a href="japanblog.html?city=saga"
-class="city saga">
-
-</a>
-
-<a href="japanblog.html?city=yufuin"
-class="city yufuin">
-
-</a>
-
-<a href="japanblog.html?city=fukuoka"
-class="city fukuoka">
-
-</a>
-
-<a href="japanblog.html?city=miyazaki"
-class="city miyazaki">
-
-</a>
-
-</div>
-
+<a href="japanblog.html?city=oita" class="city oita" data-name="Oita"></a>
+<a href="japanblog.html?city=beppu" class="city beppu" data-name="Beppu"></a>
+<a href="japanblog.html?city=saga" class="city saga" data-name="Saga"></a>
+<a href="japanblog.html?city=yufuin" class="city yufuin" data-name="Yufuin"></a>
+<a href="japanblog.html?city=fukuoka" class="city fukuoka" data-name="Fukuoka"></a>
+<a href="japanblog.html?city=miyazaki" class="city miyazaki" data-name="Miyazaki"></a>
+<a href="japanblog.html?city=okinawa" class="city okinawa" data-name="Okinawa"></a>
 
 <p class="map-note">
 
@@ -680,6 +620,11 @@ Click a city to explore the stories.
 
 </p>
 
+</div>
+
 </section>
+
+</body>
+</html>
 
 
