@@ -773,7 +773,7 @@ const popup = document.getElementById("popup");
 
 const popupImg = document.getElementById("popup-img");
 const popupTitle = document.getElementById("popup-title");
-const popupLink = document.getElementById("popup-link");
+let currentLink = "";
 
 document.querySelectorAll(".city").forEach(city => {
 
@@ -783,7 +783,7 @@ document.querySelectorAll(".city").forEach(city => {
 
       popupTitle.textContent = city.dataset.title;
 
-      popupLink.href = city.dataset.link;
+      currentLink = city.dataset.link;
 
       popup.style.left = `${e.target.offsetLeft + 30}px`;
 
@@ -810,9 +810,10 @@ document.querySelectorAll(".city").forEach(city => {
 
 popup.addEventListener("click", () => {
 
-    window.location.href = popupLink.href;
+    window.location.href = currentLink;
 
 });
+
 
 /*
 city.addEventListener("mouseleave", () => {
