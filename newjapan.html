@@ -632,7 +632,6 @@ CITY LINKS
 </a>
 
 <a href="japan1.html#nagasaki" class="city nagasaki" data-name="Nagasaki"></a>
-<a href="japan1.html#sasebo" class="city sasebo" data-name="Sasebo"></a>
 <a href="japan1.html#kanazawa" class="city kanazawa" data-name="Kanazawa"></a>
 <a href="japan1.html#toyama" class="city toyama" data-name="Toyama"></a>
 <a href="japan1.html#tateyama" class="city tateyama" data-name="Tateyama"></a>
@@ -689,7 +688,7 @@ const popupLink = document.getElementById("popup-link");
 
 document.querySelectorAll(".city").forEach(city => {
 
-    city.addEventListener("click", () => {
+    city.addEventListener("mouseenter", () => {
 
        popupImg.src = city.dataset.image;
 
