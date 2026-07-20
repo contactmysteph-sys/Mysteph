@@ -163,6 +163,59 @@ MAP
     display:none;
 }
 
+.map-popup{
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%, -50%);
+
+    width:220px;
+
+    background:rgba(255,255,255,.92);
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:0 18px 40px rgba(0,0,0,.18);
+
+    display:none;
+
+    z-index:20;
+}
+
+.map-popup img{
+
+    width:100%;
+
+    height:140px;
+
+    object-fit:cover;
+}
+
+.map-popup h3{
+
+    margin:14px 0 8px;
+
+    font-size:20px;
+}
+
+.map-popup a{
+
+    display:block;
+
+    padding:0 0 18px;
+
+    font-size:13px;
+
+    color:#425a7a;
+
+    text-decoration:none;
+}
+
 
 /* ==========================
    CITY POSITION (Map Matched)
@@ -562,6 +615,11 @@ class="japan-map">
 <!-- ===========================
 CITY LINKS
 =========================== -->
+<a class="city sasebo"
+   data-title="Sasebo"
+   data-image="Images/japan/hu1.jpg"
+   data-link="japan1.html#sasebo">
+</a>
 
 <a href="japan1.html#nagasaki" class="city nagasaki" data-name="Nagasaki"></a>
 <a href="japan1.html#sasebo" class="city sasebo" data-name="Sasebo"></a>
@@ -610,9 +668,40 @@ CITY LINKS
 </p>
 
 </div>
-
 </section>
 
+<script>
+const popup = document.getElementById("popup");
+
+const popupImg = document.getElementById("popup-img");
+const popupTitle = document.getElementById("popup-title");
+const popupLink = document.getElementById("popup-link");
+
+document.querySelectorAll(".city").forEach(city => {
+
+    city.addEventListener("click", () => {
+
+        popupImg.src = city.dataset.image;
+
+        popupTitle.textContent = city.dataset.title;
+
+        popupLink.href = city.dataset.link;
+
+        popup.style.display = "block";
+    });
+
+document.addEventListener("click", e => {
+
+    if (
+        !e.target.closest(".city") &&
+        !e.target.closest(".map-popup")
+    ) {
+
+        popup.style.display = "none";
+    }
+});
+});
+</script>
 </body>
 </html>
 
