@@ -172,10 +172,15 @@ MAP
 
     transform:translate(-50%, -50%);
     width:200px;
-    background:rgba(255,255,255,.92);
-    border-radius:20px;
+    background:
+        linear-gradient(
+        rgba(202, 216, 246, 0.88),
+        rgba(227, 231, 243, 0.9)
+        );
+
+    border-radius:10px;
     overflow:hidden;
-    box-shadow:0 18px 40px rgba(0,0,0,.18);
+    box-shadow:0 10px 20px rgba(0,0,0,.18);
     display:none;
     z-index:20;
 }
@@ -190,7 +195,7 @@ MAP
 .map-popup h3{
 
     margin:14px 0 8px;
-    font-size:14px;
+    font-size:12px;
 }
 
 .map-popup a{
@@ -198,7 +203,7 @@ MAP
     display:block;
     padding:0 0 18px;
     font-size:11px;
-    color:#425a7a;
+    color:#242d39;
     text-decoration:none;
 }
 
@@ -566,7 +571,6 @@ body{
         <h3 id="popup-title"></h3>
 
         <a id="popup-link" href="">
-            Read Travel Journal →
         </a>
 
     </div>
