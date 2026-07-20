@@ -789,15 +789,19 @@ const popupLink = document.getElementById("popup-link");
 
 document.querySelectorAll(".city").forEach(city => {
 
-    city.addEventListener("mouseenter", () => {
+    city.addEventListener("mouseenter", (e) => {
 
-       popupImg.src = city.dataset.image;
+      popupImg.src = city.dataset.image;
 
-       popupTitle.textContent = city.dataset.title;
+      popupTitle.textContent = city.dataset.title;
 
-       popupLink.href = city.dataset.link;
+      popupLink.href = city.dataset.link;
 
-       popup.style.display = "block";
+      popup.style.left = `${e.target.offsetLeft + 30}px`;
+
+      popup.style.top = `${e.target.offsetTop - 120}px`;
+
+      popup.style.display = "block";
 
     });
 
