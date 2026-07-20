@@ -799,10 +799,23 @@ document.querySelectorAll(".city").forEach(city => {
 
       popup.style.left = `${e.target.offsetLeft + 30}px`;
 
-      popup.style.top = `${e.target.offsetTop - 120}px`;
+      if (
+          city.classList.contains("sapporo") ||
+          city.classList.contains("furano") ||
+          city.classList.contains("otaru") ||
+          city.classList.contains("abashiri")
+        ) {
 
-      popup.style.display = "block";
+          popup.style.top = `${e.target.offsetTop + 30}px`;
 
+        } else {
+
+          popup.style.top = `${e.target.offsetTop - 120}px`;
+
+        }
+
+        popup.style.display = "block";
+        
     });
 
 });
