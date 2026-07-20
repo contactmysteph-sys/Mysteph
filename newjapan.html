@@ -691,13 +691,20 @@ document.querySelectorAll(".city").forEach(city => {
 
     city.addEventListener("click", () => {
 
-        popupImg.src = city.dataset.image;
+       popupImg.src = city.dataset.image;
 
-        popupTitle.textContent = city.dataset.title;
+       popupTitle.textContent = city.dataset.title;
 
-        popupLink.href = city.dataset.link;
+       popupLink.href = city.dataset.link;
 
-        popup.style.display = "block";
+       popup.style.display = "block";
+
+    });
+
+    city.addEventListener("mouseleave", () => {
+
+        popup.style.display = "none";
+
     });
 });
 
