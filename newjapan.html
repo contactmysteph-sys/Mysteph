@@ -571,8 +571,6 @@ body{
 
         <h3 id="popup-title"></h3>
 
-        <a id="popup-link" href=""> </a>
-
     </div>
 
   <div class="compass">
@@ -807,6 +805,12 @@ document.querySelectorAll(".city").forEach(city => {
         popup.style.display = "block";
 
     });
+
+});
+
+popup.addEventListener("click", () => {
+
+    window.location.href = popupLink.href;
 
 });
 
