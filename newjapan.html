@@ -208,6 +208,180 @@ MAP
     text-decoration:none;
 }
 
+/* ==========================
+   COMPASS
+========================== */
+
+.compass{
+
+    position:absolute;
+
+    top:25px;
+    left:25px;
+
+    z-index:20;
+    transform:scale(1.2);
+    text-align:center;
+}
+
+.compass-circle{
+
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    border:1px solid rgba(49,71,110,.25);
+    position:relative;
+    background:rgba(255,255,255,.45);
+    animation:spinCompass 28s linear infinite;
+}
+
+.compass p{
+    margin-top:4px;
+    font-size:14px;
+    letter-spacing:6px;
+    font-style:italic;
+}
+
+.north,
+.south,
+.east,
+.west{
+
+    position:absolute;
+    font-size:10px;
+    color:#6d7887;
+}
+
+.north{
+
+    top:10px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.south{
+
+    bottom:10px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.east{
+
+    right:10px;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+.west{
+
+    left:10px;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+.compass-star{
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    width:60px;
+    height:60px;
+
+    transform:translate(-50%, -50%);
+}
+
+/* 북쪽 */
+
+.north-needle{
+
+    position:absolute;
+
+    left:50%;
+    top:0;
+
+    width:0;
+    height:0;
+
+    transform:translateX(-50%);
+
+    border-left:8px solid transparent;
+    border-right:8px solid transparent;
+    border-bottom:34px solid #31476E;
+}
+
+/* 남쪽 */
+
+.south-needle{
+
+    position:absolute;
+
+    left:50%;
+    bottom:0;
+
+    width:0;
+    height:0;
+
+    transform:translateX(-50%);
+
+    border-left:6px solid transparent;
+    border-right:6px solid transparent;
+    border-top:26px solid rgba(49,71,110,.5);
+}
+
+/* 동쪽 */
+
+.east-needle{
+
+    position:absolute;
+
+    top:50%;
+    right:0;
+
+    width:0;
+    height:0;
+
+    transform:translateY(-50%);
+
+    border-top:6px solid transparent;
+    border-bottom:6px solid transparent;
+    border-left:24px solid rgba(49,71,110,.7);
+}
+
+/* 서쪽 */
+
+.west-needle{
+
+    position:absolute;
+
+    top:50%;
+    left:0;
+
+    width:0;
+    height:0;
+
+    transform:translateY(-50%);
+
+    border-top:6px solid transparent;
+    border-bottom:6px solid transparent;
+    border-right:24px solid rgba(49,71,110,.7);
+}
+
+@keyframes spinCompass{
+
+    from{
+
+        transform:rotate(0deg);
+    }
+
+    to{
+
+        transform:rotate(360deg);
+    }
+}
+
 
 /* ==========================
    CITY POSITION (Map Matched)
