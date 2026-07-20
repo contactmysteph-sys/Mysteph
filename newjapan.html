@@ -700,13 +700,26 @@ document.querySelectorAll(".city").forEach(city => {
 
     });
 
-    city.addEventListener("mouseleave", () => {
-
-        popup.style.display = "none";
-
-    });
 });
 
+/*
+city.addEventListener("mouseleave", () => {
+
+    popup.style.display = "none";
+
+});
+*/
+
+document.addEventListener("click", e => {
+
+    if (
+        !e.target.closest(".city") &&
+        !e.target.closest(".map-popup")
+    ) {
+
+        popup.style.display = "none";
+    }
+});
 
 </script>
 </body>
