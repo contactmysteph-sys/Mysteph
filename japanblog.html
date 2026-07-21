@@ -458,7 +458,7 @@ const cities = [
   },
 
   {
-    id: "sapporo",
+    id:"sapporo",
     name: "Sapporo",
     published: true,
     featured: true,
@@ -1178,6 +1178,25 @@ function renderCityButtons(){
 }
 
 renderCityButtons();
+
+function showCity(index, button){
+  const city = cities[index];
+
+  document.getElementById("city-title").innerText = city.name;
+  document.getElementById("city-desc").innerText = city.desc;
+  document.getElementById("city-note").innerText = city.note;
+
+  document.getElementById("photo-grid").innerHTML =
+    city.images.map(img => `
+      <img src="${img}" alt="${city.name}" loading="lazy" decoding="async">
+    `).join("");
+
+  document.querySelectorAll("#city-list button").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  button.classList.add("active");
+}
 
 const hash = window.location.hash.substring(1);
 
