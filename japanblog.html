@@ -289,6 +289,7 @@ img{
 <script>
 const cities = [
   {
+    id:"nagasaki",
     name: "Nagasaki",
     published: true,
     featured: true,
@@ -340,6 +341,7 @@ const cities = [
   },
    
   {
+    id: "sasebo",
     name: "Sasebo",
     published: true,
     featured: true,
@@ -379,6 +381,7 @@ const cities = [
   },
 
   {
+    id: "naoshima",
     name: "Naoshima",
     published: true,
     featured: true,
@@ -423,6 +426,7 @@ const cities = [
   },
 
   {
+    id: "okayama",
     name: "Okayama",
     published: true,
     featured: true,
@@ -454,6 +458,7 @@ const cities = [
   },
 
   {
+    id: "sapporo",
     name: "Sapporo",
     published: true,
     featured: true,
@@ -1172,27 +1177,29 @@ function renderCityButtons(){
     .join("");
 }
 
-function showCity(index, button){
-  const city = cities[index];
-
-  document.getElementById("city-title").innerText = city.name;
-  document.getElementById("city-desc").innerText = city.desc;
-  document.getElementById("city-note").innerText = city.note;
-
-  document.getElementById("photo-grid").innerHTML =
-    city.images.map(img => `
-      <img src="${img}" alt="${city.name}" loading="lazy" decoding="async">
-    `).join("");
-
-  document.querySelectorAll("#city-list button").forEach(btn => {
-    btn.classList.remove("active");
-  });
-
-  button.classList.add("active");
-}
-
 renderCityButtons();
-showCity(0, document.querySelector("#city-list button"));
+
+const hash = window.location.hash.substring(1);
+
+const cityIndex = cities.findIndex(
+  city => city.id === hash
+);
+
+if (cityIndex >= 0) {
+
+  const button =
+    document.querySelectorAll("#city-list button")[cityIndex];
+
+  showCity(cityIndex, button);
+
+} else {
+
+  showCity(
+    0,
+    document.querySelector("#city-list button")
+  );
+
+}
 </script>
 
 <div id="modal" class="modal">
