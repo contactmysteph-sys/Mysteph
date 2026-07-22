@@ -221,7 +221,7 @@ MAP
 
     z-index:20;
 
-    transform:scale(1.2);
+    transform:scale(1);
 
     text-align:center;
 }
@@ -709,6 +709,32 @@ body{
     width:7px;
     height:7px;
 }
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width: 768px) {
+
+    .compass {
+
+        top: 3%;
+        left: 10%;
+
+        transform: scale(0.7);
+    }
+
+}
+
+/* 데스크톱 */
+
+@media (min-width: 769px) {
+
+    .compass {
+
+        transform: scale(1.2);
+    }
+
 }
 
 </style>
