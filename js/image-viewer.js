@@ -30,7 +30,7 @@ function openImage(img){
 
   currentImages = Array.from(
     group.querySelectorAll(
-  '.zoomable, .photo-grid img, .photo-row img, .photo-single img, .diary-gallery img')
+    '.zoomable, .photo-grid img, .photo-row img, .photo-row-2 img, .photo-single img, .diary-gallery img')
   );
 
   currentIndex = currentImages.indexOf(img);
@@ -61,8 +61,7 @@ function showImage(index){
 }
 
 document.addEventListener('click', (e) => {
-  if(e.target.matches('.zoomable, .photo-grid img, .photo-row img, .photo-single img, .diary-gallery img')){
-    openImage(e.target);
+  if(e.target.matches('.zoomable, .photo-grid img, .photo-row img, .photo-row-2 img, .photo-single img, .diary-gallery img')){
   }
 });
 
