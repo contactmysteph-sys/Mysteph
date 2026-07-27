@@ -156,12 +156,19 @@
       margin-bottom:80px;
     }
 
-    .painting-card{
-      background:rgba(255,255,255,0.78);
-      border:1px solid rgba(49,71,110,0.12);
-      box-shadow:0 14px 35px rgba(49,71,110,0.07);
-      overflow:hidden;
-      transition:0.3s ease;
+    .painting-card.square img{
+      aspect-ratio:1/1;
+      object-fit:cover;
+    }
+
+    .painting-card.portrait img{
+      aspect-ratio:3/4;
+      object-fit:cover;
+    }
+
+    .painting-card.landscape img{
+      aspect-ratio:4/3;
+      object-fit:cover;
     }
 
     .painting-card:hover{
@@ -376,7 +383,7 @@
 
       <div class="painting-grid">
 
-        <article class="painting-card">
+        <article class="painting-card landscape">
           <img src="Images/ART/c1.png" alt="colour">
 
           <div class="painting-card-content">
@@ -387,7 +394,7 @@
           </div>
         </article>
 
-        <article class="painting-card">
+        <article class="painting-card portrait">
           <img src="Images/ART/c2.png" alt="Colour">
 
           <div class="painting-card-content">
@@ -398,7 +405,7 @@
           </div>
         </article>
 
-        <article class="painting-card">
+        <article class="painting-card square">
           <img src="Images/ART/c3.jpg" alt="COLOUR">
 
           <div class="painting-card-content">
@@ -409,7 +416,7 @@
         </article>
 
 
-        <article class="painting-card">
+        <article class="painting-card landscape">
           <img src="Images/ART/c12.png" alt="COLOUR">
 
           <div class="painting-card-content">
@@ -419,7 +426,7 @@
           </div>
         </article>
 
-        <article class="painting-card">
+        <article class="painting-card landscape">
           <img src="Images/ART/c13.png" alt="COLOUR">
 
           <div class="painting-card-content">
@@ -429,7 +436,7 @@
           </div>
         </article>
 
-        <article class="painting-card">
+        <article class="painting-card landscape">
           <img src="Images/ART/c14.png" alt="COLOUR">
 
           <div class="painting-card-content">
@@ -439,7 +446,7 @@
           </div>
         </article>
 
-        <article class="painting-card">
+        <article class="painting-card square">
           <img src="Images/ART/p1.png" alt="PAINTING">
 
           <div class="painting-card-content">
@@ -449,7 +456,7 @@
           </div>
         </article>
 
-        <article class="painting-card">
+        <article class="painting-card square">
           <img src="Images/ART/p2.png" alt="PAINTING">
 
           <div class="painting-card-content">
@@ -459,7 +466,7 @@
           </div>
         </article>
 
-        <article class="painting-card">
+        <article class="painting-card square">
           <img src="Images/ART/p3.png" alt="PAINTING">
 
           <div class="painting-card-content">
