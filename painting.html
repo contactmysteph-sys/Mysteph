@@ -171,8 +171,28 @@
 
     .painting-card img{
       width:100%;
-      height:300px;
       display:block;
+      object-fit:cover;
+    }
+
+    /* 정사각형 */
+    .painting-card.square img{
+      aspect-ratio:1 / 1;
+    }
+
+    /* 세로 그림 */
+    .painting-card.portrait img{
+      aspect-ratio:3 / 4;
+    }
+
+    /* 아주 긴 세로 */
+    .painting-card.tall img{
+      aspect-ratio:2 / 3;
+    }
+
+    /* 가로 그림 */
+    .painting-card.landscape img{
+      aspect-ratio:4 / 3;
     }
 
     .painting-card-content{
