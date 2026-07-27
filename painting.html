@@ -150,19 +150,14 @@
     }
 
     .painting-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:20px;
-
-      align-items:start;
+      column-count:3;
+      column-gap:20px;
     }
 
     .painting-card{
-      background:rgba(255,255,255,0.78);
-      border:1px solid rgba(49,71,110,0.12);
-      box-shadow:0 14px 35px rgba(49,71,110,0.07);
-      overflow:hidden;
-      transition:0.3s ease;
+       display:inline-block;
+       width:100%;
+       margin-bottom:20px;
     }
 
     .painting-card:hover{
