@@ -134,8 +134,34 @@
     }
 
     .category-title{
+      position:relative;
       text-align:center;
-      margin:80px 0 45px;
+      padding:40px 20px;
+      margin:60px 0 35px;
+      overflow:hidden;
+    }
+
+    .category-title::before,
+    .category-title::after{
+      content:"";
+      position:absolute;
+      top:0;
+      width:180px;
+      height:100%;
+      opacity:.18;
+      background-size:contain;
+      background-repeat:no-repeat;
+      background-position:center;
+    }
+
+    .category-title::before{
+      left:0;
+      background-image:url("Images/leaf-left.png");
+    }
+
+    .category-title::after{
+      right:0;
+      background-image:url("Images/flower-right.png");
     }
 
     .category-title:first-of-type{
