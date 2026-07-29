@@ -61,11 +61,17 @@ function showImage(index){
 }
 
 document.addEventListener('click', (e) => {
-  if (e.target.matches(
-    '.zoomable, .photo-grid img, .photo-row img, .photo-single img, .diary-gallery img'
-  )) {
-    openImage(e.target);
-  }
+
+    console.log("CLICK:", e.target);
+
+    if (e.target.matches(
+        '.zoomable, .photo-grid img, .photo-row img, .photo-single img, .diary-gallery img'
+    )) {
+
+        console.log("OPEN");
+
+        openImage(e.target);
+    }
 });
 
 closeBtn.addEventListener('click', closeImage);
