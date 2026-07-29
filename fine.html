@@ -1117,9 +1117,34 @@ function buildSlider(){
 
     sliderTrack.innerHTML = "";
 
-    totalPages = Math.ceil(restaurants.length / perPage);
+    function buildSlider(){
 
-    for(let page=0; page<totalPages; page++){
+       sliderTrack.innerHTML = "";
+
+       // 최신 날짜순 정렬 (원본 배열은 건드리지 않음)
+       const sortedRestaurants = [...restaurants].sort(
+          (a, b) => new Date(b.date) - new Date(a.date)
+        );
+
+        totalPages = Math.ceil(sortedRestaurants.length / perPage);
+
+        for(let page=0; page<totalPages; page++){
+
+           const slide = document.createElement("div");
+
+            slide.className = "slide-page";
+
+            const start = page * perPage;
+
+            const items = sortedRestaurants.slice(start, start + perPage);
+
+            slide.innerHTML = items.map(createCard).join("");
+
+            sliderTrack.appendChild(slide);
+
+        }
+
+      }
 
         const slide = document.createElement("div");
 
