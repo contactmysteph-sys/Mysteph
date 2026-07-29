@@ -4,12 +4,10 @@ const closeBtn = document.getElementById('close-btn');
 const prevBtn = document.getElementById('modal-prev');
 const nextBtn = document.getElementById('modal-next');
 
-let zoomLevel = 1;
-let isImageDragging = false;
-let startX = 0;
-let startY = 0;
-let currentX = 0;
-let currentY = 0;
+let modalStartX = 0;
+let modalStartY = 0;
+let modalCurrentX = 0;
+let modalCurrentY = 0;
 
 let currentImages = [];
 let currentIndex = 0;
@@ -107,14 +105,14 @@ modalImg.addEventListener('wheel', (e) => {
   zoomLevel = Math.max(0.5, Math.min(zoomLevel, 3));
 
   modalImg.style.transform =
-    `translate(${currentX}px, ${currentY}px) scale(${zoomLevel})`;
+    `translate(${modalCurrentX}px, ${modalCurrentY}px) scale(${zoomLevel})`;
 });
 
 modalImg.addEventListener('mousedown', (e) => {
   if(zoomLevel <= 1) return;
 
   isImageDragging = true;
-  startX = e.clientX - currentX;
+  modalStartX = e.clientX - modalCurrentX;
   startY = e.clientY - currentY;
 
   modalImg.style.cursor = 'grabbing';
@@ -123,7 +121,7 @@ modalImg.addEventListener('mousedown', (e) => {
 document.addEventListener('mousemove', (e) => {
   if(!isImageDragging) return;
 
-  currentX = e.clientX - startX;
+  modalCurrentX = e.clientX - modalStartX;
   currentY = e.clientY - startY;
 
   modalImg.style.transform =
