@@ -4,8 +4,13 @@ const closeBtn = document.getElementById('close-btn');
 const prevBtn = document.getElementById('modal-prev');
 const nextBtn = document.getElementById('modal-next');
 
+let modalZoomLevel = 1;
+
+let isImageDragging = false;
+
 let modalStartX = 0;
 let modalStartY = 0;
+
 let modalCurrentX = 0;
 let modalCurrentY = 0;
 
@@ -13,10 +18,15 @@ let currentImages = [];
 let currentIndex = 0;
 
 function resetImage(){
-  zoomLevel = 1;
-  currentX = 0;
-  currentY = 0;
-  modalImg.style.transform = `translate(0px, 0px) scale(1)`;
+
+    modalZoomLevel = 1;
+
+    modalCurrentX = 0;
+    modalCurrentY = 0;
+
+    modalImg.style.transform =
+        `translate(0px,0px) scale(1)`;
+
 }
 
 function openImage(img){
@@ -108,31 +118,39 @@ modalImg.addEventListener('wheel', (e) => {
     `translate(${modalCurrentX}px, ${modalCurrentY}px) scale(${zoomLevel})`;
 });
 
-modalImg.addEventListener('mousedown', (e) => {
-  if(zoomLevel <= 1) return;
+modalImg.addEventListener("mousedown",(e)=>{
 
-  isImageDragging = true;
-  modalStartX = e.clientX - modalCurrentX;
-  startY = e.clientY - currentY;
+    if(modalZoomLevel<=1) return;
 
-  modalImg.style.cursor = 'grabbing';
+    isImageDragging = true;
+
+    modalStartX = e.clientX - modalCurrentX;
+    modalStartY = e.clientY - modalCurrentY;
+
+    modalImg.style.cursor="grabbing";
+
 });
 
-document.addEventListener('mousemove', (e) => {
-  if(!isImageDragging) return;
+document.addEventListener("mousemove",(e)=>{
 
-  modalCurrentX = e.clientX - modalStartX;
-  currentY = e.clientY - startY;
+    if(!isImageDragging) return;
 
-  modalImg.style.transform =
-    `translate(${currentX}px, ${currentY}px) scale(${zoomLevel})`;
+    modalCurrentX = e.clientX - modalStartX;
+    modalCurrentY = e.clientY - modalStartY;
+
+    modalImg.style.transform =
+        `translate(${modalCurrentX}px,${modalCurrentY}px)
+         scale(${modalZoomLevel})`;
+
 });
 
-document.addEventListener('mouseup', () => {
-  isImageDragging= false;
-  modalImg.style.cursor = 'grab';
-});
+document.addEventListener("mouseup",()=>{
 
+    isImageDragging=false;
+
+    modalImg.style.cursor="grab";
+
+});
 
 document.addEventListener("contextmenu", function(e){
   if(e.target.tagName === "IMG"){
