@@ -1076,12 +1076,13 @@ function createCard(place){
 
             ${place.images.map(img=>`
 
-                <img
-                    src="${img}"
-                    alt="${place.title}"
-                    loading="lazy"
-                    decoding="async"
-                >
+             <img
+               src="${img}"
+               alt="${place.title}"
+               loading="lazy"
+               decoding="async"
+               draggable="false"
+              >
 
             `).join("")}
 
