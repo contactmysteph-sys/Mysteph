@@ -148,12 +148,6 @@ a{
   margin:0 auto 80px;
 }
 
-.restaurant-layout{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:28px;
-  align-items:start;
-}
 
 .restaurant-card{
   background:rgba(255,255,255,0.72);
@@ -221,13 +215,22 @@ a{
   margin-bottom:10px;
 }
 
-#restaurantLayout{
-    touch-action: pan-y;
-    cursor: grab;
+.restaurant-layout{
+    overflow:hidden;
+    position:relative;
 }
 
-#restaurantLayout:active{
-    cursor: grabbing;
+.slider-track{
+    display:flex;
+    width:100%;
+    will-change:transform;
+}
+
+.slide-page{
+    min-width:100%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px;
 }
 
 .pager{
@@ -400,27 +403,14 @@ a{
   right:30px;
 }
 
-/* ===== Restaurant Slide Animation ===== */
+@media (max-width:768px){
 
-#restaurantLayout{
-    transition: transform .35s ease, opacity .35s ease;
-    touch-action: pan-y;
-    cursor: grab;
+    .slide-page{
+        grid-template-columns:1fr;
+    }
+
 }
 
-#restaurantLayout:active{
-    cursor: grabbing;
-}
-
-#restaurantLayout.slide-left{
-    transform: translateX(-50px);
-    opacity:0;
-}
-
-#restaurantLayout.slide-right{
-    transform: translateX(50px);
-    opacity:0;
-}
 </style>
 
 <link rel="stylesheet" href="css/image-viewer.css">
@@ -440,7 +430,11 @@ a{
 
 <main class="fine-wrapper">
 
-  <section class="restaurant-layout" id="restaurantLayout"></section>
+  <section class="restaurant-layout" id="restaurantLayout">
+
+      <div class="slider-track" id="sliderTrack"></div>
+
+  </section>
 
   <div class="pager">
     <button onclick="movePage(-1)">‹</button>
@@ -1012,136 +1006,389 @@ const restaurants = [
 ];
 
 
-let currentPage = 0;
-const perPage = 2;
+// ==============================
+// Fine Dining Slider
+// ==============================
 
 const restaurantLayout = document.getElementById("restaurantLayout");
+const sliderTrack = document.getElementById("sliderTrack");
 const pageCount = document.getElementById("pageCount");
-restaurants.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-function renderRestaurants(){
-  restaurantLayout.innerHTML = "";
+const perPage = 2;
 
-  const start = currentPage * perPage;
-  const currentRestaurants = restaurants.slice(start, start + perPage);
+let currentPage = 0;
+let totalPages = 0;
 
-  currentRestaurants.forEach(place => {
-    restaurantLayout.innerHTML += `
-      <article class="restaurant-card">
+let startX = 0;
+let currentX = 0;
+let isDragging = false;
+let currentTranslate = 0;
+let previousTranslate = 0;
+let animationID;
 
-        <div class="restaurant-header">
-           <h3>${place.title}</h3>
-           <span>${place.location} · ${place.date}</span>
-       </div>
 
-        <div class="photo-grid">
-          ${place.images.map(img => `
-            <img src="${img}" alt="${place.title}" decoding="async">
-          `).join("")}
-        </div>
-
-        <div class="restaurant-info">
-          <span>${place.category}· ${getStars(place.rating)}
-          </span>
-          ${place.body}
-        </div>
-
-      </article>
-    `;
-  });
-
-  const totalPages = Math.ceil(restaurants.length / perPage);
-  pageCount.innerText = `${currentPage + 1} / ${totalPages}`;
-}
+// ==============================
+// Star Rating
+// ==============================
 
 function getStars(rating){
 
-  const full = Math.floor(rating);
-  const half = rating % 1 !== 0;
+    const full = Math.floor(rating);
+    const half = rating % 1 >= 0.5;
 
-  let stars = "★".repeat(full);
+    let stars = "";
 
-  if(half){
-    stars += "½";
-  }
+    for(let i=0;i<full;i++){
+        stars += "★";
+    }
 
-  stars += "☆".repeat(5 - Math.ceil(rating));
+    if(half){
+        stars += "½";
+    }
 
-  return stars;
+    return `${stars} (${rating.toFixed(1)})`;
+
 }
 
 
-function movePage(step){
 
-  const totalPages = Math.ceil(restaurants.length / perPage);
+// ==============================
+// Card HTML
+// ==============================
 
-  const direction = step > 0 ? "slide-left" : "slide-right";
+function createCard(place){
 
-  restaurantLayout.classList.add(direction);
+    return `
 
-  setTimeout(()=>{
+    <article class="restaurant-card">
 
-      currentPage += step;
+        <div class="restaurant-header">
 
-      if(currentPage < 0){
-          currentPage = totalPages - 1;
-      }
+            <h3>${place.title}</h3>
 
-      if(currentPage >= totalPages){
-          currentPage = 0;
-      }
+            <span>
+                ${place.location} · ${place.date}
+            </span>
 
-renderRestaurants();
+        </div>
 
-// ===== Swipe & Drag =====
+        <div class="photo-grid">
 
-let startX = 0;
-let dragging = false;
+            ${place.images.map(img=>`
 
-restaurantLayout.addEventListener("pointerdown",(e)=>{
+                <img
+                    src="${img}"
+                    alt="${place.title}"
+                    loading="lazy"
+                    decoding="async"
+                >
 
-    startX = e.clientX;
-    dragging = true;
+            `).join("")}
 
-});
+        </div>
 
-restaurantLayout.addEventListener("pointerup",(e)=>{
+        <div class="restaurant-info">
 
-   if(!dragging) return;
+            <span>
 
-   const diff = startX - e.clientX;
+                ${place.category}
+                ·
+                ${getStars(place.rating)}
 
-  if(Math.abs(diff)>80){
+            </span>
 
-   if(diff>0){
+            ${place.body}
 
-      movePage(1);
+        </div>
 
-    }else{
+    </article>
 
-      movePage(-1);
+    `;
+
+}
+
+
+
+// ==============================
+// Build Slider
+// ==============================
+
+function buildSlider(){
+
+    sliderTrack.innerHTML = "";
+
+    totalPages = Math.ceil(restaurants.length / perPage);
+
+    for(let page=0; page<totalPages; page++){
+
+        const slide = document.createElement("div");
+
+        slide.className = "slide-page";
+
+        const start = page * perPage;
+
+        const items = restaurants.slice(start, start + perPage);
+
+        slide.innerHTML = items.map(createCard).join("");
+
+        sliderTrack.appendChild(slide);
 
     }
 
-  }
+}
 
-    dragging = false;
+// ==============================
+// Update Slider Position
+// ==============================
 
-});
+function updateSlider(animate = true){
 
-restaurantLayout.addEventListener("pointerleave",()=>{
+    if(animate){
+        sliderTrack.style.transition =
+            "transform .45s cubic-bezier(.22,.61,.36,1)";
+    }else{
+        sliderTrack.style.transition = "none";
+    }
 
-   dragging=false;
+    currentTranslate = -(currentPage * restaurantLayout.offsetWidth);
 
-});
+    sliderTrack.style.transform =
+        `translateX(${currentTranslate}px)`;
 
-restaurantLayout.classList.remove(direction);
+    previousTranslate = currentTranslate;
 
-},300);
+    updatePager();
 
 }
-</script>
 
+
+
+// ==============================
+// Pager
+// ==============================
+
+function updatePager(){
+
+    pageCount.textContent =
+        `${currentPage + 1} / ${totalPages}`;
+
+}
+
+
+
+// ==============================
+// Previous / Next
+// ==============================
+
+function movePage(step){
+
+    currentPage += step;
+
+    if(currentPage < 0){
+        currentPage = totalPages - 1;
+    }
+
+    if(currentPage >= totalPages){
+        currentPage = 0;
+    }
+
+    updateSlider(true);
+
+}
+
+
+
+// ==============================
+// Resize
+// ==============================
+
+window.addEventListener("resize",()=>{
+
+    updateSlider(false);
+
+});
+
+
+
+// ==============================
+// First Build
+// ==============================
+
+buildSlider();
+
+updateSlider(false);
+
+
+// ==============================
+// Drag & Swipe
+// ==============================
+
+function animation(){
+
+    sliderTrack.style.transform =
+        `translateX(${currentTranslate}px)`;
+
+    if(isDragging){
+
+        requestAnimationFrame(animation);
+
+    }
+
+}
+
+
+
+function dragStart(e){
+
+    isDragging = true;
+
+    startX = getPositionX(e);
+
+    animationID = requestAnimationFrame(animation);
+
+    sliderTrack.style.transition = "none";
+
+}
+
+
+
+function dragMove(e){
+
+    if(!isDragging) return;
+
+    currentX = getPositionX(e);
+
+    const diff = currentX - startX;
+
+    currentTranslate = previousTranslate + diff;
+
+}
+
+
+
+function dragEnd(){
+
+    if(!isDragging) return;
+
+    cancelAnimationFrame(animationID);
+
+    isDragging = false;
+
+    const movedBy = currentTranslate - previousTranslate;
+
+    if(movedBy < -100){
+
+        currentPage++;
+
+    }
+
+    if(movedBy > 100){
+
+        currentPage--;
+
+    }
+
+    if(currentPage < 0){
+
+        currentPage = totalPages - 1;
+
+    }
+
+    if(currentPage >= totalPages){
+
+        currentPage = 0;
+
+    }
+
+    updateSlider(true);
+
+}
+
+
+
+function getPositionX(e){
+
+    return e.type.includes("mouse")
+        ? e.pageX
+        : e.touches[0].clientX;
+
+}
+
+
+
+// ==============================
+// Mouse
+// ==============================
+
+sliderTrack.addEventListener("mousedown",dragStart);
+
+window.addEventListener("mousemove",dragMove);
+
+window.addEventListener("mouseup",dragEnd);
+
+
+
+// ==============================
+// Touch
+// ==============================
+
+sliderTrack.addEventListener("touchstart",dragStart,{
+    passive:true
+});
+
+sliderTrack.addEventListener("touchmove",dragMove,{
+    passive:true
+});
+
+sliderTrack.addEventListener("touchend",dragEnd);
+
+sliderTrack.addEventListener("touchcancel",dragEnd);
+
+
+
+// ==============================
+// Prevent Image Drag
+// ==============================
+
+sliderTrack.addEventListener("dragstart",(e)=>{
+
+    e.preventDefault();
+
+});
+
+
+
+// ==============================
+// Keyboard
+// ==============================
+
+document.addEventListener("keydown",(e)=>{
+
+    if(e.key==="ArrowLeft"){
+
+        movePage(-1);
+
+    }
+
+    if(e.key==="ArrowRight"){
+
+        movePage(1);
+
+    }
+
+});
+
+
+
+// ==============================
+// Init
+// ==============================
+
+buildSlider();
+
+updateSlider(false);
+
+</script>
 
 <div id="modal" class="modal">
   <button id="modal-prev" class="modal-nav prev">‹</button>
