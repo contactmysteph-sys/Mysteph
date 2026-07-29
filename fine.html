@@ -221,6 +221,15 @@ a{
   margin-bottom:10px;
 }
 
+#restaurantLayout{
+    touch-action: pan-y;
+    cursor: grab;
+}
+
+#restaurantLayout:active{
+    cursor: grabbing;
+}
+
 .pager{
   display:flex;
   justify-content:center;
@@ -391,6 +400,27 @@ a{
   right:30px;
 }
 
+/* ===== Restaurant Slide Animation ===== */
+
+#restaurantLayout{
+    transition: transform .35s ease, opacity .35s ease;
+    touch-action: pan-y;
+    cursor: grab;
+}
+
+#restaurantLayout:active{
+    cursor: grabbing;
+}
+
+#restaurantLayout.slide-left{
+    transform: translateX(-50px);
+    opacity:0;
+}
+
+#restaurantLayout.slide-right{
+    transform: translateX(50px);
+    opacity:0;
+}
 </style>
 
 <link rel="stylesheet" href="css/image-viewer.css">
@@ -1042,22 +1072,74 @@ function getStars(rating){
 
 
 function movePage(step){
+
   const totalPages = Math.ceil(restaurants.length / perPage);
 
-  currentPage += step;
+  const direction = step > 0 ? "slide-left" : "slide-right";
 
-  if(currentPage < 0){
-    currentPage = totalPages - 1;
-  }
+  restaurantLayout.classList.add(direction);
 
-  if(currentPage >= totalPages){
-    currentPage = 0;
-  }
+  setTimeout(()=>{
 
-  renderRestaurants();
-}
+      currentPage += step;
+
+      if(currentPage < 0){
+          currentPage = totalPages - 1;
+      }
+
+      if(currentPage >= totalPages){
+          currentPage = 0;
+      }
 
 renderRestaurants();
+
+// ===== Swipe & Drag =====
+
+let startX = 0;
+let dragging = false;
+
+restaurantLayout.addEventListener("pointerdown",(e)=>{
+
+    startX = e.clientX;
+    dragging = true;
+
+});
+
+restaurantLayout.addEventListener("pointerup",(e)=>{
+
+   if(!dragging) return;
+
+   const diff = startX - e.clientX;
+
+  if(Math.abs(diff)>80){
+
+   if(diff>0){
+
+      movePage(1);
+
+    }else{
+
+      movePage(-1);
+
+    }
+
+  }
+
+    dragging = false;
+
+});
+
+restaurantLayout.addEventListener("pointerleave",()=>{
+
+   dragging=false;
+
+});
+
+restaurantLayout.classList.remove(direction);
+
+},300);
+
+}
 </script>
 
 
