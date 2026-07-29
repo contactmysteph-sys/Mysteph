@@ -5,7 +5,7 @@ const prevBtn = document.getElementById('modal-prev');
 const nextBtn = document.getElementById('modal-next');
 
 let zoomLevel = 1;
-let isDragging = false;
+let isImageDragging = false;
 let startX = 0;
 let startY = 0;
 let currentX = 0;
@@ -113,7 +113,7 @@ modalImg.addEventListener('wheel', (e) => {
 modalImg.addEventListener('mousedown', (e) => {
   if(zoomLevel <= 1) return;
 
-  isDragging = true;
+  isImageDragging = true;
   startX = e.clientX - currentX;
   startY = e.clientY - currentY;
 
@@ -121,7 +121,7 @@ modalImg.addEventListener('mousedown', (e) => {
 });
 
 document.addEventListener('mousemove', (e) => {
-  if(!isDragging) return;
+  if(!isImageDragging) return;
 
   currentX = e.clientX - startX;
   currentY = e.clientY - startY;
@@ -131,7 +131,7 @@ document.addEventListener('mousemove', (e) => {
 });
 
 document.addEventListener('mouseup', () => {
-  isDragging = false;
+  isImageDragging= false;
   modalImg.style.cursor = 'grab';
 });
 
