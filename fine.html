@@ -1228,25 +1228,29 @@ function movePage(step){
 // Resize
 // ==============================
 
-window.addEventListener("resize",()=>{
+window.addEventListener("resize", () => {
 
-    const newPerPage =
-        window.innerWidth <= 768 ? 1 : 2;
+    const newPerPage = window.innerWidth <= 768 ? 1 : 2;
 
-    if(newPerPage !== perPage){
+    if (newPerPage !== perPage) {
+
+        // 현재 보이는 첫 카드 인덱스 저장
+        const firstVisibleIndex = currentPage * perPage;
 
         perPage = newPerPage;
 
-        currentPage = 0;
-
         buildSlider();
 
+        // 같은 카드를 계속 보도록 페이지 계산
+        currentPage = Math.floor(firstVisibleIndex / perPage);
+
+        // 혹시 마지막 페이지를 넘어가면 보정
+        currentPage = Math.min(currentPage, totalPages - 1);
     }
 
     updateSlider(false);
 
 });
-
 
 // ==============================
 // Drag & Swipe
