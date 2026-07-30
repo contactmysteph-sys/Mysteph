@@ -34,7 +34,9 @@ function resetImage(){
 function openImage(img){
 
     // 슬라이드 직후에는 열리지 않도록
-    if(isSwipeGesture) return;
+    if (typeof isSwipeGesture !== "undefined" && isSwipeGesture) {
+        return;
+    }
 
     const group =
         img.closest('[data-slider]')
@@ -84,10 +86,11 @@ function showImage(index){
 
 }
 
-document.addEventListener('click', (e) => {
+document.addEventListener("click",(e)=>{
 
-    // 스와이프 중에는 클릭 무시
-    if(isSwipeGesture) return;
+    if (typeof isSwipeGesture !== "undefined" && isSwipeGesture) {
+        return;
+    }
 
     if (e.target.matches(
         '.zoomable, .photo-grid img, .photo-row img, .photo-row-2 img, .photo-single img, .diary-gallery img'
