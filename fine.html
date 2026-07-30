@@ -228,9 +228,15 @@ a{
 
 .slide-page{
     min-width:100%;
-    display:grid;
-    grid-template-columns:1fr 1fr;
+    display:flex;
     gap:28px;
+    align-items:flex-start;
+}
+
+.slide-column{
+    flex:1;
+    display:flex;
+    flex-direction:column;
 }
 
 .pager{
@@ -1049,8 +1055,6 @@ function getStars(rating){
 
 }
 
-
-
 // ==============================
 // Card HTML
 // ==============================
@@ -1108,38 +1112,45 @@ function createCard(place){
 }
 
 
-
-// ==============================
-// Build Slider
-// ==============================
-
 function buildSlider(){
 
     sliderTrack.innerHTML = "";
 
-    // 최신 날짜순 정렬 (원본 배열은 건드리지 않음)
     const sortedRestaurants = [...restaurants].sort(
-          (a, b) => new Date(b.date) - new Date(a.date)
+        (a,b)=>new Date(b.date)-new Date(a.date)
     );
 
     totalPages = Math.ceil(sortedRestaurants.length / perPage);
 
     for(let page=0; page<totalPages; page++){
 
-      const slide = document.createElement("div");
+        const slide = document.createElement("div");
+        slide.className = "slide-page";
 
-      slide.className = "slide-page";
+        // 좌우 컬럼 생성
+        const leftCol = document.createElement("div");
+        leftCol.className = "slide-column";
 
-      const start = page * perPage;
+        const rightCol = document.createElement("div");
+        rightCol.className = "slide-column";
 
-      const items = sortedRestaurants.slice(start, start + perPage);
+        const start = page * perPage;
+        const items = sortedRestaurants.slice(start, start + perPage);
 
-      slide.innerHTML = items.map(createCard).join("");
+        // 카드 하나씩 넣기
+        if(items[0]){
+            leftCol.innerHTML = createCard(items[0]);
+        }
 
-      sliderTrack.appendChild(slide);
+        if(items[1]){
+            rightCol.innerHTML = createCard(items[1]);
+        }
 
+        slide.appendChild(leftCol);
+        slide.appendChild(rightCol);
+
+        sliderTrack.appendChild(slide);
     }
-
 }
 
 // ==============================
