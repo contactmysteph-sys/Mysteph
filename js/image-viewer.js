@@ -71,7 +71,7 @@ function showImage(index){
 document.addEventListener('click', (e) => {
 
     console.log("CLICK:", e.target);
-
+    if (isSwipeGesture) return;
     if (e.target.matches(
         '.zoomable, .photo-grid img, .photo-row img, .photo-single img, .diary-gallery img'
     )) {
