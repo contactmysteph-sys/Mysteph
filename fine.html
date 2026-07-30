@@ -417,16 +417,15 @@ a{
 @media (max-width:768px){
 
     .slide-page{
-        flex-direction:column;
-        gap:8px;
+        display:block;
     }
 
     .slide-page > .restaurant-card{
         width:100%;
-        flex:none;
     }
 
 }
+
 
 </style>
 
@@ -1030,7 +1029,7 @@ const restaurantLayout = document.getElementById("restaurantLayout");
 const sliderTrack = document.getElementById("sliderTrack");
 const pageCount = document.getElementById("pageCount");
 
-const perPage = 2;
+let perPage = window.innerWidth <= 768 ? 1 : 2;
 
 let currentPage = 0;
 let totalPages = 0;
@@ -1230,6 +1229,19 @@ function movePage(step){
 // ==============================
 
 window.addEventListener("resize",()=>{
+
+    const newPerPage =
+        window.innerWidth <= 768 ? 1 : 2;
+
+    if(newPerPage !== perPage){
+
+        perPage = newPerPage;
+
+        currentPage = 0;
+
+        buildSlider();
+
+    }
 
     updateSlider(false);
 
