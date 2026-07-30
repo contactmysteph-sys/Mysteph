@@ -24,110 +24,145 @@ function resetImage(){
     modalCurrentX = 0;
     modalCurrentY = 0;
 
+    modalImg.style.cursor = "grab";
+
     modalImg.style.transform =
         `translate(0px,0px) scale(1)`;
 
 }
 
 function openImage(img){
-  const group =
-    img.closest('[data-slider]')
-    || img.closest('.library-card')
-    || img.closest('.city-detail, .place-card, .restaurant-card, .gallery-section, .detail-section')
-    || document;
 
-  currentImages = Array.from(
-     group.querySelectorAll(
-  '.zoomable, .photo-grid img, .photo-row img, .photo-row-2 img, .photo-single img, .diary-gallery img')
-  );
+    // 슬라이드 직후에는 열리지 않도록
+    if(isSwipeGesture) return;
 
-  currentIndex = currentImages.indexOf(img);
+    const group =
+        img.closest('[data-slider]')
+        || img.closest('.library-card')
+        || img.closest('.city-detail, .place-card, .restaurant-card, .gallery-section, .detail-section')
+        || document;
 
-  if(currentIndex === -1){
-    currentImages = [img];
-    currentIndex = 0;
-  }
+    currentImages = Array.from(
+        group.querySelectorAll(
+            '.zoomable, .photo-grid img, .photo-row img, .photo-row-2 img, .photo-single img, .diary-gallery img'
+        )
+    );
 
-  resetImage();
-  modal.style.display = 'flex';
-  modalImg.src = img.src;
+    currentIndex = currentImages.indexOf(img);
+
+    if(currentIndex === -1){
+        currentImages = [img];
+        currentIndex = 0;
+    }
+
+    resetImage();
+
+    modal.style.display = 'flex';
+    modalImg.src = img.src;
 }
 
 function closeImage(){
-  modal.style.display = 'none';
+
+    resetImage();
+
+    modal.style.display = 'none';
+
 }
 
 function showImage(index){
-  if(currentImages.length === 0) return;
 
-  if(index < 0) index = currentImages.length - 1;
-  if(index >= currentImages.length) index = 0;
+    if(currentImages.length === 0) return;
 
-  currentIndex = index;
-  resetImage();
-  modalImg.src = currentImages[currentIndex].src;
+    if(index < 0) index = currentImages.length - 1;
+    if(index >= currentImages.length) index = 0;
+
+    currentIndex = index;
+
+    resetImage();
+
+    modalImg.src = currentImages[currentIndex].src;
+
 }
 
 document.addEventListener('click', (e) => {
 
-    console.log("CLICK:", e.target);
-    if (isSwipeGesture) return;
+    // 스와이프 중에는 클릭 무시
+    if(isSwipeGesture) return;
+
     if (e.target.matches(
-        '.zoomable, .photo-grid img, .photo-row img, .photo-single img, .diary-gallery img'
+        '.zoomable, .photo-grid img, .photo-row img, .photo-row-2 img, .photo-single img, .diary-gallery img'
     )) {
 
-        console.log("OPEN");
-
         openImage(e.target);
+
     }
+
 });
 
 closeBtn.addEventListener('click', closeImage);
 
 modal.addEventListener('click', (e) => {
-  if(e.target === modal){
-    closeImage();
-  }
+
+    if(e.target === modal){
+        closeImage();
+    }
+
 });
 
 prevBtn.addEventListener('click', (e) => {
-  e.stopPropagation();
-  showImage(currentIndex - 1);
+
+    e.stopPropagation();
+
+    showImage(currentIndex - 1);
+
 });
 
 nextBtn.addEventListener('click', (e) => {
-  e.stopPropagation();
-  showImage(currentIndex + 1);
+
+    e.stopPropagation();
+
+    showImage(currentIndex + 1);
+
 });
 
 document.addEventListener('keydown', (e) => {
-  if(modal.style.display !== 'flex') return;
 
-  if(e.key === 'Escape') closeImage();
-  if(e.key === 'ArrowLeft') showImage(currentIndex - 1);
-  if(e.key === 'ArrowRight') showImage(currentIndex + 1);
+    if(modal.style.display !== 'flex') return;
+
+    if(e.key === 'Escape') closeImage();
+    if(e.key === 'ArrowLeft') showImage(currentIndex - 1);
+    if(e.key === 'ArrowRight') showImage(currentIndex + 1);
+
 });
 
 modalImg.addEventListener('wheel', (e) => {
-  e.preventDefault();
 
-  zoomLevel += e.deltaY < 0 ? 0.15 : -0.15;
-  zoomLevel = Math.max(0.5, Math.min(zoomLevel, 3));
+    e.preventDefault();
 
-  modalImg.style.transform =
-    `translate(${modalCurrentX}px, ${modalCurrentY}px) scale(${zoomLevel})`;
+    // 수정
+    modalZoomLevel += e.deltaY < 0 ? 0.15 : -0.15;
+
+    modalZoomLevel = Math.max(
+        0.5,
+        Math.min(modalZoomLevel, 3)
+    );
+
+    modalImg.style.transform =
+        `translate(${modalCurrentX}px, ${modalCurrentY}px)
+         scale(${modalZoomLevel})`;
+
 });
 
 modalImg.addEventListener("mousedown",(e)=>{
 
-    if(modalZoomLevel<=1) return;
+    if(modalZoomLevel <= 1) return;
 
     isImageDragging = true;
 
     modalStartX = e.clientX - modalCurrentX;
     modalStartY = e.clientY - modalCurrentY;
 
-    modalImg.style.cursor="grabbing";
+    modalImg.style.cursor = "grabbing";
 
 });
 
@@ -146,14 +181,16 @@ document.addEventListener("mousemove",(e)=>{
 
 document.addEventListener("mouseup",()=>{
 
-    isImageDragging=false;
+    isImageDragging = false;
 
-    modalImg.style.cursor="grab";
+    modalImg.style.cursor = "grab";
 
 });
 
-document.addEventListener("contextmenu", function(e){
-  if(e.target.tagName === "IMG"){
-    e.preventDefault();
-  }
+document.addEventListener("contextmenu",(e)=>{
+
+    if(e.target.tagName === "IMG"){
+        e.preventDefault();
+    }
+
 });
