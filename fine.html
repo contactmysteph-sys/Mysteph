@@ -148,6 +148,12 @@ a{
   margin:0 auto 80px;
 }
 
+.restaurant-layout{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px;
+  align-items:start;
+}
 
 .restaurant-card{
   background:rgba(255,255,255,0.72);
@@ -210,27 +216,9 @@ a{
 }
 .restaurant-info p{
   font-size:13px;
-  line-height:1.6;
+  line-height:1.2;
   color:#27313d;
   margin-bottom:10px;
-}
-
-.restaurant-layout{
-    overflow:hidden;
-    position:relative;
-}
-
-.slider-track{
-    display:flex;
-    width:100%;
-    will-change:transform;
-}
-
-.slide-page{
-    min-width:100%;
-    display:flex;
-    grid-template-columns:1fr 1fr;
-    gap:28px;
 }
 
 .pager{
@@ -284,12 +272,12 @@ a{
   }
 
   .restaurant-header h3{
-    font-size:16px;
+    font-size:19px;
   }
 
   .restaurant-header span{
     font-size:8px;
-    letter-spacing:1.3px;
+    letter-spacing:1.4px;
   }
 
   .photo-grid{
@@ -309,7 +297,7 @@ a{
   }
 
   .restaurant-info p{
-    font-size:10px;
+    font-size:11px;
     line-height:1.45;
     margin-bottom:6px;
   }
@@ -349,67 +337,6 @@ a{
 }
 }
 
-/* IMAGE MODAL */
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.85);
-  z-index:9999;
-  justify-content:center;
-  align-items:center;
-}
-
-.modal img{
-  max-width:80%;
-  max-height:85%;
-  border-radius:10px;
-  cursor:grab;
-  user-select:none;
-}
-
-.close-btn{
-  position:absolute;
-  top:24px;
-  right:32px;
-  color:#fff;
-  font-size:34px;
-  cursor:pointer;
-}
-
-.photo-grid img{
-  cursor:zoom-in;
-}
-
-.modal-nav{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  background:rgba(255,255,255,0.75);
-  border:none;
-  width:42px;
-  height:42px;
-  border-radius:50%;
-  font-size:34px;
-  cursor:pointer;
-  z-index:10;
-}
-
-.modal-nav.prev{
-  left:30px;
-}
-
-.modal-nav.next{
-  right:30px;
-}
-
-@media (max-width:768px){
-
-    .slide-page{
-        grid-template-columns:1fr;
-    }
-
-}
 
 </style>
 
