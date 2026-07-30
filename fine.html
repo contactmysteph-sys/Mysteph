@@ -1219,6 +1219,13 @@ function movePage(step){
     }
 
     updateSlider(true);
+    scrollToRestaurantTop();
+
+    // 페이지가 바뀌면 카드 영역의 맨 위로 이동
+    window.scrollTo({
+        top: restaurantLayout.offsetTop - 20,
+        behavior: "smooth"
+    });
 
 }
 
@@ -1270,7 +1277,6 @@ function animation(){
 }
 
 
-
 function dragStart(e){
 
     isDragging = true;
@@ -1282,7 +1288,6 @@ function dragStart(e){
     sliderTrack.style.transition = "none";
 
 }
-
 
 
 function dragMove(e){
@@ -1334,6 +1339,7 @@ function dragEnd(){
     }
 
     updateSlider(true);
+    scrollToRestaurantTop();
 
 }
 
