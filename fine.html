@@ -1030,6 +1030,7 @@ const restaurantLayout = document.getElementById("restaurantLayout");
 const sliderTrack = document.getElementById("sliderTrack");
 const pageCount = document.getElementById("pageCount");
 
+let isSwipeGesture = false;
 let perPage = window.innerWidth <= 768 ? 1 : 2;
 
 let currentPage = 0;
@@ -1282,12 +1283,11 @@ function dragStart(e){
 
     isDragging = true;
 
+    isSwipeGesture = false;
+
     startX = getPositionX(e);
 
-    animationID = requestAnimationFrame(animation);
-
-    sliderTrack.style.transition = "none";
-
+    ...
 }
 
 
@@ -1301,6 +1301,9 @@ function dragMove(e){
 
     currentTranslate = previousTranslate + diff;
 
+    if (Math.abs(diff) > 12) {
+      isSwipeGesture = true;
+    }
 }
 
 
@@ -1340,6 +1343,11 @@ function dragEnd(){
     }
 
     updateSlider(true);
+    setTimeout(() => {
+
+        isSwipeGesture = false;
+
+    }, 100);
     scrollToRestaurantTop();
 
 }
