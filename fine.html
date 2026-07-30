@@ -1287,7 +1287,10 @@ function dragStart(e){
 
     startX = getPositionX(e);
 
-    ...
+    animationID = requestAnimationFrame(animation);
+
+    sliderTrack.style.transition = "none";
+
 }
 
 
@@ -1351,7 +1354,6 @@ function dragEnd(){
     scrollToRestaurantTop();
 
 }
-
 
 
 function getPositionX(e){
