@@ -1,726 +1,1050 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Canvas & Colour</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+<title>Canvas & Colour</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Montserrat',sans-serif;
+
+    background:
+    linear-gradient(
+    rgba(236,231,220,.95),
+    rgba(221,219,226,.96));
+
+    color:#425160;
+
+    line-height:1.8;
+
+}
+
+/* ==========================
+   Layout
+========================== */
+
+.container{
+
+    width:min(1280px,90%);
+    margin:auto;
+
+}
+
+/* ==========================
+   Back Button
+========================== */
+
+.back{
+
+    width:min(1280px,90%);
+
+    margin:28px auto 0;
+}
+
+.back a{
+
+    font-size:11px;
+
+    letter-spacing:3px;
+
+    color:#78879d;
+
+    text-decoration:none;
+
+    transition:.25s;
+}
+
+.back a:hover{
+
+    opacity:.55;
+}
+
+/* ==========================
+   HERO
+========================== */
+
+.hero{
+
+    padding:50px 0 20px;
+    text-align:center;
+    background:
+    linear-gradient(
+        rgba(248,244,238,.98),
+        rgba(237,234,228,.98));
+
+    border-bottom:1px solid rgba(0,0,0,.06);
+}
+
+.hero span{
+
+    display:block;
+    margin-bottom:10px;
+    font-size:11px;
+    letter-spacing:6px;
+    text-transform:uppercase;
+    color:#9ba188;
+}
+
+.hero h1{
+
+    font-family:'Cormorant Garamond',serif;
+    font-size:30px;
+    font-weight:300;
+    letter-spacing:.4px;
+    color:#2f4366;
+    margin-bottom:10px;
+}
+
+.hero p{
+
+    max-width:980px;
+    margin:auto;
+    font-size:14px;
+    line-height:2;
+    color:#7d8895;
+}
+
+/* ==========================
+   Prologue
+========================== */
+
+.prologue{
+
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:50px;
+    align-items:center;
+    margin-top:0;
+    padding:20px 0 40px;
+}
+
+.prologue-text{
+
+    position:relative;
+    padding-left:38px;
+}
+
+.prologue-text::before{
+
+    content:"";
+    position:absolute;
+    left:0;
+    top:6px;
+    width:2px;
+    height:90%;
+    background:#d8d2c6;
+}
+
+.prologue-text span{
+
+    display:block;
+    font-size:12px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:#87957d;
+    margin-bottom:18px;
+
+}
+
+.prologue-text h2{
+
+    font-family:'Cormorant Garamond',serif;
+    font-size:26px;
+    font-weight:300;
+    line-height:1.2;
+    margin-bottom:20px;
+    color:#31476e;
+}
+
+.prologue-text p{
+
+    font-size:14px;
+    color:#6d7784;
+    line-height:1.8;
+    margin-bottom:18px;
+    padding-left:0;
+}
+
+.prologue-text ::after{
+   width:1px;
+   background:#ddd;
+   height:80%;
+}
+
+.read-note{
+
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    margin-top:34px;
+    font-size:11px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:#31476e;
+    text-decoration:none;
+}
+
+.prologue-image{
+
+    padding:18px;
+    background:#ece8df;
+
+    box-shadow:
+
+        0 18px 40px rgba(0,0,0,.08),
+        inset 0 0 12px rgba(255,255,255,.8);
+
+    border:1px solid rgba(0,0,0,.05);
+}
+
+.prologue-image img{
+
+    display:block;
+    width:100%;
+}
+
+
+/* ==========================
+   Gallery Intro
+========================== */
+
+.gallery-intro{
+
+    padding:20px 0;
+    margin-bottom:10px;
+    border-top:1px solid rgba(49,71,110,.08);
+    border-bottom:1px solid rgba(49,71,110,.08);
+}
+
+.gallery-intro h2{
+
+    font-family:'Cormorant Garamond',serif;
+    font-size:24px;
+    font-weight:300;
+    color:#22252a;
+    margin-bottom:10px;
+}
+
+.gallery-intro p{
+
+    max-width:980px;
+    margin:auto;
+    font-size:12px;
+    line-height:2;
+    color:#798493;
+    margin-left:0;
+}
+
+/* ==========================
+   Gallery Section
+========================== */
+
+.gallery-section{
+
+    padding:50px 0;
+    border-top:1px solid rgba(0,0,0,.06);
+}
+
+.gallery-header{
+
+    text-align:center;
+    margin-bottom:50px;
+    margin-top:0;
+}
+
+.gallery-header h3{
+
+    font-size:16px;
+    letter-spacing:8px;
+    color:#676d73;
+    margin-bottom:13px;
+}
+
+.gallery-header p{
+
+    font-family:'Cormorant Garamond',serif;
+    font-size:20px;
+    color:#4c5664;
+}
+
+
+/* ==========================
+   Artwork
+========================== */
+
+.artwork{
+
+    background:#f2eee8;
+    padding:12px;
+
+    border:1px solid rgba(0,0,0,.05);
+
+    box-shadow:
+        0 12px 24px rgba(0,0,0,.10),
+        inset 0 0 12px rgba(255,255,255,.9);
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+}
+
+.artwork img{
+
+    display:block;
+    width:100%;
+    height:auto;
+
+}
+
+.artwork:hover{
+
+    transform:translateY(-6px) rotate(.3deg);
+
+    box-shadow:
+        0 18px 36px rgba(0,0,0,.16),
+        inset 0 0 12px rgba(255,255,255,.9);
+}
+
+
+/* ==========================
+   Colour Gallery
+========================== */
+
+.colour-wall{
+
+    width:min(900px,100%);
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+}
+
+/* 첫 줄 */
+.colour-first-row{
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+    gap:80px;
+    margin-bottom:40px;
+}
+
+.colour-small{
+   margin-bottom:50px;
+}
+
+
+/* 둘째 줄 */
+.colour-second-row{
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    gap:80px;
+    margin-bottom:70px;
+}
+
+/* 큰 그림 */
+.colour-top{
+    max-width:340px;
+}
+
+/* 작은 그림 */
+.colour-small{
+    max-width:190px;
+}
+
+.bridge{
+    transform:translateY(70px);
+}
+
+/* 메인 그림 */
+.colour-main{
+    max-width:320px;
+}
+
+/* 마지막 줄 */
+.colour-bottom-row{
+    display:flex;
+    justify-content:center;
+    gap:45px;
+}
+
+.colour-bottom-row img{
+    max-width:280px;
+}
+
+/* ==========================
+   Painting Gallery
+========================== */
+.painting-wall{
+
+    display:grid;
+    justify-content:center;
+    grid-template-columns:
+        repeat(5,220px);
+
+    column-gap:28px;
+    row-gap:45px;
+    grid-template-areas:
+
+        ". . p1 . ."
+
+        ". p2 . p3 ."
+
+        ". . p5 . ."
+
+        ". p4 . p6 ."
+
+        "p7 . . . p8"
+
+        ". p9 . p10 ."
+
+        ". . p11 . ."
+        
+        ". p12 . p13 .";
+}
+
+.p1{grid-area:p1;}
+.p2{grid-area:p2;}
+.p3{grid-area:p3;}
+.p4{grid-area:p4;}
+.p5{grid-area:p5;}
+.p6{grid-area:p6;}
+.p7{grid-area:p7;}
+.p8{grid-area:p8;}
+.p9{grid-area:p9;}
+.p10{grid-area:p10;}
+.p11{grid-area:p11;}
+.p12{grid-area:p12;}
+.p13 {grid-area:p13;}
+
+.p2{
+
+    margin-top:30px;
+}
+
+.p6{
+
+    margin-top:20px;
+}
+
+.p10{
+
+    margin-top:35px;
+}
+
+.p5{
+
+    max-width:320px;
+}
+
+.p7{
+
+    max-width:250px;
+}
+
+.p8{
+
+    max-width:250px;
+}
+
+/* ==========================
+   Folk art Gallery
+========================== */
+.folkart-wall{
+    width:min(900px,100%);
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+
+}
+
+/* 첫째 줄 */
+.folkart-first-row{
+    display:flex;
+    justify-content:center;
+    gap:90px;
+    margin-bottom:70px;
+}
+
+/* 둘째 줄 */
+.folkart-second-row{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:80px;
+    margin-bottom:70px;
+}
+
+/* 셋째 줄 */
+.folkart-third-row{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:80px;
+    margin-bottom:70px;
+}
+
+/* 큰 그림 */
+.folkart{
+    max-width:300px;
+}
+
+
+/* 넷째 줄 */
+.folkart-fourth-row{
+    display:flex;
+    justify-content:center;
+    gap:90px;
+    margin-bottom:70px;
+}
+
+
+/* 다섯번째 줄 */
+.folkart-fifth-row{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:120px;
+    max-width:1180px;
+}
+
+
+
+/* ==========================
+   Craft Gallery
+========================== */
+
+.craft-wall{
+    width:min(900px,100%);
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+}
+
+/* 첫 줄 */
+.craft-first-row{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:120px;
+    margin-bottom:40px;
+}
+
+
+/* 마지막 줄 */
+.craft-bottom-row{
+    display:flex;
+    justify-content:flex-start;
+    gap:120px;
+}
+
+.craft-bottom-row img{
+    max-width:280px;
+}
+
+
+.gallery-ending{
+
+    padding:20px 0 40px;
+    text-align:center;
+     background:
+    linear-gradient(
+    rgba(158, 169, 166, 0.95),
+    rgba(221,219,226,.96));
+
+}
+
+.gallery-ending p{
+
+    font-family:'Cormorant Garamond',serif;
+    font-size:20px;
+    font-style:italic;
+    color:#7b8087;
+    line-height:1.7;
+}
+
+
+/* =====================================
+   Mobile (768px 이하)
+===================================== */
+@media (max-width:768px){
+
+    .container{
+        width:92%;
     }
 
-    body{
-      font-family:'Inter', sans-serif;
-      background:#f6f4ef;
-      color:#2F3B4A;
+    /* ---------- Hero ---------- */
+
+    .hero{
+        padding:40px 0 20px;
     }
 
-    a{
-      text-decoration:none;
-      color:inherit;
+    .hero h1{
+        font-size:24px;
     }
 
-    /* HERO */
-    .painting-hero{
-      width:100%;
-      height:80px;
-      padding:30px 10px 20px;
-      text-align:center;
+    .hero p{
+        font-size:13px;
+        line-height:1.8;
     }
 
-    .painting-hero span{
-      display:block;
-      margin-bottom:12px;
+    /* ---------- Prologue ---------- */
 
-      font-size:14px;
-      letter-spacing:6px;
-      text-transform:uppercase;
-      color:#8f9f83;
-    }
-
-    .painting-hero h1{
-      font-family:Georgia, serif;
-      font-size:28px;
-      font-weight:400;
-      color:#31476e;
-      margin-bottom:50px;
-    }
-
-
-    /* =========================
-       BACK BUTTON
-    ========================== */
-    .back-wrapper{
-      width:min(1100px,90%);
-      margin:55px auto 0;
-    }
-
-    .back-btn{
-      display:inline-block;
-      font-size:11px;
-      letter-spacing:0.8px;
-      text-transform:uppercase;
-      color:#5f718c;
-    }
-
-    .back-btn:hover{
-      opacity:0.65;
-    }
-
-    /* PAGE WRAPPER */
-    .painting-wrapper{
-      width:min(1100px,90%);
-      margin:35px auto;
-    }
-
-   
-    /* FEATURED */
-    .featured{
-      display:grid;
-      grid-template-columns:0.9fr 1.1fr;
-      gap:10px;
-      align-items:center;
-      margin-top:0;
-      margin-bottom:30px;
-      background:rgba(255,255,255,0.74);
-      border:1px solid rgba(49,71,110,0.12);
-      box-shadow:0 18px 50px rgba(49,71,110,0.08);
-    }
-
-    .featured-text{
-      padding:36px;
-    }
-
-    .featured-text span{
-      font-size:11px;
-      letter-spacing:4px;
-      text-transform:uppercase;
-      color:#8f9f83;
-    }
-
-    .featured-text h2{
-      font-family:Georgia, serif;
-      font-size:20px;
-      font-weight:400;
-      color:#31476e;
-      margin:12px 0;
-    }
-
-    .featured-text p{
-      font-size:13px;
-      line-height:1.4;
-      color:#667181;
-      margin-bottom:10px;
-    }
-
-    .featured img{
-      width:100%;
-      height:280px;
-      object-fit:contain;
-      display:relative;
-    }
-
-    .read-link{
-      font-size:11px;
-      letter-spacing:1.2px;
-      text-transform:uppercase;
-      color:#31476e;
-      border-bottom:1px solid #31476e;
-      padding-bottom:4px;
-    }
-
-    /* SMALL CARDS */
-    .section-title{
-      text-align:center;
-      margin-bottom:32px;
-    }
-
-
-    .section-title h2{
-      font-family:Georgia, serif;
-      font-size:20px;
-      font-weight:500;
-      color:#31476e;
-      margin-top:20px;
-      letter-spacing:3px;
-    }
-
-    .painting-grid{
-      display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:20px;
-      margin-bottom:80px;
-    }
-
-    .painting-card{
-      background:rgba(255,255,255,0.78);
-      border:1px solid rgba(49,71,110,0.12);
-      box-shadow:0 14px 35px rgba(49,71,110,0.07);
-      overflow:hidden;
-      transition:0.3s ease;
-    }
-
-    .painting-card:hover{
-      transform:translateY(-6px);
-      box-shadow:0 20px 45px rgba(49,71,110,0.12);
-    }
-
-    .painting-card img{
-      width:100%;
-      height:300px;
-      display:block;
-    }
-
-    .painting-card-content{
-      padding:10px;
-    }
-
-    .painting-card-content span{
-      font-size:12px;
-      letter-spacing:4px;
-      text-transform:uppercase;
-      color:#8f9f83;
-    }
-
-    .painting-card-content p{
-      font-size:10px;
-      letter-spacing:1.5px;
-      text-transform:uppercase;
-      color:#8f9f83;
-    }
-
-
-    /* NOTE */
-    .painting-note{
-      text-align:center;
-      padding:30px 10px;
-      background:rgba(255,255,255,0.62);
-      border-top:1px solid rgba(49,71,110,0.12);
-      border-bottom:1px solid rgba(49,71,110,0.12);
-    }
-
-    .painting-note p{
-      max-width:700px;
-      margin:0 auto;
-      font-family:Georgia, serif;
-      font-size:18px;
-      line-height:1.8;
-      color:#31476e;
-    }
-
-    /* RESPONSIVE */
-    @media(max-width:900px){
-
-      .back-wrapper{
-        padding:8px 0 0;
-        margin:0 auto;
-      }
-
-      .back-btn{
-        font-size:8px;
-        letter-spacing:0.8px;
-      }
-
-      .featured{
+    .prologue{
         grid-template-columns:1fr;
-      }
+        gap:35px;
+    }
 
-      .painting-grid{
-        grid-template-columns:repeat(2,1fr);
-        gap:12px;
-      }
-      
-      .painting-wrapper{
-        margin:16px auto;
-      }
+    .prologue-text{
+        padding-left:20px;
+    }
 
-      .painting-hero{
-        width:100%;
-        height:auto;
-        padding:18px 5px 10px;
-        text-align:center;
-        margin-bottom: 0;
-        background:#556073;
-      }
+    .prologue-text h2{
+        font-size:22px;
+    }
 
-      .painting-hero span{
-        font-size:10px;
-      }
-      .painting-hero h1{
-        font-size:20px;
-        margin-bottom:0;
-        color:#ebf1e8;
-      }
-   
-      .painting-card img{
-        height:160px;
-        object-fit:cover;
-      }
+    .prologue-image{
+        max-width:420px;
+        margin:auto;
+    }
 
-      .painting-card-content{
-        padding:8px;
-        min-height:40px;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-      }
+    /* ---------- Gallery ---------- */
 
-      .painting-card-content span{
-        font-size:9px;
-        letter-spacing:2px;
-        text-align:center;
-      }
+    .gallery-section{
+        padding:40px 0;
+    }
 
-      .featured{
-        grid-template-columns:1fr;
-        margin-top:0;
-        margin-bottom:22px;
-      }
+    .gallery-header{
+        margin-bottom:35px;
+    }
 
-      
-      .section-title{
-        background:#5f7389;
-        padding:6px 10px;
-        text-align:center;
-        margin-bottom:20px;
-      }
-
-      .section-title h2{
-        font-family:'Montserrat', sans-serif;
+    .gallery-header h3{
         font-size:14px;
-        color:#ffffff;
-        letter-spacing:2px;
-        margin:0;
-        font-weight:400;
-      }
-
-
-      .painting-card-content span{
-        font-size:8px;
-        letter-spacing:2px;
-        text-transform:uppercase;
-        color:#555853;
-      }
-
-      .painting-note p{
-        font-size:10px;
-        line-height:1.4;
-      }
-
-
+        letter-spacing:5px;
     }
-  </style>
 
-<!-- Cloudflare Web Analytics -->
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js"
-        data-cf-beacon='{"token":"..."}'></script>
-<!-- End Cloudflare Web Analytics -->
+    .gallery-header p{
+        font-size:18px;
+    }
+
+    .gallery-intro h2{
+        font-size:22px;
+    }
+
+    /* ---------- Artwork ---------- */
+
+    .artwork{
+        width:100%;
+        max-width:320px;
+        margin:0 auto;
+    }
+
+    /* ---------- Colour Gallery ---------- */
+
+    .colour-first-row,
+    .colour-second-row,
+    .colour-bottom-row{
+        flex-direction:column;
+        align-items:center;
+        gap:30px;
+        margin-bottom:30px;
+    }
+
+    .bridge{
+        transform:none;
+    }
+
+    .colour-top,
+    .colour-main,
+    .colour-small,
+    .colour-bottom-row img{
+        max-width:100%;
+    }
+
+    /* ---------- Painting Gallery ---------- */
+
+    .painting-wall{
+
+        grid-template-columns:1fr;
+
+        grid-template-areas:
+            "p1"
+            "p2"
+            "p3"
+            "p4"
+            "p5"
+            "p6"
+            "p7"
+            "p8"
+            "p9"
+            "p10"
+            "p11"
+            "p12"
+            "p13";
+
+        row-gap:30px;
+    }
+
+    .painting-wall .artwork{
+        max-width:320px;
+        width:100%;
+        justify-self:center;
+    }
+
+    .p2,
+    .p6,
+    .p10{
+        margin-top:0;
+    }
+
+    .p5,
+    .p7,
+    .p8{
+        max-width:none;
+    }
+
+    /* ---------- Folk Art ---------- */
+
+    .folkart-first-row,
+    .folkart-second-row,
+    .folkart-third-row,
+    .folkart-fourth-row,
+    .folkart-fifth-row{
+
+        flex-direction:column;
+        align-items:center;
+        gap:30px;
+        margin-bottom:30px;
+    }
+
+    .folkart{
+        max-width:100%;
+    }
+
+    /* ---------- Craft ---------- */
+
+    .craft-first-row,
+    .craft-bottom-row{
+
+        flex-direction:column;
+        align-items:center;
+        gap:30px;
+    }
+
+    .craft-bottom-row img{
+        max-width:100%;
+    }
+
+    /* ---------- Ending ---------- */
+
+    .gallery-ending{
+        padding:40px 0;
+    }
+
+    .gallery-ending p{
+        font-size:18px;
+    }
+
+}
+</style>
 
 </head>
 
 <body>
 
-  <!-- HERO -->
-  <section class="painting-hero">
-    <span>Creative Corners</span>
+<div class="back">
 
-    <h1>Art, Decor & Quiet Creations</h1>
+<a href="hobby.html"> ← Back To Canvas </a>
 
-  </section>
+</div>
 
-  <!-- BACK BUTTON -->
-  <div class="back-wrapper">
-    <a href="hobby.html" class="back-btn">
-       Back to Canvas
-    </a>
-  </div>
+<header class="hero">
 
-  <!-- MAIN -->
-  <main class="painting-wrapper">
+<span>Canvas & Colour</span>
 
-    <!-- FEATURED -->
-    <section class="featured">
-      <div class="featured-text">
-        <span>Featured Note</span>
+<h1>Art, Decor & Quiet Creations</h1>
+
+<p>
+
+A quiet collection of paintings, crafts and little memories gathered through seasons of creating.
+
+</p>
+
+</header>
+
+<div class="container">
+
+<!-- =====================================================
+     PROLOGUE
+====================================================== -->
+
+<section class="prologue">
+
+    <div class="prologue-text">
+
+        <span>Prologue</span>
 
         <h2>Creating My Quiet Place</h2>
 
         <p>
-         This space began with a simple desire:
-         to slow down and find a little peace.<br>
-
-         Painting, music, and creating with my hands became gentle companions through busy days and restless thoughts.
-
-         <br>The pieces collected here are not only things I made,
-         but moments that helped me find my way back to myself.
-
+            This space began with a simple desire: to slow down and find a little peace.
+        <br>
+            Painting, music and creating with my hands became gentle companions through busy days and restless
+            thoughts.
+        <br>
+            The works collected here are not simply things I made.
+            They are quiet reminders of moments that helped me find my way back to myself.
         </p>
 
-        <a href="quiet.html?date=2026-05-13" class="read-link">Read Note</a>
-      </div>
+        <a class="read-note"
+           href="quiet.html?date=2026-05-13"> Read Journal →  </a>
 
-      <img src="Images/ART/painting.png" alt="Painting and sketchbook">
-    </section>
+    </div>
 
+    <div class="prologue-image">
+        <img src="Images/ART/painting.png" alt="Painting and sketchbook">
+    </div>
 
-    <!-- GALLERY -->
-    <section>
-      <div class="section-title">
-        <span></span>
-        <h2>Things I've Made</h2>
-      </div>
+</section>
 
-      <div class="painting-grid">
 
-        <article class="painting-card">
-          <img src="Images/ART/c1.png" alt="colour">
 
-          <div class="painting-card-content">
-            <span>COLOUR</span>
-            <h3></h3>
-            <p>
-            </p>
-          </div>
-        </article>
+<!-- =====================================================
+     GALLERY INTRO
+====================================================== -->
 
-        <article class="painting-card">
-          <img src="Images/ART/c2.png" alt="Colour">
+<section class="gallery-intro">
 
-          <div class="painting-card-content">
-            <span>COLOUR</span>
-            <h3></h3>
-            <p>
-            </p>
-          </div>
-        </article>
+    <h2>Things I've Made</h2>
 
-        <article class="painting-card">
-          <img src="Images/ART/c3.jpg" alt="COLOUR">
-
-          <div class="painting-card-content">
-            <span>COLOUR</span>
-            <p>
-            </p>
-          </div>
-        </article>
-
-
-        <article class="painting-card">
-          <img src="Images/ART/c12.png" alt="COLOUR">
-
-          <div class="painting-card-content">
-            <span>COLOUR</span>
-            <p>
-            </p>
-          </div>
-        </article>
-
-        <article class="painting-card">
-          <img src="Images/ART/c13.png" alt="COLOUR">
-
-          <div class="painting-card-content">
-            <span>COLOUR</span>
-            <p>
-            </p>
-          </div>
-        </article>
-
-        <article class="painting-card">
-          <img src="Images/ART/c14.png" alt="COLOUR">
-
-          <div class="painting-card-content">
-            <span>COLOUR</span>
-            <p>
-            </p>
-          </div>
-        </article>
-
-        <article class="painting-card">
-          <img src="Images/ART/p1.png" alt="PAINTING">
-
-          <div class="painting-card-content">
-            <span>PAINTING</span>
-            <p>
-            </p>
-          </div>
-        </article>
-
-        <article class="painting-card">
-          <img src="Images/ART/p2.png" alt="PAINTING">
-
-          <div class="painting-card-content">
-            <span>PAINTING</span>
-            <p>
-            </p>
-          </div>
-        </article>
-
-        <article class="painting-card">
-          <img src="Images/ART/p3.png" alt="PAINTING">
-
-          <div class="painting-card-content">
-            <span>PAINTING</span>
-            <p>
-            </p>
-          </div>
-        </article>
-
-        <article class="painting-card">
-          <img src="Images/ART/p4.png" alt="PAINTING">
-
-          <div class="painting-card-content">
-            <span>PAINTING</span>
-            <p>
-            </p>
-          </div>
-        </article>
-
-        <article class="painting-card">
-          <img src="Images/ART/p5.png" alt="PAINTING">
-
-          <div class="painting-card-content">
-            <span>PAINTING</span>
-            <p>
-            </p>
-          </div>
-        </article>
-
-        <article class="painting-card">
-          <img src="Images/ART/p6.png" alt="PAINTING">
-
-          <div class="painting-card-content">
-            <span>PAINTING</span>
-            <p>
-            </p>
-          </div>
-
-        </article>
-
-        <article class="painting-card">
-          <img src="Images/ART/p7.png" alt="PAINTING">
-
-          <div class="painting-card-content">
-            <span>PAINTING</span>
-            <p>
-            </p>
-          </div>
-
-        </article>
-
-        <article class="painting-card">
-          <img src="Images/ART/p8.png" alt="PAINTING">
-
-          <div class="painting-card-content">
-            <span>PAINTING</span>
-            <p>
-            </p>
-          </div>
-
-        </article>
-
-        <article class="painting-card">
-          <img src="Images/ART/p9.png" alt="PAINTING">
-
-          <div class="painting-card-content">
-            <span>PAINTING</span>
-            <p>
-            </p>
-          </div>
-
-        </article>
-
-        <article class="painting-card">
-          <img src="Images/ART/p10.png" alt="PAINTING">
-
-          <div class="painting-card-content">
-            <span>PAINTING</span>
-            <p>
-            </p>
-          </div>
-
-        </article>
-
-        <article class="painting-card">
-          <img src="Images/ART/p11.png" alt="PAINTING">
-
-          <div class="painting-card-content">
-            <span>PAINTING</span>
-            <p>
-            </p>
-          </div>
-
-        </article>
-
-        <article class="painting-card">
-          <img src="Images/ART/p12.png" alt="PAINTING">
-
-          <div class="painting-card-content">
-            <span>PAINTING</span>
-            <p>
-            </p>
-          </div>
-
-        </article>
-
-        <article class="painting-card">
-          <img src="Images/ART/f1.png" alt="Folk Art Painting">
-
-          <div class="painting-card-content">
-            <span>Folk Art Painting</span>
-            <p>
-            </p>
-          </div>
-
-        </article>
-
-        <article class="painting-card">
-          <img src="Images/ART/f2.jpg" alt="Folk Art Painting">
-
-          <div class="painting-card-content">
-            <span>Folk Art Painting</span>
-            <p>
-            </p>
-          </div>
-
-        </article>
-
-        <article class="painting-card">
-          <img src="Images/ART/f3.png" alt="Folk Art Painting">
-
-          <div class="painting-card-content">
-            <span>Folk Art Painting</span>
-            <h3></h3>
-            <p>
-            </p>
-          </div>
-
-        </article>
-
-        <article class="painting-card">
-          <img src="Images/ART/f4.jpg" alt="Folk Art Painting">
-
-          <div class="painting-card-content">
-            <span>Folk Art Painting</span>
-            <p>
-
-            </p>
-          </div>
-
-        </article>
-
-        <article class="painting-card">
-          <img src="Images/ART/f7.jpg" alt="Folk Art Painting">
-
-          <div class="painting-card-content">
-            <span>Folk Art Painting</span>
-            <h3></h3>
-            <p>
-            </p>
-          </div>
-
-        </article>
-
-
-        </article>
-
-        <article class="painting-card">
-          <img src="Images/ART/f5.png" alt="Folk Art Painting">
-
-          <div class="painting-card-content">
-            <span>Folk Art Painting</span>
-            <h3></h3>
-            <p>
-            </p>
-          </div>
-
-        </article>
-
-        <article class="painting-card">
-          <img src="Images/ART/f8.jpg" alt="Folk Art Painting">
-
-          <div class="painting-card-content">
-            <span>Folk Art Painting</span>
-            <h3></h3>
-            <p>
-            </p>
-          </div>
-
-        </article>
-
-        <article class="painting-card">
-          <img src="Images/ART/cr1.png" alt="Craft">
-
-          <div class="painting-card-content">
-            <span>CRAFT</span>
-            <h3></h3>
-            <p>
-            </p>
-          </div>
-
-        </article>
-
-        <article class="painting-card">
-          <img src="Images/ART/cr2.png" alt="Craft">
-
-          <div class="painting-card-content">
-            <span>CRAFT</span>
-            <h3></h3>
-            <p>
-            </p>
-          </div>
-
-        </article>
-
-        <article class="painting-card">
-          <img src="Images/ART/cr3.png" alt="Craft">
-
-          <div class="painting-card-content">
-            <span>CRAFT</span>
-            <h3></h3>
-            <p>
-            </p>
-          </div>
-
-        </article>
-          
-        <article class="painting-card">
-           <img src="Images/ART/cr4.png" alt="Craft">
-
-           <div class="painting-card-content">
-             <span>CRAFT</span>
-             <h3></h3>
-             <p>
-             </p>
-           </div>
-
-        </article>
-
-         <article class="painting-card">
-          <img src="Images/ART/c11.png" alt="COLOUR">
-
-          <div class="painting-card-content">
-            <span>COLOUR</span>
-            <p>A Housewarming Gift for a Friend
-            </p>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-  </main>
-
-
-  <!-- NOTE -->
-  <section class="painting-note">
     <p>
-      “Painting gives quiet thoughts a place to become visible.”
+        Every piece in this collection carries a small memory.
+        <br>Some were painted during quiet weekends, some while travelling, and others simply because colours
+        felt easier than words.
     </p>
-  </section>
+
+</section>
+
+
+
+<!-- =====================================================
+     COLOUR
+====================================================== -->
+
+<section class="gallery-section">
+
+    <div class="gallery-header">
+        <h3>COLOUR</h3>
+        <p></p>
+    </div>
+
+    <div class="colour-wall">
+        <div class="colour-first-row">
+            <img src="Images/art/c1 1.png" class="artwork colour-top">
+
+            <img src="Images/art/c15.jpg" class="artwork colour-small">
+        </div>
+
+        <div class="colour-second-row">
+            <img src="Images/art/c4 2.png" class="artwork colour-small bridge">
+            <img src="Images/art/c2 2.png" class="artwork colour-main">
+        </div>
+
+
+        <div class="colour-bottom-row">
+
+            <img src="Images/art/c7 1.jpg" class="artwork" >
+            <img src="Images/art/c8 1.jpg" class="artwork" >
+            <img src="Images/art/c9 1.jpg" class="artwork" >
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     PAINTING
+====================================================== -->
+
+<section class="gallery-section">
+
+    <div class="gallery-header">
+
+        <h3>PAINTING</h3>
+
+        <p></p>
+
+    </div>
+
+    <div class="painting-wall">
+
+        <figure class="artwork p1">
+            <img src="Images/art/p1 1.png">
+        </figure>
+
+        <figure class="artwork p2">
+            <img src="Images/art/p3 2.png">
+        </figure>
+
+        <figure class="artwork p3">
+            <img src="Images/art/p7 1.png">
+        </figure>
+
+        <figure class="artwork p4">
+            <img src="Images/art/p4 2.png">
+        </figure>
+
+        <figure class="artwork p5">
+            <img src="Images/ART/p5 1.png">
+        </figure>
+
+        <figure class="artwork p6">
+            <img src="Images/ART/p6 2.png">
+        </figure>
+
+        <figure class="artwork p7">
+            <img src="Images/ART/p8 5.png">
+        </figure>
+
+        <figure class="artwork p8">
+            <img src="Images/ART/p11 5.png">
+        </figure>
+
+        <figure class="artwork p9">
+            <img src="Images/ART/p9 2.png">
+        </figure>
+
+        <figure class="artwork p10">
+            <img src="Images/ART/p12 4.png">
+        </figure>
+
+        <figure class="artwork p11">
+            <img src="Images/ART/p2 1.png">
+        </figure>
+
+        <figure class="artwork p12">
+            <img src="Images/ART/p10 1.png">
+        </figure>
+
+        <figure class="artwork p13">
+           <img src="Images/art/p10 2.png">
+        </figure>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     FOLK ART
+====================================================== -->
+
+<section class="gallery-section">
+
+    <div class="gallery-header">
+
+        <h3>FOLK ART</h3>
+
+        <p></p>
+
+    </div>
+
+    <div class="forkart-wall">
+        <div class="folkart-first-row">
+
+            <img src="Images/art/f1 2.png" class="artwork folkart">
+            <img src="Images/art/f1 4.png" class="artwork folkart">
+            <img src="Images/art/f1 3.png" class="artwork folkart">
+        </div>
+
+        <div class="folkart-second-row">
+            <img src="Images/art/f2 1.png" class="artwork folkart-top">
+            <img src="Images/art/f2 2.png" class="artwork folkart-top">
+            <img src="Images/art/f2 3.png" class="artwork folkart-top">
+        </div>
+
+       <div class="folkart-third-row">
+            <img src="Images/art/f3.png" class="artwork folkart small">
+            <img src="Images/art/f4.jpg" class="artwork folkart small">
+
+        </div>
+     
+        <div class="folkart-fourth-row">
+            <img src="Images/art/f2.jpg" class="artwork folkart">
+            <img src="Images/art/f20.jpg" class="artwork folkart">
+
+        </div>   
+
+        <div class="folkart-fifth-row">
+            <img src="Images/art/f5 2.png" class="artwork folkart small">
+            <img src="Images/art/f32 1.jpg" class="artwork folkart small">
+        </div>
+
+    </div>
+</section>
+
+<!-- =====================================================
+     CRAFT
+====================================================== -->
+<section class="gallery-section">
+
+    <div class="gallery-header">
+
+        <h3>C R A F T</h3>
+
+        <p></p>
+
+    </div>
+
+    <div class="craft-wall">
+        <div class="craft-first-row">
+            <img src="Images/art/cr3 2.png" class="artwork craft">
+            <img src="Images/art/cr2 2.png" class="artwork craft">
+        </div>
+
+        <div class="craft-bottom-row">
+            <img src="Images/art/cr1 1.png" class="artwork craft">
+            <img src="Images/art/cr4 2.png" class="artwork craft">
+        </div>
+
+    </div>
+
+</section>
+
+<section class="gallery-ending">
+
+    <p>
+        Thank you for visiting my gallery.<br>
+        Until we meet again.
+    </p>
+
+</section>
+
+</div>
 
 </body>
 </html>
