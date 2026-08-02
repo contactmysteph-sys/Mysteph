@@ -181,14 +181,14 @@ img{
 .journal-main h1{
   margin-bottom:15px;
   font-family:'Cormorant Garamond', serif;
-  font-size:20px;
+  font-size:18px;
   color:#31476E;
 }
 
 .journal-main h2{
   margin-bottom:13px;
   font-family:'Cormorant Garamond', serif;
-  font-size:20px;
+  font-size:14px;
   color:#504755;
 }
 
@@ -313,7 +313,16 @@ img{
     font-size:18px;
     letter-spacing:2px;
   }
+  
+  .journal-main h1{
+    font-size:14px;
+    color:#31476E;
+  }
 
+  .journal-main h2{
+    font-size:12px;
+    color:#504755;
+  }
   .detail-section{
     width:88%;
     margin:0 auto 30px;
@@ -331,19 +340,24 @@ img{
     padding:7px 9px;
   }
 
-  .photo-grid{
-    margin-top:22px;
-    grid-template-columns:repeat(1, 1fr);
-    gap:10px;
+  .photo-row{
+
+    justify-items:center;
+    gap:14px;
   }
 
-  .photo-grid img,
-  .photo-grid img:nth-child(1),
-  .photo-grid img:nth-child(2),
-  .photo-grid img:nth-child(n+3){
-    grid-column:auto;
-    height:120px;
-    object-fit:cover;
+  .photo-row.two,
+  .photo-row.three,
+  .photo-row.four,
+  .photo-row.five{
+    grid-template-columns:1fr;
+  }
+
+  .photo-row img{
+
+    width:85%;
+    max-width:280px;
+    height:180px;
   }
 
   .journal-layout{
