@@ -983,6 +983,7 @@ document.querySelectorAll(".city").forEach(city => {
       popupTitle.textContent = city.dataset.title;
 
       currentLink = city.dataset.link;
+      console.log(city.dataset.title, currentLink);
 
       popup.style.left = `${e.target.offsetLeft + 30}px`;
 
