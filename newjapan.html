@@ -586,10 +586,8 @@ CITY LINK
 .city::before{
 
     content:"";
-
     width:9px;
     height:9px;
-
     background:#3a4455;
     border-radius:50% 50% 50% 0;
 
@@ -628,9 +626,7 @@ CITY LINK
 .city:hover::after{
 
     opacity: 1;
-
     top: -28px;
-
     transform: translateX(-50%) scale(1.05);
 }
  
@@ -718,23 +714,37 @@ body{
 }
 
 .map-popup .content{
-        padding:8px;
+ padding:8px;
 }
 }
 
 
 .city{
 
+    position:absolute;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     width:9px;
     height:9px;
+    border-radius:50%;
+    text-decoration:none;
+    transition:.25s;
+    transform: translate(-50%, -50%);
 }
 
 .city::before{
 
-    width:7px;
-    height:7px;
+    content:"";
+    width:9px;
+    height:9px;
+    background:#3a4455;
+    border-radius:50% 50% 50% 0;
+
+    transform:rotate(-45deg);
 }
-}
+ 
+
 
 /* ==========================
    MOBILE
