@@ -1390,7 +1390,7 @@ function moveDrag(x, y) {
 
     currentX = x;
 
-    const diff = currentX - startX;
+    const diff = (currentX - startX) * 0.6;
 
     reader.style.transform = `translateX(${diff}px)`;
 }
@@ -1423,7 +1423,7 @@ function endDrag(x) {
             requestAnimationFrame(() => {
 
                 reader.style.transition = "transform .25s ease";
-                reader.style.transform = "translateX(" + (diff * 0.5) + "px)";
+                reader.style.transform = "translateX(" + (diff * 0.6) + "px)";
 
             });
 
