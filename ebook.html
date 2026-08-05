@@ -353,10 +353,6 @@
       cursor: grab;
     }
 
-    .reader-page:active{
-      cursor: grabbing;
-    }
-
     /* ARROWS */
     .next-btn,
     .prev-btn{
@@ -495,10 +491,6 @@
       @media (hover: hover) {
       .reader-page{
         cursor: grab;
-      }
-
-      .reader-page:active{
-        cursor: grabbing;
       }
 
      .side-buttons{
@@ -1355,12 +1347,7 @@ function changeChapter(step) {
 // 드래그 & 스와이프
 // ======================
 
-const reader = document.querySelector(".reader-page");
 
-let startX = 0;
-let startY = 0;
-let currentX = 0;
-let isDragging = false;
 
 
 // 시작
@@ -1492,49 +1479,175 @@ reader.addEventListener("pointerup",(e)=>{
 
 });
 
-reader.addEventListener("pointerleave",()=>{
 
-    if(isDragging){
+// ======================
+// PC 드래그 + 모바일 스와이프
+// ======================
 
-        reader.style.transition="transform .25s ease";
-        reader.style.transform="translateX(0)";
+const reader = document.querySelector(".reader-page");
+
+let startX = 0;
+let startY = 0;
+let currentX = 0;
+let isDragging = false;
+let isHorizontalDrag = false;
+let activePointerId = null;
+
+const SWIPE_DISTANCE = 70;
+const ANIMATION_TIME = 250;
+
+
+// 드래그 시작
+reader.addEventListener("pointerdown", (e) => {
+  if (isDragging) return;
+
+  startX = e.clientX;
+  startY = e.clientY;
+  currentX = e.clientX;
+
+  isDragging = true;
+  isHorizontalDrag = false;
+  activePointerId = e.pointerId;
+
+  /*
+    페이지가 움직여도 pointer 이벤트를 계속 받게 함.
+    pointerleave 때문에 드래그가 끊기는 문제를 막아준다.
+  */
+  reader.setPointerCapture(e.pointerId);
+
+  reader.style.transition = "none";
+  reader.style.userSelect = "none";
+});
+
+
+// 드래그 중
+reader.addEventListener("pointermove", (e) => {
+  if (!isDragging || e.pointerId !== activePointerId) return;
+
+  const diffX = e.clientX - startX;
+  const diffY = e.clientY - startY;
+
+  /*
+    처음 움직일 때 가로 드래그인지 세로 스크롤인지 판단
+  */
+  if (!isHorizontalDrag) {
+    if (Math.abs(diffX) < 8 && Math.abs(diffY) < 8) return;
+
+    // 세로 움직임이 더 크면 스와이프 취소
+    if (Math.abs(diffY) > Math.abs(diffX)) {
+      cancelDrag();
+      return;
     }
 
-    isDragging=false;
+    isHorizontalDrag = true;
+  }
 
+  currentX = e.clientX;
+
+  // 페이지가 손을 따라 움직임
+  reader.style.transform = `translateX(${diffX}px)`;
+});
+
+
+// 드래그 종료
+reader.addEventListener("pointerup", (e) => {
+  if (!isDragging || e.pointerId !== activePointerId) return;
+
+  const diffX = e.clientX - startX;
+
+  finishDrag(diffX, e.pointerId);
+});
+
+
+// 브라우저가 포인터 동작을 취소했을 때
+reader.addEventListener("pointercancel", (e) => {
+  if (e.pointerId !== activePointerId) return;
+
+  cancelDrag(e.pointerId);
 });
 
 
 // ======================
-// Mobile
+// 드래그 종료 처리
 // ======================
 
-reader.addEventListener("touchstart",(e)=>{
+function finishDrag(diffX, pointerId) {
+  isDragging = false;
+  isHorizontalDrag = false;
 
-    const t=e.touches[0];
+  reader.style.userSelect = "";
 
-    startDrag(t.clientX,t.clientY);
+  if (reader.hasPointerCapture(pointerId)) {
+    reader.releasePointerCapture(pointerId);
+  }
 
-},{passive:true});
+  activePointerId = null;
 
-reader.addEventListener("touchmove",(e)=>{
+  // 왼쪽으로 밀기 → 다음 챕터
+  if (diffX <= -SWIPE_DISTANCE) {
+    reader.style.transition =
+      `transform ${ANIMATION_TIME}ms ease`;
 
-    const t=e.touches[0];
+    reader.style.transform = "translateX(-100%)";
 
-    moveDrag(t.clientX,t.clientY);
+    setTimeout(() => {
+      changeChapter(1);
 
-},{passive:true});
+      /*
+        새 페이지를 다른 방향에서 다시 밀어 넣지 않고
+        즉시 제자리에서 보여준다.
+      */
+      reader.style.transition = "none";
+      reader.style.transform = "translateX(0)";
+    }, ANIMATION_TIME);
 
-reader.addEventListener("touchend",(e)=>{
+    return;
+  }
 
-    const t=e.changedTouches[0];
+  // 오른쪽으로 밀기 → 이전 챕터
+  if (diffX >= SWIPE_DISTANCE) {
+    reader.style.transition =
+      `transform ${ANIMATION_TIME}ms ease`;
 
-    endDrag(t.clientX);
+    reader.style.transform = "translateX(100%)";
 
-});
+    setTimeout(() => {
+      changeChapter(-1);
+
+      reader.style.transition = "none";
+      reader.style.transform = "translateX(0)";
+    }, ANIMATION_TIME);
+
+    return;
+  }
+
+  // 이동 거리가 짧으면 제자리로 복귀
+  reader.style.transition =
+    `transform ${ANIMATION_TIME}ms ease`;
+
+  reader.style.transform = "translateX(0)";
+}
 
 
-// 첫 페이지
+// 세로 스크롤 또는 취소 처리
+function cancelDrag(pointerId = activePointerId) {
+  if (
+    pointerId !== null &&
+    reader.hasPointerCapture(pointerId)
+  ) {
+    reader.releasePointerCapture(pointerId);
+  }
+
+  isDragging = false;
+  isHorizontalDrag = false;
+  activePointerId = null;
+
+  reader.style.userSelect = "";
+  reader.style.transition = "transform .25s ease";
+  reader.style.transform = "translateX(0)";
+}
+
+
 renderChapter();
 </script>
 
