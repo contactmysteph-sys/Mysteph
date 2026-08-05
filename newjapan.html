@@ -699,14 +699,8 @@ body{
 .map-popup{
 
   position:absolute;
-  top:70%;
-  left:50%;
-
-  transform:translate(-50%, -50%);
-  width:30px;
-  overflow:hidden;
-  display:none;
-  z-index:20;
+  transform:none;
+  width:80px;
 }
 
 .map-popup img{
@@ -1036,7 +1030,12 @@ document.querySelectorAll(".city").forEach(city => {
       currentLink = city.dataset.link;
       console.log(city.dataset.title, currentLink);
 
-      popup.style.left = `${e.target.offsetLeft + 30}px`;
+      const cityRect = city.getBoundingClientRect();
+      const mapRect = document.querySelector(".map-wrapper").getBoundingClientRect();
+
+      popup.style.left = 
+      `${cityRect.left - mapRect.left + 20}px`;
+
 
       if (
           city.classList.contains("sapporo") ||
@@ -1045,11 +1044,13 @@ document.querySelectorAll(".city").forEach(city => {
           city.classList.contains("abashiri")
         ) {
 
-          popup.style.top = `${e.target.offsetTop + 30}px`;
+          popup.style.top =
+          `${cityRect.top - mapRect.top + 20}px`;
 
         } else {
 
-          popup.style.top = `${e.target.offsetTop - 120}px`;
+           popup.style.top =
+           `${cityRect.top - mapRect.top - 100}px`;
 
         }
 
