@@ -544,15 +544,22 @@ async function deleteNote(id){
   renderNotes();
 }
 async function saveReply(id){
+
   const replyText = document.getElementById(`reply-${id}`).value.trim();
+
+  const secret =
+    document.getElementById(`reply-secret-${id}`).checked;
+
 
   const { error } = await supabaseClient
     .from('guestbook')
     .update({
       reply: replyText || null,
+      reply_secret: secret,
       reply_at: replyText ? new Date().toISOString() : null
     })
     .eq('id', id);
+
 
   if(error){
     alert(error.message);
