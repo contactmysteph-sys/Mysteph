@@ -243,27 +243,33 @@
     .reader-page{
       max-height:700px;
       overflow-y:auto;
+
       background:
         linear-gradient(90deg,
-          rgba(49,71,110,0.10) 0%,
-          rgba(255,253,248,0.96) 5%,
-          #fffdf8 18%,
-          #fffdf8 100%
+         rgba(49,71,110,0.10) 0%,
+         rgba(255,253,248,0.96) 5%,
+         #fffdf8 18%,
+         #fffdf8 100%
         );
 
       border:1px solid rgba(49,71,110,0.24);
+
       box-shadow:
         -8px 0 18px rgba(49,71,110,0.08),
         0 24px 60px rgba(49,71,110,0.14),
         inset 0 0 0 1px rgba(255,255,255,0.7);
+
       position:relative;
       padding:58px 64px;
-      touch-action: pan-y;
-      cursor:grab;
+
+      /*
+       세로 스크롤은 허용하고
+       가로 스와이프는 JavaScript가 처리
+      */
+      touch-action:pan-y;
+
       transition:transform .25s ease;
-      -webkit-user-select: none;
-      user-select: none;
-      will-change:transform;
+       will-change:transform;
     }
 
     .reader-page::before{
@@ -349,10 +355,6 @@
       font-style:italic;
     }
 
-    .reader-page{
-      cursor: grab;
-    }
-
     /* ARROWS */
     .next-btn,
     .prev-btn{
@@ -409,110 +411,103 @@
        margin: 0 auto 20px;
     }
     
-    @media(max-width:900px){
-
-      .reader-page{
-        padding:20px 16px;
-      }
-
-     .chapter-body p{
-       font-size:12px;
-       line-height:1.6;
-       letter-spacing: 1px;
-      }
-    }
-     /* 모바일 화면에서는 HTML 표지를 숨기고 이미지 표지를 보여줌 */
-    @media (max-width: 768px) {
-
-     .book-banner{
-       height:auto;
-       padding:18px 16px;
-      }
-
-     .book-banner h1{
-       font-size:16px;
-       line-height:1.3;
-       margin:0;
-     }
-
-     .book-banner span{
-       font-size:7px;
-       letter-spacing:3px;
-       margin-bottom:6px;
-      }
-
-     .back-wrapper{
-       width:100%;
-       margin:0;
-       padding:0 16px 8px;
-       padding-top:12px;
-      }
-
-     .back-btn{
-       font-size:8px;
-       letter-spacing:0.5px;
-       color:rgba(255,255,255,0.65);
-      }
-
-      .reader-cover {
-        display: none;
-      }
-      .mobile-cover {
-        display: block;
-      }
-
-      .ebook-intro span{
-        font-size:10px;
-      }
-
-      .ebook-intro h2{
-        font-size:24px;
-      }
-
-      .ebook-intro p{
-        font-size:14px;
-      }
-
-     .ebook-reader{
-       grid-template-columns:1fr;
-       gap:20px;
-      }
-
-      .reader-page{
-        touch-action: pan-y;
-      }
-      .reader-page::before{
-       top:9px;
-       left:9px;
-       right:9px;
-       bottom:9px;
-      }
-
-      @media (hover: hover) {
-      .reader-page{
-        cursor: grab;
-      }
-
-     .side-buttons{
-       height:auto;
-       display:none;
-       flex-direction:row;
-       justify-content:center;
-       align-items:center;
-       gap:12px;
-       margin:0 auto 50px;
-      }
-      
-     .chapter-count{
-       writing-mode:horizontal-tb;
-      }
-
-     .book-note{
-       display:none;
-      }
-    }
+    @media (hover:hover) and (pointer:fine){
+  .reader-page{
+    cursor:grab;
   }
-  </style>
+
+  .reader-page:active{
+    cursor:grabbing;
+  }
+}
+
+@media (max-width:900px){
+  .reader-page{
+    padding:20px 16px;
+  }
+
+  .chapter-body p{
+    font-size:12px;
+    line-height:1.6;
+    letter-spacing:1px;
+  }
+}
+
+@media (max-width:768px){
+  .book-banner{
+    height:auto;
+    padding:18px 16px;
+  }
+
+  .book-banner h1{
+    font-size:16px;
+    line-height:1.3;
+    margin:0;
+  }
+
+  .book-banner span{
+    font-size:7px;
+    letter-spacing:3px;
+    margin-bottom:6px;
+  }
+
+  .back-wrapper{
+    width:100%;
+    margin:0;
+    padding:12px 16px 8px;
+  }
+
+  .back-btn{
+    font-size:8px;
+    letter-spacing:0.5px;
+    color:rgba(255,255,255,0.65);
+  }
+
+  .reader-cover{
+    display:none;
+  }
+
+  .mobile-cover{
+    display:block;
+  }
+
+  .ebook-intro span{
+    font-size:10px;
+  }
+
+  .ebook-intro h2{
+    font-size:24px;
+  }
+
+  .ebook-intro p{
+    font-size:14px;
+  }
+
+  .ebook-reader{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+
+  .reader-page::before{
+    top:9px;
+    left:9px;
+    right:9px;
+    bottom:9px;
+  }
+
+  .side-buttons{
+    display:none;
+  }
+
+  .chapter-count{
+    writing-mode:horizontal-tb;
+  }
+
+  .book-note{
+    display:none;
+  }
+}
+</style>
 
 <!-- Cloudflare Web Analytics -->
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
