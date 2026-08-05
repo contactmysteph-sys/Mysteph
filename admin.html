@@ -491,15 +491,23 @@ function renderNotes(){
          <label>Stephanie replied</label>
 
          <textarea id="reply-${note.id}" placeholder="Write a reply...">${escapeHTML(note.reply || '')}</textarea>
+         <label class="secret-check">
+             <input 
+                type="checkbox" 
+                id="reply-secret-${note.id}"
+                ${note.reply_secret ? 'checked' : ''}>
+                 🔒 Secret Reply
+          </label>
 
          <button class="reply-btn" onclick="saveReply(${note.id})">
            Save Reply
          </button>
-        ${
-          note.reply_at
-          ? `<p class="reply-date">Last replied: ${formatDate(note.reply_at)}</p>`
-          : ''
-        }
+
+          ${
+           note.reply_at
+           ? `<p class="reply-date">Last replied: ${formatDate(note.reply_at)}</p>`
+           : ''
+          }
       </div>
     `;
 
