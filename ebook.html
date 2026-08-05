@@ -343,6 +343,14 @@
       font-style:italic;
     }
 
+    .reader-page{
+      cursor: grab;
+    }
+
+    .reader-page:active{
+      cursor: grabbing;
+    }
+
     /* ARROWS */
     .next-btn,
     .prev-btn{
@@ -477,7 +485,7 @@
 
      .side-buttons{
        height:auto;
-       display:flex;
+       display:none;
        flex-direction:row;
        justify-content:center;
        align-items:center;
@@ -1295,36 +1303,87 @@
      },
   ];
 
-    let currentChapter = 0;
+let currentChapter = 0;
 
-    function renderChapter(){
-      const chapter = chapters[currentChapter];
+function renderChapter() {
+  const chapter = chapters[currentChapter];
 
-      document.getElementById("chapter-label").innerText = chapter.label;
-      document.getElementById("chapter-title").innerText = chapter.title;
-      document.getElementById("chapter-body").innerHTML = chapter.body;
-      document.getElementById("chapter-count").innerText =
-        (currentChapter + 1) + " / " + chapters.length;
+  document.getElementById("chapter-label").innerText = chapter.label;
+  document.getElementById("chapter-title").innerText = chapter.title;
+  document.getElementById("chapter-body").innerHTML = chapter.body;
+  document.getElementById("chapter-count").innerText =
+    (currentChapter + 1) + " / " + chapters.length;
 
-      document.querySelector(".reader-page").scrollTop = 0;
-    }
+  // 페이지를 바꿀 때마다 맨 위로 이동
+  document.querySelector(".reader-page").scrollTop = 0;
+}
 
-    function changeChapter(step){
-      currentChapter += step;
+function changeChapter(step) {
+  currentChapter += step;
 
-      if(currentChapter < 0){
-        currentChapter = chapters.length - 1;
-      }
+  if (currentChapter < 0) {
+    currentChapter = chapters.length - 1;
+  }
 
-      if(currentChapter >= chapters.length){
-        currentChapter = 0;
-      }
+  if (currentChapter >= chapters.length) {
+    currentChapter = 0;
+  }
 
-      renderChapter();
-    }
+  renderChapter();
+}
 
-    renderChapter();
-  </script>
+
+// ======================
+// 드래그 기능 (PC)
+// ======================
+
+const reader = document.querySelector(".reader-page");
+
+let startX = 0;
+let isDragging = false;
+
+reader.addEventListener("pointerdown", (e) => {
+  startX = e.clientX;
+  isDragging = true;
+
+  reader.style.userSelect = "none";
+});
+
+reader.addEventListener("pointerup", (e) => {
+
+  if (!isDragging) return;
+
+  const diff = startX - e.clientX;
+
+  // 왼쪽으로 드래그 → 다음 장
+  if (diff > 70) {
+    changeChapter(1);
+  }
+
+  // 오른쪽으로 드래그 → 이전 장
+  if (diff < -70) {
+    changeChapter(-1);
+  }
+
+  isDragging = false;
+  reader.style.userSelect = "";
+});
+
+reader.addEventListener("pointerleave", () => {
+  isDragging = false;
+  reader.style.userSelect = "";
+});
+
+reader.addEventListener("pointercancel", () => {
+  isDragging = false;
+  reader.style.userSelect = "";
+});
+
+
+// 첫 페이지 표시
+renderChapter();
+
+</script>
 
 </body>
 </html>
