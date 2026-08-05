@@ -692,32 +692,37 @@ body{
     font-size:10px;
     line-height:1.6;
 }
+}
 
 @media (max-width:768px){
 
 .map-popup{
- width:60px;
+
+  position:absolute;
+  top:50%;
+  left:50%;
+
+  transform:translate(-50%, -50%);
+  width:60px;
+  overflow:hidden;
+  box-shadow:0 10px 20px rgba(0,0,0,.18);
+  display:flex;
+  z-index:20;
 }
 
 .map-popup img{
- width:60px;
- height:70px;
+ width:30px;
+ height:30px;
 }
 
 .map-popup h3{
- font-size:7px;
- letter-spacing: 1px;
-}
-
-.map-popup p{
- font-size:8px;
+ font-size:5px;
+ letter-spacing: 0.8px;
 }
 
 .map-popup .content{
-        padding:8px;
+    padding:5px;
 }
-}
-
 
 .city{
 
