@@ -424,7 +424,7 @@
        line-height:1.6;
        letter-spacing: 1px;
       }
-
+    }
      /* 모바일 화면에서는 HTML 표지를 숨기고 이미지 표지를 보여줌 */
     @media (max-width: 768px) {
 
@@ -1423,30 +1423,6 @@ function endDrag(x) {
             requestAnimationFrame(() => {
 
                 reader.style.transition = "transform .25s ease";
-                reader.style.transform = "translateX(" + (diff * 0.6) + "px)";
-
-            });
-
-        },250);
-
-    }
-
-    // 이전 페이지
-    else if (diff > 80) {
-
-        reader.style.transition = "transform .25s ease";
-        reader.style.transform = "translateX(100%)";
-
-        setTimeout(() => {
-
-            changeChapter(-1);
-
-            reader.style.transition = "none";
-            reader.style.transform = "translateX(-100%)";
-
-            requestAnimationFrame(() => {
-
-                reader.style.transition = "transform .25s ease";
                 reader.style.transform = "translateX(0)";
 
             });
@@ -1455,8 +1431,37 @@ function endDrag(x) {
 
     }
 
-    // 제자리
-    else{
+    // 이전 페이지 (오른쪽으로 넘김)
+    else if (diff > 80) {
+
+
+        reader.style.transition = "transform .25s ease";
+        reader.style.transform = "translateX(100%)";
+
+
+        setTimeout(() => {
+
+            changeChapter(-1);
+
+
+            // 순간적으로 왼쪽에서 시작
+            reader.style.transition = "none";
+            reader.style.transform = "translateX(-30px)";
+
+
+            requestAnimationFrame(() => {
+
+                reader.style.transition = "transform .25s ease";
+                reader.style.transform = "translateX(0)";
+
+            });
+
+
+        },250);
+
+    }
+     // 조금 움직이고 취소
+    else {
 
         reader.style.transition = "transform .25s ease";
         reader.style.transform = "translateX(0)";
@@ -1464,7 +1469,6 @@ function endDrag(x) {
     }
 
 }
-
 
 // ======================
 // PC
