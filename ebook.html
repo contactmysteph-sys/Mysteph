@@ -258,10 +258,11 @@
         inset 0 0 0 1px rgba(255,255,255,0.7);
       position:relative;
       padding:58px 64px;
-
+      touch-action: pan-y;
       cursor:grab;
       transition:transform .25s ease;
-
+      -webkit-user-select: none;
+      user-select: none;
       will-change:transform;
     }
 
@@ -481,6 +482,9 @@
        gap:20px;
       }
 
+      .reader-page{
+        touch-action: pan-y;
+      }
       .reader-page::before{
        top:9px;
        left:9px;
@@ -1311,75 +1315,91 @@
 let currentChapter = 0;
 
 function renderChapter() {
-  const chapter = chapters[currentChapter];
+    const chapter = chapters[currentChapter];
 
-  document.getElementById("chapter-label").innerText = chapter.label;
-  document.getElementById("chapter-title").innerText = chapter.title;
-  document.getElementById("chapter-body").innerHTML = chapter.body;
-  document.getElementById("chapter-count").innerText =
-    (currentChapter + 1) + " / " + chapters.length;
+    document.getElementById("chapter-label").innerText = chapter.label;
+    document.getElementById("chapter-title").innerText = chapter.title;
+    document.getElementById("chapter-body").innerHTML = chapter.body;
+    document.getElementById("chapter-count").innerText =
+        `${currentChapter + 1} / ${chapters.length}`;
 
-  // 페이지를 바꿀 때마다 맨 위로 이동
-  document.querySelector(".reader-page").scrollTop = 0;
+    document.querySelector(".reader-page").scrollTop = 0;
 }
 
 function changeChapter(step) {
-  currentChapter += step;
 
-  if (currentChapter < 0) {
-    currentChapter = chapters.length - 1;
-  }
+    currentChapter += step;
 
-  if (currentChapter >= chapters.length) {
-    currentChapter = 0;
-  }
+    if (currentChapter < 0) {
+        currentChapter = chapters.length - 1;
+    }
 
-  renderChapter();
+    if (currentChapter >= chapters.length) {
+        currentChapter = 0;
+    }
+
+    renderChapter();
 }
 
 
-
 // ======================
-// 드래그 기능 (PC)
+// 드래그 & 스와이프
 // ======================
 
 const reader = document.querySelector(".reader-page");
 
 let startX = 0;
+let startY = 0;
+let currentX = 0;
 let isDragging = false;
 
-reader.addEventListener("pointerdown", (e) => {
-  startX = e.clientX;
-  isDragging = true;
 
-  reader.style.userSelect = "none";
-});
+// 시작
+function startDrag(x, y) {
 
-reader.addEventListener("pointermove",(e)=>{
+    startX = x;
+    startY = y;
 
-    if(!isDragging) return;
+    currentX = x;
 
-    currentX = e.clientX;
+    isDragging = true;
+
+    reader.style.transition = "none";
+    reader.style.userSelect = "none";
+}
+
+
+// 움직임
+function moveDrag(x, y) {
+
+    if (!isDragging) return;
+
+    // 세로 스크롤이면 무시
+    if (Math.abs(y - startY) > Math.abs(x - startX)) {
+        return;
+    }
+
+    currentX = x;
 
     const diff = currentX - startX;
 
     reader.style.transform = `translateX(${diff}px)`;
+}
 
-});
 
-reader.style.transition = "transform .25s ease";
-reader.style.transform = "translateX(0)";
-
-reader.addEventListener("pointerup", (e) => {
+// 종료
+function endDrag(x) {
 
     if (!isDragging) return;
 
     isDragging = false;
 
-    const diff = startX - e.clientX;
+    const diff = x - startX;
 
-    // 왼쪽으로 드래그 → 다음 장
-    if (diff > 70) {
+    reader.style.userSelect = "";
+
+    // 다음 페이지
+    if (diff < -80) {
 
         reader.style.transition = "transform .25s ease";
         reader.style.transform = "translateX(-100%)";
@@ -1392,15 +1412,18 @@ reader.addEventListener("pointerup", (e) => {
             reader.style.transform = "translateX(100%)";
 
             requestAnimationFrame(() => {
+
                 reader.style.transition = "transform .25s ease";
-                reader.style.transform = "translateX(0)";
+                reader.style.transform = "translateX(" + (diff * 0.5) + "px)";
+
             });
 
-        }, 250);
+        },250);
+
     }
 
-    // 오른쪽으로 드래그 → 이전 장
-    else if (diff < -70) {
+    // 이전 페이지
+    else if (diff > 80) {
 
         reader.style.transition = "transform .25s ease";
         reader.style.transform = "translateX(100%)";
@@ -1413,36 +1436,93 @@ reader.addEventListener("pointerup", (e) => {
             reader.style.transform = "translateX(-100%)";
 
             requestAnimationFrame(() => {
+
                 reader.style.transition = "transform .25s ease";
                 reader.style.transform = "translateX(0)";
+
             });
 
-        }, 250);
+        },250);
+
     }
 
-    // 드래그가 짧으면 원래 자리로
-    else {
+    // 제자리
+    else{
+
         reader.style.transition = "transform .25s ease";
         reader.style.transform = "translateX(0)";
+
     }
 
-    reader.style.userSelect = "";
+}
+
+
+// ======================
+// PC
+// ======================
+
+reader.addEventListener("pointerdown",(e)=>{
+
+    startDrag(e.clientX,e.clientY);
+
 });
 
-reader.addEventListener("pointerleave", () => {
-  isDragging = false;
-  reader.style.userSelect = "";
+reader.addEventListener("pointermove",(e)=>{
+
+    moveDrag(e.clientX,e.clientY);
+
 });
 
-reader.addEventListener("pointercancel", () => {
-  isDragging = false;
-  reader.style.userSelect = "";
+reader.addEventListener("pointerup",(e)=>{
+
+    endDrag(e.clientX);
+
+});
+
+reader.addEventListener("pointerleave",()=>{
+
+    if(isDragging){
+
+        reader.style.transition="transform .25s ease";
+        reader.style.transform="translateX(0)";
+    }
+
+    isDragging=false;
+
 });
 
 
-// 첫 페이지 표시
+// ======================
+// Mobile
+// ======================
+
+reader.addEventListener("touchstart",(e)=>{
+
+    const t=e.touches[0];
+
+    startDrag(t.clientX,t.clientY);
+
+},{passive:true});
+
+reader.addEventListener("touchmove",(e)=>{
+
+    const t=e.touches[0];
+
+    moveDrag(t.clientX,t.clientY);
+
+},{passive:true});
+
+reader.addEventListener("touchend",(e)=>{
+
+    const t=e.changedTouches[0];
+
+    endDrag(t.clientX);
+
+});
+
+
+// 첫 페이지
 renderChapter();
-
 </script>
 
 </body>
