@@ -258,6 +258,11 @@
         inset 0 0 0 1px rgba(255,255,255,0.7);
       position:relative;
       padding:58px 64px;
+
+      cursor:grab;
+      transition:transform .25s ease;
+
+      will-change:transform;
     }
 
     .reader-page::before{
@@ -1333,6 +1338,7 @@ function changeChapter(step) {
 }
 
 
+
 // ======================
 // 드래그 기능 (PC)
 // ======================
@@ -1349,24 +1355,78 @@ reader.addEventListener("pointerdown", (e) => {
   reader.style.userSelect = "none";
 });
 
+reader.addEventListener("pointermove",(e)=>{
+
+    if(!isDragging) return;
+
+    currentX = e.clientX;
+
+    const diff = currentX - startX;
+
+    reader.style.transform = `translateX(${diff}px)`;
+
+});
+
+reader.style.transition = "transform .25s ease";
+reader.style.transform = "translateX(0)";
+
 reader.addEventListener("pointerup", (e) => {
 
-  if (!isDragging) return;
+    if (!isDragging) return;
 
-  const diff = startX - e.clientX;
+    isDragging = false;
 
-  // 왼쪽으로 드래그 → 다음 장
-  if (diff > 70) {
-    changeChapter(1);
-  }
+    const diff = startX - e.clientX;
 
-  // 오른쪽으로 드래그 → 이전 장
-  if (diff < -70) {
-    changeChapter(-1);
-  }
+    // 왼쪽으로 드래그 → 다음 장
+    if (diff > 70) {
 
-  isDragging = false;
-  reader.style.userSelect = "";
+        reader.style.transition = "transform .25s ease";
+        reader.style.transform = "translateX(-100%)";
+
+        setTimeout(() => {
+
+            changeChapter(1);
+
+            reader.style.transition = "none";
+            reader.style.transform = "translateX(100%)";
+
+            requestAnimationFrame(() => {
+                reader.style.transition = "transform .25s ease";
+                reader.style.transform = "translateX(0)";
+            });
+
+        }, 250);
+    }
+
+    // 오른쪽으로 드래그 → 이전 장
+    else if (diff < -70) {
+
+        reader.style.transition = "transform .25s ease";
+        reader.style.transform = "translateX(100%)";
+
+        setTimeout(() => {
+
+            changeChapter(-1);
+
+            reader.style.transition = "none";
+            reader.style.transform = "translateX(-100%)";
+
+            requestAnimationFrame(() => {
+                reader.style.transition = "transform .25s ease";
+                reader.style.transform = "translateX(0)";
+            });
+
+        }, 250);
+    }
+
+    // 드래그가 짧으면 원래 자리로
+    else {
+        reader.style.transition = "transform .25s ease";
+        reader.style.transform = "translateX(0)";
+    }
+
+    reader.style.userSelect = "";
 });
 
 reader.addEventListener("pointerleave", () => {
