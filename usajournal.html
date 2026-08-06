@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Japan Journal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/image-viewer.css">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:
+    linear-gradient(rgba(246,245,242,0.95), rgba(246,245,242,0.95)),
+    url("Images/japan/kyoto1.jpg");
+  background-size:cover;
+  background-attachment:fixed;
+  font-family:'Montserrat', sans-serif;
+  color:#2d3e52;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+img{
+  width:100%;
+  display:block;
+}
+
+/* BACK */
+
+.back-home{
+  display:inline-block;
+  font-size:11px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:#31476E;
+  border-bottom:1px solid #31476E;
+  padding-bottom:5px;
+  margin-left:9%;
+  margin-top:36px;
+}
+
+/* INTRO */
+
+.intro{
+  width:min(900px,90%);
+  margin:28px auto 18px;
+  text-align:center;
+}
+
+.intro span{
+  font-family:'Caveat', cursive;
+  font-size:25px;
+  letter-spacing:2.5px;
+  font-weight:600;
+  color:#29313c;
+}
+
+.intro h1{
+  margin-top:8px;
+  font-family:'Cormorant Garamond', serif;
+  font-size:16px;
+  color:#505e75;
+}
+
+/* MAIN SECTION */
+
+.detail-section{
+
+  width:min(1450px, 92%);
+  margin:0 auto 90px;
+  background:rgba(255,255,255,0.82);
+  border:1px solid rgba(49,71,110,0.10);
+  padding:50px 55px;
+  box-shadow:0 18px 50px rgba(49,71,110,0.06);
+}
+
+/* NOTE */
+
+.note{
+  max-width:800px;
+  margin-top:40px;
+  padding-top:30px;
+  border-top:1px solid rgba(49,71,110,.15);
+  font-size:14px;
+  line-height:2;
+  color:#566171;
+  white-space:normal;
+}
+
+#story-area{
+   width:100%;
+}
+
+.story img{
+    cursor: zoom-in;
+}
+
+.photo-single{
+
+  margin-bottom: 16px;
+}
+
+.photo-single img{
+
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.photo-row{
+    display:grid;
+    gap:14px;
+    margin-top:18px;
+    margin-bottom:14px;
+}
+
+.photo-row.two{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.photo-row.three{
+    grid-template-columns:repeat(3,1fr);
+}
+
+.photo-row.four{
+    grid-template-columns:repeat(4,1fr);
+}
+
+.photo-row.five{
+    grid-template-columns:repeat(5,1fr);
+}
+
+.photo-row img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:6px;
+}
+
+.story img{
+  cursor: zoom-in;
+}
+
+.story p{
+    margin:0 0 14px;
+    font-size:14px;
+    line-height:1.9;
+    color:#444;
+    white-space:pre-line;
+    margin-bottom:10px;
+}
+
+.journal-layout{
+  display:grid;
+  grid-template-columns:
+      minmax(0, 1fr)
+      clamp(180px, 22vw, 280px);
+  gap:clamp(24px, 4vw, 70px);
+  align-items:start;
+}
+
+.journal-main{
+  min-width:0;
+}
+
+.journal-main h1{
+  margin-bottom:15px;
+  font-family:'Cormorant Garamond', serif;
+  font-size:18px;
+  color:#31476E;
+}
+
+.journal-main h2{
+  margin-bottom:13px;
+  font-family:'Cormorant Garamond', serif;
+  font-size:14px;
+  color:#504755;
+}
+
+.journal-sidebar{
+  position:sticky;
+  top:30px;
+  align-self: start;
+  height: calc(100vh - 60px);
+}
+
+.journal-sidebar h3{
+  margin-bottom:18px;
+  font-family:'Cormorant Garamond', serif;
+  font-size:24px;
+  color:#31476E;
+}
+
+.side-card{
+
+  display:flex;
+  gap:12px;
+  margin-bottom:0;
+  padding:14px 0;
+  border-bottom:1px solid rgba(49,71,110,.15);
+  border-radius:0;
+  background:transparent;
+  transition:.25s;
+}
+
+.side-card:hover{
+
+  transform:none;
+  background:rgba(255,255,255,.35);
+}
+
+.side-card img{
+  width:85px;
+  height:78px;
+  object-fit:cover;
+  border-radius:6px;
+  flex-shrink:0;
+}
+
+.side-card strong{
+  display:block;
+  margin-bottom:4px;
+  font-size:13px;
+  color:#31476E;
+}
+
+.side-card span{
+  font-size:12px;
+  line-height:1.5;
+  color:#364354;
+}
+
+.city-scroll{
+
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-right: 8px;
+    height: 100%;
+}
+
+.city-scroll::-webkit-scrollbar{
+
+    width: 6px;
+}
+
+.city-scroll::-webkit-scrollbar-track{
+
+    background: rgba(0,0,0,.05);
+}
+
+.city-scroll::-webkit-scrollbar-thumb{
+
+    background: rgba(49,71,110,.35);
+
+    border-radius: 999px;
+}
+
+.city-scroll::-webkit-scrollbar-thumb:hover{
+
+    background: rgba(49,71,110,.55);
+}
+
+.link{
+    color:#4d82b8;
+    font-weight:400;
+    text-decoration:none;
+    border-bottom:1px solid #4d82b8;
+    transition:.25s;
+    font-size: 11px;
+}
+
+.link:hover{
+    color:#1f5f9b;
+    border-bottom-color:#1f5f9b;
+}
+
+/* MOBILE */
+@media (max-width:768px){
+
+  .journal-layout{
+      grid-template-columns:1fr;
+      gap:40px;
+  }
+
+  .journal-sidebar{
+      position:static;
+      height:auto;
+  }
+
+}
+
+@media(max-width:650px){
+
+  body{
+    background-attachment:scroll;
+  }
+
+  .back-home{
+    font-size:8px;
+    letter-spacing:1px;
+    padding-bottom:3px;
+    margin-left:6%;
+    margin-top:18px;
+  }
+
+  .intro{
+    width:88%;
+    margin:24px auto 18px;
+  }
+
+  .intro span{
+    font-size:18px;
+    letter-spacing:2px;
+  }
+  
+  .journal-main h1{
+    font-size:14px;
+    color:#31476E;
+  }
+
+  .journal-main h2{
+    font-size:12px;
+    color:#504755;
+  }
+  .detail-section{
+    width:88%;
+    margin:0 auto 30px;
+    padding:20px 12px;
+  }
+
+  .place-list{
+    margin:20px 0;
+    gap:6px;
+  }
+
+  .place-list button{
+    font-size:9px;
+    letter-spacing:0.8px;
+    padding:7px 9px;
+  }
+
+  .photo-row{
+
+    justify-items:center;
+    gap:14px;
+  }
+
+  .photo-row.two,
+  .photo-row.three,
+  .photo-row.four,
+  .photo-row.five{
+    grid-template-columns:1fr;
+  }
+
+  .photo-row img{
+
+    width:85%;
+    max-width:280px;
+    height:180px;
+  }
+
+  .journal-layout{
+     grid-template-columns:1fr;
+   }
+
+  .journal-sidebar{
+     position:static;
+     margin-top:30px;
+    }
+
+  .city-scroll{
+
+     max-height:none;
+     overflow-y:visible;
+     padding-right:0;
+    }
+
+  .note{
+    margin-top:18px;
+    padding-top:20px;
+    font-size:12px;
+    line-height:1.5;
+    letter-spacing:0.5px;
+  }
+}
+</style>
+
+</head>
+<body>
+
+  <a href="usa.html" class="back-home">← Back To Gallery</a>
+
+  <section class="intro">
+       <span>USA/Canada Journal</span>
+       <h1>American and Canadian cities</h1>
+  </section>
+
+  <section class="detail-section">
+
+    <div class="journal-layout">
+
+        <main class="journal-main">
+
+            <div id="story-area"></div>
+      
+        </main>
+
+
+
+        <aside class="journal-sidebar">
+
+            <h3>Cities</h3>
+
+            <div class="city-scroll">
+
+              <a href="#" class="side-card" data-city="washington">
+
+                  <img src="Images/usa/washington.jpg">
+
+                  <div>
+
+                     <strong>Washington</strong>
+
+                     <span>The Beginning of My USA Journey</span>
+
+                    </div>
+
+               </a>
+
+               <a href="#" class="side-card" data-city="seattle">
+
+                  <img src="Images/usa/seattle.jpg">
+
+                   <div>
+
+                     <strong>Seattle</strong>
+                     <span>The IT Industry Hub</span>
+
+                    </div>
+
+                </a>
+
+                <a href="#" class="side-card" data-city="newyork">
+
+                  <img src="Images/usa/newyork.jpg">
+
+                   <div>
+
+                     <strong>New York</strong>
+                     <span>The Big Apple</span>
+
+                    </div>
+
+                </a>
+
+                <a href="#" class="side-card" data-city="victora">
+
+                  <img src="Images/usa/victora.jpg">
+                   <div>
+                     <strong>Victoria Island</strong>
+                     <span>The Crown Jewel of British Columbia</span>
+                    </div>
+                </a>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+</section>
+
+<script>
+const cities = {
+
+    washington: `
+
+        <h1>WASHINGTON</h1>
+          <h2>The Beginning of My USA Journey</h2>
+
+           <article class="story">
+
+              <div class="photo-single">
+                  <img src="Images/usa/washington.jpg" alt="">
+              </div>
+
+               <p>워싱턴은 나의 첫 미국 여행지였다.
+                 출장으로 간 첫 미국. "모든 것이 크다"가 내 첫인상이다.
+               </p>
+
+               <div class="photo-row three">
+                  <img src="Images/usa/washington.jpg" alt="">
+                  <img src="Images/usa/washington2.jpg" alt="">
+                  <img src="Images/usa/washington3.jpg" alt="">
+
+              </div>
+               <p>
+              </p> 
+              <p>
+            </article>
+    `,
+
+    newyork: `
+        <h1>NEW YORK</h1>
+        <h2>The Big Apple</h2>
+
+        <article class="story">
+
+            <div class="photo-single">
+                <img src="Images/usa/newyork.jpg">
+            </div>
+ 
+              <p>
+                          </p>
+           <div class="photo-row two">
+             <img src="Images/usa/newyork.jpg">
+             <img src="Images/usa/newyork2.jpg">
+           </div>
+             <p></p>
+           <div class="photo-row two">
+              <img src="Images/usa/newyork3.jpg">
+              <img src="Images/usa/newyork4.jpg">
+           </div>
+              <p></p>
+           <div class="photo-row two">
+              <img src="Images/usa/newyork5.jpg">
+              <img src="Images/usa/newyork6.jpg">
+           </div>
+              <p>치즈가게도 초콜릿 factory도 여전히 같은 모습으로 있었다.</p>
+           <div class="photo-row three">
+              <img src="Images/usa/newyork7.jpg">
+              <img src="Images/usa/newyork8.jpg">
+              <img src="Images/usa/newyork9.jpg">
+           </div>
+             <p></p>
+
+        </article>
+     `,
+
+     seattle: `
+        <h1>SEATTLE</h1>
+        <h2>The IT Industry Hub</h2>
+
+        <article class="story">
+
+            <div class="photo-single">
+                <img src="Images/usa/seattle.jpg">
+            </div>
+ 
+              <p></p>
+
+           <div class="photo-row three">
+             <img src="Images/usa/seattle2.jpg">
+             <img src="Images/usa/seattle3.jpg">
+             <img src="Images/usa/seattle4.jpg">
+           </div>
+             <p></p>
+           <div class="photo-row three">
+              <img src="Images/usa/seattle5.jpg">
+              <img src="Images/usa/seattle6.jpg">
+              <img src="Images/usa/seattle7.jpg">
+           </div>
+              <p>다시 가고 실은 미술관. <a href="mus.html?journey=21st-century&place=kanazawa" class="21st-century">미술관 보러 가기🖼️ </a></p>
+
+           <div class="photo-row three">
+              <img src="Images/japan/kana13.jpg">
+              <img src="Images/japan/kana28.jpg">
+              <img src="Images/japan/kana30.jpg">
+           </div>
+           <div class="photo-row three">
+              <img src="Images/japan/kana32.jpg">
+              <img src="Images/japan/kana33.jpg">
+              <img src="Images/japan/kana29.jpg">
+           </div>
+             <p></p>
+
+          <div class="photo-row three">
+              <img src="Images/japan/kana17.jpg">
+              <img src="Images/japan/kana18.jpg">
+              <img src="Images/japan/kana37.jpg">
+           </div>
+             <p></p>
+
+          <div class="photo-row three">
+              <img src="Images/japan/kana39.jpg">
+              <img src="Images/japan/kana41.jpg">
+              <img src="Images/japan/kana42.jpg">
+           </div>
+             <p>SEATTLE </p>
+
+        </article>
+     `,
+
+     victoria: `
+        <h1>VICTORIA ISLAND</h1>
+        <h2>The Crown Jewel of British Columbia</h2>
+
+        <article class="story">
+
+            <div class="photo-single">
+                <img src="Images/usa/victoria.jpg">
+            </div>
+ 
+              <p></p>
+
+           <div class="photo-row three">
+              <img src="Images/usa/victoria2.jpg">
+              <img src="Images/usa/victoria3.jpg">
+              <img src="Images/usa/victoria4.jpg">
+           </div>
+              <p>Victoria Island로 가는 길</p>
+  
+           <div class="photo-row three">
+              <img src="Images/usa/victoria5.jpg">
+              <img src="Images/usa/victoria6.jpg">
+              <img src="Images/usa/victoria7.jpg">
+           </div>
+            <p>Victoria Island 시내 </p>
+
+           <div class="photo-row two">
+              <img src="Images/usa/victoria8.jpg">
+              <img src="Images/usa/victoria9.jpg">
+           </div>
+
+        </article>
+     `,
+ 
+
+};
+
+function showCity(city){
+
+    const area = document.getElementById("story-area");
+
+    if(!cities[city]){
+        area.innerHTML = "<h2>Coming Soon</h2>";
+        return;
+    }
+
+    area.innerHTML = cities[city];
+
+    if(typeof initImageViewer === "function"){
+        initImageViewer();
+    }
+
+    console.log(document.getElementById("story-area").innerHTML);
+
+
+    // 페이지 상단으로 부드럽게 이동
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+// URL에서 city 값 읽기
+const params = new URLSearchParams(window.location.search);
+const city = params.get("city");
+
+showCity(city || "nagasaki");
+
+// 사이드바 클릭 이벤트
+document.querySelectorAll(".side-card").forEach(card => {
+
+    card.addEventListener("click", function(e){
+
+        e.preventDefault();
+
+        showCity(this.dataset.city);
+
+    });
+
+});
+
+
+</script>
+
+<div id="modal" class="modal">
+  <button id="modal-prev" class="modal-nav prev">‹</button>
+  <span id="close-btn" class="close-btn">&times;</span>
+  <img id="modal-img" src="" alt="">
+  <button id="modal-next" class="modal-nav next">›</button>
+</div>
+
+<script src="js/image-viewer.js"></script>
+<script src="js/japan-journal.js"></script>
+
+</body>
+</html>
