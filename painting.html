@@ -405,6 +405,7 @@ body{
 
     column-gap:28px;
     row-gap:45px;
+    
     grid-template-areas:
 
         ". . p1 . ."
@@ -415,13 +416,22 @@ body{
 
         ". p4 . p6 ."
 
-        ".p7 . p8."
+        "p7 . . . p8"
 
         ". p9 . p10 ."
 
         ". . p11 . ."
         
         ". p12 . p13 .";
+}
+.p7{
+    max-width:300px;
+    transform:translateX(40px);
+}
+
+.p8{
+    max-width:300px;
+    transform:translateX(-40px);
 }
 
 .p1{grid-area:p1;}
@@ -788,7 +798,7 @@ body{
             "p2 . p3"
             ". p5 ."
             "p4 . p6"
-            "p7 . p8"
+            "p7 . . . p8"
             "p9 . p10"
             ". p11 ."
             "p12 . p13";
