@@ -465,6 +465,7 @@ a{
 const restaurants = [
 
   {
+    id: "thira",
     title:"THIRA",
     location:"Tosa-si, Japan",
     date:"2014-02-08",
@@ -1427,15 +1428,42 @@ document.addEventListener("keydown",(e)=>{
 
 });
 
+// ==============================
+// Open Restaurant From URL
+// ==============================
 
+function openRestaurantFromUrl(){
 
+    const params = new URLSearchParams(window.location.search);
+    const target = params.get("restaurant");
+
+    if(!target) return false;
+
+    const sortedRestaurants = [...restaurants].sort(
+        (a, b) => new Date(b.date) - new Date(a.date)
+    );
+
+   const restaurantIndex = sortedRestaurants.findIndex(
+    restaurant => restaurant.id === target
+   );
+
+    if(restaurantIndex === -1) return false;
+
+    currentPage = Math.floor(restaurantIndex / perPage);
+
+    updateSlider(false);
+
+    return true;
+}
 // ==============================
 // Init
 // ==============================
 
 buildSlider();
 
-updateSlider(false);
+if(!openRestaurantFromUrl()){
+    updateSlider(false);
+}
 
 </script>
 
