@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Japan Journal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/image-viewer.css">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:
+    linear-gradient(rgba(246,245,242,0.95), rgba(246,245,242,0.95)),
+    url("Images/japan/kyoto1.jpg");
+  background-size:cover;
+  background-attachment:fixed;
+  font-family:'Montserrat', sans-serif;
+  color:#2d3e52;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+img{
+  width:100%;
+  display:block;
+}
+
+/* BACK */
+
+.back-home{
+  display:inline-block;
+  font-size:11px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:#31476E;
+  border-bottom:1px solid #31476E;
+  padding-bottom:5px;
+  margin-left:9%;
+  margin-top:36px;
+}
+
+/* INTRO */
+
+.intro{
+  width:min(900px,90%);
+  margin:28px auto 18px;
+  text-align:center;
+}
+
+.intro span{
+  font-family:'Caveat', cursive;
+  font-size:25px;
+  letter-spacing:2.5px;
+  font-weight:600;
+  color:#29313c;
+}
+
+.intro h1{
+  margin-top:8px;
+  font-family:'Cormorant Garamond', serif;
+  font-size:16px;
+  color:#505e75;
+}
+
+/* MAIN SECTION */
+
+.detail-section{
+
+  width:min(1450px, 92%);
+  margin:0 auto 90px;
+  background:rgba(255,255,255,0.82);
+  border:1px solid rgba(49,71,110,0.10);
+  padding:50px 55px;
+  box-shadow:0 18px 50px rgba(49,71,110,0.06);
+}
+
+/* NOTE */
+
+.note{
+  max-width:800px;
+  margin-top:40px;
+  padding-top:30px;
+  border-top:1px solid rgba(49,71,110,.15);
+  font-size:14px;
+  line-height:2;
+  color:#566171;
+  white-space:normal;
+}
+
+#story-area{
+   width:100%;
+}
+
+.story img{
+    cursor: zoom-in;
+}
+
+.photo-single{
+
+  margin-bottom: 16px;
+}
+
+.photo-single img{
+
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.photo-row{
+    display:grid;
+    gap:14px;
+    margin-top:18px;
+    margin-bottom:14px;
+}
+
+.photo-row.two{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.photo-row.three{
+    grid-template-columns:repeat(3,1fr);
+}
+
+.photo-row.four{
+    grid-template-columns:repeat(4,1fr);
+}
+
+.photo-row.five{
+    grid-template-columns:repeat(5,1fr);
+}
+
+.photo-row img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:6px;
+}
+
+.story img{
+  cursor: zoom-in;
+}
+
+.story p{
+    margin:0 0 14px;
+    font-size:14px;
+    line-height:1.9;
+    color:#444;
+    white-space:pre-line;
+    margin-bottom:10px;
+}
+
+.journal-layout{
+  display:grid;
+  grid-template-columns:
+      minmax(0, 1fr)
+      clamp(180px, 22vw, 280px);
+  gap:clamp(24px, 4vw, 70px);
+  align-items:start;
+}
+
+.journal-main{
+  min-width:0;
+}
+
+.journal-main h1{
+  margin-bottom:15px;
+  font-family:'Cormorant Garamond', serif;
+  font-size:18px;
+  color:#31476E;
+}
+
+.journal-main h2{
+  margin-bottom:13px;
+  font-family:'Cormorant Garamond', serif;
+  font-size:14px;
+  color:#504755;
+}
+
+.journal-sidebar{
+  position:sticky;
+  top:30px;
+  align-self: start;
+  height: calc(100vh - 60px);
+}
+
+.journal-sidebar h3{
+  margin-bottom:18px;
+  font-family:'Cormorant Garamond', serif;
+  font-size:24px;
+  color:#31476E;
+}
+
+.side-card{
+
+  display:flex;
+  gap:12px;
+  margin-bottom:0;
+  padding:14px 0;
+  border-bottom:1px solid rgba(49,71,110,.15);
+  border-radius:0;
+  background:transparent;
+  transition:.25s;
+}
+
+.side-card:hover{
+
+  transform:none;
+  background:rgba(255,255,255,.35);
+}
+
+.side-card img{
+  width:85px;
+  height:78px;
+  object-fit:cover;
+  border-radius:6px;
+  flex-shrink:0;
+}
+
+.side-card strong{
+  display:block;
+  margin-bottom:4px;
+  font-size:13px;
+  color:#31476E;
+}
+
+.side-card span{
+  font-size:12px;
+  line-height:1.5;
+  color:#364354;
+}
+
+.city-scroll{
+
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-right: 8px;
+    height: 100%;
+}
+
+.city-scroll::-webkit-scrollbar{
+
+    width: 6px;
+}
+
+.city-scroll::-webkit-scrollbar-track{
+
+    background: rgba(0,0,0,.05);
+}
+
+.city-scroll::-webkit-scrollbar-thumb{
+
+    background: rgba(49,71,110,.35);
+
+    border-radius: 999px;
+}
+
+.city-scroll::-webkit-scrollbar-thumb:hover{
+
+    background: rgba(49,71,110,.55);
+}
+
+.link{
+    color:#4d82b8;
+    font-weight:400;
+    text-decoration:none;
+    border-bottom:1px solid #4d82b8;
+    transition:.25s;
+    font-size: 11px;
+}
+
+.link:hover{
+    color:#1f5f9b;
+    border-bottom-color:#1f5f9b;
+}
+
+/* MOBILE */
+@media (max-width:768px){
+
+  .journal-layout{
+      grid-template-columns:1fr;
+      gap:40px;
+  }
+
+  .journal-sidebar{
+      position:static;
+      height:auto;
+  }
+
+}
+
+@media(max-width:650px){
+
+  body{
+    background-attachment:scroll;
+  }
+
+  .back-home{
+    font-size:8px;
+    letter-spacing:1px;
+    padding-bottom:3px;
+    margin-left:6%;
+    margin-top:18px;
+  }
+
+  .intro{
+    width:88%;
+    margin:24px auto 18px;
+  }
+
+  .intro span{
+    font-size:18px;
+    letter-spacing:2px;
+  }
+  
+  .journal-main h1{
+    font-size:14px;
+    color:#31476E;
+  }
+
+  .journal-main h2{
+    font-size:12px;
+    color:#504755;
+  }
+  .detail-section{
+    width:88%;
+    margin:0 auto 30px;
+    padding:20px 12px;
+  }
+
+  .place-list{
+    margin:20px 0;
+    gap:6px;
+  }
+
+  .place-list button{
+    font-size:9px;
+    letter-spacing:0.8px;
+    padding:7px 9px;
+  }
+
+  .photo-row{
+
+    justify-items:center;
+    gap:14px;
+  }
+
+  .photo-row.two,
+  .photo-row.three,
+  .photo-row.four,
+  .photo-row.five{
+    grid-template-columns:1fr;
+  }
+
+  .photo-row img{
+
+    width:85%;
+    max-width:280px;
+    height:180px;
+  }
+
+  .journal-layout{
+     grid-template-columns:1fr;
+   }
+
+  .journal-sidebar{
+     position:static;
+     margin-top:30px;
+    }
+
+  .city-scroll{
+
+     max-height:none;
+     overflow-y:visible;
+     padding-right:0;
+    }
+
+  .note{
+    margin-top:18px;
+    padding-top:20px;
+    font-size:12px;
+    line-height:1.5;
+    letter-spacing:0.5px;
+  }
+}
+</style>
+
+</head>
+<body>
+
+  <a href="newjapan.html" class="back-home">← BACK TO JAPAN</a>
+
+  <section class="intro">
+       <span>Japan Journal</span>
+       <h1>Small memories from Japanese cities</h1>
+  </section>
+
+  <section class="detail-section">
+
+    <div class="journal-layout">
+
+        <main class="journal-main">
+
+            <div id="story-area"></div>
+      
+        </main>
+
+
+
+        <aside class="journal-sidebar">
+
+            <h3>Cities</h3>
+
+            <div class="city-scroll">
+
+              <a href="#" class="side-card" data-city="redang">
+
+                  <img src="Images/malaysia/redang.jpg">
+
+                  <div>
+
+                     <strong>Redang Island</strong>
+
+                     <span></span>
+
+                    </div>
+
+               </a>
+
+               <a href="#" class="side-card" data-city="penang">
+
+                  <img src="Images/malaysia/penang.jpg">
+
+                   <div>
+
+                     <strong>Penang</strong>
+                     <span></span>
+
+                    </div>
+
+                </a>
+
+                <a href="#" class="side-card" data-city="tioman">
+
+                  <img src="Images/malaysia/tioman.jpg">
+
+                   <div>
+
+                     <strong>Tioman</strong>
+                     <span></span>
+
+                    </div>
+
+                </a>
+
+                <a href="#" class="side-card" data-city="ipoh">
+
+                  <img src="Images/malaysia/ipoh.jpg">
+                   <div>
+                     <strong>Ipoh</strong>
+                     <span></span>
+                    </div>
+                </a>
+
+                <a href="#" class="side-card" data-city="johor">
+
+                  <img src="Images/malaysia/johor.jpg">
+                   <div>
+                     <strong>Johor</strong>
+                     <span></span>
+                    </div>
+                </a>
+    
+                <a href="#" class="side-card" data-city="desaru">
+
+                  <img src="Images/malaysia/desaru.jpg">
+                   <div>
+                     <strong>Desaru</strong>
+                     <span></span>
+                    </div>
+                </a>
+
+                <a href="#" class="side-card" data-city="pulaubesar">
+
+                  <img src="Images/malaysia/pulaubesar.jpg">
+                   <div>
+                     <strong> Pulau Besar</strong>
+                     <span></span>
+                    </div>
+                </a>
+
+                <a href="#" class="side-card" data-city="sandakan">
+
+                  <img src="Images/malaysia/sandakan.jpg">
+                   <div>
+                     <strong>Sandakan</strong>
+                     <span></span>
+                    </div>
+                </a>
+
+                <a href="#" class="side-card" data-city="melaka">
+
+                  <img src="Images/malaysia/melaka.jpg">
+                   <div>
+                     <strong>Melaka</strong>
+                     <span></span>
+                    </div>
+                </a>
+
+                <a href="#" class="side-card" data-city="kl">
+
+                  <img src="Images/malaysia/kl.jpg">
+
+                  <div>
+                      <strong>Kuala Lumpur</strong>
+                      <span></span>
+                    </div>
+
+                </a>
+
+                <a href="#" class="side-card" data-city="gopeng">
+
+                  <img src="Images/malaysia/gopeng.jpg">
+
+                  <div>
+                      <strong>Gopeng</strong>
+                      <span></span>
+                    </div>
+
+                </a>
+
+                <a href="#" class="side-card" data-city="cameron">
+
+                  <img src="Images/malaysia/cameron.jpg">
+
+                  <div>
+                      <strong>Cameron Highlands</strong>
+                      <span></span>
+                    </div>
+
+                </a>
+
+                <a href="#" class="side-card" data-city="">
+
+                  <img src="Images/japan/hakone.jpg">
+
+                  <div>
+                      <strong>Hakone</strong>
+                      <span>Seeing Mount Fuji Up Close</span>
+                    </div>
+
+                </a>
+
+                <a href="#" class="side-card" data-city="perhentian">
+
+                  <img src="Images/malaysia/perhentian.jpg">
+
+                  <div>
+                      <strong>Perhentian Islands</strong>
+                      <span>A Tropical Paradise</span>
+                    </div>
+
+                </a>
+
+            </div>  
+        </aside>
+
+    </div>
+
+</section>
+
+<script>
+const cities = {
+
+    tioman: `
+
+        <h1>TIOMAN</h1>
+          <h2>A Tropical Paradise</h2>
+
+           <article class="story">
+
+              <div class="photo-single">
+                  <img src="Images/malaysia/tioman.jpg" alt="">
+              </div>
+
+               <p>티오만은 나의 첫 말레이시아 여행지였다.
+                 티오만 직항 오픈 기념으로 엄청 싼 가격에 눈이 먼 나는 아무 생각 없이 아들과 함께 떠났다.
+               </p>
+
+               <div class="photo-row three">
+                  <img src="Images/malaysia/tioman1.jpg" alt="">
+                  <img src="Images/malaysia/tioman2.jpg" alt="">
+                  <img src="Images/malaysia/tioman3.jpg" alt="">
+
+              </div>
+               <p>
+              </p> 
+              <p>
+               <p>
+              </p> 
+               <p>하지만 지옥 온천이라는 것의 신비로움에다 온천물에 삶은 달걀을 먹고 가족탕에서 온천까지 하고 나니
+                 아 드디어 목적을 달성했구나 하는 성취감이 들어 행복감에 나른해졌다.
+                 그렇게 나가사키는 일본의 고향 같은 곳이 되었다.
+                 그런데 글을 쓰다 보니 달걀을 삶아서 팔던 할머니는 이미 이 세상에 안 게실텐데 이젠 누가 팔고 있는지 궁금해진다.
+               </p>
+
+
+            </article>
+
+    `,
+    redang: `
+        <h1>REDANG</h1>
+        <h2>A Beautiful Island in Malaysia</h2>
+
+        <article class="story">
+
+            <div class="photo-single">
+                <img src="Images/malaysia/redang.jpg">
+            </div>
+ 
+              <p>처음 하우스텐보스 방문은 아들과 함께였고 두 번 째는 연구원 동료들과 함께였다.
+               두 번이나 방문을 할 정도로 매력적인 곳이라기보다는, 거기서 파는 치즈가 그리웠다고나 할까.
+               게다가 연말 불꽃놀이가 있다는 것을 알고 일본의 하나비를 보고 싶다는 일념하에 다시 방문하게 되었다.
+             </p>
+           <div class="photo-row two">
+             <img src="Images/malaysia/redang1.jpg">
+             <img src="Images/malaysia/redang2.jpg">
+           </div>
+             <p>기차역에서 입구까지 걸어가는 길에 저 멀리 성처럼 생긴 익숙한 호텔 건물이 보였을 때는 에버랜드에 온 듯 친근했다.</p>
+           <div class="photo-row two">
+              <img src="Images/malaysia/hu31.jpg">
+              <img src="Images/malaysia/hu2.jpg">
+           </div>
+              <p>입구에 설치된 포토존은 예전과 달라졌지만 여전히 아기자기하고 예쁜 테마파크 그대로였다.</p>
+           <div class="photo-row two">
+              <img src="Images/malaysia/hu33.jpg">
+              <img src="Images/malaysia/hu12.jpg">
+           </div>
+              <p>치즈가게도 초콜릿 factory도 여전히 같은 모습으로 있었다.</p>
+           <div class="photo-row three">
+              <img src="Images/malaysia/hu14.jpg">
+              <img src="Images/malaysia/hu18.jpg">
+              <img src="Images/malaysia/hu19.jpg">
+           </div>
+             <p>네덜란드를 모델로 만들어진 곳이라 동화 속 유럽에 여행온 듯한 느낌이다.</p>
+
+          <div class="photo-row three">
+              <img src="Images/malaysia/hu15.jpg">
+              <img src="Images/malaysia/hu16.jpg">
+              <img src="Images/malaysia/hu17.jpg">
+           </div>
+             <p>저녁이 되자 화려한 일루미네이션 display로 완전히 다른 모습으로 변신했다. 추위에 덜덜 떨며 이것을 끝까지 볼 수 있으려나 걱정했던 우리였지만 불꽃놀이가 시작되자 추위도 잊고 그 아름다움과 수준에 감탄을 금치 못 헸다.
+       곧 웹사이트 업그레이드를 통해 불꽃놀이 동영상을 공개할 예정이다. </p> 
+             <p>한국에서 미리 기차표와 불곷놀이 관람 티켓을 구매하지 않았더라면 이 광경을 볼 수 없었을거라는 동료들의 감사 인사를 받으며 흡족해졌다. 
+               <br>아들에게 동영상을 보내주며 "너도 나중에 여친이랑 여기 와 봐" 했더니 자기도 여친이랑 싱가폴에서 Countdown 불꽃놀이를 보았노라며 동영상을 보내주어 함께하지 못한 미안함이 조금 덜해졌다.
+               <br>지금은 한층 멋진 하나비를 선보이고 있겠지 하는 생각이 든다. 언젠가 일을 그만두고 할 일이 없어지면, 느긋한 일정으로 나가사키를 즐기고 그 멋진 하나비를 다시 한번 보고 싶다.
+             </p>
+
+        </article>
+     `,
+
+     melaka: `
+        <h1>MELAKA</h1>
+        <h2>A Historic City in Malaysia</h2>
+
+        <article class="story">
+
+            <div class="photo-single">
+                <img src="Images/malaysia/melaka.jpg">
+            </div>
+ 
+              <p>인상깊었던 멜라카</p>
+
+           <div class="photo-row three">
+             <img src="Images/malaysia/melaka1.jpg">
+             <img src="Images/malaysia/melaka2.jpg">
+             <img src="Images/malaysia/melaka3.jpg">
+           </div>
+             <p>처음 타본 신칸센</p>
+           <div class="photo-row three">
+              <img src="Images/malaysia/melaka4.jpg">
+              <img src="Images/malaysia/melaka5.jpg">
+              <img src="Images/malaysia/kana8.jpg">
+           </div>
+              <p>다시 가고 실은 미술관. <a href="mus.html?journey=21st-century&place=kanazawa" class="21st-century">미술관 보러 가기🖼️ </a></p>
+
+           <div class="photo-row three">
+              <img src="Images/malaysia/kana13.jpg">
+              <img src="Images/malaysia/kana28.jpg">
+              <img src="Images/malaysia/kana30.jpg">
+           </div>
+           <div class="photo-row three">
+              <img src="Images/malaysia/kana32.jpg">
+              <img src="Images/malaysia/kana33.jpg">
+              <img src="Images/malaysia/kana29.jpg">
+           </div>
+             <p>Kanazawa Kenrokuen</p>
+
+          <div class="photo-row three">
+              <img src="Images/malaysia/kana17.jpg">
+              <img src="Images/malaysia/kana18.jpg">
+              <img src="Images/malaysia/kana37.jpg">
+           </div>
+             <p>Kanazawa 성 </p>
+
+          <div class="photo-row three">
+              <img src="Images/malaysia/kana39.jpg">
+              <img src="Images/malaysia/kana41.jpg">
+              <img src="Images/malaysia/kana42.jpg">
+           </div>
+             <p>Kanazawa City </p>
+
+        </article>
+     `,
+
+     johor: `
+        <h1>JOHOR BAHRU</h1>
+        <h2>A Coastal City in Malaysia</h2>
+
+        <article class="story">
+
+            <div class="photo-single">
+                <img src="Images/malaysia/johor.jpg">
+            </div>
+ 
+              <p>조호르 바르는 말레이시아의 해안 도시이다.</p>
+
+           <div class="photo-row three">
+              <img src="Images/malaysia/johor1.jpg">
+              <img src="Images/malaysia/johor2.jpg">
+              <img src="Images/malaysia/johor3.jpg">
+           </div>
+              <p>조호르 바르의 아름다운 해변</p>
+  
+           <div class="photo-row three">
+              <img src="Images/malaysia/johor4.jpg">
+              <img src="Images/malaysia/johor5.jpg">
+              <img src="Images/malaysia/johor6.jpg">
+           </div>
+            <p>조호르 바르 시내 </p>
+
+           <div class="photo-row two">
+              <img src="Images/malaysia/johor7.jpg">
+              <img src="Images/malaysia/johor8.jpg">
+           </div>
+           </div>
+             <p>Kanazawa로 돌아가는 버스를 기다리며 시간을 보내기 위해 들어간 작은 카페.
+             일본에서 늘 즐기는 정식</p>
+
+          <div class="photo-row two">
+              <img src="Images/malaysia/johor9.jpg">
+              <img src="Images/malaysia/johor10.jpg">
+           </div>
+             <p>Toyama 성 </p>
+
+        </article>
+     `,
+
+     kl: `
+        <h1>KUALA LUMPUR</h1>
+        <h2>The Capital City of Malaysia</h2>
+
+        <article class="story">
+
+            <div class="photo-single">
+                <img src="Images/malaysia/kl.jpg">
+            </div>
+ 
+              <p>한정된 기간에만 볼 수 있는 다테야마 산</p>
+
+           <div class="photo-row three">
+              <img src="Images/malaysia/kl1.jpg">
+              <img src="Images/malaysia/kl2.jpg">
+              <img src="Images/malaysia/kl3.jpg">
+           </div>
+              <p>Kuala Lumpur은 겨울에는 들어갈 수 없다. 눈이 너무 많이 쌓여 교통수단이 없고 위험허기도 하여 봄 이후에 출입이 허용된다.</p>
+  
+           <div class="photo-row three">
+              <img src="Images/malaysia/kl4.jpg">
+              <img src="Images/malaysia/kl5.jpg">
+              <img src="Images/malaysia/kl6.jpg">
+           </div>
+            <p>Kuala Lumpur에도 지옥 온천이 있다. 운젠이나 벳부처럼 바로 앞에서 볼 수 있는 것은 아니고 멀리서만 볼 수 있었다.
+             아주 작은 온천탕이 있어 잠깐의 휴식을 즐겼다. 동네 목욕탕보다 작은, 아~주 작은 탕이었는데 사람이 많지 않아서 오히려 좋았다.
+             수질은 다른 온천에 비해 좋다고는 못하겠지만 산 정상에서 느끼는 작은 쉽이었다. </p>
+
+         </article>
+     `,
+
+     cameron: `
+        <h1>CAMERON HIGHLANDS</h1>
+        <h2>Because a Friend Was There</h2>
+       
+        <article class="story">
+
+            <div class="photo-single">
+                <img src="Images/malaysia/cameron.jpg">
+            </div>
+ 
+              <p>친구를 만나러 간 여행</p>
+
+           <div class="photo-row two">
+             <img src="Images/malaysia/cameron1.jpg">
+             <img src="Images/malaysia/cameron2.jpg">
+           </div>
+              <p>친구가 센다이 대학에서 박사 논문을 준비하고 있었기에 친구를 핑계 삼아 스키를 타러 갔다.
+                스키는 초보라서 겨우 내려오는 수준이었지만 거기 주효(Ice Monster) 풍경이 너무 아름답다 하여.
+                우리나라 스키장은 길이도 길지 않고 인공적으로 조성되어 있어 어렵지 않았는데 와 그곳은 자연 그대로의 스키장이라고나 할까.
+                무서워서 용기가 나지 않았다. 그냥 경험해 본 것으로 만족.
+              </p>
+  
+           <div class="photo-row three">
+              <img src="Images/malaysia/cameron3.jpg">
+              <img src="Images/malaysia/cameron4.jpg">
+              <img src="Images/malaysia/cameron5.jpg">
+           </div>
+            <p>Zao 온천 마을에서 처음으로 규탕을 시식해 보았다. 
+              나는 거부감이 들어 살짝 맛만 보았는데 양념을 잘해서 그런지 전혀 이상한 맛은 아니었지만 
+              내면으로부터 이런 것까지 먹어야 하나 하는 일종의 불편함이 일어 같이 간 친구만 맛있게 먹었다.
+              내가 가장 좋아했던 것은 마을의 한 정육점에서 만들어 팔던 소고기 고로케. 
+              정말 잊을 수 없는 맛이었는데 지금은 검색해도 나오지 않는 것을 보면 없어진 것 같기도 하다.</p>
+
+        </article>
+     `,
+
+     langkawi: `
+        <h1>LANGKAWI</h1>
+        <h2>A Tropical Paradise</h2>
+
+        <article class="story">
+
+            <div class="photo-single">
+                <img src="Images/malaysia/langkawi.jpg">
+            </div>
+              <p>유빙을 보러 아바시리에 가는 길에 오다이바에서 하루 묵었다.</p>
+
+           <div class="photo-row three">
+              <img src="Images/malaysia/langkawi1.jpg">
+              <img src="Images/malaysia/langkawi2.jpg">
+              <img src="Images/malaysia/langkawi3.jpg">
+           </div>
+             <p>대도시에는 관심이 없어 도쿄는 내 여행지 목록에 없었다. 
+                나중에 이런저런 이유로 두 번을 방문했지만 이때까지만 해도 전혀 갈 생각이 없었다.
+                오다이바에는 후지 TV가 있어 혹시나 내가 좋아하는 연예인들을 볼 수 있을까 기대했으나 그런 기적은 일어나지 않았다 ㅋ
+                그나마 지금은 없어진 지난 버전 건담을 조카에게 보여준 것이 다행이라 생각하고 지금 있는 건담도 곧 철거된다 하니 기념비적인 사진 촬영을 한 셈이다.
+                </p>
+  
+           <div class="photo-row three">
+              <img src="Images/malaysia/langkawi4.jpg">
+              <img src="Images/malaysia/langkawi5.jpg">
+              <img src="Images/malaysia/langkawi6.jpg">
+           </div>
+              <p>나홀로 여행에서는 먹기 힘든 야끼니꾸를 조카에게 먹여 주갰다고 호텔 근처 식당에 갔는데
+                기대가 너무 컸던 탓일까? 오히려 한국 잉ㄹ본 음식점에서 먹은 것이 더 맛있다는 생각이 들었다.
+                </p>
+  
+           <div class="photo-row three">
+              <img src="Images/malaysia/langkawi7.jpg">
+              <img src="Images/malaysia/langkawi8.jpg">
+              <img src="Images/malaysia/langkawi9.jpg">
+           </div>
+
+           <div class="photo-row two">
+              <img src="Images/malaysia/langkawi10.jpg">
+              <img src="Images/malaysia/langkawi11.jpg">
+           </div>
+             <p>아들과 함께한 도쿄 여행은 스카이트리와 수족관을 보러 가는 일정과 일본 먹방에서 나온 디저트 가게에 가서 뭔가를 해보기 위해서였다. 
+             하려던 일은 성과를 내지 못했지만 맛있는 디저트는 실컷 먹었다.^^ 
+             수족관 사진은 <a href="aquarium.html?journey=sumida&place=tokyo" class="churaumi"> 요기 → </a>
+            </p>
+
+        </article>
+     `,
+
+     sandakan: `
+        <h1>SANDAKAN</h1>
+        <h2>A Hidden Gem in Sabah</h2>
+
+        <article class="story">
+
+            <div class="photo-single">
+                <img src="Images/malaysia/sandakan.jpg">
+            </div>
+ 
+              <p>ブルーライト・ヨコハマ를 들으며 언젠가 가봐야지 했었다.</p>
+              <p>이왕 도쿄에 왔으니 그리고 다시 올 일도 거의 없을 테니 하는 생각에 가보았다.</p>
+  
+           <div class="photo-row two">
+              <img src="Images/malaysia/sandakan1.jpg">
+              <img src="Images/malaysia/sandakan2.jpg">
+           </div>
+            <p>예전이었다면 뭔가 운치가 있는 곳이었을지 모르겠으나 지금은 그냥 도시느낌이어서 그닥 매력은 없었다. </p>
+
+           <div class="photo-row two">
+              <img src="Images/malaysia/sandakan3.jpg">
+              <img src="Images/malaysia/sandakan4.jpg">
+           </div>
+
+           <div class="photo-row three">
+              <img src="Images/malaysia/sandakan5.jpg">
+              <img src="Images/malaysia/sandakan6.jpg">
+              <img src="Images/malaysia/sandakan7.jpg">
+           </div>
+
+             <p>우리나라도 그렇지만 일본도 회색이다. 
+              전망대에 올라가 시내를 한눈에 내려다보는 것이 딱히 매력적이지 않다는 뜻이다.
+              하늘에서 보면 회색 건물만 가득한..
+              우리나라는 거기에 십자가가 무덤처럼 보여 더 무섭다ㅎㅎ </p>
+
+        </article>
+     `,
+
+
+};
+
+function showCity(city){
+
+    const area = document.getElementById("story-area");
+
+    if(!cities[city]){
+        area.innerHTML = "<h2>Coming Soon</h2>";
+        return;
+    }
+
+    area.innerHTML = cities[city];
+
+    if(typeof initImageViewer === "function"){
+        initImageViewer();
+    }
+
+    console.log(document.getElementById("story-area").innerHTML);
+
+
+    // 페이지 상단으로 부드럽게 이동
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+// URL에서 city 값 읽기
+const params = new URLSearchParams(window.location.search);
+const city = params.get("city");
+
+showCity(city || "nagasaki");
+
+// 사이드바 클릭 이벤트
+document.querySelectorAll(".side-card").forEach(card => {
+
+    card.addEventListener("click", function(e){
+
+        e.preventDefault();
+
+        showCity(this.dataset.city);
+
+    });
+
+});
+
+
+</script>
+
+<div id="modal" class="modal">
+  <button id="modal-prev" class="modal-nav prev">‹</button>
+  <span id="close-btn" class="close-btn">&times;</span>
+  <img id="modal-img" src="" alt="">
+  <button id="modal-next" class="modal-nav next">›</button>
+</div>
+
+<script src="js/image-viewer.js"></script>
+<script src="js/japan-journal.js"></script>
+
+</body>
+</html>
