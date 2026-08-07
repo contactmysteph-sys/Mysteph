@@ -423,15 +423,32 @@ body{
         ". . p11 . ."
         
         ". p12 . p13 .";
+
 }
+
 .p7{
-    max-width:300px;
-    transform:translateX(40px);
+    width:220px;
+    max-width:none;
+    position:relative;
+    left:40px;
 }
 
 .p8{
-    max-width:300px;
-    transform:translateX(-40px);
+    width:220px;
+    max-width:none;
+    position:relative;
+    right:40px;
+}
+
+.painting-wall .artwork{
+    width:220px;
+    box-sizing:border-box;
+}
+
+.painting-wall .artwork img{
+    display:block;
+    width:100%;
+    height:auto;
 }
 
 .p1{grid-area:p1;}
