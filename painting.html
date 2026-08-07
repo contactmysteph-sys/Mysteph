@@ -415,7 +415,7 @@ body{
 
         ". p4 . p6 ."
 
-        ".p7 . . p8."
+        ".p7 . p8."
 
         ". p9 . p10 ."
 
@@ -776,6 +776,23 @@ body{
         font-size:18px;
     }
 
+}
+
+@media (max-width:1250px){
+
+    .painting-wall{
+        grid-template-columns:repeat(3, minmax(180px, 220px));
+
+        grid-template-areas:
+            ". p1 ."
+            "p2 . p3"
+            ". p5 ."
+            "p4 . p6"
+            "p7 . p8"
+            "p9 . p10"
+            ". p11 ."
+            "p12 . p13";
+    }
 }
 </style>
 
