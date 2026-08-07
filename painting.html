@@ -396,48 +396,30 @@ body{
 /* ==========================
    Painting Gallery
 ========================== */
+/* ==========================
+   Painting Gallery
+========================== */
+
 .painting-wall{
+    width:min(1212px, 100%);
+    margin:0 auto;
 
     display:grid;
     justify-content:center;
-    grid-template-columns:
-        repeat(5,220px);
 
+    grid-template-columns:repeat(5, 220px);
     column-gap:28px;
     row-gap:45px;
-    
+
     grid-template-areas:
-
         ". . p1 . ."
-
         ". p2 . p3 ."
-
         ". . p5 . ."
-
         ". p4 . p6 ."
-
         "p7 . . . p8"
-
         ". p9 . p10 ."
-
         ". . p11 . ."
-        
         ". p12 . p13 .";
-
-}
-
-.p7{
-    width:220px;
-    max-width:none;
-    position:relative;
-    left:40px;
-}
-
-.p8{
-    width:220px;
-    max-width:none;
-    position:relative;
-    right:40px;
 }
 
 .painting-wall .artwork{
@@ -463,36 +445,58 @@ body{
 .p10{grid-area:p10;}
 .p11{grid-area:p11;}
 .p12{grid-area:p12;}
-.p13 {grid-area:p13;}
+.p13{grid-area:p13;}
 
 .p2{
-
     margin-top:30px;
 }
 
 .p6{
-
     margin-top:20px;
 }
 
 .p10{
-
     margin-top:35px;
 }
 
 .p5{
-
     max-width:320px;
 }
 
 .p7{
-
-    max-width:250px;
+    width:220px;
+    max-width:220px;
+    position:relative;
+    left:40px;
 }
 
 .p8{
+    width:220px;
+    max-width:220px;
+    position:relative;
+    right:40px;
+}
 
-    max-width:250px;
+@media (max-width:1300px) and (min-width:769px){
+
+    .painting-wall{
+        width:100%;
+        grid-template-columns:repeat(5, minmax(0, 1fr));
+        column-gap:18px;
+    }
+
+    .painting-wall .artwork{
+        width:100%;
+        max-width:220px;
+    }
+
+    .p7{
+        left:15px;
+    }
+
+    .p8{
+        right:15px;
+    }
 }
 
 /* ==========================
@@ -719,49 +723,58 @@ body{
         max-width:100%;
     }
 
-    /* ---------- Painting Gallery ---------- */
 
-    .painting-wall{
+/* ---------- Painting Gallery ---------- */
 
-        grid-template-columns:1fr;
+.painting-wall{
+    width:100%;
+    grid-template-columns:1fr;
 
-        grid-template-areas:
-            "p1"
-            "p2"
-            "p3"
-            "p4"
-            "p5"
-            "p6"
-            "p7"
-            "p8"
-            "p9"
-            "p10"
-            "p11"
-            "p12"
-            "p13";
+    grid-template-areas:
+        "p1"
+        "p2"
+        "p3"
+        "p4"
+        "p5"
+        "p6"
+        "p7"
+        "p8"
+        "p9"
+        "p10"
+        "p11"
+        "p12"
+        "p13";
 
-        row-gap:30px;
-    }
+    column-gap:0;
+    row-gap:30px;
+}
 
-    .painting-wall .artwork{
-        max-width:320px;
-        width:100%;
-        justify-self:center;
-    }
+.painting-wall .artwork{
+    width:100%;
+    max-width:320px;
+    justify-self:center;
+}
 
-    .p2,
-    .p6,
-    .p10{
-        margin-top:0;
-    }
+.p2,
+.p6,
+.p10{
+    margin-top:0;
+}
 
-    .p5,
-    .p7,
-    .p8{
-        max-width:none;
-    }
+.p5,
+.p7,
+.p8{
+    width:100%;
+    max-width:320px;
+}
 
-    /* ---------- Folk Art ---------- */
+.p7,
+.p8{
+    left:auto;
+    right:auto;
+}
+
+/* ---------- Folk Art ---------- */
 
     .folkart-first-row,
     .folkart-second-row,
@@ -804,17 +817,6 @@ body{
     }
 
 }
-
-@media (max-width:1300px){
-    .p7{
-        left:20px;
-    }
-
-    .p8{
-        right:20px;
-    }
-}
-
 
 </style>
 
