@@ -244,7 +244,7 @@ body{
     grid-template-columns:repeat(12, 1fr);
     grid-template-rows:auto auto;
 
-    column-gap:16px;
+    column-gap:10px;
     row-gap:26px;
 
     align-content:start;
@@ -1322,7 +1322,7 @@ function createArticle(note,index){
            ? `<span class="read-more">
                 Read full note
               </span>`
-           : ""
+           : `<a href="quiet.html">Read more</a>`
           }
 
     </article>
