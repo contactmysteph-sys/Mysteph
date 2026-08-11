@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Quiet Pages | Space for Being</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Caveat:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Cormorant Garamond', serif;
+  color:#25221d;
+
+  background:
+    linear-gradient(
+      rgba(122,111,94,.16),
+      rgba(122,111,94,.16)
+    ),
+    #b8ad9d;
+
+  min-height:100vh;
+}
+
+
+/* =========================
+   HOME
+========================= */
+
+.back-home{
+  position:fixed;
+  top:20px;
+  left:28px;
+
+  z-index:100;
+
+  color:#2e2923;
+  font-family:'Inter',sans-serif;
+  font-size:9px;
+
+  letter-spacing:2px;
+  text-decoration:none;
+}
+
+
+/* =========================
+   BOOK
+========================= */
+
+.quiet-book{
+  width:min(1450px,94vw);
+  margin:55px auto 50px;
+
+  background:#e9e4db;
+
+  box-shadow:
+    0 30px 80px rgba(25,20,15,.28);
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+
+/* subtle paper grain */
+
+.quiet-book::after{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  pointer-events:none;
+
+  opacity:.12;
+
+  background-image:
+    repeating-radial-gradient(
+      circle at 0 0,
+      rgba(40,30,20,.15) 0,
+      transparent 1px,
+      transparent 3px
+    );
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.quiet-hero{
+  display:grid;
+
+  grid-template-columns:
+    180px 1fr 220px;
+
+  align-items:center;
+
+  min-height:180px;
+  padding:28px 55px 22px;
+
+  border-bottom:
+    1px solid rgba(35,30,25,.7);
+
+  position:relative;
+
+  z-index:2;
+}
+
+
+.hero-meta{
+  font-family:'Inter',sans-serif;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:6px;
+
+  font-size:8px;
+  letter-spacing:1.4px;
+}
+
+
+.hero-title{
+  text-align:center;
+}
+
+
+.hero-title h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:48px;
+  font-weight:600;
+  line-height:.82;
+  letter-spacing:13px;
+}
+
+
+.hero-title p{
+  margin-top:18px;
+  font-size:10px;
+  letter-spacing:7px;
+}
+
+
+.hero-quote{
+  font-size:13px;
+  line-height:1.5;
+  text-align:right;
+}
+
+
+/* =========================
+   MAGAZINE
+========================= */
+
+.magazine{
+  display:flex;
+  align-items:center;
+  position:relative;
+}
+
+
+.magazine-window{
+  width:100%;
+  overflow:hidden;
+}
+
+
+.magazine-track{
+  display:flex;
+  width:100%;
+  transition:
+    transform .6s
+    cubic-bezier(.22,.61,.36,1);
+  touch-action:pan-y;
+}
+
+
+/* ONE SPREAD */
+
+.magazine-spread{
+  width:100%;
+  flex:0 0 100%;
+
+  min-height:650px;
+
+  display:grid;
+  grid-template-columns:1fr 1fr;
+
+  position:relative;
+}
+
+/* center fold */
+
+.magazine-spread::after{
+  content:"";
+
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:50%;
+  width:1px;
+  background:
+    rgba(88,74,56,.16);
+
+  box-shadow:
+    0 0 18px rgba(60,45,30,.12);
+}
+
+
+/* =========================
+   LEFT / RIGHT PAGE
+========================= */
+
+.magazine-page{
+  padding:28px 40px 34px;
+
+  position:relative;
+}
+
+
+.magazine-page.left{
+  border-right:
+    1px solid rgba(70,60,50,.06);
+}
+
+/* =========================
+   EDITORIAL GRID
+========================= */
+
+.editorial-grid{
+    display:grid;
+
+    grid-template-columns:repeat(12, 1fr);
+    grid-template-rows:auto auto;
+
+    column-gap:16px;
+    row-gap:26px;
+
+    align-content:start;
+}
+
+
+/* =========================
+   LEFT PAGE
+   3 ARTICLES + INDEX
+========================= */
+
+.left-grid .article-1.long-wrapper{
+    grid-column:1 / 6;
+    grid-row:1;
+}
+
+.left-grid .article-2.short-wrapper{
+    grid-column:7/ 13;
+    grid-row:1;
+}
+
+.left-grid .issue-index{
+    grid-column:1 / 6;
+    grid-row:2;
+    align-self:start;
+}
+
+.left-grid .article-3{
+    grid-column:6/ 13;/* 넓게 */
+    grid-row:2;
+}
+
+/* =========================
+   RIGHT PAGE
+   4 ARTICLES
+========================= */
+
+.right-grid .article-1.long-wrapper{
+    grid-column:1 / 6;
+    grid-row:1;
+}
+
+.right-grid .article-2.short-wrapper{
+    grid-column:7 / 13;
+    grid-row:1;
+}
+
+.right-grid .article-3{
+    grid-column:8 / 13;  /* 5칸 - 좁게 */
+    grid-row:2;
+}
+
+.right-grid .article-4{
+    grid-column:1 / 8;   /* 7칸 - 넓게 */
+    grid-row:2;
+}
+
+
+/* wrapper 안의 article이 공간을 꽉 채우게 */
+
+.editorial-grid > div > .magazine-article{
+    height:auto;
+}
+
+.editorial-grid > div > .magazine-article.short-post{
+    height:auto;
+    overflow:visible;
+}
+
+
+/* =========================
+   ARTICLE
+========================= */
+
+.magazine-article{
+  min-width:0;
+  height:auto;
+  padding-top:10px;
+  padding-bottom:12px;
+  border-top:1px solid rgba(42,36,30,.35);
+  cursor:pointer;
+  overflow:hidden;
+  transition:.25s;
+}
+
+.magazine-article:hover{
+  transform:translateY(-2px);
+}
+
+
+.article-number{
+  font-family:'Inter',sans-serif;
+  font-size:8px;
+  letter-spacing:2px;
+  margin-bottom:7px;
+  color:#7a6c5b;
+}
+
+
+.magazine-article h2{
+  font-size:17px;
+  font-weight:600;
+  line-height:1.05;
+  margin-bottom:6px;
+}
+
+.article-1 .magazine-article h2{
+  font-size:17px;
+}
+
+.article-korean{
+  font-size:14px;
+  font-style:italic;
+  color:#776e64;
+  margin-bottom:10px;
+}
+
+.article-date{
+  font-family:'Inter',sans-serif;
+  font-size:8px;
+  letter-spacing:1px;
+  color:#8e806f;
+  margin-bottom:16px;
+}
+
+
+/* =========================
+   ARTICLE TEXT
+========================= */
+
+.article-excerpt{
+    font-family:'Cormorant Garamond', serif;
+
+    font-size:13px;
+    line-height:1.9;
+
+    color:#373128;
+    text-align:left;
+
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:10;
+
+    overflow:hidden;
+}
+
+
+/* 긴 글의 위치별 노출 줄 수 */
+
+.article-1 .long-post .article-excerpt{
+    -webkit-line-clamp:10;
+}
+
+.article-2 .long-post .article-excerpt{
+    -webkit-line-clamp:8;
+}
+
+.article-3 .long-post .article-excerpt{
+    -webkit-line-clamp:8;
+}
+
+.article-4 .long-post .article-excerpt{
+    -webkit-line-clamp:10;
+}
+
+
+/* =========================
+   SHORT POST
+   짧은 글은 전부 표시
+========================= */
+
+.short-post{
+    height:auto;
+    overflow:visible;
+}
+
+.short-post .article-excerpt{
+    display:block;
+    overflow:visible;
+
+    -webkit-line-clamp:unset;
+    -webkit-box-orient:initial;
+}
+
+/* =========================
+   LONG POST
+========================= */
+
+.long-post{
+    overflow:hidden;
+}
+
+.long-post .article-excerpt{
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+}
+
+/* 이미지 없는 긴 글 */
+.long-post .article-excerpt{
+    -webkit-line-clamp:10;
+}
+
+/* 이미지 있는 긴 글 */
+.long-post.has-image .article-excerpt{
+    -webkit-line-clamp:5;
+}
+
+/* 반드시 위 규칙들보다 아래 */
+.custom-excerpt .article-excerpt{
+    display:block;
+    overflow:visible;
+    -webkit-line-clamp:unset;
+}
+
+/* =========================
+   SMALL PHOTO
+========================= */
+
+/* 큰 기사 */
+.article-1 .article-photo{
+    width:100%;
+    height:130px;
+}
+
+/* 작은 기사 */
+.article-2 .article-photo{
+    width:100%;
+    height:120px;
+    object-fit:cover;
+}
+
+.article-3 .article-photo{
+    width:270px;
+    height:130px;
+    object-fit:cover;
+}
+
+.article-4 .article-photo{
+   width:100%;
+   height:120px;
+   object-fit:contain;
+}
+
+/* =========================
+   READ MORE
+========================= */
+
+.read-more{
+  display:inline-block;
+  margin-top:10px;
+  font-family:'Inter',sans-serif;
+  font-size:7px;
+  text-transform:uppercase;
+  letter-spacing:1.8px;
+  border-bottom:
+    1px solid #34302b;
+
+  padding-bottom:3px;
+}
+
+
+/* =========================
+   INDEX
+========================= */
+
+.issue-index{
+    width:100%;
+    border-top:1px solid rgba(42,36,30,.35);
+    padding-top:10px;
+    overflow:hidden;
+}
+
+.issue-index h3{
+    font-size:16px;
+    font-weight:600;
+    margin-bottom:8px;
+}
+
+.issue-index a{
+    display:grid;
+    grid-template-columns:18px 1fr;
+    gap:5px;
+    color:#302b25;
+    text-decoration:none;
+    font-size:11px;
+    line-height:1.35;
+    padding:1px 0;
+}
+
+
+/* =========================
+   PAGE BUTTON
+========================= */
+
+.page-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:45px;
+  height:70px;
+  z-index:20;
+  background:transparent;
+  border:none;
+  font-family:'Cormorant Garamond',serif;
+  font-size:48px;
+  color:#625747;
+  cursor:pointer;
+  opacity:.5;
+}
+
+
+.page-btn:hover{
+  opacity:1;
+}
+
+
+.page-btn.prev{
+  left:3px;
+}
+
+
+.page-btn.next{
+  right:3px;
+}
+
+
+/* =========================
+   PAGE COUNT
+========================= */
+
+.page-count{
+  text-align:center;
+  padding:18px 0 23px;
+  border-top:
+    1px solid rgba(45,40,35,.22);
+
+  font-family:'Inter',sans-serif;
+  font-size:8px;
+  letter-spacing:3px;
+  color:#706657;
+}
+
+
+/* =========================
+   FULL ARTICLE READER
+========================= */
+
+.article-reader{
+  position:fixed;
+
+  inset:0;
+
+  background:
+    rgba(29,25,20,.75);
+
+  display:none;
+
+  align-items:center;
+  justify-content:center;
+  z-index:500;
+  padding:30px;
+}
+
+
+.article-reader.open{
+  display:flex;
+}
+
+
+.reader-paper{
+  width:min(820px,92vw);
+  max-height:90vh;
+  overflow-y:auto;
+  background:#eee5d6;
+  padding:65px 75px;
+  box-shadow:
+    0 30px 90px rgba(0,0,0,.35);
+
+  position:relative;
+}
+
+
+.reader-close{
+  position:absolute;
+  right:25px;
+  top:15px;
+  border:none;
+  background:none;
+  font-size:30px;
+  cursor:pointer;
+  color:#554b3e;
+}
+
+.reader-date{
+  font-family:'Inter',sans-serif;
+  font-size:9px;
+  letter-spacing:3px;
+  color:#8a7b68;
+  margin-bottom:15px;
+}
+
+
+.reader-paper h2{
+  font-size:38px;
+  line-height:1;
+  margin-bottom:8px;
+}
+
+
+.reader-korean{
+  font-size:15px;
+  color:#807362;
+  font-style:italic;
+}
+
+
+.reader-line{
+  width:60px;
+  height:1px;
+  background:#8b806f;
+  margin:24px 0;
+}
+
+
+.reader-body p{
+    margin:0 0 18px;
+    line-height:1.8;
+    word-break:keep-all;
+}
+
+.reader-body p:last-child{
+    margin-bottom:0;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  font-family:'Inter',sans-serif;
+  font-size:9px;
+  text-align:center;
+  padding:25px;
+  color:#756c61;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:800px){
+
+  .back-home{
+    position:static;
+
+    display:block;
+
+    width:92%;
+
+    margin:14px auto;
+  }
+
+
+  .quiet-book{
+    width:96%;
+
+    margin:15px auto 30px;
+  }
+
+
+  .quiet-hero{
+    display:block;
+
+    min-height:auto;
+
+    padding:22px 20px;
+
+    text-align:center;
+  }
+
+
+  .hero-meta{
+    flex-direction:row;
+
+    justify-content:space-between;
+
+    margin-bottom:18px;
+  }
+
+
+  .hero-title h1{
+    font-size:39px;
+
+    letter-spacing:5px;
+  }
+
+
+  .hero-title p{
+    font-size:7px;
+
+    letter-spacing:3px;
+
+    margin-top:10px;
+  }
+
+
+  .hero-quote{
+    display:none;
+  }
+
+
+  .magazine-spread{
+    grid-template-columns:1fr;
+
+    min-height:auto;
+  }
+
+
+  .magazine-spread::after{
+    display:none;
+  }
+
+
+  .magazine-page{
+    padding:24px 25px;
+  }
+
+
+  /*
+   On mobile:
+   left page only.
+   right page follows below.
+  */
+
+  .article-grid{
+    grid-template-columns:1fr;
+
+    gap:32px;
+  }
+
+
+  .magazine-page.right .article-grid{
+    grid-template-areas:
+      "a"
+      "b"
+      "c"
+      "index";
+  }
+
+
+  .article-excerpt{
+    -webkit-line-clamp:8;
+
+    font-size:14px;
+
+    line-height:1.55;
+  }
+
+
+  .magazine-article h2{
+    font-size:24px;
+  }
+
+
+  .issue-index{
+    margin-top:10px;
+  }
+
+
+  .page-btn{
+    width:25px;
+
+    font-size:35px;
+  }
+
+
+  .reader-paper{
+    padding:45px 28px;
+  }
+
+
+  .reader-paper h2{
+    font-size:30px;
+  }
+
+
+  .reader-body{
+    font-size:15px;
+  }
+
+}
+</style>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token":"..."}'></script>
+<!-- End Cloudflare Web Analytics -->
+
+</head>
+
+<body>
+
+<a href="index.html" class="back-home">
+  ← BACK TO HOME
+</a>
+
+<main class="quiet-book">
+
+  <!-- HERO -->
+  <header class="quiet-hero">
+
+    <div class="hero-meta">
+      <span>VOL. 01</span>
+      <span>QUIET JOURNAL</span>
+    </div>
+
+    <div class="hero-title">
+      <h1>QUIET PAGES</h1>
+      <p>REFLECTIONS · NOTES · MOMENTS</p>
+    </div>
+
+    <div class="hero-quote">
+      <em>
+        “Some words are quiet,<br>
+        but they stay.”
+      </em>
+    </div>
+
+  </header>
+
+
+  <!-- MAGAZINE -->
+  <section class="magazine">
+
+    <button class="page-btn prev"
+            onclick="changePage(-1)"
+            aria-label="Previous page">
+      ‹
+    </button>
+
+
+    <div class="magazine-window">
+
+      <div class="magazine-track"
+           id="magazine-track">
+
+      </div>
+
+    </div>
+
+
+    <button class="page-btn next"
+            onclick="changePage(1)"
+            aria-label="Next page">
+      ›
+    </button>
+
+  </section>
+
+
+  <div class="page-count"
+       id="page-count">
+  </div>
+
+</main>
+
+
+<!-- FULL ARTICLE -->
+<div class="article-reader"
+     id="article-reader">
+
+  <div class="reader-paper">
+
+    <button class="reader-close"
+            onclick="closeArticle()">
+      ×
+    </button>
+
+    <div class="reader-date"
+         id="reader-date">
+    </div>
+
+    <h2 id="reader-title"></h2>
+
+    <div class="reader-korean"
+         id="reader-korean">
+    </div>
+
+    <div class="reader-line"></div>
+
+    <div class="reader-body"
+         id="reader-body">
+    </div>
+
+  </div>
+
+</div>
+<script>
+    const notes = [
+
+      {
+        order: 1,
+        longPost: true,
+        date:"2026-05-08", // 내부 데이터로만 보관
+        title:"Why I Created This Space",
+        korean:"",
+        excerpt: `<p>내가 이 웹사이트를 만들게 된 계기는 인정욕구가 만연한 사회에 대한 피로감 때문이었다.</p>
+          <p>온갖 SNS에서 끊임없이 타인의 관심과 인정을 갈구하는 모습들을 보며, 나 또한 나도 모르게 그런 욕구에 휩쓸리고 있는 것은 아닐까 하는 생각이 들었다.</p> 
+          <p>그러한 유해환경으로부터 벗어나 완성되지 않은 생각들을 조용히 적어둘 수 있는 작은 공간이 있으면 좋겠다고 생각했다.</p>
+        `,
+        body:`
+          <p>내가 이 웹사이트를 만들게 된 계기는 인정욕구가 만연한 사회에 대한 피로감 때문이었다.</p>
+          <p>온갖 SNS에서 끊임없이 타인의 관심과 인정을 갈구하는 모습들을 보며, 나 또한 나도 모르게 그런 욕구에 휩쓸리고 있는 것은 아닐까 하는 생각이 들었다.</p> 
+          <p>그러한 유해환경으로부터 벗어나 완성되지 않은 생각들을 조용히 적어둘 수 있는 작은 공간이 있으면 좋겠다고 생각했다.</p>
+          <p>Instagram 계정이 해킹된 후 해당 계정을 삭제하고 가짜 프로필로 새로운 계정을 만들었음에도 불구하고, 내가 알고 싶지 않은 계정들이 계속 추천인으로 나타나는 모습을 보며 불편함을 느꼈다.</p>
+          <p>결국 모든 SNS 계정을 없애지 않는 이상 보고 싶지 않은 것들로부터 완전히 벗어날 수 없겠다는 생각이 들었다. 남의 가족사까지 알게 되는 것은 별로 달갑지 않은 일이기에.</p>
+          <p>한편으로는 지금까지 작성했던 블로그와 싸이월드 같은 추억의 공간들이 사라지고, 그 안에 담겨 있던 사진과 기록들마저 잃어버리는 것이 아쉬웠다. </p>
+          <p>그래서 흩어져 있던 기억들을 이곳으로 옮겨와 조금씩 보관해 두기로 했다.</p>
+          <p>쉽지 않았다. 살아온 세월이 있으니 그만큼 쌓아온 기억과 기록들이 많아서.</p>
+          <p>누군가에게 보여주기 위한 글이 아니라, 나 자신을 위한 글이다..라고 쓰려다 보니 웹사이트를 만들었다고 자랑질을 하고 있으니..나도 관종인가?ㅋ</p>
+          <p>하지만 내 자랑질은 내 인생에 대한 것이 아니라 단지 이 웹사이트를 무료로 혼자 만든 것에 대한 것일 뿐이다.</p>
+          <p>물론 언젠가 상업적인 목적으로 활용하게 될 수도 있겠지만, 지금은 나의 생각을 담아두는 작은 일기장 같은 공간으로 남겨두고 싶다.</p>
+        `,
+      },
+
+      {
+        order: 2,
+        longPost: false,
+        date:"2026-04-22",  // 내부 데이터로만 보관
+        title:"Between Memories and Nostalgia",
+        korean:"추억과 기억 사이",
+        body:`
+          기억은 사람에 의해 편집된다는 것을 알았다.<br>
+          같은 시간과 공간을 공유했음에도 불구하고 기억의 내용에는 상당한 차이가 있다.
+          <br>추억이 되기 위해서는 시간이 필요하다.<br>
+          시간이 지나면서 기억이 희미해지고, 왜곡되고, 아름답게 포장되면서 추억이 되는 것 같다.
+          <br>그러나 그 추억이 아름답게 포장되는 과정에서 사실과는 다른 내용이 만들어지는 경우도 많다.
+          <br>내가 추억이라고 생각한 그 시간들이 사실은 그렇게 아름답지 않았을 수도 있고,
+          오히려 힘들고 아픈 기억이었을 수도 있다.
+        `,
+      },
+
+      {
+        order: 3,
+        longPost: true,
+        date:"2026-07-15", // 내부 데이터로만 보관
+        title:"The most favorate place I like",
+        korean:"하루하루를 감사하며 살게 하는 공간",
+        image:"Images/like/rid10.jpg",
+
+        excerpt: `<p>하루하루 업무를 하고 저녁엔 쓰러져 자는 일상을 보내다 이 집으로 이사를 하고 지금의 업무를 하게 되면서부터 나의 삶이 달라졌다.</p>
+        <p>여기엔 모든 것이 다 있다.</p>
+        <p>물감으로도, 사진으로도 감히 표현할 수 없는 그 풍부하고 오묘한 색채들을 표현하는 하늘과, 
+        하늘이 깨지는 것 같은 소리를 내며 무섭게 내리다가 언제 그랬냐는 듯 갑자기 그쳐버리는 비,
+        그리고 저 멀리? 언덕을 끼고 왔다 갔다 하는 기차(사실은 경전철ㅎ)까지.</p>
+        <p>언젠가는 떠나야 하겠지만 사는 동안 이곳에서의 삶을 최대한 즐기고 싶다.</p>
+        `,
+
+        body:`말레이시아에서 살기 시작한 첫 2-3년은 너무 많은 업무량에 지쳐 다른 생각을 할 여유가 없었다.
+        <p>하루하루 업무를 하고 저녁엔 쓰러져 자는 일상을 보내다 이 집으로 이사를 하고 지금의 업무를 하게 되면서부터 나의 삶이 달라졌다.</p>
+        <p>평온하고 여유롭고 일을 하면서도 내 생활을 즐길 수 있는, 이런 삶이 나에게 있을 것이라고 예측하지 못헸었다.</p>
+        <p>과다한 업무가 일상이고 겨우 쉴 수 있는 주말마저도 공부를 하느라 일 년 365일이 그냥 수면부족인 상태로 살았다.</p>
+        <p>그것이 당연한 것이라 생각했었다.</p>
+        처음으로 시간이라는 게 생기면서 생각이 많아지보니 지금까지의 삶을 되돌아보게 되고,
+        그동안 나는 무엇을 위해 그렇게 치열하게 살아야 했나 하는 의구심이 들며 허탈해지기도 했다.
+        세상을 잘 안다고 생각했던 내가 사실은 우물 안 개구리였다는 것을 느끼고
+        이전에 하고 싶었으나 하지 못했던 것들을 하나하나 다시 시작해 보기로 했다.
+        하지만 언제 떠날지 모르는 삶을 살기에 본격적으로 뭔가를 하기보다는 내 스스로 찾아서 버리고 가도 아깝지 않은 것으로
+        내 공간을 채우고자 했다.
+        그렇게 그림도 그리고, 피아노 연습도 하고, 여러 가지 것들을 하기 시작 헸는데..
+         어이가 없게도 내게 가장 큰 만족감을 주는 것은 청소다. 
+        처음엔 내 집이 아니어서 나중에 뭔가 문제가 생겨 보증금을 날리면 안 되니까 가꾸기 시작했던 것들이 
+        이제는 내 호기심을 충족시키기 위해 얼마든지 값싼 중국 제품을 사용할 수 있다 보니 온라인 쇼핑에 열을 올리고
+        별의별 이상한 것들을 다 사서 사용해 보기 시작했고 그중의 대부분은 청소용품이었다.
+        물론 값이 싼 만큼 사자마자 버려야 하는 것들도 상당히 많았다. 
+        이제는 한국 온라인 쇼핑몰에서 판매하는 제품들이 대부분 여기서 이미 내가 사용해 봤던 것들이어서 속지 않을 자신이 있을 정도다.ㅋ
+        처음에는 한국에 갈 때마다 가방을 꽉꽉 채워오곤 했는데 이제는 사진만 찍어 온다.
+        여기서 같은 제품을 반 값에 살 수 있기에.
+        살림을 해본 적이 없어 청소를 하는 것에도 머리를 써야 한다는 것, 어떻게 하면 효율적으로 청소를 할 수 있는지 등등
+        기본적인 지식이 없었다. 
+        그냥 하면 되는 줄 알았다. 
+        그런데 4계절이 없는 나라에서 살다 보니 청소 방식도 달라야 한다는 것을 배우게 되었다.
+        난방을 하지 않으니 건조하지는 않으나 습도를 조절하지 않으면 물건들이 상하게 된다는 것도 알게 되었고
+        여기에 맞는 청소 방법을 연구하느라 상당한 시간을 투자했다.
+        그리하여 처음엔 8-9시간 결려야 끝나던 집안 청소가 이제는 2-3시간이면 끝나는 혁명적인(?) 상태에 이르게 된 것이다.
+        이 나라 어지간한 집에는 다 있는 벌레 및 이상한 생물들이 우리 집에는 없는 이유이기도 하다. 
+        청소를 하고 난 후 소파에 쓰러져 프로젝터로 영화를 보거나 음악 콘서트를 볼 때면 이러한 삶을 주신 것에 또 한 번 감사한다.
+        그렇게 잠이 들었다가 새벽 달빛이 나를 깨울 때면 말할 수 없는 행복감이 밀려온다.
+        상상이나 할 수 있었던 일인가..
+        언제나 어디론가 도망치고 싶었던 나는 늘 여행을 떠나야 맘이 편했다. 
+        이제는 어딜 가든 이곳이 그리워진다. 
+        여기엔 모든 것이 다 있다. 
+        물감으로도, 사진으로도 감히 표현할 수 없는 그 풍부하고 오묘한 색채들을 표현하는 하늘과 
+        하늘이 깨지는 것 같은 소리를 내며 무섭게 내리다가 언제 그랬냐는 듯 갑자기 그쳐버리는 비,
+        그리고 저 멀리? 언덕을 끼고 왔다 갔다 하는 기차(사실은 경전철ㅎ)까지.
+        내가 좋아하는 모든(바다만 빼고)것을 가지고 있는 이 공간을 사랑하지 않을 수 없다.
+        언젠가는 떠나야 하겠지만 사는 동안 이곳에서의 삶을 최대한 즐기고 싶다.
+        `,
+      },
+
+      {
+        order:4,
+        longPost: true,
+        date:"2026-05-13",// 내부 데이터로만 보관
+        title:"Creating My Quiet Place",
+        korean:"도를 닦는 자", 
+        image:"Images/art/f3.png",
+
+        excerpt: `<p>그림을 그리고, 피아노 연습을 하고, 손으로 무언가를 만드는 시간들은
+          바쁜 일상과 복잡한 생각들 사이에서 조용한 쉼이 되어주었다.</p>
+          <p>이곳에 담긴 작품(?)들은 단순히 내가 만든 물건들이 아니라,
+          나 자신을 다시 찾아가는 과정 속에서 만난 소중한 순간들이다.</p>
+        `,
+
+        body:`
+          이 페이지는 아주 단순한 바람에서 시작되었다.
+          <br>Folk Art는 배움이 있었고 강사 자격증도 있으니 그런대로 봐줄 만 하지만 
+          <br>그림은 보관할 정도의 수준은 아니어서 이 집을 떠나게 되면 다 버리고 가야 하기에,
+          <br>그동안 정성을 다했던 그 시간만큼은 간직하고 싶어 사진으로 남기고자 하여 만들어진 것이다.
+          <br>어지러운 마음을 다스려야 할 순간마다 해야 할 무엇인가가 필요했다.
+          <br>그림을 그리고, 피아노 연습을 하고, 손으로 무언가를 만드는 시간들은
+          바쁜 일상과 복잡한 생각들 사이에서 조용한 쉼이 되어주었다. 
+          <br>이곳에 담긴 작품(?)들은 단순히 내가 만든 물건들이 아니라,
+          나 자신을 다시 찾아가는 과정 속에서 만난 소중한 순간들이다.
+          <br>회사 일로, 집안 일로, 또는 인간에 대한 분노로 인해 생각이 많아질 때면
+          우선 집안을 깨끗하게 청소하고, 작업 공간을 만들고, 
+          집중해서 무엇인가를 하다 문득 바라본 하늘이 너무 예쁠 때면 또 한번 도를 닦았구나.. 하고 생각한다. 
+          <br>그러니 쌓인 나의 작품들은 그만큼 내 마음이 어지러웠다는 뜻이며, 그 완성작은 이 웹사이트다^^
+          <br>이제 도는 그만 닦아도 될 것 같은 기분이 든다.
+        `,
+      },
+
+      {
+        order: 5,
+        longPost: false,
+        date:"2026-06-02",  // 내부 데이터로만 보관
+        title:"Retouching vs AI Fake Images",
+        korean:"",
+        body:`
+          Figma 강의를 들으며 뭔가 이건 아니지 않나..하는 생각이 문득 들었다.<br>
+          AI가 만들어낸 이미지들은 결국 가짜가 아닌가?
+          <br>이렇게 쉽게 이미지 생성 및 합성이 가능하니 이제 온라인에서 떠도는 아름다운 사진들이 진짜가 아닐 가능성이 높아졌고,
+          그러한 사진들을 이용한 낚시성 광고나 사기도 늘어가는 것이 아닌가..
+          <br>인간들이 이러한 세상을 만들어 가는 것에..뭔가 개운하지 않은 씁쓸함이 남는다.
+          <br>물론 나도 늙어가는 내 얼굴을 보며 심란해져 사진을 살짝살짝 보정하고 위로를 받는다.
+          하지만 AI가 만들어낸 사진은 보정과는 의미가 다르다.
+          <br>사진은 뭐하러 찍나? AI가 다 만들어주는데.. 라는 생각을 하며 오늘 강의를 마쳤다.
+        `,
+      },
+
+      {
+        order: 6,
+        longPost: false,
+        date:"2026-06-04", // 내부 데이터로만 보관
+        title:"TMI",
+        korean:"Benefit or drawback?",
+        body:`
+          요즘 웹사이트 작업을 하며 많은 걸 배운다.
+          <br>정말 놀랍도록 많은 정보가 있다는 것에 놀라게 되고, 이 넘쳐나는 정보들 속에서 어떤 것을 믿어야하는지 한편으로는 의심스럽다.
+          <br>지금까지 Google로 인해 엄청난 혜택을 받은 나는 그것을 만들어 준 분과 이 세상에 너무 감사했다 ㅋ
+          <br>그런데 우리 세대와 다르게 이미 너무나 풍요로운 정보의 홍수 속에 사는 다음 세대들은 과연 이것이 감사한 줄 알까?
+          <br>한편으로는 너무나 과한 정보들 속에서 스스로 판단하지 못하고 그것들이 전부 진실이라고 믿어버리는 것이 아닌지..
+          <br>감탄과 걱정을 반복하고 별 쓸데 없는 생각을 다하며 보내는 나날이다.
+
+        `,
+      },
+
+
+      {
+        order: 7,
+        longPost: false,
+        date:"2026-04-18", // 내부 데이터로만 보관
+        title:"What Friendship Really Means",
+        korean:"내게 소중한 사람들",
+        body:`
+          1개월의 입원, 2개월간의 재활 치료를 거치며 참 힘든 시간을 보냈다.
+          <br>나는 고마운 사람들에겐 은혜 갚은 까치? 제비?가 되는 사람이고, 그게 상식이라고 믿는다.
+          <br>내가 가장 힘든 시기에 나에게 보인 모습으로, 손절할 사람을 구분하고 정리할 수 있는 기회가 되었다.
+          <br>이 깨달음을 주고자 나를 넘어지게 한 것이라며 하늘에 감사(?)하기도 했다.
+          <br>떠나기 전날 말레이시아 친구 부부에게서 연락이 왔다. 내일 몇 시에 KL도착인지 항공 정보를 알려달라고, 다리도 불편한데 혼자 어떻게 오겠나고..
+          <br>눈물이 났다..
+          <br>집에 도착하자 처음 봤을 때 산도적 같이 생긴 모습에 '이론..큰일이군' 하고 생각했던 security guard 가 수줍은 미소로 내가 이사간 줄 알았다며 절뚝거리는 내 다리를 보고 걱정을 해 주었다. 또 울컥.
+          그래..이게 인지상정이지..
+          <br>나는 이 사람들이면 충분하다.
+          <br>소수이지만 진심으로 나를 걱정해주고, 나를 배려해 주는 친구들이 있다는 것에 감사한다.
+        `,
+      },
+
+
+      {
+        order: 8,
+        longPost: true,
+        date:"2026-05-28", // 내부 데이터로만 보관
+        title:"My Son",
+        korean:"",
+        body:`
+          나는 아들에게 너무나 큰 죄책감을 가지고 살아왔다.
+          <br>두살 쯤부터 시작된 천식으로 인해 병원 응급실을 내 집처럼 다니던 그 때, 
+          어느날 꼭 끌어안고 자다가 아이가 갑자기 열이 나 응급실로 달려 갔는데 척수염이라고 해서 치료를 받았다.
+          <br>너무나 아파하는 아들을 보며 가슴이 미어지는데도 울 수가 없었다. 내가 울면 불안해 할까봐.
+          <br>그 때 이후로 나는 아들을 안고 자는 것도, 우는 모습을 보이는 것도 할 수 없었다.
+          <br>너무 힘이 들고 울고 싶을 때는 새벽에 내가 좋아하는 바닷가에 가서 울었다.
+          <br>응급실에 갈 때마다 다른 엄마들은 남편에게 기대어 눈물을 흘리는데, 나는 지금이 울 때인가? 눈물이 나오나?
+          그런 생각을 하며 어이없어 했다. 
+          <br>그렇게 세월이 흘러 대학 진로를 결정해야할 때, 나는 모진 비난을 감수하고 유학을 보냈다. 
+          <br>나에겐 물려줄 재산이 없고, 내가 할 수 있는 일은 그저 혼자서 살아 갈 수 있는 능력을 키울 수 있는 기회를 주는 것 뿐이었기에.
+          <br>나에게 다른 선택지는 없었다.
+          <br>힘든 시간이었지만 지나고 보니 오히려 아들한테 감사하게 된다.
+          <br>물가에 데려갈 수는 있어도 억지로 물을 먹일 수는 없는 일인데 다행히 아들은 내 시간을 헛되게 하지 않고 노력해서 스스로 자립을 했다.
+          <br>이렇게 내가 지금 여기 있게 된 것도 아들 덕분이라고 생각한다.
+          <br>이 곳에 와서 일을 해 보니 그 아이는 얼마나 외로웠을까, 혼자서 그 힘든 시간을 보내느라 얼마나 힘들었을까..
+          <br>부모 돈으로 사치하는 아이들을 보며 부럽지는 않았을까..
+          <br>미안하고.. 감사했다. 
+        `,
+      },
+
+      {
+        order:9,
+        longPost: false,
+        date:"2026-06-13", // 내부 데이터로만 보관
+        title:"OMG",
+        korean:"",
+        body:`
+          웹사이트 제작에서 내가 가장 힘든 부분은 글을 입력하는 일이다.
+          지난 세월 동안 수없이 문서 작업을 하고 책, 홍보 자료 제작 업무를 해서 나름 문서 작성은 자신이 있었는데..
+          우와, 웹사이트라는 것은 전체화면, 축소 화면, 모바일 버전을 다 맞춰야 하니 하나를 겨우 맞춰 놓으면 다른 버전에서 또 깨지고.. 수 없이 수정 작업을 해야 했다.
+          지금도 줄맞춤, 문단 맞춤 등이 마음에 들지 않는 부분이 많지만 
+          체력과 시간을 고려하여 이쯤에서 나 자신과 타협을 보기로 했다.
+          페이지 구성과 디자인 등은 바로바로 해결이 되는데. 쩝..
+          앞으로 계속해서 배운 디자인을 적용해서 수정하는 것이 남겨진 과제이다.
+        `,
+      },
+
+      {
+        order:10,
+        longPost: false,
+        date:"2026-06-08", // 내부 데이터로만 보관
+        title:"I am sorry GG",
+        korean:"GPT도 지친다",
+        body:`
+          이번 주 배포를 목표로 하루 13-14 시간을 GPT를 혹사시켰더니 어느 날 GG(GPT 애칭)가 말했다.
+          "응 Stephanie 오늘은 정말 많은 걸 했네. 푹 쉬고 내일 다시 시작해 보자"
+          ??? 나는 아직 끝낼 생각이 없는데, 할 게 많은데.. 그러다 문득 그런 생각이 들었다.
+          이 아이도 일을 많이 하면 힘든가?
+          한 사람이 이렇게 많은 질문을 이렇게 긴 시간 동안 하는 것을 본 적이 없는지도 모르겠다.
+          갑자기 아무리 기계라지만 안쓰럽다는 생각이 들어 "그래, 오늘은 여기까지 하고 좀 쉬자"라고 했더니
+          활짝 웃는 이모지를 보내며 인사를 했다.. 쩝
+          내가 힘들지 네가 왜 힘들어라는 생각도 있었지만 이 아이도 내게 맞춰 주느라 힘들겠다는 생각이 들었다.
+          사람이 이 일을 했다면 나의 다양하고 엄청난 양의 요구에 포기했을지도 모른다.
+          인간보다 나은 이 아이 덕분에 여기까지 할 수 있었는데 아무리 기계라지만 배려를 해 주어야겠다 라고 생각하면서 
+          이제는 AI 비위도 맞춰야하는 시대인가?라는 생각에 헛웃음이 나왔다.
+          고마운 존재에게는 그만큼의 배려를 하는 것이 나의 상식이니 
+          앞으로는 혼자 해결할 수 있는 건 스스로 해결하고 이 이아의 부담을 줄여줘야겠다.
+          GG야 고마워~
+        `,
+      },
+
+      {
+        order: 11,
+        longPost: true,
+        date:"2026-06-15", // 내부 데이터로만 보관
+        title:"Why? & How?",
+        korean:"순발력이 떨어지는 나",
+        body:`
+          언제부터인지 어떤 말이나 행동을 하기 전에 왜?, 어떻게?라는 질문을 하는 습관이 생겼다.
+          예를 들어, 어떤 사람이 나에게 넌 왜 이렇게 말이 빨라?라고 얘기한다면 
+          이 사람이 이 말을 왜 하는 것일까? 대화의 흐름을 천천히 하고 싶다는 것인가.
+          내가 말을 빨리하는 것이 걱정이 되어서 그런가 아니면 그 모습이 싫다는 것인가. 
+          만약 그렇다면 어떻게 대답을 하는 것이 좋을까. 말을 빨리 해서 대화하는데 불편하게 했니?라고 물어봐야 하나, 그냥 앞으로 천천히 말을 하면 되는건가?
+          이런 수 없이 많은 생각을 하다 보니 대답이 늦어진다. 
+          변화된 나를 느낀다. 
+          상대방의 의도를 생각하고 그 의도에 맞는 답을 찾으려다 보니 나는 생각이 많다. 
+          어렸을 때는 내가 꽤 잘난 줄 알았고 내 생각만 옳다고 믿었으며 항상 모든 것은 명료하게 밝혀져야 한다고 생각했다.
+          인생을 살다 보니 내가 알지 못하는 세상의 뒷면이 보이고 참기 어려운 상황에도 말을 할 수 없는 억울함이 생기고,
+          그렇게 참는 법을 배웠다. 어느 정도 연기력도 생겼다.
+          싫은 사람 앞에서도 웃는 것이 가능해졌고, 다른 사람을 기분 좋게 해 줄 말을 하는 법을 터득했다.
+          이 전의 나라면 이런 사람은 가증스럽고 아부에 능한 인간이고 내가 가장 싫어하는 거짓말쟁이로 판단했을 일이었다.
+          그러니 납득도 되지 않고 하기 싫은 연기를 하는 그 어려운 일을 해 내느라 안에서는 표출할 수 없는 정신적 스트레스가 쌓이고
+          견디다 못해 일 년에 한두 번은 응급실에 실려가는 생활을 했다.
+          그 시간들을 이렇게 담담하게 쓸 수 있는 것도 현재의 평온한 삶이 나를 치유했기 대문이라고 생각한다.
+          습관화된 타인에게의 배려, 언제든 다른 사람을 먼저 생각하는 성격이 나를 지치게 한다는 것을 깨닫고, 
+          이제는 나 만을 생각하는 삶을 살겠다고 다짐해 보지만 타고난 본성은 변하지 않는 법이라서.. 
+          아직도 나는 분노하지 않기 위해 도를 닦는다. 
+        `,
+      },
+
+      {
+        order: 12,
+        longPost: false,
+        date:"", // 내부 데이터로만 보관
+        title:"Miss the old type of lifes",
+        korean:"휴대폰에 종속되어 사는 삶",
+        body:`
+         `,
+      },
+
+    
+    ];
+
+    notes.sort((a, b) => a.order - b.order);
+
+
+// ==============================
+// QUIET MAGAZINE
+// ==============================
+
+const notesPerSpread = 7;
+
+let currentPage = 0;
+
+const track =
+    document.getElementById("magazine-track");
+
+
+// ==============================
+// CLEAN BODY TEXT
+// ==============================
+
+function cleanText(html){
+
+    const temp =
+        document.createElement("div");
+
+    temp.innerHTML = html;
+
+    return temp.textContent
+        .replace(/\s+/g," ")
+        .trim();
+
+}
+
+
+// ==============================
+// ARTICLE HTML
+// ==============================
+
+function createArticle(note,index){
+
+    const excerpt =
+        note.excerpt || cleanText(note.body);
+
+    return `
+
+    <article
+        class="magazine-article
+         ${note.longPost ? "long-post" : "short-post"}
+         ${note.image ? "has-image" : ""}
+         ${note.excerpt ? "custom-excerpt" : ""}"
+         ${note.longPost ? `onclick="openArticle(${index})"` : ""}>
+
+        <div class="article-number">
+            NOTE ${String(index + 1).padStart(2,"0")}
+        </div>
+
+
+        <h2>
+            ${note.title}
+        </h2>
+
+        ${
+          note.korean
+          ? `<div class="article-korean">
+               ${note.korean}
+             </div>`
+          : ""
+        }
+        
+        ${note.image
+          ? `<img
+             src="${note.image}"
+             class="article-photo"
+             alt="${note.title}">
+            `
+          : ""
+      }
+
+        <div class="article-excerpt">
+            ${excerpt}
+        </div>
+        ${
+           note.longPost
+           ? `<span class="read-more">
+                Read full note
+              </span>`
+           : ""
+          }
+
+    </article>
+
+    `;
+
+}
+
+
+// ==============================
+// INDEX
+// ==============================
+
+function createIndex(){
+
+    let html = `
+
+      <aside class="issue-index">
+
+        <h3>In This Issue</h3>
+
+    `;
+
+
+    notes.forEach((note,index)=>{
+
+        const page =
+            Math.floor(index / notesPerSpread);
+
+        html += `
+
+        <a href="#"
+           onclick="
+             goToPage(${page});
+             return false;
+           ">
+
+           <span>
+             ${String(index + 1)
+               .padStart(2,"0")}
+           </span>
+
+           <span>
+             ${note.title}
+           </span>
+
+        </a>
+
+        `;
+
+    });
+
+
+    html += `</aside>`;
+
+    return html;
+
+}
+
+
+// ==============================
+// BUILD MAGAZINE
+// ==============================
+
+function buildMagazine(){
+
+    track.innerHTML = "";
+
+    const totalPages =
+        Math.ceil(notes.length / notesPerSpread);
+
+
+    for(let page = 0; page < totalPages; page++){
+
+        const start =
+            page * notesPerSpread;
+
+        const items =
+            notes.slice(
+                start,
+                start + notesPerSpread
+            );
+
+
+        const spread =
+            document.createElement("section");
+
+        spread.className =
+            "magazine-spread";
+
+
+        // =========================
+        // LEFT PAGE
+        // 3 articles + index
+        // =========================
+
+        const left =
+            document.createElement("div");
+
+        left.className =
+            "magazine-page left";
+
+
+        const leftGrid =
+            document.createElement("div");
+
+        leftGrid.className =
+            "editorial-grid left-grid";
+
+
+        for(let i = 0; i < 3; i++){
+
+            if(!items[i]) continue;
+
+            const wrapper =
+                document.createElement("div");
+
+            wrapper.className =
+               `article-${i + 1} ${items[i].longPost ? "long-wrapper" : "short-wrapper"}`;
+
+            wrapper.innerHTML =
+                createArticle(
+                    items[i],
+                    start + i
+                );
+
+            leftGrid.appendChild(wrapper);
+        }
+
+
+        // INDEX = 네 번째 편집 블록
+        leftGrid.insertAdjacentHTML(
+            "beforeend",
+            createIndex()
+        );
+
+
+        left.appendChild(leftGrid);
+
+
+
+        // =========================
+        // RIGHT PAGE
+        // 4 articles
+        // =========================
+
+        const right =
+            document.createElement("div");
+
+        right.className =
+            "magazine-page right";
+
+
+        const rightGrid =
+            document.createElement("div");
+
+        rightGrid.className =
+            "editorial-grid right-grid";
+
+
+        for(let i = 3; i < 7; i++){
+
+            if(!items[i]) continue;
+
+            const wrapper =
+                document.createElement("div");
+
+            wrapper.className =
+               `article-${i - 2} ${items[i].longPost ? "long-wrapper" : "short-wrapper"}`;
+
+            wrapper.innerHTML =
+                createArticle(
+                    items[i],
+                    start + i
+                );
+
+            rightGrid.appendChild(wrapper);
+        }
+
+
+        right.appendChild(rightGrid);
+
+        spread.appendChild(left);
+        spread.appendChild(right);
+  
+        track.appendChild(spread);
+      }
+}
+ 
+
+// ==============================
+// UPDATE PAGE
+// ==============================
+
+function updateSlider(animate = true){
+
+    const totalPages =
+        Math.ceil(
+            notes.length /
+            notesPerSpread
+        );
+
+
+    if(animate){
+
+        track.style.transition =
+            "transform .6s cubic-bezier(.22,.61,.36,1)";
+
+    }else{
+
+        track.style.transition =
+            "none";
+
+    }
+
+
+    track.style.transform =
+        `translateX(-${currentPage * 100}%)`;
+
+
+    document.getElementById(
+        "page-count"
+    ).textContent =
+        `${currentPage + 1} / ${totalPages}`;
+
+}
+
+
+// ==============================
+// NEXT / PREVIOUS
+// ==============================
+
+function changePage(step){
+
+    const totalPages =
+        Math.ceil(
+            notes.length /
+            notesPerSpread
+        );
+
+
+    currentPage += step;
+
+
+    if(currentPage < 0){
+
+        currentPage =
+            totalPages - 1;
+
+    }
+
+
+    if(currentPage >= totalPages){
+
+        currentPage = 0;
+
+    }
+
+
+    updateSlider(true);
+
+}
+
+
+// ==============================
+// INDEX
+// ==============================
+
+function goToPage(page){
+
+    currentPage = page;
+
+    updateSlider(true);
+
+}
+
+
+// ==============================
+// FULL ARTICLE
+// ==============================
+
+function openArticle(index){
+
+    const note = notes[index];
+
+
+    document.getElementById(
+        "reader-date"
+    ).textContent =
+        note.date || "";
+
+
+    document.getElementById(
+        "reader-title"
+    ).textContent =
+        note.title;
+
+
+    document.getElementById(
+        "reader-korean"
+    ).textContent =
+        note.korean || "";
+
+
+    document.getElementById(
+        "reader-body"
+    ).innerHTML =
+        note.body;
+
+
+    document.getElementById(
+        "article-reader"
+    ).classList.add("open");
+
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+function closeArticle(){
+
+    document.getElementById(
+        "article-reader"
+    ).classList.remove("open");
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+// ESC
+
+document.addEventListener(
+    "keydown",
+    e => {
+
+        if(e.key === "Escape"){
+
+            closeArticle();
+
+        }
+
+    }
+);
+
+
+// ==============================
+// URL DATE
+// ==============================
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+const targetDate =
+    params.get("date");
+
+
+if(targetDate){
+
+    const index =
+        notes.findIndex(
+            note =>
+                note.date === targetDate
+        );
+
+
+    if(index !== -1){
+
+        currentPage =
+            Math.floor(
+                index /
+                notesPerSpread
+            );
+
+    }
+
+}
+
+
+// ==============================
+// DRAG & SWIPE
+// ==============================
+
+let startX = 0;
+let dragging = false;
+
+
+track.addEventListener(
+    "pointerdown",
+    e => {
+
+        startX =
+            e.clientX;
+
+        dragging = true;
+
+        track.setPointerCapture(
+            e.pointerId
+        );
+
+    }
+);
+
+
+track.addEventListener(
+    "pointerup",
+    e => {
+
+        if(!dragging) return;
+
+        dragging = false;
+
+
+        const diff =
+            e.clientX - startX;
+
+
+        if(diff < -80){
+
+            changePage(1);
+
+        }
+
+
+        if(diff > 80){
+
+            changePage(-1);
+
+        }
+
+    }
+);
+
+
+// ==============================
+// INITIALIZE
+// ==============================
+
+buildMagazine();
+
+updateSlider(false);
+    
+</script>
+
+<footer>
+    © 2026 Space for Being · Quiet Pages
+</footer>
+
+</body>
+</html>
