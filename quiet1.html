@@ -333,6 +333,9 @@ body{
   transform:translateY(-2px);
 }
 
+.magazine-article.long-post{
+    cursor:pointer;
+}
 
 .article-number{
   font-family:'Inter',sans-serif;
@@ -1290,11 +1293,12 @@ function createArticle(note,index){
 
     return `
 
-    <article
-        class="magazine-article
+      <article
+         class="magazine-article
          ${note.longPost ? "long-post" : "short-post"}
          ${note.image ? "has-image" : ""}
          ${note.excerpt ? "custom-excerpt" : ""}"
+         data-note="${note.id}"
          ${note.longPost ? `onclick="openArticle(${index})"` : ""}>
 
         <div class="article-number">
