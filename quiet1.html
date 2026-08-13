@@ -1612,47 +1612,58 @@ function goToPage(page){
 // ==============================
 // FULL ARTICLE
 // ==============================
-// ==============================
-// FULL ARTICLE
-// ==============================
 
-let currentArticleId = null;
+let currentArticleId = "";
+
 
 function openArticle(index){
 
     const note = notes[index];
 
+    // 현재 열어놓은 글 ID 저장
     currentArticleId = note.id;
+
+    console.log("OPEN:", currentArticleId);
+
 
     document.getElementById(
         "reader-date"
     ).textContent =
         note.date || "";
 
+
     document.getElementById(
         "reader-title"
     ).textContent =
         note.title;
+
 
     document.getElementById(
         "reader-korean"
     ).textContent =
         note.korean || "";
 
+
     document.getElementById(
         "reader-body"
     ).innerHTML =
         note.body;
 
+
     document.getElementById(
         "article-reader"
     ).classList.add("open");
+
 
     document.body.style.overflow =
         "hidden";
 }
 
+
+
 function closeArticle(){
+
+    console.log("CLOSE:", currentArticleId);
 
     document.getElementById(
         "article-reader"
@@ -1660,14 +1671,19 @@ function closeArticle(){
 
     document.body.style.overflow = "";
 
-    if(!currentArticleId) return;
 
-    setTimeout(() => {
-        window.location.href =
-            `quiet2.html?note=${currentArticleId}`;
-    }, 400);
+    if(currentArticleId){
+
+        setTimeout(() => {
+
+            window.location.href =
+                `quiet2.html?note=${currentArticleId}`;
+
+        }, 400);
+
+    }
+
 }
-
 
 // ESC
 
