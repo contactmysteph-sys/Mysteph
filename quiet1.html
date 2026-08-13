@@ -1659,9 +1659,11 @@ function closeArticle(){
         "article-reader"
     ).classList.remove("open");
 
-    document.body.style.overflow =
-        "";
+    document.body.style.overflow = "";
 
+    setTimeout(() => {
+        window.location.href = "quiet2.html?note=01";
+    }, 400);
 }
 
 
