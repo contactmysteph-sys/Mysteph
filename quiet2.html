@@ -937,6 +937,17 @@ const storySpreads =
 const storyWindow =
     document.querySelector(".story-window");
 
+const params = new URLSearchParams(window.location.search);
+const note = params.get("note");
+
+if(note){
+    // note 번호에 해당하는 글 찾기
+    const noteIndex = parseInt(note) - 1;
+    if (!isNaN(noteIndex) && noteIndex >= 0 && noteIndex < notes.length) {
+        currentStory = Math.floor(noteIndex / notesPerSpread);
+    }
+}
+
 
 function updateStory() {
 
