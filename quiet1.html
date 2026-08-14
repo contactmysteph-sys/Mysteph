@@ -1299,12 +1299,11 @@ function createArticle(note,index){
          ${note.image ? "has-image" : ""}
          ${note.excerpt ? "custom-excerpt" : ""}"
          data-note="${note.id}"
-         ${note.longPost ? `onclick="openArticle(${index})"` : ""}>
+         ${note.longPost ? `onclick="openArticle('${note.id}')"` : ""}>
 
         <div class="article-number">
             NOTE ${String(index + 1).padStart(2,"0")}
         </div>
-
 
         <h2>
             ${note.title}
@@ -1317,7 +1316,7 @@ function createArticle(note,index){
              </div>`
           : ""
         }
-        
+
         ${note.image
           ? `<img
              src="${note.image}"
@@ -1325,25 +1324,24 @@ function createArticle(note,index){
              alt="${note.title}">
             `
           : ""
-      }
+        }
 
         <div class="article-excerpt">
             ${excerpt}
         </div>
+
         ${
            note.longPost
            ? `<span class="read-more">
                 Read full note
               </span>`
            : ""
-          }
+        }
 
-    </article>
+      </article>
 
     `;
-
 }
-
 
 // ==============================
 // INDEX
@@ -1617,92 +1615,12 @@ function goToPage(page){
 // FULL ARTICLE
 // ==============================
 
-let currentArticleId = "";
+function openArticle(noteId){
 
-
-function openArticle(index){
-
-    const note = notes[index];
-
-    // 현재 열어놓은 글 ID 저장
-    currentArticleId = note.id;
-
-    console.log("OPEN:", currentArticleId);
-
-
-    document.getElementById(
-        "reader-date"
-    ).textContent =
-        note.date || "";
-
-
-    document.getElementById(
-        "reader-title"
-    ).textContent =
-        note.title;
-
-
-    document.getElementById(
-        "reader-korean"
-    ).textContent =
-        note.korean || "";
-
-
-    document.getElementById(
-        "reader-body"
-    ).innerHTML =
-        note.body;
-
-
-    document.getElementById(
-        "article-reader"
-    ).classList.add("open");
-
-
-    document.body.style.overflow =
-        "hidden";
-}
-
-
-
-function closeArticle(){
-
-    console.log("CLOSE:", currentArticleId);
-
-    document.getElementById(
-        "article-reader"
-    ).classList.remove("open");
-
-    document.body.style.overflow = "";
-
-
-    if(currentArticleId){
-
-        setTimeout(() => {
-
-            window.location.href =
-                `quiet2.html?note=${currentArticleId}`;
-
-        }, 400);
-
-    }
+    window.location.href =
+        `quiet2.html?note=${noteId}`;
 
 }
-
-// ESC
-
-document.addEventListener(
-    "keydown",
-    e => {
-
-        if(e.key === "Escape"){
-
-            closeArticle();
-
-        }
-
-    }
-);
 
 
 // ==============================
