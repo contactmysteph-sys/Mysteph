@@ -327,6 +327,14 @@ body{
   cursor:pointer;
   overflow:hidden;
   transition:.25s;
+  
+}
+
+.magazine-article.long-post{
+    display:block;
+    color:inherit;
+    text-decoration:none;
+    cursor:pointer;
 }
 
 .magazine-article:hover{
@@ -1293,52 +1301,68 @@ function createArticle(note,index){
 
     return `
 
-      <article
-         class="magazine-article
-         ${note.longPost ? "long-post" : "short-post"}
-         ${note.image ? "has-image" : ""}
-         ${note.excerpt ? "custom-excerpt" : ""}"
-         data-note="${note.id}"
-         ${note.longPost ? `onclick="openArticle('${note.id}')"` : ""}>
+    ${
+        note.longPost
+
+        ? `<a href="quiet2.html?note=${note.id}"
+              class="magazine-article long-post
+              ${note.image ? "has-image" : ""}
+              ${note.excerpt ? "custom-excerpt" : ""}"
+              data-note="${note.id}">`
+
+        : `<article
+              class="magazine-article short-post
+              ${note.image ? "has-image" : ""}
+              ${note.excerpt ? "custom-excerpt" : ""}"
+              data-note="${note.id}">`
+    }
+
 
         <div class="article-number">
             NOTE ${String(index + 1).padStart(2,"0")}
         </div>
 
+
         <h2>
             ${note.title}
         </h2>
 
+
         ${
-          note.korean
-          ? `<div class="article-korean">
-               ${note.korean}
-             </div>`
-          : ""
+            note.korean
+            ? `<div class="article-korean">
+                   ${note.korean}
+               </div>`
+            : ""
         }
 
-        ${note.image
-          ? `<img
-             src="${note.image}"
-             class="article-photo"
-             alt="${note.title}">
-            `
-          : ""
+
+        ${
+            note.image
+            ? `<img
+                 src="${note.image}"
+                 class="article-photo"
+                 alt="${note.title}">
+               `
+            : ""
         }
+
 
         <div class="article-excerpt">
             ${excerpt}
         </div>
 
+
         ${
-           note.longPost
-           ? `<span class="read-more">
-                Read full note
-              </span>`
-           : ""
+            note.longPost
+            ? `<span class="read-more">
+                   Read full note
+               </span>`
+            : ""
         }
 
-      </article>
+
+    ${note.longPost ? `</a>` : `</article>`}
 
     `;
 }
