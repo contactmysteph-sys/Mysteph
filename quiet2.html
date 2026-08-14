@@ -1134,13 +1134,36 @@ const storySpreads =
 const storyWindow =
     document.querySelector(".story-window");
 
-const params = new URLSearchParams(window.location.search);
-const note = params.get("note");
+
+// =========================
+// URL NOTE 찾기
+// =========================
+
+const params =
+    new URLSearchParams(window.location.search);
+
+const note =
+    params.get("note");
+
 
 if(note){
-    // note 번호에 해당하는 글 찾기
+
+    const index =
+        Array.from(storySpreads).findIndex(
+            spread =>
+                spread.dataset.note === note
+        );
+
+    if(index !== -1){
+        currentStory = index;
+    }
+
 }
 
+
+// =========================
+// STORY 이동
+// =========================
 
 function updateStory() {
 
@@ -1150,6 +1173,10 @@ function updateStory() {
     updateStoryHeight();
 }
 
+
+// =========================
+// 현재 STORY 높이
+// =========================
 
 function updateStoryHeight() {
 
@@ -1162,6 +1189,10 @@ function updateStoryHeight() {
         `${currentSpread.offsetHeight}px`;
 }
 
+
+// =========================
+// NEXT / PREV
+// =========================
 
 function changeStory(step) {
 
@@ -1179,18 +1210,17 @@ function changeStory(step) {
 }
 
 
-/* 첫 페이지 높이 설정 */
+// =========================
+// INITIALIZE
+// =========================
+
 window.addEventListener("load", () => {
     updateStory();
 });
 
 
-/* 브라우저 크기 변경 시 높이 다시 계산 */
 window.addEventListener("resize", () => {
     updateStoryHeight();
 });
 
 </script>
-
-</body>
-</html>
