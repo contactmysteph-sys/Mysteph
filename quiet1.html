@@ -210,11 +210,13 @@ body{
   bottom:0;
   left:50%;
   width:1px;
-  background:
-    rgba(88,74,56,.16);
+
+  background:rgba(88,74,56,.16);
 
   box-shadow:
     0 0 18px rgba(60,45,30,.12);
+
+  pointer-events:none;   /* 추가 */
 }
 
 
@@ -332,17 +334,16 @@ body{
 
 .magazine-article.long-post{
     display:block;
+    position:relative;
+    z-index:5;
     color:inherit;
     text-decoration:none;
     cursor:pointer;
+    pointer-events:auto;
 }
 
 .magazine-article:hover{
   transform:translateY(-2px);
-}
-
-.magazine-article.long-post{
-    cursor:pointer;
 }
 
 .article-number{
