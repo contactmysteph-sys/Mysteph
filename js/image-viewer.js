@@ -46,7 +46,16 @@ function openImage(img){
 
     currentImages = Array.from(
         group.querySelectorAll(
-            '.zoomable, .photo-grid img, .photo-row img, .photo-row-2 img, .photo-single img, .diary-gallery img'
+           '.zoomable, ' +
+           '.photo-grid img, ' +
+           '.photo-row img, ' +
+           '.photo-row-2 img, ' +
+           '.photo-single img, ' +
+           '.diary-gallery img, ' +
+           '.editorial-hero img, ' +
+           '.hoi-layout img, ' +
+           '.magazine-gallery img, ' +
+           '.photo-strip img'
         )
     );
 
@@ -93,7 +102,16 @@ document.addEventListener("click",(e)=>{
     }
 
     if (e.target.matches(
-        '.zoomable, .photo-grid img, .photo-row img, .photo-row-2 img, .photo-single img, .diary-gallery img'
+      '.zoomable, ' +
+      '.photo-grid img, ' +
+      '.photo-row img, ' +
+      '.photo-row-2 img, ' +
+      '.photo-single img, ' +
+      '.diary-gallery img, ' +
+      '.editorial-hero img, ' +
+      '.hoi-layout img, ' +
+      '.magazine-gallery img, ' +
+      '.photo-strip img'
     )) {
 
         openImage(e.target);
