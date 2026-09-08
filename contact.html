@@ -603,18 +603,31 @@
   async function loadNotes(){
     const { data, error } = await supabaseClient
       .from('guestbook')
-      .select('name, message, created_at, reply, reply_at, secret')
+      .select('name, message, created_at, reply, secret')
       .order('created_at', { ascending:false });
 
+
     if(error){
-      notesList.innerHTML = '<p style="text-align:center;color:#5b6572;">Notes could not be loaded.</p>';
-      return;
+     console.error('Supabase load error:', error);
+
+     notesList.innerHTML =
+      '<p style="text-align:center;color:#5b6572;">Notes could not be loaded.</p>';
+
+     return;
     }
 
     notesList.innerHTML = '';
 
     if(!data || data.length === 0){
       notesList.innerHTML = '<p style="text-align:center;color:#5b6572;">No public notes yet.</p>';
+      return;
+    }
+
+    console.log('Loaded notes:', data);
+    notesList.innerHTML = '';
+    if(!data || data.length === 0){
+      notesList.innerHTML =
+      '<p style="text-align:center;color:#5b6572;">No public notes yet.</p>';
       return;
     }
 
